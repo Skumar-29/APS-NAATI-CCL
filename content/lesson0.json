@@ -1,0 +1,368 @@
+{
+  "version": "1.0.0",
+  "lastVerified": "2026-08-01",
+  "chapters": [
+    {
+      "id": "purpose",
+      "title": "What the CCL test is",
+      "duration": "2–3 min",
+      "slides": [
+        {
+          "title": "Welcome to Lesson 0",
+          "body": "Understand the test before you begin practising. This lesson explains the format, scoring, controls, preparation and test-day rules.",
+          "narrationEn": "Welcome to APS NAATI CCL Practice. Before starting your preparation, you need to understand how the CCL test works and where candidates commonly lose marks.",
+          "narrationHi": "ए पी एस नाटी सी सी एल अभ्यास में आपका स्वागत है। तैयारी शुरू करने से पहले यह समझना जरूरी है कि सी सी एल परीक्षा कैसे होती है और अभ्यर्थियों के अंक कहाँ कट सकते हैं।"
+        },
+        {
+          "title": "What it assesses",
+          "body": "CCL assesses your ability to transfer spoken meaning between English and Hindi in everyday Australian community situations.",
+          "narrationEn": "The CCL test assesses community-level communication between English and Hindi. You listen to short segments and interpret the meaning accurately into the other language.",
+          "narrationHi": "सी सी एल परीक्षा अंग्रेज़ी और हिन्दी के बीच सामुदायिक स्तर पर सही अर्थ पहुँचाने की आपकी क्षमता जाँचती है। आप छोटे खंड सुनते हैं और उनका अर्थ दूसरी भाषा में बताते हैं।"
+        },
+        {
+          "title": "What it does not provide",
+          "body": "Passing CCL does not make you a certified professional interpreter or translator.",
+          "narrationEn": "Passing CCL can support an eligible migration points application, but it does not give professional interpreter or translator certification.",
+          "narrationHi": "सी सी एल पास करना पात्र प्रवासन अंक आवेदन में सहायक हो सकता है, लेकिन इससे पेशेवर दुभाषिया या अनुवादक प्रमाणन नहीं मिलता।"
+        }
+      ]
+    },
+    {
+      "id": "format",
+      "title": "Test and dialogue format",
+      "duration": "3 min",
+      "slides": [
+        {
+          "title": "Two dialogues",
+          "body": "The test contains two recorded dialogues on different community topics. Each dialogue is worth 45 marks.",
+          "narrationEn": "The test contains two recorded dialogues on different community topics. Each dialogue is marked separately out of forty-five.",
+          "narrationHi": "परीक्षा में अलग-अलग सामुदायिक विषयों पर दो रिकॉर्ड किए गए संवाद होते हैं। प्रत्येक संवाद के पैंतालीस अंक होते हैं।"
+        },
+        {
+          "title": "Short segments and a chime",
+          "body": "Each dialogue is divided into short segments. After a segment, a chime tells you to begin interpreting.",
+          "narrationEn": "Each dialogue is divided into short segments. Listen until the chime, then begin interpreting the complete meaning into the other language.",
+          "narrationHi": "हर संवाद छोटे खंडों में बाँटा जाता है। घंटी की आवाज़ तक ध्यान से सुनें और फिर पूरा अर्थ दूसरी भाषा में बोलना शुरू करें।"
+        },
+        {
+          "title": "Both directions matter",
+          "body": "You will interpret English to Hindi and Hindi to English. Practise both directions equally.",
+          "narrationEn": "A dialogue alternates between English and Hindi, so you must practise English to Hindi and Hindi to English equally.",
+          "narrationHi": "संवाद में अंग्रेज़ी और हिन्दी दोनों आती हैं, इसलिए अंग्रेज़ी से हिन्दी और हिन्दी से अंग्रेज़ी दोनों दिशाओं का समान अभ्यास करें।"
+        }
+      ]
+    },
+    {
+      "id": "scoring",
+      "title": "Scoring and passing conditions",
+      "duration": "3 min",
+      "slides": [
+        {
+          "title": "Maximum score: 90",
+          "body": "Dialogue 1: 45 marks · Dialogue 2: 45 marks · Total: 90 marks.",
+          "narrationEn": "The maximum score is ninety. Dialogue one is worth forty-five and dialogue two is worth forty-five.",
+          "narrationHi": "कुल अधिकतम अंक नब्बे हैं। पहले संवाद के पैंतालीस और दूसरे संवाद के पैंतालीस अंक होते हैं।"
+        },
+        {
+          "title": "You must satisfy both rules",
+          "body": "You need at least 63 overall and at least 29 in each dialogue.",
+          "narrationEn": "To pass, you need at least sixty-three overall and at least twenty-nine in each dialogue. A high score in one dialogue cannot fully compensate for a score below twenty-nine in the other.",
+          "narrationHi": "पास होने के लिए कुल कम से कम तिरसठ और प्रत्येक संवाद में कम से कम उनतीस अंक चाहिए। एक संवाद के अधिक अंक दूसरे संवाद में उनतीस से कम अंक की भरपाई नहीं कर सकते।"
+        },
+        {
+          "title": "Aim above the minimum",
+          "body": "APS preparation target: consistent scores above the minimum in several full mock tests.",
+          "narrationEn": "Do not prepare only to reach the exact minimum. Aim for consistent performance above the minimum in several realistic mock tests.",
+          "narrationHi": "केवल न्यूनतम अंक तक पहुँचने का लक्ष्य न रखें। कई वास्तविक अभ्यास परीक्षाओं में लगातार न्यूनतम से ऊपर प्रदर्शन करने का लक्ष्य रखें।"
+        }
+      ]
+    },
+    {
+      "id": "meaning",
+      "title": "Meaning, synonyms and critical details",
+      "duration": "4 min",
+      "slides": [
+        {
+          "title": "Meaning matters more than identical words",
+          "body": "Natural synonyms and paraphrases are acceptable when the complete meaning is preserved.",
+          "narrationEn": "You do not need to copy one model answer word for word. Natural synonyms and different sentence structures are acceptable when they preserve the complete meaning.",
+          "narrationHi": "आपको मॉडल उत्तर शब्दशः दोहराने की जरूरत नहीं है। यदि पूरा अर्थ सही रहता है तो स्वाभाविक पर्यायवाची और अलग वाक्य संरचना स्वीकार्य हो सकती है।"
+        },
+        {
+          "title": "Protect critical details",
+          "body": "Names, dates, times, amounts, addresses, dosage, negatives and conditions must be transferred accurately.",
+          "narrationEn": "Be especially careful with names, dates, times, amounts, addresses, medication dosage, negative statements and conditions. One small change can reverse the message.",
+          "narrationHi": "नाम, तारीख, समय, राशि, पता, दवा की मात्रा, नकारात्मक कथन और शर्तों पर विशेष ध्यान दें। छोटी सी गलती पूरे संदेश का अर्थ बदल सकती है।"
+        },
+        {
+          "title": "Preserve certainty",
+          "body": "Do not change may into will, should into must, or cannot into can.",
+          "narrationEn": "Preserve the speaker’s level of certainty. Do not change may into will, should into must, or cannot into can.",
+          "narrationHi": "वक्ता की निश्चितता का स्तर बनाए रखें। हो सकता है को होगा, चाहिए को अनिवार्य, या नहीं कर सकते को कर सकते में न बदलें।"
+        }
+      ]
+    },
+    {
+      "id": "speech",
+      "title": "Direct speech, language and register",
+      "duration": "3 min",
+      "slides": [
+        {
+          "title": "Interpret directly",
+          "body": "Speak as the original speaker using I, you, we, my and your.",
+          "narrationEn": "Interpret directly as the original speaker. Say I, you, we, my and your instead of repeatedly saying he said or she asked.",
+          "narrationHi": "मूल वक्ता की तरह सीधे बोलें। बार-बार उसने कहा या उसने पूछा कहने के बजाय मैं, आप, हम, मेरा और आपका का प्रयोग करें।"
+        },
+        {
+          "title": "Use natural language",
+          "body": "Avoid unnatural word-for-word translation. Reproduce the idea clearly and naturally.",
+          "narrationEn": "Avoid translating each word mechanically. Understand the idea and express it clearly and naturally in the target language.",
+          "narrationHi": "हर शब्द का यांत्रिक अनुवाद न करें। पहले विचार समझें और लक्ष्य भाषा में उसे स्पष्ट और स्वाभाविक रूप से कहें।"
+        },
+        {
+          "title": "Use suitable register",
+          "body": "A doctor, police officer, customer and friend may require different levels of formality.",
+          "narrationEn": "Use a level of formality suitable for the situation. Government, medical and legal conversations normally require polite and professional language.",
+          "narrationHi": "स्थिति के अनुसार उचित औपचारिकता रखें। सरकारी, चिकित्सकीय और कानूनी संवादों में सामान्यतः विनम्र और पेशेवर भाषा चाहिए।"
+        }
+      ]
+    },
+    {
+      "id": "repeat",
+      "title": "Repeats, timing and corrections",
+      "duration": "3 min",
+      "slides": [
+        {
+          "title": "One penalty-free repeat per dialogue",
+          "body": "Use the free repeat for a missing main idea or critical detail, not simply because you feel nervous.",
+          "narrationEn": "One segment in each dialogue may be repeated without penalty. Use it strategically when you missed the main idea or an important number, condition or name.",
+          "narrationHi": "प्रत्येक संवाद में एक खंड बिना दंड दोबारा सुना जा सकता है। इसका उपयोग तब करें जब मुख्य विचार, संख्या, शर्त या नाम छूट गया हो।"
+        },
+        {
+          "title": "Begin promptly",
+          "body": "Start interpreting within five seconds after the chime.",
+          "narrationEn": "Begin interpreting promptly after the chime. Long pauses can affect delivery and may also make it harder to remember the segment.",
+          "narrationHi": "घंटी के बाद जल्दी बोलना शुरू करें। लंबा विराम बोलने की गुणवत्ता को प्रभावित कर सकता है और खंड याद रखना भी कठिन बना सकता है।"
+        },
+        {
+          "title": "Correct briefly",
+          "body": "Correct an important error immediately and continue. Avoid restarting the whole answer repeatedly.",
+          "narrationEn": "If you notice an important error, correct it briefly and continue. Repeatedly restarting the entire response harms fluency.",
+          "narrationHi": "महत्वपूर्ण गलती का तुरंत छोटा सुधार करें और आगे बढ़ें। पूरे उत्तर को बार-बार शुरू करने से प्रवाह खराब होता है।"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "title": "Fast note-taking",
+      "duration": "3 min",
+      "slides": [
+        {
+          "title": "Write meaning, not sentences",
+          "body": "Capture names, numbers, actions, changes, negatives and conditions using short symbols.",
+          "narrationEn": "Do not try to write every word. Record the main action, names, numbers, changes, negatives and conditions using short symbols.",
+          "narrationHi": "हर शब्द लिखने की कोशिश न करें। मुख्य कार्य, नाम, संख्या, बदलाव, नकार और शर्तों को छोटे संकेतों में लिखें।"
+        },
+        {
+          "title": "Useful symbols",
+          "body": "→ changed to · × cancelled/not · ↑ increase · ↓ decrease · ? question · $ money.",
+          "narrationEn": "Build a small personal system of symbols, for example an arrow for change, a cross for cancellation or no, and up or down arrows for increase and decrease.",
+          "narrationHi": "अपने लिए छोटे संकेत बनाएँ, जैसे बदलाव के लिए तीर, रद्द या नहीं के लिए क्रॉस, और बढ़ने या घटने के लिए ऊपर या नीचे का तीर।"
+        },
+        {
+          "title": "Example",
+          "body": "Appointment Monday 10:00 cancelled → Thursday 3:30 becomes: appt Mon 10 × → Thu 3:30.",
+          "narrationEn": "For example, appointment Monday at ten cancelled and moved to Thursday at three thirty can be written as appointment, Monday ten, cross, arrow, Thursday three thirty.",
+          "narrationHi": "उदाहरण के लिए सोमवार दस बजे की अपॉइंटमेंट रद्द होकर गुरुवार साढ़े तीन बजे हुई, तो केवल अपॉइंटमेंट, सोमवार दस, क्रॉस, तीर, गुरुवार साढ़े तीन लिखें।"
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "Common causes of lost marks",
+      "duration": "4 min",
+      "slides": [
+        {
+          "title": "Accuracy problems",
+          "body": "Major omissions, distorted meaning, wrong critical details and unjustified additions can cause substantial deductions.",
+          "narrationEn": "The most serious problems include large omissions, distorted meaning, incorrect critical details and information added by the candidate that the speaker did not say.",
+          "narrationHi": "गंभीर समस्याओं में बड़े अंश छोड़ना, अर्थ बदलना, महत्वपूर्ण विवरण गलत कहना और वक्ता द्वारा न कही गई जानकारी जोड़ना शामिल है।"
+        },
+        {
+          "title": "Language problems",
+          "body": "Grammar, unnatural literal translation, unsuitable register and excessive use of the other language can reduce marks.",
+          "narrationEn": "Language quality also matters. Avoid unnatural literal translation, repeated grammar errors, unsuitable formality and excessive English inside a Hindi response.",
+          "narrationHi": "भाषा की गुणवत्ता भी महत्वपूर्ण है। अस्वाभाविक शब्दशः अनुवाद, बार-बार व्याकरण की गलती, गलत औपचारिकता और हिन्दी उत्तर में अत्यधिक अंग्रेज़ी से बचें।"
+        },
+        {
+          "title": "Delivery problems",
+          "body": "Long pauses, excessive corrections, unclear pronunciation and repeated segments can affect delivery.",
+          "narrationEn": "Long pauses, excessive self-correction, unclear pronunciation and unnecessary repeats can affect the quality of delivery.",
+          "narrationHi": "लंबे विराम, अत्यधिक स्वयं सुधार, अस्पष्ट उच्चारण और अनावश्यक दोहराव बोलने की गुणवत्ता को प्रभावित कर सकते हैं।"
+        }
+      ]
+    },
+    {
+      "id": "testday",
+      "title": "Equipment and test-day rules",
+      "duration": "4 min",
+      "slides": [
+        {
+          "title": "Complete the system check",
+          "body": "Use the same computer, phone, room and internet connection planned for test day.",
+          "narrationEn": "Complete the official system check at least forty-eight hours before the test using the same computer, phone, room and internet connection you plan to use.",
+          "narrationHi": "परीक्षा से कम से कम अड़तालीस घंटे पहले उसी कंप्यूटर, फोन, कमरे और इंटरनेट से आधिकारिक सिस्टम जाँच पूरी करें जिसका उपयोग परीक्षा में करेंगे।"
+        },
+        {
+          "title": "Prepare the room",
+          "body": "Quiet private room · clear desk · valid identification · blank paper and pen · devices connected to power.",
+          "narrationEn": "Prepare a quiet private room, clear your desk, keep valid identification ready, use only permitted blank paper and pen, and connect devices to power.",
+          "narrationHi": "शांत निजी कमरा तैयार करें, मेज साफ रखें, मान्य पहचान पत्र रखें, केवल अनुमत खाली कागज और कलम का उपयोग करें और उपकरण बिजली से जोड़ें।"
+        },
+        {
+          "title": "Do not use prohibited help",
+          "body": "No headphones, dictionaries, translation tools, live captions, extra devices, other people or recording of confidential test content.",
+          "narrationEn": "Do not use headphones, dictionaries, translation tools, live captions, extra devices or help from another person. Do not record or share confidential test content.",
+          "narrationHi": "हेडफोन, शब्दकोश, अनुवाद उपकरण, लाइव कैप्शन, अतिरिक्त उपकरण या किसी अन्य व्यक्ति की सहायता का उपयोग न करें। गोपनीय परीक्षा सामग्री रिकॉर्ड या साझा न करें।"
+        }
+      ]
+    },
+    {
+      "id": "strategy",
+      "title": "A practical high-score strategy",
+      "duration": "4 min",
+      "slides": [
+        {
+          "title": "Train in stages",
+          "body": "Word → phrase → short segment → full dialogue → two-dialogue mock test.",
+          "narrationEn": "Build skill in stages. Learn the key terms, practise complete phrases, interpret short segments, complete dialogues and finally perform two-dialogue mock tests.",
+          "narrationHi": "कौशल चरणों में बनाएँ। पहले मुख्य शब्द, फिर पूरे वाक्यांश, छोटे खंड, पूर्ण संवाद और अंत में दो संवाद वाली अभ्यास परीक्षा करें।"
+        },
+        {
+          "title": "Review every mark",
+          "body": "After each dialogue, study what you did well, where meaning was lost and which segments need retrying.",
+          "narrationEn": "Do not only look at the score. Review every segment, understand what you did well, identify where meaning was lost and retry the exact weak segments.",
+          "narrationHi": "केवल अंक न देखें। हर खंड की समीक्षा करें, सही बातों को समझें, जहाँ अर्थ छूटा उसे पहचानें और कमजोर खंड फिर से करें।"
+        },
+        {
+          "title": "Build consistency",
+          "body": "Aim to pass both dialogues repeatedly under normal speed and realistic controls before test day.",
+          "narrationEn": "Readiness means consistent performance. Aim to pass both dialogues repeatedly at normal speed with realistic test controls before test day.",
+          "narrationHi": "तैयारी का अर्थ लगातार अच्छा प्रदर्शन है। परीक्षा से पहले सामान्य गति और वास्तविक नियंत्रणों के साथ दोनों संवादों में बार-बार पास स्तर का प्रदर्शन करें।"
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "How many dialogues are in the CCL test?",
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "Four"
+      ],
+      "answer": 1,
+      "explanation": "The test contains two dialogues on different community topics."
+    },
+    {
+      "q": "What is the maximum score for each dialogue?",
+      "options": [
+        "29",
+        "35",
+        "45",
+        "90"
+      ],
+      "answer": 2,
+      "explanation": "Each dialogue is worth 45 marks."
+    },
+    {
+      "q": "Which passing condition is correct?",
+      "options": [
+        "63 overall only",
+        "29 in each dialogue only",
+        "63 overall and at least 29 in each dialogue",
+        "70 overall"
+      ],
+      "answer": 2,
+      "explanation": "Both the overall and per-dialogue minimums must be satisfied."
+    },
+    {
+      "q": "Should a candidate copy the model answer word for word?",
+      "options": [
+        "Always",
+        "No, accurate natural meaning is what matters",
+        "Only in Hindi",
+        "Only for long segments"
+      ],
+      "answer": 1,
+      "explanation": "Synonyms and natural paraphrases can be acceptable when meaning is preserved."
+    },
+    {
+      "q": "Which detail needs strict accuracy?",
+      "options": [
+        "Only greetings",
+        "Names, dates, amounts and conditions",
+        "Only grammar",
+        "Only speaking speed"
+      ],
+      "answer": 1,
+      "explanation": "Critical details can substantially change the message."
+    },
+    {
+      "q": "Which is the preferred interpreting style?",
+      "options": [
+        "Third-person reporting",
+        "Direct speech",
+        "Written summary",
+        "Personal explanation"
+      ],
+      "answer": 1,
+      "explanation": "Interpret as the original speaker using direct speech."
+    },
+    {
+      "q": "How many penalty-free segment repeats are available in each dialogue?",
+      "options": [
+        "None",
+        "One",
+        "Two",
+        "Unlimited"
+      ],
+      "answer": 1,
+      "explanation": "One segment per dialogue may be repeated without penalty."
+    },
+    {
+      "q": "When should you begin interpreting?",
+      "options": [
+        "Immediately before the chime",
+        "Within five seconds after the chime",
+        "After thirty seconds",
+        "Only after writing a full sentence"
+      ],
+      "answer": 1,
+      "explanation": "Prompt response supports flow and follows the test instructions."
+    },
+    {
+      "q": "What should notes mainly capture?",
+      "options": [
+        "Every word",
+        "Meaning, names, numbers, actions and conditions",
+        "Only grammar",
+        "A complete translation"
+      ],
+      "answer": 1,
+      "explanation": "Short meaning-based notes are faster and more useful."
+    },
+    {
+      "q": "What is the best preparation goal?",
+      "options": [
+        "One lucky passing mock",
+        "Consistent passing performance in both dialogues",
+        "Memorising fixed answers",
+        "Using repeats on every segment"
+      ],
+      "answer": 1,
+      "explanation": "Consistency across realistic full mocks is a better readiness signal."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "APS NAATI CCL Practice",
+  "short_name": "APS CCL",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#edf3f8",
+  "theme_color": "#0d4f7c",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "id": "aps-naati-ccl-practice",
+  "scope": "./",
+  "lang": "en-AU",
+  "description": "English–Hindi NAATI CCL vocabulary, dialogues, recordings, learning reports and mock tests.",
+  "categories": [
+    "education",
+    "productivity"
+  ],
+  "orientation": "any"
+}
