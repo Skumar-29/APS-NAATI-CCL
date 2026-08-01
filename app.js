@@ -11,7 +11,7 @@ const state={
   ready:false,dialogues:[],vocab:[],phrases:[],exam:null,lessonData:null,
   tab:'home',overlay:null,modal:null,toast:'',
   lesson:{chapter:0,slide:0,playing:false,lang:'bilingual',rate:1,captions:true,quiz:false,quizIndex:0,quizAnswers:[]},
-  learn:{type:'words',topic:'all',status:'all',completion:'all',query:'',revealed:new Set()},
+  learn:{type:'words',topic:'all',status:'all',completion:'all',query:'',page:1,pageSize:120,revealed:new Set()},
   practice:{topic:'all',difficulty:'all',query:'',review:'all',completion:'all'},
   mockPair:null,
   vocabPlayer:{queue:[],index:0,playing:false,token:0,gapRemaining:0,title:'All vocabulary'},
@@ -102,7 +102,23 @@ function filteredLearnItems(noLimit=false){
     const completionOk=state.learn.type!=='phrases'||state.learn.completion==='all'||(state.learn.completion==='completed'?phrasePracticeInfo(x.id).completed:!phrasePracticeInfo(x.id).completed);
     return (state.learn.topic==='all'||x.topic===state.learn.topic)&&(state.learn.status==='all'||itemStatus(x.id)===state.learn.status)&&completionOk&&(!q||`${x.english} ${x.hindi}`.toLowerCase().includes(q));
   });
-  return noLimit?out:out.slice(0,120);
+  if(noLimit)return out;
+  const pageSize=Number(state.learn.pageSize)||120,totalPages=Math.max(1,Math.ceil(out.length/pageSize));
+  state.learn.page=clamp(Number(state.learn.page)||1,1,totalPages);
+  const start=(state.learn.page-1)*pageSize;
+  return out.slice(start,start+pageSize);
+}
+function learnPagination(total){
+  const pageSize=Number(state.learn.pageSize)||120,totalPages=Math.max(1,Math.ceil(total/pageSize)),page=clamp(Number(state.learn.page)||1,1,totalPages);
+  if(totalPages<=1)return '';
+  const options=Array.from({length:totalPages},(_,i)=>i+1).map(n=>`<option value="${n}" ${n===page?'selected':''}>${n}</option>`).join('');
+  return `<nav class="learn-pagination" aria-label="${state.learn.type==='words'?'Vocabulary':'Phrase'} pages"><button data-action="learn-page-prev" ${page<=1?'disabled':''}>← Previous</button><div><span>Page</span><select id="learnPageSelect" aria-label="Select page">${options}</select><span>of ${totalPages}</span></div><button data-action="learn-page-next" ${page>=totalPages?'disabled':''}>Next →</button></nav>`;
+}
+function changeLearnPage(deltaOrPage,isAbsolute=false){
+  const total=filteredLearnItems(true).length,pageSize=Number(state.learn.pageSize)||120,totalPages=Math.max(1,Math.ceil(total/pageSize));
+  state.learn.page=clamp(isAbsolute?Number(deltaOrPage):(Number(state.learn.page)||1)+Number(deltaOrPage),1,totalPages);
+  render();
+  requestAnimationFrame(()=>document.querySelector('.filter-panel')?.scrollIntoView({behavior:'smooth',block:'start'}));
 }
 
 function home(){
@@ -119,7 +135,10 @@ function home(){
 }
 
 function learn(){
-  const items=filteredLearnItems(),counts={};Object.keys(statusLabels).forEach(s=>counts[s]=currentItems().filter(x=>itemStatus(x.id)===s).length);
+  const allItems=filteredLearnItems(true),pageSize=Number(state.learn.pageSize)||120,totalPages=Math.max(1,Math.ceil(allItems.length/pageSize));
+  state.learn.page=clamp(Number(state.learn.page)||1,1,totalPages);
+  const start=(state.learn.page-1)*pageSize,items=allItems.slice(start,start+pageSize),shownFrom=allItems.length?start+1:0,shownTo=Math.min(start+items.length,allItems.length);
+  const counts={};Object.keys(statusLabels).forEach(s=>counts[s]=currentItems().filter(x=>itemStatus(x.id)===s).length);
   const pt=phraseTotals();
   const completionFilter=state.learn.type==='phrases'?`<select id="learnCompletion"><option value="all" ${state.learn.completion==='all'?'selected':''}>All phrases</option><option value="remaining" ${state.learn.completion==='remaining'?'selected':''}>Remaining</option><option value="completed" ${state.learn.completion==='completed'?'selected':''}>Completed</option></select>`:'';
   const phraseSummary=state.learn.type==='phrases'?`<section class="completion-summary"><div><strong>${pt.completed}</strong><span>completed phrases</span></div><div><strong>${pt.remaining}</strong><span>remaining phrases</span></div><div><strong>${pt.totalPractices}</strong><span>total phrase practices</span></div></section>`:'';
@@ -127,8 +146,10 @@ function learn(){
   <div class="segments"><button data-action="learn-type" data-id="words" class="${state.learn.type==='words'?'active':''}">Vocabulary <span>${state.vocab.length}</span></button><button data-action="learn-type" data-id="phrases" class="${state.learn.type==='phrases'?'active':''}">Phrases <span>${state.phrases.length}</span></button></div>
   ${state.learn.type==='words'?'<div class="info"><b>Vocabulary only:</b> this section now contains verified words and short multi-word terms. Complete dialogue sentences remain in the separate Phrases and Dialogue sections.</div>':phraseSummary}
   <section class="status-cards">${Object.entries(statusLabels).map(([id,label])=>`<button data-action="status-playlist" data-id="${id}" class="status-card ${id}"><b>${statusIcons[id]}</b><span><strong>${label}</strong><em>${counts[id]} ${state.learn.type==='words'?'words':'phrases'}</em></span><i>Play ›</i></button>`).join('')}</section>
-  <section class="filter-panel"><div class="filter-row"><label class="search"><span>⌕</span><input id="learnQuery" placeholder="Search English or Hindi" value="${esc(state.learn.query)}"></label><select id="learnTopic">${topicOptions(state.learn.topic)}</select><select id="learnStatus">${statusOptions(state.learn.status)}</select>${completionFilter}</div><div class="filter-summary"><span>${items.length}${filteredLearnItems(true).length>items.length?` of ${filteredLearnItems(true).length}`:''} shown</span>${button('▶ Play current filters','play-current-filter','primary compact')}</div></section>
+  <section class="filter-panel"><div class="filter-row"><label class="search"><span>⌕</span><input id="learnQuery" placeholder="Search English or Hindi" value="${esc(state.learn.query)}"></label><select id="learnTopic">${topicOptions(state.learn.topic)}</select><select id="learnStatus">${statusOptions(state.learn.status)}</select>${completionFilter}</div><div class="filter-summary"><span>Showing ${shownFrom.toLocaleString()}–${shownTo.toLocaleString()} of ${allItems.length.toLocaleString()} · Page ${state.learn.page} of ${totalPages}</span>${button('▶ Play all current filters','play-current-filter','primary compact')}</div></section>
+  ${learnPagination(allItems.length)}
   <div class="learn-grid">${items.map(item=>learnCard(item)).join('')||`<div class="empty wide-card"><h3>No matching items</h3><p>Change the topic, status, completion filter or search words.</p></div>`}</div>
+  ${learnPagination(allItems.length)}
   <p class="status-note">Learning records are stored locally on this device and included in progress backups.</p>`);
 }
 function learnCard(item){
@@ -416,7 +437,7 @@ async function loadSavedReport(id){const a=getJSON(storageKeys.attempts,[]).find
 function loadQADialogueReport(){const d=state.dialogues[0];const responses=d.segments.map((s,i)=>({segmentId:s.id,transcript:s.model,recordingUrl:'',assessment:APSScoring.assessSegment(s,s.model,{startDelay:3})}));const report=APSScoring.aggregateDialogue(responses.map(r=>r.assessment),{repeats:0});state.dialogue=d;state.report={type:'dialogue',attempt:{id:'qa',dialogueId:d.id,title:d.title,responses,report}};state.overlay='report';}
 
 // Backup / restore
-function backupProgress(){const data={version:'2.0.3',createdAt:new Date().toISOString(),vocabStatus:getJSON(storageKeys.vocabStatus,{}),vocabSettings:state.vocabSettings,vocabResume:getJSON(storageKeys.vocabResume,{}),phraseStats:getJSON(storageKeys.phraseStats,{}),attempts:getJSON(storageKeys.attempts,[]),lesson:getJSON(storageKeys.lesson,{}),mistakes:getJSON(storageKeys.mistakes,[])};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_NAATI_Progress_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);}
+function backupProgress(){const data={version:'2.0.4',createdAt:new Date().toISOString(),vocabStatus:getJSON(storageKeys.vocabStatus,{}),vocabSettings:state.vocabSettings,vocabResume:getJSON(storageKeys.vocabResume,{}),phraseStats:getJSON(storageKeys.phraseStats,{}),attempts:getJSON(storageKeys.attempts,[]),lesson:getJSON(storageKeys.lesson,{}),mistakes:getJSON(storageKeys.mistakes,[])};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_NAATI_Progress_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);}
 async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.phraseStats,d.phraseStats||{});setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});showToast('Progress restored');}catch{showToast('This backup could not be restored');}}
 
 // Event handling
@@ -427,12 +448,14 @@ app.addEventListener('click',async e=>{
   else if(a==='open-lesson'){stopAllSpeech();const p=getJSON(storageKeys.lesson,{chapter:0,slide:0});state.lesson.chapter=p.chapter||0;state.lesson.slide=p.slide||0;state.lesson.quiz=false;state.overlay='lesson';render();}
   else if(a==='close-overlay'){stopAllSpeech();state.overlay=null;render();}
   else if(a==='quick-dialogue')openDialogue(state.dialogues[0].id,'learning');
-  else if(a==='learn-type'){state.learn.type=id;state.learn.status='all';state.learn.completion='all';render();}
+  else if(a==='learn-type'){state.learn.type=id;state.learn.status='all';state.learn.completion='all';state.learn.page=1;render();}
   else if(a==='reveal'){state.learn.revealed.has(id)?state.learn.revealed.delete(id):state.learn.revealed.add(id);render();}
   else if(a==='speak-item'){const item=(el.dataset.type==='words'?state.vocab:state.phrases).find(x=>x.id===id);if(item){speechSynthesis.cancel();await speak(item.english,'en',state.vocabSettings.rate);await speak(item.hindi,'hi',state.vocabSettings.rate);if(el.dataset.type==='phrases'){recordPhrasePractice(item.id);render();}}}
   else if(a==='single-item-player'){const item=(el.dataset.type==='words'?state.vocab:state.phrases).find(x=>x.id===id);startVocabularyPlaylist(false,{...item,itemType:el.dataset.type==='words'?'word':'phrase'});}
   else if(a==='status-playlist')requestPlaylist(id);
   else if(a==='play-current-filter'){state.modal={type:'playlist',title:`${topicLabels[state.learn.topic]} · Current filters`,count:buildPlaylist().length,queue:buildPlaylist()};render();}
+  else if(a==='learn-page-prev')changeLearnPage(-1);
+  else if(a==='learn-page-next')changeLearnPage(1);
   else if(a==='close-modal'){state.modal=null;render();}
   else if(a==='confirm-playlist')startVocabularyPlaylist();
   else if(a==='close-vocab-player'){stopAllSpeech();state.overlay=null;state.tab='learn';render();}
@@ -478,16 +501,17 @@ app.addEventListener('click',async e=>{
   else if(a==='lesson-finish'){saveLessonProgress(true);state.overlay=null;state.tab='practice';render();}
   else if(a==='review-mock-dialogue'){const attempt=state.report.dialogues[Number(id)],d=state.dialogues.find(x=>x.id===attempt.dialogueId),responses=await hydrateResponses(attempt.responses);state.dialogue=d;state.report={type:'dialogue',attempt:{...attempt,responses}};render();}
 });
-app.addEventListener('input',e=>{if(e.target.id==='learnQuery'){state.learn.query=e.target.value;render();}else if(e.target.id==='practiceQuery'){state.practice.query=e.target.value;render();}});
+app.addEventListener('input',e=>{if(e.target.id==='learnQuery'){state.learn.query=e.target.value;state.learn.page=1;render();}else if(e.target.id==='practiceQuery'){state.practice.query=e.target.value;render();}});
 app.addEventListener('change',e=>{
   const t=e.target;
-  if(t.id==='learnTopic'){state.learn.topic=t.value;render();}
+  if(t.id==='learnTopic'){state.learn.topic=t.value;state.learn.page=1;render();}
   else if(t.id==='practiceTopic'){state.practice.topic=t.value;render();}
   else if(t.id==='practiceDifficulty'){state.practice.difficulty=t.value;render();}
   else if(t.id==='practiceReview'){state.practice.review=t.value;render();}
   else if(t.id==='practiceCompletion'){state.practice.completion=t.value;render();}
-  else if(t.id==='learnCompletion'){state.learn.completion=t.value;render();}
-  else if(t.id==='learnStatus'){state.learn.status=t.value;render();}
+  else if(t.id==='learnCompletion'){state.learn.completion=t.value;state.learn.page=1;render();}
+  else if(t.id==='learnStatus'){state.learn.status=t.value;state.learn.page=1;render();}
+  else if(t.id==='learnPageSelect')changeLearnPage(Number(t.value),true);
   else if(t.id==='lessonLang'){state.lesson.lang=t.value;render();}
   else if(t.id==='lessonRate'){state.lesson.rate=Number(t.value);render();}
   else if(t.id==='vocabRate'){state.vocabSettings.rate=Number(t.value);saveVocabSettings();}

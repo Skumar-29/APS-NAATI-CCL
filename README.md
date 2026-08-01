@@ -1,4 +1,4 @@
-# APS NAATI CCL Practice — Friends Beta V2.0.3
+# APS NAATI CCL Practice — Friends Beta V2.0.4
 
 This folder is ready for GitHub Pages. Once deployed over HTTPS, friends can install it like an app on Mac, iPhone, Android and Windows. No Terminal is required.
 
@@ -53,3 +53,12 @@ After recording a segment, choose **Check my answer** to view:
 - a button to hear the sample answer.
 
 This is available for all 85 dialogues and 1,073 segments. Mock Test answers remain hidden until the test is complete.
+
+
+## V2.0.4 pagination update
+
+- Vocabulary is displayed in 25 pages of up to 120 cards.
+- Phrases are displayed in 10 pages of up to 120 cards.
+- Previous, Next and direct page selection are available above and below the cards.
+- Search and filter changes automatically return to page 1.
+- **Play all current filters** includes every matching item, not only the visible page.
