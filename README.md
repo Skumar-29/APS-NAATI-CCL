@@ -1,4 +1,4 @@
-# APS NAATI CCL Practice — Friends Beta V2.0.1
+# APS NAATI CCL Practice — Friends Beta V2.0.3
 
 This folder is ready for GitHub Pages. Once deployed over HTTPS, friends can install it like an app on Mac, iPhone, Android and Windows. No Terminal is required.
 
@@ -31,3 +31,25 @@ Open the beta link in Edge or Chrome and choose **Install app** from the browser
 - A user's progress does not automatically move to another device yet.
 - Test microphone, recording, dialogue audio, vocabulary player and offline reopening on every device type.
 - Do not promote imported dialogues as fully human-verified until bilingual review is complete.
+
+
+## V2.0.3 progress update
+
+- Vocabulary section contains only reviewed vocabulary and short terms; dialogue sentence cards were removed.
+- Phrase completion, remaining count and practice count are saved locally.
+- Dialogue completion, remaining count and number of completed practices are shown in Practice and Progress.
+- Existing dialogue attempts from earlier versions are automatically included in the new records.
+
+
+## V2.0.3 final comparison upgrade
+
+After recording a segment, choose **Check my answer** to view:
+
+- your optional automatic transcript;
+- a sample interpretation;
+- key meaning points;
+- short suggested notes;
+- a note-taking technique for that specific segment; and
+- a button to hear the sample answer.
+
+This is available for all 85 dialogues and 1,073 segments. Mock Test answers remain hidden until the test is complete.

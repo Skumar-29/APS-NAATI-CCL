@@ -1,5 +1,12 @@
 {
-  "version": "2.0.1-beta",
+  "version": "2.0.3",
   "channel": "friends-beta",
-  "name": "APS NAATI CCL Practice"
+  "name": "APS NAATI CCL Practice",
+  "build": "friends-beta-v203-final-answer-comparison",
+  "releaseDate": "2026-08-01",
+  "vocabularyCount": 3000,
+  "dialogueCount": 85,
+  "segmentCount": 1073,
+  "comparisonGuides": 1073,
+  "contentRevision": 2
 }

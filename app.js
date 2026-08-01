@@ -5,14 +5,14 @@ const topicLabels={all:'All topics',health:'Health',housing:'Housing & tenancy',
 const statusLabels={new:'New / Unknown',learning:'Learning',again:'Listen Again',known:'Known'};
 const statusIcons={new:'✦',learning:'↗',again:'↻',known:'✓'};
 const modeLabels={learning:'Learning Mode',practice:'Practice Mode',mock:'Mock Test'};
-const storageKeys={onboard:'apsFinalOnboarded',vocabStatus:'apsFinalVocabStatus',vocabSettings:'apsFinalVocabSettings',vocabResume:'apsFinalVocabResume',attempts:'apsFinalAttempts',lesson:'apsFinalLesson',mistakes:'apsFinalMistakes'};
+const storageKeys={onboard:'apsFinalOnboarded',vocabStatus:'apsFinalVocabStatus',vocabSettings:'apsFinalVocabSettings',vocabResume:'apsFinalVocabResume',attempts:'apsFinalAttempts',lesson:'apsFinalLesson',mistakes:'apsFinalMistakes',phraseStats:'apsFinalPhraseStats'};
 
 const state={
   ready:false,dialogues:[],vocab:[],phrases:[],exam:null,lessonData:null,
   tab:'home',overlay:null,modal:null,toast:'',
   lesson:{chapter:0,slide:0,playing:false,lang:'bilingual',rate:1,captions:true,quiz:false,quizIndex:0,quizAnswers:[]},
-  learn:{type:'words',topic:'all',status:'all',query:'',revealed:new Set()},
-  practice:{topic:'all',difficulty:'all',query:'',review:'all'},
+  learn:{type:'words',topic:'all',status:'all',completion:'all',query:'',revealed:new Set()},
+  practice:{topic:'all',difficulty:'all',query:'',review:'all',completion:'all'},
   mockPair:null,
   vocabPlayer:{queue:[],index:0,playing:false,token:0,gapRemaining:0,title:'All vocabulary'},
   vocabSettings:{rate:.9,gap:2,repeat:1,order:'sequential',reading:'both',examples:true,voiceEn:'',voiceHi:''},
@@ -50,6 +50,10 @@ function applyQAState(){
   if(qa==='lesson'){state.overlay='lesson';state.lesson.chapter=2;state.lesson.slide=1;}
   if(qa==='vocab-player'){state.learn.status='new';startVocabularyPlaylist(false);}
   if(qa==='dialogue'){openDialogue(state.dialogues[0].id,'learning',false);}
+  if(qa==='answer-review'){
+    const d=state.dialogues.find(x=>x.title==='Milk Plant Business')||state.dialogues[0];openDialogue(d.id,'practice',false);
+    const seg=d.segments[0];state.responses[0]={segmentId:seg.id,transcript:'धन्यवाद, अपने व्यस्त कार्यक्रम में से समय निकालकर आज यहाँ आने के लिए। कृपया बैठिए। क्या आप कुछ पीना चाहेंगी?',recordingId:'',recordingUrl:'',showTranscript:true,startDelay:2.4,duration:13,assessment:{status:'excellent',coverage:1,deduction:0,captured:[],review:[],critical:[],units:[],strengths:['Main meaning preserved','Offer and invitation included'],advice:[]}};state.completed.add(seg.id);state.playerStatus='complete';
+  }
   if(qa==='report')loadQADialogueReport();
 }
 
@@ -68,9 +72,36 @@ function allVocabItems(){return [...state.vocab.map(x=>({...x,itemType:'word'}))
 function statusMap(){return getJSON(storageKeys.vocabStatus,{});}
 function itemStatus(id){return statusMap()[id]||'new';}
 function setItemStatus(id,status){const m=statusMap();m[id]=status;setJSON(storageKeys.vocabStatus,m);render();}
+function phraseStatsMap(){return getJSON(storageKeys.phraseStats,{});}
+function phrasePracticeInfo(id){const x=phraseStatsMap()[id]||{};return {practiceCount:Number(x.practiceCount)||0,completed:Boolean(x.completed),lastPractisedAt:x.lastPractisedAt||''};}
+function recordPhrasePractice(id){
+  if(!id||!state.phrases.some(x=>x.id===id))return;
+  const m=phraseStatsMap(),now=new Date().toISOString(),x=m[id]||{};
+  m[id]={practiceCount:(Number(x.practiceCount)||0)+1,completed:true,firstCompletedAt:x.firstCompletedAt||now,lastPractisedAt:now};
+  setJSON(storageKeys.phraseStats,m);
+}
+function phraseTotals(){
+  const m=phraseStatsMap();let completed=0,totalPractices=0;
+  state.phrases.forEach(x=>{const r=m[x.id];if(r?.completed)completed++;totalPractices+=Number(r?.practiceCount)||0;});
+  return {completed,remaining:Math.max(0,state.phrases.length-completed),totalPractices};
+}
+function dialogueStatsMap(){
+  const m={};
+  getJSON(storageKeys.attempts,[]).filter(a=>a.finished&&a.dialogueId).forEach(a=>{
+    const x=m[a.dialogueId]||{practiceCount:0,lastPractisedAt:'',bestLow:null,bestHigh:null,modes:{}};
+    x.practiceCount++;x.lastPractisedAt=a.finishedAt||a.startedAt||x.lastPractisedAt;x.modes[a.mode||'practice']=(x.modes[a.mode||'practice']||0)+1;
+    if(a.report){x.bestLow=x.bestLow===null?Number(a.report.low):Math.max(x.bestLow,Number(a.report.low));x.bestHigh=x.bestHigh===null?Number(a.report.high):Math.max(x.bestHigh,Number(a.report.high));}
+    m[a.dialogueId]=x;
+  });
+  return m;
+}
+function dialogueTotals(){const m=dialogueStatsMap(),completed=state.dialogues.filter(d=>(m[d.id]?.practiceCount||0)>0).length,totalPractices=Object.values(m).reduce((n,x)=>n+(x.practiceCount||0),0);return {completed,remaining:Math.max(0,state.dialogues.length-completed),totalPractices};}
 function filteredLearnItems(noLimit=false){
   const items=currentItems(),q=state.learn.query.trim().toLowerCase();
-  const out=items.filter(x=>(state.learn.topic==='all'||x.topic===state.learn.topic)&&(state.learn.status==='all'||itemStatus(x.id)===state.learn.status)&&(!q||`${x.english} ${x.hindi}`.toLowerCase().includes(q)));
+  const out=items.filter(x=>{
+    const completionOk=state.learn.type!=='phrases'||state.learn.completion==='all'||(state.learn.completion==='completed'?phrasePracticeInfo(x.id).completed:!phrasePracticeInfo(x.id).completed);
+    return (state.learn.topic==='all'||x.topic===state.learn.topic)&&(state.learn.status==='all'||itemStatus(x.id)===state.learn.status)&&completionOk&&(!q||`${x.english} ${x.hindi}`.toLowerCase().includes(q));
+  });
   return noLimit?out:out.slice(0,120);
 }
 
@@ -89,29 +120,39 @@ function home(){
 
 function learn(){
   const items=filteredLearnItems(),counts={};Object.keys(statusLabels).forEach(s=>counts[s]=currentItems().filter(x=>itemStatus(x.id)===s).length);
+  const pt=phraseTotals();
+  const completionFilter=state.learn.type==='phrases'?`<select id="learnCompletion"><option value="all" ${state.learn.completion==='all'?'selected':''}>All phrases</option><option value="remaining" ${state.learn.completion==='remaining'?'selected':''}>Remaining</option><option value="completed" ${state.learn.completion==='completed'?'selected':''}>Completed</option></select>`:'';
+  const phraseSummary=state.learn.type==='phrases'?`<section class="completion-summary"><div><strong>${pt.completed}</strong><span>completed phrases</span></div><div><strong>${pt.remaining}</strong><span>remaining phrases</span></div><div><strong>${pt.totalPractices}</strong><span>total phrase practices</span></div></section>`:'';
   return shell(`${header('Learn','Core CCL vocabulary and phrases')}
   <div class="segments"><button data-action="learn-type" data-id="words" class="${state.learn.type==='words'?'active':''}">Vocabulary <span>${state.vocab.length}</span></button><button data-action="learn-type" data-id="phrases" class="${state.learn.type==='phrases'?'active':''}">Phrases <span>${state.phrases.length}</span></button></div>
+  ${state.learn.type==='words'?'<div class="info"><b>Vocabulary only:</b> this section now contains verified words and short multi-word terms. Complete dialogue sentences remain in the separate Phrases and Dialogue sections.</div>':phraseSummary}
   <section class="status-cards">${Object.entries(statusLabels).map(([id,label])=>`<button data-action="status-playlist" data-id="${id}" class="status-card ${id}"><b>${statusIcons[id]}</b><span><strong>${label}</strong><em>${counts[id]} ${state.learn.type==='words'?'words':'phrases'}</em></span><i>Play ›</i></button>`).join('')}</section>
-  <section class="filter-panel"><div class="filter-row"><label class="search"><span>⌕</span><input id="learnQuery" placeholder="Search English or Hindi" value="${esc(state.learn.query)}"></label><select id="learnTopic">${topicOptions(state.learn.topic)}</select><select id="learnStatus">${statusOptions(state.learn.status)}</select></div><div class="filter-summary"><span>${items.length}${filteredLearnItems(true).length>items.length?` of ${filteredLearnItems(true).length}`:''} shown</span>${button('▶ Play current filters','play-current-filter','primary compact')}</div></section>
-  <div class="learn-grid">${items.map(item=>learnCard(item)).join('')||`<div class="empty wide-card"><h3>No matching items</h3><p>Change the topic, status or search words.</p></div>`}</div>
-  <p class="status-note">Vocabulary progress is stored locally. Word lists cannot be exported; only learning progress can be backed up.</p>`);
+  <section class="filter-panel"><div class="filter-row"><label class="search"><span>⌕</span><input id="learnQuery" placeholder="Search English or Hindi" value="${esc(state.learn.query)}"></label><select id="learnTopic">${topicOptions(state.learn.topic)}</select><select id="learnStatus">${statusOptions(state.learn.status)}</select>${completionFilter}</div><div class="filter-summary"><span>${items.length}${filteredLearnItems(true).length>items.length?` of ${filteredLearnItems(true).length}`:''} shown</span>${button('▶ Play current filters','play-current-filter','primary compact')}</div></section>
+  <div class="learn-grid">${items.map(item=>learnCard(item)).join('')||`<div class="empty wide-card"><h3>No matching items</h3><p>Change the topic, status, completion filter or search words.</p></div>`}</div>
+  <p class="status-note">Learning records are stored locally on this device and included in progress backups.</p>`);
 }
 function learnCard(item){
-  const open=state.learn.revealed.has(item.id),st=itemStatus(item.id),context=item.kind==='context';
-  return `<article class="learn-card ${open?'open':''} ${context?'context-card':''}"><div class="learn-top"><small>${topicLabels[item.topic]||'Community'} ${context?'· LEARN IN CONTEXT':''}</small><span class="mini-status ${st}">${statusIcons[st]} ${statusLabels[st]}</span></div><button class="card-main" data-action="reveal" data-id="${item.id}"><h3>${esc(item.english)}</h3><p>${open?esc(item.hindi):context?'Tap to see the Hindi context sentence':'Tap to reveal Hindi'}</p>${open&&item.exampleEnglish?`<div class="example"><b>${context?'Dialogue context':'Example'}</b>${esc(item.exampleEnglish)}<br><span>${esc(item.exampleHindi)}</span>${context?`<em>Context card: the Hindi sentence teaches usage and is not a one-word dictionary definition.</em>`:''}</div>`:''}</button><div class="card-actions"><button data-action="speak-item" data-id="${item.id}" data-type="${state.learn.type}">🔊 Play</button><button data-action="single-item-player" data-id="${item.id}" data-type="${state.learn.type}">Open player ›</button></div></article>`;
+  const open=state.learn.revealed.has(item.id),st=itemStatus(item.id),isPhrase=state.learn.type==='phrases',pi=isPhrase?phrasePracticeInfo(item.id):null;
+  const practiceBadge=isPhrase?`<span class="practice-badge ${pi.completed?'done':'remaining'}">${pi.completed?'✓ Completed':'○ Remaining'} · practised ${pi.practiceCount} ${pi.practiceCount===1?'time':'times'}</span>`:'';
+  return `<article class="learn-card ${open?'open':''}"><div class="learn-top"><small>${topicLabels[item.topic]||'Community'} ${isPhrase?'· PHRASE':''}</small><span class="mini-status ${st}">${statusIcons[st]} ${statusLabels[st]}</span></div>${practiceBadge}<button class="card-main" data-action="reveal" data-id="${item.id}"><h3>${esc(item.english)}</h3><p>${open?esc(item.hindi):'Tap to reveal Hindi'}</p>${open&&item.exampleEnglish?`<div class="example"><b>Example</b>${esc(item.exampleEnglish)}<br><span>${esc(item.exampleHindi)}</span></div>`:''}</button><div class="card-actions"><button data-action="speak-item" data-id="${item.id}" data-type="${state.learn.type}">🔊 Play</button><button data-action="single-item-player" data-id="${item.id}" data-type="${state.learn.type}">Open player ›</button></div></article>`;
 }
 
 function filteredDialogues(){
-  const q=state.practice.query.trim().toLowerCase();
-  return state.dialogues.filter(d=>(state.practice.topic==='all'||d.topic===state.practice.topic)&&(state.practice.difficulty==='all'||d.difficulty===state.practice.difficulty)&&(state.practice.review==='all'||(state.practice.review==='reviewed'?/human-edited/i.test(d.reviewStatus):!/human-edited/i.test(d.reviewStatus)))&&(!q||`${d.title} ${d.situation} ${topicLabels[d.topic]||''}`.toLowerCase().includes(q)));
+  const q=state.practice.query.trim().toLowerCase(),records=dialogueStatsMap();
+  return state.dialogues.filter(d=>{
+    const done=(records[d.id]?.practiceCount||0)>0;
+    const completionOk=state.practice.completion==='all'||(state.practice.completion==='completed'?done:!done);
+    return (state.practice.topic==='all'||d.topic===state.practice.topic)&&(state.practice.difficulty==='all'||d.difficulty===state.practice.difficulty)&&(state.practice.review==='all'||(state.practice.review==='reviewed'?/human-edited/i.test(d.reviewStatus):!/human-edited/i.test(d.reviewStatus)))&&completionOk&&(!q||`${d.title} ${d.situation} ${topicLabels[d.topic]||''}`.toLowerCase().includes(q));
+  });
 }
 function practice(){
-  const list=filteredDialogues();
+  const list=filteredDialogues(),records=dialogueStatsMap(),totals=dialogueTotals();
   return shell(`${header('Dialogue Practice','All supplied dialogues with learning, practice and review modes')}
-  <div class="info">The source transcript is <b>off by default</b>. In Learning Mode you can switch it on or off. Your recorded-answer transcript remains optional after recording.</div>
-  <section class="dialogue-filter-panel"><label class="search"><span>⌕</span><input id="practiceQuery" placeholder="Search dialogue title or situation" value="${esc(state.practice.query)}"></label><select id="practiceTopic">${topicOptions(state.practice.topic)}</select><select id="practiceDifficulty"><option value="all">All levels</option>${['Foundation','Developing','Exam level'].map(x=>`<option value="${x}" ${state.practice.difficulty===x?'selected':''}>${x}</option>`).join('')}</select><select id="practiceReview"><option value="all">All content</option><option value="reviewed" ${state.practice.review==='reviewed'?'selected':''}>Human-edited set</option><option value="imported" ${state.practice.review==='imported'?'selected':''}>Imported library</option></select></section>
+  <div class="info">The source transcript is <b>off by default</b>. Your completed-dialogue history and practice counts are saved automatically on this device.</div>
+  <section class="completion-summary"><div><strong>${totals.completed}</strong><span>completed dialogues</span></div><div><strong>${totals.remaining}</strong><span>remaining dialogues</span></div><div><strong>${totals.totalPractices}</strong><span>total dialogue practices</span></div></section>
+  <section class="dialogue-filter-panel"><label class="search"><span>⌕</span><input id="practiceQuery" placeholder="Search dialogue title or situation" value="${esc(state.practice.query)}"></label><select id="practiceTopic">${topicOptions(state.practice.topic)}</select><select id="practiceDifficulty"><option value="all">All levels</option>${['Foundation','Developing','Exam level'].map(x=>`<option value="${x}" ${state.practice.difficulty===x?'selected':''}>${x}</option>`).join('')}</select><select id="practiceReview"><option value="all">All content</option><option value="reviewed" ${state.practice.review==='reviewed'?'selected':''}>Human-edited set</option><option value="imported" ${state.practice.review==='imported'?'selected':''}>Imported library</option></select><select id="practiceCompletion"><option value="all" ${state.practice.completion==='all'?'selected':''}>All dialogues</option><option value="remaining" ${state.practice.completion==='remaining'?'selected':''}>Remaining</option><option value="completed" ${state.practice.completion==='completed'?'selected':''}>Completed</option></select></section>
   <div class="dialogue-count"><b>${list.length}</b> dialogues match the filters</div>
-  <div class="dialogues">${list.map(d=>`<article class="dialogue-card"><div class="tags"><span>${topicLabels[d.topic]||'Community'}</span><em>${d.difficulty}</em></div><h3>${esc(d.title)}</h3><p>${esc(d.situation)}</p><div class="content-quality ${/human-edited/i.test(d.reviewStatus)?'reviewed':'imported'}">${/human-edited/i.test(d.reviewStatus)?'✓ Human-edited pilot content':'◇ Imported from your library · bilingual review recommended'}</div><div class="meta">${d.estimatedMinutes} min · ${d.segments.length} segments · Audio + recording</div><div class="actions">${button('Learning Mode','open-dialogue','secondary',`data-id="${d.id}" data-mode="learning"`)}${button('Practice →','open-dialogue','primary',`data-id="${d.id}" data-mode="practice"`)}</div></article>`).join('')||'<div class="empty wide-card"><h3>No dialogues match</h3><p>Change the topic, level or search.</p></div>'}</div>`);
+  <div class="dialogues">${list.map(d=>{const r=records[d.id]||{practiceCount:0};const done=r.practiceCount>0;return `<article class="dialogue-card"><div class="tags"><span>${topicLabels[d.topic]||'Community'}</span><em>${d.difficulty}</em></div><div class="dialogue-progress ${done?'done':'remaining'}"><b>${done?'✓ Completed':'○ Remaining'}</b><span>${done?`Practised ${r.practiceCount} ${r.practiceCount===1?'time':'times'}${r.bestLow!==null?` · best ${r.bestLow}–${r.bestHigh}/45`:''}`:'Not practised yet'}</span></div><h3>${esc(d.title)}</h3><p>${esc(d.situation)}</p><div class="content-quality ${/human-edited/i.test(d.reviewStatus)?'reviewed':'imported'}">${/human-edited/i.test(d.reviewStatus)?'✓ Human-edited pilot content':'◇ Imported from your library · bilingual review recommended'}</div><div class="meta">${d.estimatedMinutes} min · ${d.segments.length} segments · Audio + recording${r.lastPractisedAt?` · last ${new Date(r.lastPractisedAt).toLocaleDateString()}`:''}</div><div class="actions">${button('Learning Mode','open-dialogue','secondary',`data-id="${d.id}" data-mode="learning"`)}${button(done?'Practise again →':'Practice →','open-dialogue','primary',`data-id="${d.id}" data-mode="practice"`)}</div></article>`;}).join('')||'<div class="empty wide-card"><h3>No dialogues match</h3><p>Change the topic, level, completion status or search.</p></div>'}</div>`);
 }
 
 function currentMockPair(){
@@ -129,12 +170,16 @@ function mock(){
 }
 
 function progress(){
-  const attempts=getJSON(storageKeys.attempts,[]),mistakes=getJSON(storageKeys.mistakes,[]),finished=attempts.filter(x=>x.finished),last=finished.at(-1);
-  return shell(`${header('Progress','Your learning and improvement history')}
-  <section class="stats">${[[attempts.length,'attempts'],[finished.length,'completed dialogues'],[mistakes.filter(x=>!x.mastered).length,'mistakes to review'],[last?.report?`${last.report.low}–${last.report.high}`:'—','latest estimate']].map(([v,l])=>`<div><strong>${v}</strong><span>${l}</span></div>`).join('')}</section>
+  const attempts=getJSON(storageKeys.attempts,[]),mistakes=getJSON(storageKeys.mistakes,[]),finished=attempts.filter(x=>x.finished),last=finished.at(-1),dialogueRecords=dialogueStatsMap(),dt=dialogueTotals(),pt=phraseTotals();
+  const completedDialogues=state.dialogues.filter(d=>(dialogueRecords[d.id]?.practiceCount||0)>0).sort((a,b)=>new Date(dialogueRecords[b.id].lastPractisedAt)-new Date(dialogueRecords[a.id].lastPractisedAt));
+  const recentPhrases=state.phrases.map(x=>({...x,...phrasePracticeInfo(x.id)})).filter(x=>x.completed).sort((a,b)=>new Date(b.lastPractisedAt)-new Date(a.lastPractisedAt)).slice(0,12);
+  return shell(`${header('Progress','Your completed, remaining and repeated practice records')}
+  <section class="stats progress-stats">${[[dt.completed,'dialogues completed'],[dt.remaining,'dialogues remaining'],[dt.totalPractices,'dialogue practices'],[pt.completed,'phrases completed'],[pt.remaining,'phrases remaining'],[pt.totalPractices,'phrase practices']].map(([v,l])=>`<div><strong>${v}</strong><span>${l}</span></div>`).join('')}</section>
+  <section class="card"><small>DIALOGUE COMPLETION RECORDS</small><h3>Which dialogues you have done and how many times</h3>${completedDialogues.length?`<div class="completion-records">${completedDialogues.map(d=>{const r=dialogueRecords[d.id];return `<div><div><strong>${esc(d.title)}</strong><small>${topicLabels[d.topic]||'Community'} · last practised ${new Date(r.lastPractisedAt).toLocaleString()}</small></div><span class="record-count">${r.practiceCount}× practised</span>${r.bestLow!==null?`<em>Best ${r.bestLow}–${r.bestHigh}/45</em>`:''}<button data-action="open-dialogue" data-id="${d.id}" data-mode="practice">Practise again</button></div>`;}).join('')}</div>`:'<div class="empty">No dialogue has been completed yet. Remaining dialogues are visible under Practice → Remaining.</div>'}</section>
   <section class="dashboard-grid"><article class="card"><small>RECENT DIALOGUE RESULTS</small><h3>Scores and improvement</h3>${finished.length?`<div class="attempts">${finished.slice(-8).reverse().map(a=>`<button data-action="open-saved-report" data-id="${a.id}"><strong>${esc(a.title)}</strong><span>${a.report?.low??'—'}–${a.report?.high??'—'} / 45</span><small>${new Date(a.finishedAt).toLocaleString()}</small></button>`).join('')}</div>`:'<div class="empty">Complete a practice dialogue to create your first report.</div>'}</article>
-  <article class="card"><small>MISTAKE NOTEBOOK</small><h3>${mistakes.filter(x=>!x.mastered).length} items need revision</h3>${mistakes.length?`<div class="mistake-list">${mistakes.slice(-6).reverse().map(m=>`<div><span class="result-dot ${m.status}"></span><p><b>${esc(m.dialogueTitle)} · Segment ${m.segmentNumber}</b><small>${esc(m.review?.slice(0,2).join(', ')||'Review meaning')}</small></p><button data-action="toggle-mastered" data-id="${m.id}">${m.mastered?'Restore':'Mastered'}</button></div>`).join('')}</div>`:'<p class="muted">Weak segments will be saved here automatically.</p>'}</article></section>
-  <section class="card"><small>PROGRESS BACKUP</small><h3>Backup learning progress only</h3><p class="muted">The backup contains statuses, settings, attempts and lesson progress. It does not export vocabulary lists or copyrighted content.</p><div class="actions">${button('Backup progress','backup-progress','secondary')}${button('Restore progress','restore-progress','secondary')}</div><input id="restoreFile" type="file" accept="application/json" hidden></section>`);
+  <article class="card"><small>PHRASE COMPLETION RECORDS</small><h3>${pt.completed} completed · ${pt.remaining} remaining</h3>${recentPhrases.length?`<div class="phrase-records">${recentPhrases.map(x=>`<div><p><b>${esc(x.english)}</b><small>${esc(x.hindi)}</small></p><span>${x.practiceCount}×</span></div>`).join('')}</div><button class="secondary full-record-link" data-action="tab" data-id="learn">Open all phrases and filters →</button>`:'<p class="muted">Play a phrase to mark it completed and start its practice count.</p>'}</article></section>
+  <section class="dashboard-grid"><article class="card"><small>MISTAKE NOTEBOOK</small><h3>${mistakes.filter(x=>!x.mastered).length} items need revision</h3>${mistakes.length?`<div class="mistake-list">${mistakes.slice(-6).reverse().map(m=>`<div><span class="result-dot ${m.status}"></span><p><b>${esc(m.dialogueTitle)} · Segment ${m.segmentNumber}</b><small>${esc(m.review?.slice(0,2).join(', ')||'Review meaning')}</small></p><button data-action="toggle-mastered" data-id="${m.id}">${m.mastered?'Restore':'Mastered'}</button></div>`).join('')}</div>`:'<p class="muted">Weak segments will be saved here automatically.</p>'}</article><article class="card"><small>LATEST ESTIMATE</small><h3>${last?.report?`${last.report.low}–${last.report.high}/45`:'No completed dialogue yet'}</h3><p class="muted">Your result history remains available after closing and reopening the app.</p></article></section>
+  <section class="card"><small>PROGRESS BACKUP</small><h3>Backup all learning records</h3><p class="muted">The backup contains vocabulary statuses, phrase completion counts, settings, dialogue attempts, mistakes and Lesson 0 progress.</p><div class="actions">${button('Backup progress','backup-progress','secondary')}${button('Restore progress','restore-progress','secondary')}</div><input id="restoreFile" type="file" accept="application/json" hidden></section>`);
 }
 
 function lessonOverlay(){
@@ -162,7 +207,7 @@ function vocabPlayerOverlay(){
   if(!item)return `<div class="fullscreen"><div class="empty"><h2>No items in this playlist</h2>${button('Close','close-overlay')}</div></div>`;
   const st=itemStatus(item.id),progress=(vp.index+1)/vp.queue.length*100;
   return `<div class="fullscreen vocab-player-screen"><header class="top"><button data-action="close-vocab-player">← Exit</button><div><strong>${esc(vp.title)}</strong><span>${vp.index+1}/${vp.queue.length}</span></div><button data-action="vocab-settings">⚙ Settings</button></header><div class="progress"><i style="width:${progress}%"></i></div>
-  <main class="vocab-player"><div class="vocab-topic">${topicLabels[item.topic]||'Community'} · ${item.itemType==='phrase'?'Phrase':item.kind==='context'?'Context vocabulary':'Core vocabulary'}</div><section class="word-stage"><button class="speaker-button" data-action="speak-current">🔊</button><h1>${esc(item.english)}</h1><h2>${esc(item.hindi)}</h2>${item.kind==='context'?'<div class="context-disclaimer">Contextual Hindi sentence — use it to learn how the English term appears in a complete message.</div>':''}${item.exampleEnglish&&state.vocabSettings.examples?`<div class="player-example"><b>Example</b><p>${esc(item.exampleEnglish)}</p><span>${esc(item.exampleHindi)}</span></div>`:''}</section>
+  <main class="vocab-player"><div class="vocab-topic">${topicLabels[item.topic]||'Community'} · ${item.itemType==='phrase'?'Phrase':'NAATI vocabulary'}</div><section class="word-stage"><button class="speaker-button" data-action="speak-current">🔊</button><h1>${esc(item.english)}</h1><h2>${esc(item.hindi)}</h2>${item.exampleEnglish&&state.vocabSettings.examples?`<div class="player-example"><b>Example</b><p>${esc(item.exampleEnglish)}</p><span>${esc(item.exampleHindi)}</span></div>`:''}</section>
   <div class="player-timeline"><span>${vp.playing?vp.gapRemaining>0?`Next word in ${vp.gapRemaining}s`:'Speaking…':'Paused'}</span><div><i style="width:${progress}%"></i></div></div>
   <div class="transport"><button data-action="vocab-prev">‹<span>Previous</span></button><button class="main-play" data-action="vocab-toggle">${vp.playing?'Ⅱ':'▶'}</button><button data-action="vocab-next"><span>Next</span>›</button></div>
   <section class="status-control"><h3>Change word status</h3><div>${Object.entries(statusLabels).map(([id,label])=>`<button data-action="vocab-status" data-id="${id}" class="${st===id?'active':''} ${id}"><b>${statusIcons[id]}</b><span>${label}</span></button>`).join('')}</div></section>
@@ -176,18 +221,23 @@ function dialoguePlayerOverlay(){
   <main class="dialogue-player"><section class="segment-head"><div><span class="language-pill ${seg.sourceLanguage}">${seg.sourceLanguage==='en'?'ENGLISH':'हिन्दी'}</span><h2>Listen, then interpret into ${target}</h2></div>${!isMock?`<div class="dialogue-controls"><label>Speed<select id="dialogueRate" ${state.playerStatus==='playing'||state.recording?'disabled':''}>${[.6,.75,.9,1,1.15].map(x=>`<option value="${x}" ${Number(state.dialogueSettings.rate)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Response gap<select id="dialogueGap" ${state.playerStatus==='playing'||state.recording?'disabled':''}><option value="manual" ${state.dialogueSettings.gap==='manual'?'selected':''}>Manual</option>${[5,10,15,20,30,45,60].map(x=>`<option value="${x}" ${Number(state.dialogueSettings.gap)===x?'selected':''}>${x}s</option>`).join('')}</select></label>${!isMock?`<button class="transcript-toggle ${state.dialogueSettings.showSourceTranscript?'on':''}" data-action="toggle-source-transcript">Transcript ${state.dialogueSettings.showSourceTranscript?'On':'Off'}</button>`:''}</div>`:''}</section>
   <section class="source-card ${state.playerStatus==='ready'?'waiting':''}"><div class="source-icon">${state.playerStatus==='playing'?'◖))':state.recording?'●':'▶'}</div><p>${!isMock&&state.dialogueSettings.showSourceTranscript?esc(seg.source):`<span class="transcript-hidden-message">${isMock?'Source transcript is hidden in Mock Test Mode.':'Source transcript is hidden. Use the Transcript On/Off button when you want to read it.'}</span>`}</p><div class="source-actions">${button(state.playerStatus==='playing'?'Playing…':response?'Play source again':'Play segment','play-dialogue-segment','primary',state.playerStatus==='playing'||state.recording?'disabled':'')}${button(`Repeat (${state.repeats}${state.dialogueMode==='learning'?'':'/1 free'})`,'repeat-dialogue-segment','secondary',state.playerStatus==='playing'||state.recording?'disabled':'')}</div></section>
   ${recordingPanel(response,seg)}
-  ${isLearning&&response?learningFeedback(response,seg):''}
+  ${isLearning&&response&&response.showTranscript?learningFeedback(response,seg):''}
   <footer class="segment-footer">${button('‹ Previous','dialogue-prev','secondary',state.segmentIndex===0?'disabled':'')}<span>${state.completed.size}/${segments.length} completed</span>${state.segmentIndex===segments.length-1?button('Finish dialogue →','finish-dialogue','primary',!response?'disabled':''):button('Next segment →','dialogue-next','primary',!response?'disabled':'')}</footer></main></div>`;
 }
 function recordingPanel(response,seg){
   if(state.micError)return `<section class="recording-panel error"><h3>Microphone needs attention</h3><p>${esc(state.micError)}</p>${button('Try microphone again','retry-mic','secondary')}</section>`;
   if(state.recording)return `<section class="recording-panel active"><div class="record-dot"></div><div><h3>Recording your ${seg.sourceLanguage==='en'?'Hindi':'English'} interpretation</h3><p>${state.dialogueSettings.gap==='manual'?'Speak naturally, then press Finish.':`${state.countdown} seconds remaining`}</p><div class="live-transcript hidden-live">Your spoken answer is being recorded. The automatic transcript can be viewed after you finish.</div></div>${button('Finish','finish-recording','danger')}</section>`;
-  if(!response)return `<section class="recording-panel"><div class="mic-circle">🎙</div><div><h3>Recording starts automatically after the chime</h3><p>Your audio is saved locally. Transcript display is optional.</p></div></section>`;
-  return `<section class="recording-panel complete"><div><h3>Response recorded</h3><audio controls src="${esc(response.recordingUrl||'')}"></audio></div><div class="record-actions">${button(response.showTranscript?'Hide my transcript':'View my transcript','toggle-response-transcript','secondary')}${button('Record again','record-again','secondary')}</div>${response.showTranscript?`<div class="automatic-transcript"><small>AUTOMATIC TRANSCRIPT · ${seg.sourceLanguage==='en'?'HINDI':'ENGLISH'}</small><p>${esc(response.transcript||'No reliable transcript was produced. Your recording is still available for listening.')}</p><em>Speech recognition may make mistakes. Always compare it with your recording.</em></div>`:''}</section>`;
+  if(!response)return `<section class="recording-panel"><div class="mic-circle">🎙</div><div><h3>Recording starts automatically after the chime</h3><p>Your audio is saved locally. Answer comparison is optional.</p></div></section>`;
+  const isMock=state.dialogueMode==='mock';
+  return `<section class="recording-panel complete"><div><h3>Response recorded</h3><audio controls src="${esc(response.recordingUrl||'')}"></audio></div><div class="record-actions">${!isMock?button(response.showTranscript?'Hide comparison':'Check my answer','toggle-response-transcript','secondary'):''}${button('Record again','record-again','secondary')}</div>${isMock?`<p class="mock-review-lock">Transcript, sample answer and notes will be available after both mock-test dialogues are completed.</p>`:response.showTranscript?`<div class="answer-review"><div class="automatic-transcript"><small>YOUR AUTOMATIC TRANSCRIPT · ${seg.sourceLanguage==='en'?'HINDI':'ENGLISH'}</small><p>${esc(response.transcript||'No reliable transcript was produced. Replay your recording and compare it with the sample answer below.')}</p><em>Speech recognition may make mistakes. Your recording is the primary evidence.</em></div>${comparisonPanel(seg)}</div>`:''}</section>`;
+}
+function comparisonPanel(seg){
+  const points=(seg.comparisonPoints||[]).slice(0,5),notes=seg.noteTaking||{},sample=seg.sampleAnswer||seg.model||'';
+  return `<section class="comparison-panel"><div class="comparison-title"><div><small>COMPARE AND IMPROVE</small><h3>Sample answer and note-taking guide</h3></div><button class="sample-play" data-action="play-sample-answer">🔊 Play sample</button></div><div class="comparison-grid"><article class="sample-answer-box"><small>SAMPLE INTERPRETATION</small><p>${esc(sample)}</p><em>This is one accurate sample. Natural synonyms and equivalent phrasing can also receive credit.</em></article><article class="meaning-checklist"><small>KEY MEANING TO INCLUDE</small><ul>${points.map(x=>`<li>✓ ${esc(x)}</li>`).join('')||'<li>✓ Main message and critical detail</li>'}</ul></article></div><div class="note-training"><div><small>SHORT NOTES FOR THIS SEGMENT</small><p class="short-notes">${esc(notes.shortNotes||seg.noteHint||'who + action + key detail')}</p></div><div><small>NOTE-TAKING SKILL</small><p>${esc(notes.skillTip||'Capture who + action + key detail; avoid full sentences.')}</p></div></div><p class="note-method"><b>Method:</b> ${esc(notes.method||'Use abbreviations, arrows and symbols instead of writing the full sentence.')}</p></section>`;
 }
 function learningFeedback(response,seg){
   const r=response.assessment;if(!r)return '';
-  return `<section class="learning-review"><div class="review-heading"><span class="result-dot ${r.status}"></span><div><small>LEARNING REVIEW</small><h3>${resultStatusLabel(r.status)}</h3></div></div><div class="review-columns"><div><h4>What you did well</h4><ul>${(r.strengths.length?r.strengths:['Your recording is available for self-review']).map(x=>`<li>✓ ${esc(x)}</li>`).join('')}</ul></div><div><h4>Check before moving on</h4><ul>${(r.review.length?r.review:['No important meaning loss detected']).map(x=>`<li>${r.review.length?'!':'✓'} ${esc(x)}</li>`).join('')}</ul></div></div><details><summary>Model interpretation and suggested notes</summary><div class="model-box"><b>Model interpretation</b><p>${esc(seg.model)}</p><em>Different accurate synonyms and natural wording can receive full credit.</em></div><div class="notes-box"><b>Suggested notes:</b> ${esc(seg.noteHint)}</div></details></section>`;
+  return `<section class="learning-review"><div class="review-heading"><span class="result-dot ${r.status}"></span><div><small>LEARNING REVIEW</small><h3>${resultStatusLabel(r.status)}</h3></div></div><div class="review-columns"><div><h4>What you did well</h4><ul>${(r.strengths.length?r.strengths:['Your recording is available for self-review']).map(x=>`<li>✓ ${esc(x)}</li>`).join('')}</ul></div><div><h4>Check before moving on</h4><ul>${(r.review.length?r.review:['No important meaning loss detected']).map(x=>`<li>${r.review.length?'!':'✓'} ${esc(x)}</li>`).join('')}</ul></div></div><p class="feedback-followup">Use the sample answer and short-note guide above, then choose <b>Record again</b> to practise the corrected version.</p></section>`;
 }
 function resultStatusLabel(s){return {excellent:'Excellent — no meaningful issue detected',good:'Good — meaning preserved with a minor issue',review:'Needs review — some meaning may be missing',major:'Major correction needed',unassessed:'Not assessed'}[s]||s;}
 
@@ -203,8 +253,8 @@ function reportOverlay(){
 }
 function buildPlan(s){if(s.counts.major)return 'Review the major-error segments, practise their key terms and record them again before repeating the dialogue.';if(s.counts.review)return 'Retry the “Needs review” segments, then complete the full dialogue again at normal speed.';return 'Your meaning transfer was strong. Repeat the dialogue later without transcripts to confirm consistency.';}
 function segmentReportRow(seg,res,i){
-  const r=res.assessment||{status:'unassessed',strengths:[],review:['Automatic transcript unavailable']};
-  return `<details class="segment-result ${r.status}" ${r.status==='major'?'open':''}><summary><span class="result-dot ${r.status}"></span><div><b>Segment ${i+1} · ${seg.sourceLanguage==='en'?'English → Hindi':'Hindi → English'}</b><small>${resultStatusLabel(r.status)}</small></div><i>⌄</i></summary><div class="segment-detail"><div><h4>Original segment</h4><p>${esc(seg.source)}</p><button data-action="speak-text" data-text="${encodeURIComponent(seg.source)}" data-lang="${seg.sourceLanguage}">🔊 Play source</button></div><div><h4>Your transcript</h4><p>${esc(res.transcript||'Transcript unavailable — replay your audio.')}</p>${res.recordingUrl?`<audio controls src="${esc(res.recordingUrl)}"></audio>`:''}</div><div><h4>Model interpretation</h4><p>${esc(seg.model)}</p><em>Accurate synonyms and paraphrases are accepted.</em></div><div><h4>Review</h4><ul>${(r.review.length?r.review:['No important meaning loss detected']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="notes"><b>Suggested notes:</b> ${esc(seg.noteHint)}</p></div></div></details>`;
+  const r=res.assessment||{status:'unassessed',strengths:[],review:['Automatic transcript unavailable']},notes=seg.noteTaking||{},points=(seg.comparisonPoints||[]).slice(0,5);
+  return `<details class="segment-result ${r.status}" ${r.status==='major'?'open':''}><summary><span class="result-dot ${r.status}"></span><div><b>Segment ${i+1} · ${seg.sourceLanguage==='en'?'English → Hindi':'Hindi → English'}</b><small>${resultStatusLabel(r.status)}</small></div><i>⌄</i></summary><div class="segment-detail"><div><h4>Original segment</h4><p>${esc(seg.source)}</p><button data-action="speak-text" data-text="${encodeURIComponent(seg.source)}" data-lang="${seg.sourceLanguage}">🔊 Play source</button></div><div><h4>Your transcript</h4><p>${esc(res.transcript||'Transcript unavailable — replay your audio.')}</p>${res.recordingUrl?`<audio controls src="${esc(res.recordingUrl)}"></audio>`:''}</div><div><h4>Sample interpretation</h4><p>${esc(seg.sampleAnswer||seg.model)}</p><button data-action="speak-text" data-text="${encodeURIComponent(seg.sampleAnswer||seg.model)}" data-lang="${seg.sourceLanguage==='en'?'hi':'en'}">🔊 Play sample</button><em>Accurate synonyms and paraphrases are accepted.</em></div><div><h4>Review and notes</h4><ul>${(r.review.length?r.review:['No important meaning loss detected']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="notes"><b>Short notes:</b> ${esc(notes.shortNotes||seg.noteHint)}</p><p class="notes"><b>Skill:</b> ${esc(notes.skillTip||'Capture who + action + key detail.')}</p>${points.length?`<p class="notes"><b>Meaning checklist:</b> ${points.map(esc).join(' · ')}</p>`:''}</div></div></details>`;
 }
 function mockReportOverlay(rep){
   const p=rep.pass;
@@ -289,6 +339,7 @@ async function speakVocabItem({autoplay=false}={}){
       if(state.vocabSettings.reading!=='english')await speak(item.exampleHindi,'hi',state.vocabSettings.rate,token);
     }
   }
+  if(token===vp.token&&item.itemType==='phrase')recordPhrasePractice(item.id);
   if(!autoplay||!vp.playing||token!==vp.token)return;
   for(let g=Number(state.vocabSettings.gap);g>0;g--){vp.gapRemaining=g;render();await delay(1000);if(!vp.playing||token!==vp.token)return;}
   vp.gapRemaining=0;moveVocab(1,false);render();await delay(100);if(vp.playing)speakVocabItem({autoplay:true});
@@ -365,8 +416,8 @@ async function loadSavedReport(id){const a=getJSON(storageKeys.attempts,[]).find
 function loadQADialogueReport(){const d=state.dialogues[0];const responses=d.segments.map((s,i)=>({segmentId:s.id,transcript:s.model,recordingUrl:'',assessment:APSScoring.assessSegment(s,s.model,{startDelay:3})}));const report=APSScoring.aggregateDialogue(responses.map(r=>r.assessment),{repeats:0});state.dialogue=d;state.report={type:'dialogue',attempt:{id:'qa',dialogueId:d.id,title:d.title,responses,report}};state.overlay='report';}
 
 // Backup / restore
-function backupProgress(){const data={version:'2.0.0',createdAt:new Date().toISOString(),vocabStatus:getJSON(storageKeys.vocabStatus,{}),vocabSettings:state.vocabSettings,vocabResume:getJSON(storageKeys.vocabResume,{}),attempts:getJSON(storageKeys.attempts,[]),lesson:getJSON(storageKeys.lesson,{}),mistakes:getJSON(storageKeys.mistakes,[])};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_NAATI_Progress_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);}
-async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});showToast('Progress restored');}catch{showToast('This backup could not be restored');}}
+function backupProgress(){const data={version:'2.0.3',createdAt:new Date().toISOString(),vocabStatus:getJSON(storageKeys.vocabStatus,{}),vocabSettings:state.vocabSettings,vocabResume:getJSON(storageKeys.vocabResume,{}),phraseStats:getJSON(storageKeys.phraseStats,{}),attempts:getJSON(storageKeys.attempts,[]),lesson:getJSON(storageKeys.lesson,{}),mistakes:getJSON(storageKeys.mistakes,[])};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_NAATI_Progress_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);}
+async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.phraseStats,d.phraseStats||{});setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});showToast('Progress restored');}catch{showToast('This backup could not be restored');}}
 
 // Event handling
 app.addEventListener('click',async e=>{
@@ -376,9 +427,9 @@ app.addEventListener('click',async e=>{
   else if(a==='open-lesson'){stopAllSpeech();const p=getJSON(storageKeys.lesson,{chapter:0,slide:0});state.lesson.chapter=p.chapter||0;state.lesson.slide=p.slide||0;state.lesson.quiz=false;state.overlay='lesson';render();}
   else if(a==='close-overlay'){stopAllSpeech();state.overlay=null;render();}
   else if(a==='quick-dialogue')openDialogue(state.dialogues[0].id,'learning');
-  else if(a==='learn-type'){state.learn.type=id;state.learn.status='all';render();}
+  else if(a==='learn-type'){state.learn.type=id;state.learn.status='all';state.learn.completion='all';render();}
   else if(a==='reveal'){state.learn.revealed.has(id)?state.learn.revealed.delete(id):state.learn.revealed.add(id);render();}
-  else if(a==='speak-item'){const item=(el.dataset.type==='words'?state.vocab:state.phrases).find(x=>x.id===id);if(item){speechSynthesis.cancel();await speak(item.english,'en',state.vocabSettings.rate);await speak(item.hindi,'hi',state.vocabSettings.rate);}}
+  else if(a==='speak-item'){const item=(el.dataset.type==='words'?state.vocab:state.phrases).find(x=>x.id===id);if(item){speechSynthesis.cancel();await speak(item.english,'en',state.vocabSettings.rate);await speak(item.hindi,'hi',state.vocabSettings.rate);if(el.dataset.type==='phrases'){recordPhrasePractice(item.id);render();}}}
   else if(a==='single-item-player'){const item=(el.dataset.type==='words'?state.vocab:state.phrases).find(x=>x.id===id);startVocabularyPlaylist(false,{...item,itemType:el.dataset.type==='words'?'word':'phrase'});}
   else if(a==='status-playlist')requestPlaylist(id);
   else if(a==='play-current-filter'){state.modal={type:'playlist',title:`${topicLabels[state.learn.topic]} · Current filters`,count:buildPlaylist().length,queue:buildPlaylist()};render();}
@@ -401,6 +452,7 @@ app.addEventListener('click',async e=>{
   else if(a==='retry-mic'){state.micError='';ensureMicrophone();}
   else if(a==='toggle-source-transcript'){state.dialogueSettings.showSourceTranscript=!state.dialogueSettings.showSourceTranscript;render();}
   else if(a==='toggle-response-transcript'){state.responses[state.segmentIndex].showTranscript=!state.responses[state.segmentIndex].showTranscript;render();}
+  else if(a==='play-sample-answer'){const seg=getActiveSegments()[state.segmentIndex];if(seg){speechSynthesis.cancel();await speak(seg.sampleAnswer||seg.model,seg.sourceLanguage==='en'?'hi':'en',state.dialogueSettings.rate);}}
   else if(a==='record-again'){state.responses[state.segmentIndex]=null;state.completed.delete(getActiveSegments()[state.segmentIndex].id);playDialogueSegment(false);}
   else if(a==='dialogue-prev'){state.segmentIndex=clamp(state.segmentIndex-1,0,getActiveSegments().length-1);state.playerStatus=state.responses[state.segmentIndex]?'complete':'ready';render();}
   else if(a==='dialogue-next'){state.segmentIndex=clamp(state.segmentIndex+1,0,getActiveSegments().length-1);state.playerStatus=state.responses[state.segmentIndex]?'complete':'ready';render();}
@@ -433,6 +485,8 @@ app.addEventListener('change',e=>{
   else if(t.id==='practiceTopic'){state.practice.topic=t.value;render();}
   else if(t.id==='practiceDifficulty'){state.practice.difficulty=t.value;render();}
   else if(t.id==='practiceReview'){state.practice.review=t.value;render();}
+  else if(t.id==='practiceCompletion'){state.practice.completion=t.value;render();}
+  else if(t.id==='learnCompletion'){state.learn.completion=t.value;render();}
   else if(t.id==='learnStatus'){state.learn.status=t.value;render();}
   else if(t.id==='lessonLang'){state.lesson.lang=t.value;render();}
   else if(t.id==='lessonRate'){state.lesson.rate=Number(t.value);render();}
