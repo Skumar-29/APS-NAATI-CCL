@@ -1,4 +1,4 @@
-# APS NAATI CCL Practice — Friends Beta V2.0.5
+# APS NAATI CCL Practice — Friends Beta V2.0.7
 
 This folder is ready for GitHub Pages. Once deployed over HTTPS, friends can install it like an app on Mac, iPhone, Android and Windows. No Terminal is required.
 
@@ -74,3 +74,25 @@ This is available for all 85 dialogues and 1,073 segments. Mock Test answers rem
 - Phrase cards contain no long multi-sentence dialogue segments.
 - Maximum English phrase length is 11 words.
 - Phrase pagination now shows 5 pages at up to 120 cards per page.
+
+
+## V2.0.6 Voice & Audio settings
+
+- Added a **Settings** button to the main app header.
+- English and Hindi learning voices can be selected and previewed.
+- Dialogue Speaker 1 and Speaker 2 can use separate English and Hindi voices.
+- Selected voices are stored in the existing settings record, so vocabulary, phrase, dialogue, Lesson 0, completion and attempt progress remain unchanged during the update.
+- Existing voice choices from older versions are preserved as the learning-voice fallback.
+- Added Refresh voices and Use automatic voices controls.
+- Voice availability depends on the voices exposed by the current device and browser.
+
+
+## V2.0.7 bilingual player timing
+
+- Added a separate delay between a vocabulary word or phrase and its translation.
+- Kept the next-item gap as an independent setting.
+- Added English → Hindi, Hindi → English, English-only and Hindi-only playback modes.
+- Added separate English and Hindi speech speeds.
+- Existing repeat, playlist order, examples and voice selections remain available.
+- Older saved `rate` and `both` settings are migrated automatically without clearing progress.
+- The same controls work for both vocabulary and phrases.

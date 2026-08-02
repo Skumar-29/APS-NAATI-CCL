@@ -1,13 +1,13 @@
 {
-  "version": "2.0.5",
+  "version": "2.0.7",
   "channel": "friends-beta",
   "name": "APS NAATI CCL Practice",
-  "build": "friends-beta-v205-curated-phrases",
-  "releaseDate": "2026-08-01",
+  "build": "friends-beta-v207-bilingual-player-timing",
+  "releaseDate": "2026-08-02",
   "vocabularyCount": 3000,
   "dialogueCount": 85,
   "segmentCount": 1073,
   "comparisonGuides": 1073,
-  "contentRevision": 4,
+  "contentRevision": 6,
   "phraseCount": 551
 }

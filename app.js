@@ -15,7 +15,7 @@ const state={
   practice:{topic:'all',difficulty:'all',query:'',review:'all',completion:'all'},
   mockPair:null,
   vocabPlayer:{queue:[],index:0,playing:false,token:0,gapRemaining:0,title:'All vocabulary'},
-  vocabSettings:{rate:.9,gap:2,repeat:1,order:'sequential',reading:'both',examples:true,voiceEn:'',voiceHi:''},
+  vocabSettings:{rate:.9,rateEn:.9,rateHi:.9,translationDelay:1.5,gap:2,repeat:1,order:'sequential',reading:'en-hi',examples:true,voiceEn:'',voiceHi:'',dialogueVoiceEnS1:'',dialogueVoiceEnS2:'',dialogueVoiceHiS1:'',dialogueVoiceHiS2:''},
   dialogue:null,dialogueMode:'learning',segmentIndex:0,responses:[],completed:new Set(),repeats:0,
   dialogueSettings:{rate:.9,gap:20,showSourceTranscript:false},
   playerStatus:'ready',countdown:0,timer:null,feedback:null,retryIds:null,
@@ -29,6 +29,20 @@ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const getJSON=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||'')||fallback}catch{return fallback}};
 const setJSON=(key,v)=>localStorage.setItem(key,JSON.stringify(v));
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
+function normaliseVocabSettings(raw={}){
+  const v=state.vocabSettings,legacyRate=Number(raw.rate ?? v.rate)||.9;
+  if(raw.rateEn===undefined&&raw.rate!==undefined)v.rateEn=legacyRate;
+  if(raw.rateHi===undefined&&raw.rate!==undefined)v.rateHi=legacyRate;
+  if(!Number.isFinite(Number(v.rateEn)))v.rateEn=legacyRate;
+  if(!Number.isFinite(Number(v.rateHi)))v.rateHi=legacyRate;
+  v.rateEn=clamp(Number(v.rateEn)||.9,.5,1.5);v.rateHi=clamp(Number(v.rateHi)||.9,.5,1.5);
+  v.translationDelay=clamp(Number(v.translationDelay ?? 1.5),0,10);
+  v.gap=clamp(Number(v.gap ?? 2),0,30);v.repeat=clamp(Number(v.repeat)||1,1,5);
+  if(v.reading==='both')v.reading='en-hi';
+  if(!['en-hi','hi-en','english','hindi'].includes(v.reading))v.reading='en-hi';
+  if(!['sequential','random'].includes(v.order))v.order='sequential';
+  v.examples=v.examples!==false;
+}
 
 async function loadData(){
   try{
@@ -37,7 +51,7 @@ async function loadData(){
       fetch('./content/starter_phrases.json').then(r=>r.json()),fetch('./content/exam_info.json').then(r=>r.json()),fetch('./content/lesson0.json').then(r=>r.json())
     ]);
     Object.assign(state,{dialogues,vocab:vocab.items,phrases:phrases.items,exam,lessonData,ready:true});
-    Object.assign(state.vocabSettings,getJSON(storageKeys.vocabSettings,{}));
+    const storedVocabSettings=getJSON(storageKeys.vocabSettings,{});Object.assign(state.vocabSettings,storedVocabSettings);normaliseVocabSettings(storedVocabSettings);
     applyQAState();render();
   }catch(e){app.innerHTML=`<div class="fatal"><h1>App could not load</h1><p>${esc(e.message)}</p><p>Keep the Terminal server open and refresh this page.</p></div>`;}
 }
@@ -62,7 +76,7 @@ function nav(){
     ['home','⌂','Home'],['learn','A','Learn'],['practice','▶','Practice'],['mock','✓','Mock Test'],['progress','▥','Progress']
   ].map(([id,icon,label])=>`<button data-action="tab" data-id="${id}" class="${state.tab===id?'active':''}"><b>${icon}</b><span>${label}</span></button>`).join('')}</nav>`;
 }
-function header(title,subtitle=''){return `<header class="app-header"><div class="brand">APS</div><div class="header-copy"><h1>${esc(title)}</h1><p>${esc(subtitle)}</p></div>${navigator.onLine?'':'<span class="offline">Offline</span>'}</header>`;}
+function header(title,subtitle=''){return `<header class="app-header"><div class="brand">APS</div><div class="header-copy"><h1>${esc(title)}</h1><p>${esc(subtitle)}</p></div><div class="header-tools">${navigator.onLine?'':'<span class="offline">Offline</span>'}<button class="header-settings" data-action="app-settings" aria-label="Open voice and audio settings"><span aria-hidden="true">⚙</span><b>Settings</b></button></div></header>`;}
 function shell(content){return `<main class="page">${content}</main>${nav()}${state.toast?`<div class="toast">${esc(state.toast)}</div>`:''}${renderModal()}`;}
 function button(label,action,cls='primary',extra=''){return `<button class="${cls}" data-action="${action}" ${extra}>${label}</button>`;}
 function topicOptions(selected){return Object.entries(topicLabels).map(([id,l])=>`<option value="${id}" ${id===selected?'selected':''}>${l}</option>`).join('');}
@@ -206,12 +220,12 @@ function progress(){
 function lessonOverlay(){
   const chapter=state.lessonData.chapters[state.lesson.chapter],slide=chapter.slides[state.lesson.slide],totalSlides=state.lessonData.chapters.reduce((s,c)=>s+c.slides.length,0),done=state.lessonData.chapters.slice(0,state.lesson.chapter).reduce((s,c)=>s+c.slides.length,0)+state.lesson.slide+1;
   if(state.lesson.quiz)return lessonQuiz();
-  return `<div class="fullscreen lesson-screen"><header class="top"><button data-action="close-overlay">← Exit lesson</button><div><strong>Lesson 0</strong><span>Chapter ${state.lesson.chapter+1} of ${state.lessonData.chapters.length}</span></div><button data-action="lesson-quiz">Quiz</button></header><div class="progress"><i style="width:${done/totalSlides*100}%"></i></div>
+  return `<div class="fullscreen lesson-screen"><header class="top"><button data-action="close-overlay">← Exit lesson</button><div><strong>Lesson 0</strong><span>Chapter ${state.lesson.chapter+1} of ${state.lessonData.chapters.length}</span></div><div class="top-actions"><button data-action="lesson-quiz">Quiz</button><button data-action="app-settings">⚙ Voice</button></div></header><div class="progress"><i style="width:${done/totalSlides*100}%"></i></div>
   <main class="lesson-layout"><aside class="chapter-list">${state.lessonData.chapters.map((c,i)=>`<button data-action="lesson-chapter" data-id="${i}" class="${i===state.lesson.chapter?'active':''}"><b>${i+1}</b><span>${esc(c.title)}<small>${c.duration}</small></span></button>`).join('')}</aside>
   <section class="presentation"><div class="presentation-stage"><div class="presenter-avatar"><div>APS</div><span>CCL Coach</span></div><div class="slide-content"><small>${esc(chapter.title)}</small><h1>${esc(slide.title)}</h1><p>${esc(slide.body)}</p><div class="slide-badge">Official information reviewed ${esc(state.lessonData.lastVerified)}</div></div><div class="visual-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
   ${state.lesson.captions?`<div class="captions">${esc(lessonNarration(slide))}</div>`:''}
   <div class="presentation-controls"><button data-action="lesson-prev" ${state.lesson.chapter===0&&state.lesson.slide===0?'disabled':''}>‹</button><button class="play-circle" data-action="lesson-toggle">${state.lesson.playing?'Ⅱ':'▶'}</button><button data-action="lesson-next">›</button><label>Language<select id="lessonLang"><option value="bilingual" ${state.lesson.lang==='bilingual'?'selected':''}>Bilingual</option><option value="en" ${state.lesson.lang==='en'?'selected':''}>English</option><option value="hi" ${state.lesson.lang==='hi'?'selected':''}>Hindi</option></select></label><label>Speed<select id="lessonRate"><option value="0.8">0.8×</option><option value="1" ${state.lesson.rate===1?'selected':''}>1.0×</option><option value="1.2" ${state.lesson.rate===1.2?'selected':''}>1.2×</option><option value="1.4" ${state.lesson.rate===1.4?'selected':''}>1.4×</option></select></label><button data-action="lesson-captions">CC ${state.lesson.captions?'On':'Off'}</button></div>
-  <div class="presentation-nav"><span>${state.lesson.slide+1}/${chapter.slides.length} slides</span>${state.lesson.chapter===state.lessonData.chapters.length-1&&state.lesson.slide===chapter.slides.length-1?button('Take knowledge quiz →','lesson-quiz','primary'):button('Next slide →','lesson-next','primary')}</div></section></main></div>`;
+  <div class="presentation-nav"><span>${state.lesson.slide+1}/${chapter.slides.length} slides</span>${state.lesson.chapter===state.lessonData.chapters.length-1&&state.lesson.slide===chapter.slides.length-1?button('Take knowledge quiz →','lesson-quiz','primary'):button('Next slide →','lesson-next','primary')}</div></section></main>${renderModal()}</div>`;
 }
 function lessonNarration(slide){return state.lesson.lang==='en'?slide.narrationEn:state.lesson.lang==='hi'?slide.narrationHi:`${slide.narrationEn} ${slide.narrationHi}`;}
 function lessonQuiz(){
@@ -229,21 +243,21 @@ function vocabPlayerOverlay(){
   const st=itemStatus(item.id),progress=(vp.index+1)/vp.queue.length*100;
   return `<div class="fullscreen vocab-player-screen"><header class="top"><button data-action="close-vocab-player">← Exit</button><div><strong>${esc(vp.title)}</strong><span>${vp.index+1}/${vp.queue.length}</span></div><button data-action="vocab-settings">⚙ Settings</button></header><div class="progress"><i style="width:${progress}%"></i></div>
   <main class="vocab-player"><div class="vocab-topic">${topicLabels[item.topic]||'Community'} · ${item.itemType==='phrase'?'Phrase':'NAATI vocabulary'}</div><section class="word-stage"><button class="speaker-button" data-action="speak-current">🔊</button><h1>${esc(item.english)}</h1><h2>${esc(item.hindi)}</h2>${item.exampleEnglish&&state.vocabSettings.examples?`<div class="player-example"><b>Example</b><p>${esc(item.exampleEnglish)}</p><span>${esc(item.exampleHindi)}</span></div>`:''}</section>
-  <div class="player-timeline"><span>${vp.playing?vp.gapRemaining>0?`Next word in ${vp.gapRemaining}s`:'Speaking…':'Paused'}</span><div><i style="width:${progress}%"></i></div></div>
+  <div class="player-timeline"><span>${vp.playing?vp.gapRemaining>0?`Next item in ${vp.gapRemaining}s`:'Speaking…':'Paused'}</span><div><i style="width:${progress}%"></i></div></div>
   <div class="transport"><button data-action="vocab-prev">‹<span>Previous</span></button><button class="main-play" data-action="vocab-toggle">${vp.playing?'Ⅱ':'▶'}</button><button data-action="vocab-next"><span>Next</span>›</button></div>
   <section class="status-control"><h3>Change word status</h3><div>${Object.entries(statusLabels).map(([id,label])=>`<button data-action="vocab-status" data-id="${id}" class="${st===id?'active':''} ${id}"><b>${statusIcons[id]}</b><span>${label}</span></button>`).join('')}</div></section>
-  <section class="quick-settings"><label>Speed<select id="vocabRate">${[.6,.75,.9,1,1.15,1.3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.rate)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Gap<select id="vocabGap">${[0,1,2,3,5,8].map(x=>`<option value="${x}" ${Number(state.vocabSettings.gap)===x?'selected':''}>${x}s</option>`).join('')}</select></label><label>Repeat<select id="vocabRepeat">${[1,2,3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.repeat)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Order<select id="vocabOrder"><option value="sequential" ${state.vocabSettings.order==='sequential'?'selected':''}>In order</option><option value="random" ${state.vocabSettings.order==='random'?'selected':''}>Random</option></select></label></section></main>${renderModal()}</div>`;
+  <section class="quick-settings six"><label>English speed<select id="vocabRateEn">${[.6,.75,.9,1,1.15,1.3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.rateEn)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Hindi speed<select id="vocabRateHi">${[.6,.75,.9,1,1.15,1.3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.rateHi)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Meaning delay<select id="vocabTranslationDelay">${[0,.5,1,1.5,2,3,5].map(x=>`<option value="${x}" ${Number(state.vocabSettings.translationDelay)===x?'selected':''}>${x}s</option>`).join('')}</select></label><label>Next-item gap<select id="vocabGap">${[0,1,2,3,5,8].map(x=>`<option value="${x}" ${Number(state.vocabSettings.gap)===x?'selected':''}>${x}s</option>`).join('')}</select></label><label>Repeat pair<select id="vocabRepeat">${[1,2,3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.repeat)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Order<select id="vocabOrder"><option value="sequential" ${state.vocabSettings.order==='sequential'?'selected':''}>In order</option><option value="random" ${state.vocabSettings.order==='random'?'selected':''}>Random</option></select></label></section></main>${renderModal()}</div>`;
 }
 
 function dialoguePlayerOverlay(){
   const d=state.dialogue,segments=getActiveSegments(),seg=segments[state.segmentIndex],response=state.responses[state.segmentIndex],target=seg.sourceLanguage==='en'?'Hindi':'English';
   const isLearning=state.dialogueMode==='learning',isMock=state.dialogueMode==='mock';
-  return `<div class="fullscreen dialogue-screen"><header class="top"><button data-action="exit-dialogue">← Exit</button><div><strong>${esc(d.title)}</strong><span>${modeLabels[state.dialogueMode]}</span></div><span>${state.segmentIndex+1}/${segments.length}</span></header><div class="direction-progress"><i class="en"></i><i style="width:${(state.segmentIndex+1)/segments.length*100}%"></i><i class="hi"></i></div>
+  return `<div class="fullscreen dialogue-screen"><header class="top"><button data-action="exit-dialogue">← Exit</button><div><strong>${esc(d.title)}</strong><span>${modeLabels[state.dialogueMode]}</span></div><div class="top-actions"><span>${state.segmentIndex+1}/${segments.length}</span><button data-action="app-settings">⚙ Voice</button></div></header><div class="direction-progress"><i class="en"></i><i style="width:${(state.segmentIndex+1)/segments.length*100}%"></i><i class="hi"></i></div>
   <main class="dialogue-player"><section class="segment-head"><div><span class="language-pill ${seg.sourceLanguage}">${seg.sourceLanguage==='en'?'ENGLISH':'हिन्दी'}</span><h2>Listen, then interpret into ${target}</h2></div>${!isMock?`<div class="dialogue-controls"><label>Speed<select id="dialogueRate" ${state.playerStatus==='playing'||state.recording?'disabled':''}>${[.6,.75,.9,1,1.15].map(x=>`<option value="${x}" ${Number(state.dialogueSettings.rate)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Response gap<select id="dialogueGap" ${state.playerStatus==='playing'||state.recording?'disabled':''}><option value="manual" ${state.dialogueSettings.gap==='manual'?'selected':''}>Manual</option>${[5,10,15,20,30,45,60].map(x=>`<option value="${x}" ${Number(state.dialogueSettings.gap)===x?'selected':''}>${x}s</option>`).join('')}</select></label>${!isMock?`<button class="transcript-toggle ${state.dialogueSettings.showSourceTranscript?'on':''}" data-action="toggle-source-transcript">Transcript ${state.dialogueSettings.showSourceTranscript?'On':'Off'}</button>`:''}</div>`:''}</section>
   <section class="source-card ${state.playerStatus==='ready'?'waiting':''}"><div class="source-icon">${state.playerStatus==='playing'?'◖))':state.recording?'●':'▶'}</div><p>${!isMock&&state.dialogueSettings.showSourceTranscript?esc(seg.source):`<span class="transcript-hidden-message">${isMock?'Source transcript is hidden in Mock Test Mode.':'Source transcript is hidden. Use the Transcript On/Off button when you want to read it.'}</span>`}</p><div class="source-actions">${button(state.playerStatus==='playing'?'Playing…':response?'Play source again':'Play segment','play-dialogue-segment','primary',state.playerStatus==='playing'||state.recording?'disabled':'')}${button(`Repeat (${state.repeats}${state.dialogueMode==='learning'?'':'/1 free'})`,'repeat-dialogue-segment','secondary',state.playerStatus==='playing'||state.recording?'disabled':'')}</div></section>
   ${recordingPanel(response,seg)}
   ${isLearning&&response&&response.showTranscript?learningFeedback(response,seg):''}
-  <footer class="segment-footer">${button('‹ Previous','dialogue-prev','secondary',state.segmentIndex===0?'disabled':'')}<span>${state.completed.size}/${segments.length} completed</span>${state.segmentIndex===segments.length-1?button('Finish dialogue →','finish-dialogue','primary',!response?'disabled':''):button('Next segment →','dialogue-next','primary',!response?'disabled':'')}</footer></main></div>`;
+  <footer class="segment-footer">${button('‹ Previous','dialogue-prev','secondary',state.segmentIndex===0?'disabled':'')}<span>${state.completed.size}/${segments.length} completed</span>${state.segmentIndex===segments.length-1?button('Finish dialogue →','finish-dialogue','primary',!response?'disabled':''):button('Next segment →','dialogue-next','primary',!response?'disabled':'')}</footer></main>${renderModal()}</div>`;
 }
 function recordingPanel(response,seg){
   if(state.micError)return `<section class="recording-panel error"><h3>Microphone needs attention</h3><p>${esc(state.micError)}</p>${button('Try microphone again','retry-mic','secondary')}</section>`;
@@ -275,7 +289,7 @@ function reportOverlay(){
 function buildPlan(s){if(s.counts.major)return 'Review the major-error segments, practise their key terms and record them again before repeating the dialogue.';if(s.counts.review)return 'Retry the “Needs review” segments, then complete the full dialogue again at normal speed.';return 'Your meaning transfer was strong. Repeat the dialogue later without transcripts to confirm consistency.';}
 function segmentReportRow(seg,res,i){
   const r=res.assessment||{status:'unassessed',strengths:[],review:['Automatic transcript unavailable']},notes=seg.noteTaking||{},points=(seg.comparisonPoints||[]).slice(0,5);
-  return `<details class="segment-result ${r.status}" ${r.status==='major'?'open':''}><summary><span class="result-dot ${r.status}"></span><div><b>Segment ${i+1} · ${seg.sourceLanguage==='en'?'English → Hindi':'Hindi → English'}</b><small>${resultStatusLabel(r.status)}</small></div><i>⌄</i></summary><div class="segment-detail"><div><h4>Original segment</h4><p>${esc(seg.source)}</p><button data-action="speak-text" data-text="${encodeURIComponent(seg.source)}" data-lang="${seg.sourceLanguage}">🔊 Play source</button></div><div><h4>Your transcript</h4><p>${esc(res.transcript||'Transcript unavailable — replay your audio.')}</p>${res.recordingUrl?`<audio controls src="${esc(res.recordingUrl)}"></audio>`:''}</div><div><h4>Sample interpretation</h4><p>${esc(seg.sampleAnswer||seg.model)}</p><button data-action="speak-text" data-text="${encodeURIComponent(seg.sampleAnswer||seg.model)}" data-lang="${seg.sourceLanguage==='en'?'hi':'en'}">🔊 Play sample</button><em>Accurate synonyms and paraphrases are accepted.</em></div><div><h4>Review and notes</h4><ul>${(r.review.length?r.review:['No important meaning loss detected']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="notes"><b>Short notes:</b> ${esc(notes.shortNotes||seg.noteHint)}</p><p class="notes"><b>Skill:</b> ${esc(notes.skillTip||'Capture who + action + key detail.')}</p>${points.length?`<p class="notes"><b>Meaning checklist:</b> ${points.map(esc).join(' · ')}</p>`:''}</div></div></details>`;
+  return `<details class="segment-result ${r.status}" ${r.status==='major'?'open':''}><summary><span class="result-dot ${r.status}"></span><div><b>Segment ${i+1} · ${seg.sourceLanguage==='en'?'English → Hindi':'Hindi → English'}</b><small>${resultStatusLabel(r.status)}</small></div><i>⌄</i></summary><div class="segment-detail"><div><h4>Original segment</h4><p>${esc(seg.source)}</p><button data-action="speak-text" data-text="${encodeURIComponent(seg.source)}" data-lang="${seg.sourceLanguage}" data-speaker="${esc(seg.speaker||'general')}">🔊 Play source</button></div><div><h4>Your transcript</h4><p>${esc(res.transcript||'Transcript unavailable — replay your audio.')}</p>${res.recordingUrl?`<audio controls src="${esc(res.recordingUrl)}"></audio>`:''}</div><div><h4>Sample interpretation</h4><p>${esc(seg.sampleAnswer||seg.model)}</p><button data-action="speak-text" data-text="${encodeURIComponent(seg.sampleAnswer||seg.model)}" data-lang="${seg.sourceLanguage==='en'?'hi':'en'}" data-speaker="${esc(seg.speaker||'general')}">🔊 Play sample</button><em>Accurate synonyms and paraphrases are accepted.</em></div><div><h4>Review and notes</h4><ul>${(r.review.length?r.review:['No important meaning loss detected']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="notes"><b>Short notes:</b> ${esc(notes.shortNotes||seg.noteHint)}</p><p class="notes"><b>Skill:</b> ${esc(notes.skillTip||'Capture who + action + key detail.')}</p>${points.length?`<p class="notes"><b>Meaning checklist:</b> ${points.map(esc).join(' · ')}</p>`:''}</div></div></details>`;
 }
 function mockReportOverlay(rep){
   const p=rep.pass;
@@ -286,10 +300,23 @@ function onboarding(){return `<div class="onboard"><div><div class="brand big">A
 function renderModal(){
   if(!state.modal)return '';
   if(state.modal.type==='playlist')return `<div class="modal-backdrop"><div class="modal"><button class="modal-close" data-action="close-modal">×</button><div class="modal-icon">▶</div><h2>Start ${esc(state.modal.title)} playlist?</h2><p>${state.modal.count} matching ${state.learn.type==='words'?'words':'phrases'} will replace the current player queue. Your speed, gap, repeat, order and voice settings will be preserved.</p><div class="actions">${button('Cancel','close-modal','secondary')}${button('Start playlist','confirm-playlist','primary')}</div></div></div>`;
-  if(state.modal.type==='vocab-settings')return `<div class="modal-backdrop"><div class="modal settings-modal"><button class="modal-close" data-action="close-modal">×</button><h2>Vocabulary player settings</h2><label>Reading mode<select id="vocabReading"><option value="both" ${state.vocabSettings.reading==='both'?'selected':''}>English then Hindi</option><option value="english" ${state.vocabSettings.reading==='english'?'selected':''}>English only</option><option value="hindi" ${state.vocabSettings.reading==='hindi'?'selected':''}>Hindi only</option></select></label><label class="toggle"><input id="vocabExamples" type="checkbox" ${state.vocabSettings.examples?'checked':''}><span>Speak examples when available</span></label><label>English voice<select id="voiceEn"><option value="">Automatic English voice</option>${voiceOptions('en',state.vocabSettings.voiceEn)}</select></label><label>Hindi voice<select id="voiceHi"><option value="">Automatic Hindi voice</option>${voiceOptions('hi',state.vocabSettings.voiceHi)}</select></label>${button('Done','close-modal','primary wide')}</div></div>`;
+  if(state.modal.type==='vocab-settings')return `<div class="modal-backdrop"><div class="modal settings-modal"><button class="modal-close" data-action="close-modal">×</button><h2>Vocabulary and phrase player settings</h2><div class="playback-settings-grid"><label>Reading order<select id="vocabReading"><option value="en-hi" ${state.vocabSettings.reading==='en-hi'?'selected':''}>English → Hindi</option><option value="hi-en" ${state.vocabSettings.reading==='hi-en'?'selected':''}>Hindi → English</option><option value="english" ${state.vocabSettings.reading==='english'?'selected':''}>English only</option><option value="hindi" ${state.vocabSettings.reading==='hindi'?'selected':''}>Hindi only</option></select></label><label>English speed<select id="vocabRateEn">${[.6,.75,.9,1,1.15,1.3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.rateEn)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Hindi speed<select id="vocabRateHi">${[.6,.75,.9,1,1.15,1.3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.rateHi)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Translation delay<select id="vocabTranslationDelay">${[0,.5,1,1.5,2,3,5].map(x=>`<option value="${x}" ${Number(state.vocabSettings.translationDelay)===x?'selected':''}>${x} seconds</option>`).join('')}</select></label><label>Next-item gap<select id="vocabGap">${[0,1,2,3,5,8].map(x=>`<option value="${x}" ${Number(state.vocabSettings.gap)===x?'selected':''}>${x} seconds</option>`).join('')}</select></label><label>Repeat each pair<select id="vocabRepeat">${[1,2,3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.repeat)===x?'selected':''}>${x} time${x>1?'s':''}</option>`).join('')}</select></label></div><p class="timing-example"><b>Example:</b> English word → translation delay → Hindi meaning → next-item gap → next word.</p><label class="toggle"><input id="vocabExamples" type="checkbox" ${state.vocabSettings.examples?'checked':''}><span>Speak examples when available</span></label><label>English voice<select id="voiceEn"><option value="">Automatic English voice</option>${voiceOptions('en',state.vocabSettings.voiceEn)}</select></label><label>Hindi voice<select id="voiceHi"><option value="">Automatic Hindi voice</option>${voiceOptions('hi',state.vocabSettings.voiceHi)}</select></label><p class="settings-link-note">These settings are saved on this device and apply to both vocabulary and phrases.</p>${button('Open full Voice & Audio settings','app-settings','secondary wide')}${button('Done','close-modal','primary wide')}</div></div>`;
+  if(state.modal.type==='app-settings'){
+    const counts=voiceCounts();
+    return `<div class="modal-backdrop"><div class="modal settings-modal app-settings-modal"><button class="modal-close" data-action="close-modal">×</button><div class="settings-heading"><div><small>VOICE & AUDIO</small><h2>Choose English and Hindi voices</h2><p>Selections are saved on this device and apply to vocabulary, phrases, Lesson 0 and dialogue playback.</p></div><span>${counts.en} English · ${counts.hi} Hindi</span></div>
+    <div class="voice-settings-section"><h3>General learning voices</h3><p>Used for vocabulary, phrases, examples and Lesson 0.</p>${voiceSettingRow('English learning voice','voiceEn','en',state.vocabSettings.voiceEn,'general')}${voiceSettingRow('Hindi learning voice','voiceHi','hi',state.vocabSettings.voiceHi,'general')}</div>
+    <div class="voice-settings-section"><h3>Vocabulary and phrase timing</h3><p>Control the pause between a word and its translation separately from the gap before the next item.</p><div class="playback-settings-grid"><label>Reading order<select id="vocabReading"><option value="en-hi" ${state.vocabSettings.reading==='en-hi'?'selected':''}>English → Hindi</option><option value="hi-en" ${state.vocabSettings.reading==='hi-en'?'selected':''}>Hindi → English</option><option value="english" ${state.vocabSettings.reading==='english'?'selected':''}>English only</option><option value="hindi" ${state.vocabSettings.reading==='hindi'?'selected':''}>Hindi only</option></select></label><label>English speed<select id="vocabRateEn">${[.6,.75,.9,1,1.15,1.3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.rateEn)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Hindi speed<select id="vocabRateHi">${[.6,.75,.9,1,1.15,1.3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.rateHi)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Translation delay<select id="vocabTranslationDelay">${[0,.5,1,1.5,2,3,5].map(x=>`<option value="${x}" ${Number(state.vocabSettings.translationDelay)===x?'selected':''}>${x} seconds</option>`).join('')}</select></label><label>Next-item gap<select id="vocabGap">${[0,1,2,3,5,8].map(x=>`<option value="${x}" ${Number(state.vocabSettings.gap)===x?'selected':''}>${x} seconds</option>`).join('')}</select></label><label>Repeat each pair<select id="vocabRepeat">${[1,2,3].map(x=>`<option value="${x}" ${Number(state.vocabSettings.repeat)===x?'selected':''}>${x} time${x>1?'s':''}</option>`).join('')}</select></label></div><label class="toggle"><input id="vocabExamples" type="checkbox" ${state.vocabSettings.examples?'checked':''}><span>Speak examples when available</span></label></div>
+    <div class="voice-settings-section"><h3>Dialogue speaker voices</h3><p>Choose different voices for Speaker 1 and Speaker 2. “Use learning voice” keeps your general choice above.</p>${voiceSettingRow('English · Speaker 1','dialogueVoiceEnS1','en',state.vocabSettings.dialogueVoiceEnS1,'S1')}${voiceSettingRow('English · Speaker 2','dialogueVoiceEnS2','en',state.vocabSettings.dialogueVoiceEnS2,'S2')}${voiceSettingRow('Hindi · Speaker 1','dialogueVoiceHiS1','hi',state.vocabSettings.dialogueVoiceHiS1,'S1')}${voiceSettingRow('Hindi · Speaker 2','dialogueVoiceHiS2','hi',state.vocabSettings.dialogueVoiceHiS2,'S2')}</div>
+    <div class="voice-settings-help"><b>Voice availability depends on this device.</b><span>Download extra system voices on your Mac or iPhone, then press Refresh voices.</span></div>
+    <div class="settings-actions">${button('Refresh voices','refresh-voices','secondary')}${button('Use automatic voices','reset-voices','secondary')}${button('Done','close-modal','primary')}</div></div></div>`;
+  }
   return '';
 }
-function voiceOptions(lang,selected){return speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().startsWith(lang)).map(v=>`<option value="${esc(v.name)}" ${v.name===selected?'selected':''}>${esc(v.name)} (${esc(v.lang)})</option>`).join('');}
+function speechVoices(){return 'speechSynthesis'in window?speechSynthesis.getVoices():[];}
+function availableVoices(lang){const prefix=lang==='hi'?'hi':'en';return speechVoices().filter(v=>(v.lang||'').toLowerCase().startsWith(prefix)).sort((a,b)=>`${a.lang} ${a.name}`.localeCompare(`${b.lang} ${b.name}`));}
+function voiceCounts(){return {en:availableVoices('en').length,hi:availableVoices('hi').length};}
+function voiceOptions(lang,selected){return availableVoices(lang).map(v=>`<option value="${esc(v.name)}" ${v.name===selected?'selected':''}>${esc(v.name)} (${esc(v.lang)})${v.localService?' · device':''}</option>`).join('');}
+function voiceSettingRow(label,id,lang,selected,speaker){const fallback=speaker==='general'?'Automatic system voice':'Use learning voice';return `<div class="voice-setting-row"><label>${esc(label)}<select id="${id}"><option value="">${fallback}</option>${voiceOptions(lang,selected)}</select></label><button data-action="preview-voice" data-lang="${lang}" data-speaker="${speaker}">▶ Preview</button></div>`;}
 
 function render(){
   if(!state.ready){app.innerHTML='<div class="loading">Loading APS NAATI CCL Practice…</div>';return;}
@@ -303,8 +330,21 @@ function render(){
 
 function showToast(text){state.toast=text;render();setTimeout(()=>{if(state.toast===text){state.toast='';render();}},1800);}
 function stopAllSpeech(){state.vocabPlayer.token++;state.vocabPlayer.playing=false;state.lesson.playing=false;speechSynthesis.cancel();}
-function getVoice(lang,name){const voices=speechSynthesis.getVoices();return voices.find(v=>v.name===name)||voices.find(v=>v.lang.toLowerCase().startsWith(lang==='hi'?'hi':'en'))||null;}
-function speak(text,lang='en',rate=.9,token=null){return new Promise((resolve,reject)=>{if(!('speechSynthesis'in window)||!text)return resolve();const u=new SpeechSynthesisUtterance(text);u.lang=lang==='hi'?'hi-IN':'en-AU';u.rate=Number(rate)||1;const name=lang==='hi'?state.vocabSettings.voiceHi:state.vocabSettings.voiceEn;u.voice=getVoice(lang,name);u.onend=()=>token!==null&&token!==state.vocabPlayer.token?resolve():resolve();u.onerror=()=>resolve();speechSynthesis.speak(u);});}
+function getVoice(lang,name){const voices=speechVoices();return voices.find(v=>v.name===name)||voices.find(v=>(v.lang||'').toLowerCase().startsWith(lang==='hi'?'hi':'en'))||null;}
+function selectedVoiceName(lang,speaker='general'){const hi=lang==='hi';if(speaker==='S1')return state.vocabSettings[hi?'dialogueVoiceHiS1':'dialogueVoiceEnS1']||state.vocabSettings[hi?'voiceHi':'voiceEn'];if(speaker==='S2')return state.vocabSettings[hi?'dialogueVoiceHiS2':'dialogueVoiceEnS2']||state.vocabSettings[hi?'voiceHi':'voiceEn'];return state.vocabSettings[hi?'voiceHi':'voiceEn'];}
+function speak(text,lang='en',rate=.9,token=null,speaker='general'){return new Promise(resolve=>{if(!('speechSynthesis'in window)||!text)return resolve();const u=new SpeechSynthesisUtterance(text);u.lang=lang==='hi'?'hi-IN':'en-AU';u.rate=Number(rate)||1;u.voice=getVoice(lang,selectedVoiceName(lang,speaker));u.onend=()=>resolve();u.onerror=()=>resolve();speechSynthesis.speak(u);});}
+function vocabRate(lang){return Number(lang==='hi'?state.vocabSettings.rateHi:state.vocabSettings.rateEn)||Number(state.vocabSettings.rate)||.9;}
+function vocabTokenActive(token){return token===null||token===undefined||token===state.vocabPlayer.token;}
+async function vocabDelay(seconds,token){const ms=Math.max(0,Number(seconds)||0)*1000;if(ms)await delay(ms);return vocabTokenActive(token);}
+async function speakLearningPair(english,hindi,token=null){
+  const mode=state.vocabSettings.reading==='both'?'en-hi':state.vocabSettings.reading,translationDelay=Number(state.vocabSettings.translationDelay)||0;
+  if(mode==='english'){await speak(english,'en',vocabRate('en'),token);return vocabTokenActive(token);}
+  if(mode==='hindi'){await speak(hindi,'hi',vocabRate('hi'),token);return vocabTokenActive(token);}
+  const first=mode==='hi-en'?['hi',hindi]:['en',english],second=mode==='hi-en'?['en',english]:['hi',hindi];
+  await speak(first[1],first[0],vocabRate(first[0]),token);if(!vocabTokenActive(token))return false;
+  if(!await vocabDelay(translationDelay,token))return false;
+  await speak(second[1],second[0],vocabRate(second[0]),token);return vocabTokenActive(token);
+}
 function chime(){return new Promise(resolve=>{const C=window.AudioContext||window.webkitAudioContext;if(!C)return resolve();const c=new C(),o=c.createOscillator(),g=c.createGain();o.frequency.value=880;g.gain.setValueAtTime(.001,c.currentTime);g.gain.exponentialRampToValueAtTime(.22,c.currentTime+.02);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.4);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.42);o.onended=()=>{c.close();resolve();};});}
 
 // Lesson presentation
@@ -352,13 +392,12 @@ async function speakVocabItem({autoplay=false}={}){
   speechSynthesis.cancel();
   for(let r=0;r<repeats;r++){
     if(token!==vp.token)return;
-    if(state.vocabSettings.reading!=='hindi')await speak(item.english,'en',state.vocabSettings.rate,token);
-    if(token!==vp.token)return;
-    if(state.vocabSettings.reading!=='english')await speak(item.hindi,'hi',state.vocabSettings.rate,token);
+    if(!await speakLearningPair(item.english,item.hindi,token))return;
     if(state.vocabSettings.examples&&item.exampleEnglish){
-      if(state.vocabSettings.reading!=='hindi')await speak(item.exampleEnglish,'en',state.vocabSettings.rate,token);
-      if(state.vocabSettings.reading!=='english')await speak(item.exampleHindi,'hi',state.vocabSettings.rate,token);
+      if(!await vocabDelay(.35,token))return;
+      if(!await speakLearningPair(item.exampleEnglish,item.exampleHindi,token))return;
     }
+    if(r<repeats-1&&!await vocabDelay(.35,token))return;
   }
   if(token===vp.token&&item.itemType==='phrase')recordPhrasePractice(item.id);
   if(!autoplay||!vp.playing||token!==vp.token)return;
@@ -410,7 +449,7 @@ async function hydrateResponses(responses=[]){return Promise.all(responses.map(a
 async function playDialogueSegment(repeat=false){
   const seg=getActiveSegments()[state.segmentIndex];if(state.playerStatus==='playing'||state.recording)return;
   if(repeat)state.repeats++;
-  clearResponseMedia();state.playerStatus='playing';render();speechSynthesis.cancel();await speak(seg.source,seg.sourceLanguage,state.dialogueSettings.rate);await chime();state.playerStatus='ready';
+  clearResponseMedia();state.playerStatus='playing';render();speechSynthesis.cancel();await speak(seg.source,seg.sourceLanguage,state.dialogueSettings.rate,null,seg.speaker||'general');await chime();state.playerStatus='ready';
   const ok=await ensureMicrophone();if(!ok)return;beginRecording(seg);
   if(state.dialogueSettings.gap!=='manual'){state.countdown=Number(state.dialogueSettings.gap);clearInterval(state.timer);state.timer=setInterval(()=>{state.countdown--;render();if(state.countdown<=0){clearInterval(state.timer);finishRecording();}},1000);}
 }
@@ -437,8 +476,8 @@ async function loadSavedReport(id){const a=getJSON(storageKeys.attempts,[]).find
 function loadQADialogueReport(){const d=state.dialogues[0];const responses=d.segments.map((s,i)=>({segmentId:s.id,transcript:s.model,recordingUrl:'',assessment:APSScoring.assessSegment(s,s.model,{startDelay:3})}));const report=APSScoring.aggregateDialogue(responses.map(r=>r.assessment),{repeats:0});state.dialogue=d;state.report={type:'dialogue',attempt:{id:'qa',dialogueId:d.id,title:d.title,responses,report}};state.overlay='report';}
 
 // Backup / restore
-function backupProgress(){const data={version:'2.0.5',createdAt:new Date().toISOString(),vocabStatus:getJSON(storageKeys.vocabStatus,{}),vocabSettings:state.vocabSettings,vocabResume:getJSON(storageKeys.vocabResume,{}),phraseStats:getJSON(storageKeys.phraseStats,{}),attempts:getJSON(storageKeys.attempts,[]),lesson:getJSON(storageKeys.lesson,{}),mistakes:getJSON(storageKeys.mistakes,[])};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_NAATI_Progress_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);}
-async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.phraseStats,d.phraseStats||{});setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});showToast('Progress restored');}catch{showToast('This backup could not be restored');}}
+function backupProgress(){const data={version:'2.0.7',createdAt:new Date().toISOString(),vocabStatus:getJSON(storageKeys.vocabStatus,{}),vocabSettings:state.vocabSettings,vocabResume:getJSON(storageKeys.vocabResume,{}),phraseStats:getJSON(storageKeys.phraseStats,{}),attempts:getJSON(storageKeys.attempts,[]),lesson:getJSON(storageKeys.lesson,{}),mistakes:getJSON(storageKeys.mistakes,[])};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_NAATI_Progress_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);}
+async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.phraseStats,d.phraseStats||{});setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});normaliseVocabSettings(d.vocabSettings||{});saveVocabSettings();showToast('Progress restored');}catch{showToast('This backup could not be restored');}}
 
 // Event handling
 app.addEventListener('click',async e=>{
@@ -450,13 +489,17 @@ app.addEventListener('click',async e=>{
   else if(a==='quick-dialogue')openDialogue(state.dialogues[0].id,'learning');
   else if(a==='learn-type'){state.learn.type=id;state.learn.status='all';state.learn.completion='all';state.learn.page=1;render();}
   else if(a==='reveal'){state.learn.revealed.has(id)?state.learn.revealed.delete(id):state.learn.revealed.add(id);render();}
-  else if(a==='speak-item'){const item=(el.dataset.type==='words'?state.vocab:state.phrases).find(x=>x.id===id);if(item){speechSynthesis.cancel();await speak(item.english,'en',state.vocabSettings.rate);await speak(item.hindi,'hi',state.vocabSettings.rate);if(el.dataset.type==='phrases'){recordPhrasePractice(item.id);render();}}}
+  else if(a==='speak-item'){const item=(el.dataset.type==='words'?state.vocab:state.phrases).find(x=>x.id===id);if(item){speechSynthesis.cancel();await speakLearningPair(item.english,item.hindi,null);if(el.dataset.type==='phrases'){recordPhrasePractice(item.id);render();}}}
   else if(a==='single-item-player'){const item=(el.dataset.type==='words'?state.vocab:state.phrases).find(x=>x.id===id);startVocabularyPlaylist(false,{...item,itemType:el.dataset.type==='words'?'word':'phrase'});}
   else if(a==='status-playlist')requestPlaylist(id);
   else if(a==='play-current-filter'){state.modal={type:'playlist',title:`${topicLabels[state.learn.topic]} · Current filters`,count:buildPlaylist().length,queue:buildPlaylist()};render();}
   else if(a==='learn-page-prev')changeLearnPage(-1);
   else if(a==='learn-page-next')changeLearnPage(1);
   else if(a==='close-modal'){state.modal=null;render();}
+  else if(a==='app-settings'){stopAllSpeech();state.modal={type:'app-settings'};render();}
+  else if(a==='refresh-voices'){speechSynthesis.cancel();speechVoices();render();showToast('Voice list refreshed');}
+  else if(a==='reset-voices'){Object.assign(state.vocabSettings,{voiceEn:'',voiceHi:'',dialogueVoiceEnS1:'',dialogueVoiceEnS2:'',dialogueVoiceHiS1:'',dialogueVoiceHiS2:''});saveVocabSettings();render();showToast('Automatic voices selected');}
+  else if(a==='preview-voice'){speechSynthesis.cancel();const lang=el.dataset.lang||'en',speaker=el.dataset.speaker||'general',text=lang==='hi'?'नमस्ते। यह आपकी चुनी हुई हिन्दी आवाज़ का नमूना है।':'Hello. This is a preview of your selected English voice.';await speak(text,lang,.9,null,speaker);}
   else if(a==='confirm-playlist')startVocabularyPlaylist();
   else if(a==='close-vocab-player'){stopAllSpeech();state.overlay=null;state.tab='learn';render();}
   else if(a==='vocab-settings'){state.modal={type:'vocab-settings'};render();}
@@ -475,12 +518,12 @@ app.addEventListener('click',async e=>{
   else if(a==='retry-mic'){state.micError='';ensureMicrophone();}
   else if(a==='toggle-source-transcript'){state.dialogueSettings.showSourceTranscript=!state.dialogueSettings.showSourceTranscript;render();}
   else if(a==='toggle-response-transcript'){state.responses[state.segmentIndex].showTranscript=!state.responses[state.segmentIndex].showTranscript;render();}
-  else if(a==='play-sample-answer'){const seg=getActiveSegments()[state.segmentIndex];if(seg){speechSynthesis.cancel();await speak(seg.sampleAnswer||seg.model,seg.sourceLanguage==='en'?'hi':'en',state.dialogueSettings.rate);}}
+  else if(a==='play-sample-answer'){const seg=getActiveSegments()[state.segmentIndex];if(seg){speechSynthesis.cancel();await speak(seg.sampleAnswer||seg.model,seg.sourceLanguage==='en'?'hi':'en',state.dialogueSettings.rate,null,seg.speaker||'general');}}
   else if(a==='record-again'){state.responses[state.segmentIndex]=null;state.completed.delete(getActiveSegments()[state.segmentIndex].id);playDialogueSegment(false);}
   else if(a==='dialogue-prev'){state.segmentIndex=clamp(state.segmentIndex-1,0,getActiveSegments().length-1);state.playerStatus=state.responses[state.segmentIndex]?'complete':'ready';render();}
   else if(a==='dialogue-next'){state.segmentIndex=clamp(state.segmentIndex+1,0,getActiveSegments().length-1);state.playerStatus=state.responses[state.segmentIndex]?'complete':'ready';render();}
   else if(a==='finish-dialogue')assessAndSaveDialogue();
-  else if(a==='speak-text')speak(decodeURIComponent(el.dataset.text),el.dataset.lang||'en',.9);
+  else if(a==='speak-text')speak(decodeURIComponent(el.dataset.text),el.dataset.lang||'en',.9,null,el.dataset.speaker||'general');
   else if(a==='close-report'){state.overlay=null;state.report=null;state.mock=null;state.tab='home';render();}
   else if(a==='print-report')window.print();
   else if(a==='retry-weak'){const ids=state.report.attempt.responses.map((r,i)=>['review','major'].includes(r.assessment.status)?state.dialogue.segments[i].id:null).filter(Boolean);openDialogue(state.dialogue.id,'learning');state.retryIds=ids;render();}
@@ -514,7 +557,9 @@ app.addEventListener('change',e=>{
   else if(t.id==='learnPageSelect')changeLearnPage(Number(t.value),true);
   else if(t.id==='lessonLang'){state.lesson.lang=t.value;render();}
   else if(t.id==='lessonRate'){state.lesson.rate=Number(t.value);render();}
-  else if(t.id==='vocabRate'){state.vocabSettings.rate=Number(t.value);saveVocabSettings();}
+  else if(t.id==='vocabRateEn'){state.vocabSettings.rateEn=Number(t.value);saveVocabSettings();}
+  else if(t.id==='vocabRateHi'){state.vocabSettings.rateHi=Number(t.value);saveVocabSettings();}
+  else if(t.id==='vocabTranslationDelay'){state.vocabSettings.translationDelay=Number(t.value);saveVocabSettings();}
   else if(t.id==='vocabGap'){state.vocabSettings.gap=Number(t.value);saveVocabSettings();}
   else if(t.id==='vocabRepeat'){state.vocabSettings.repeat=Number(t.value);saveVocabSettings();}
   else if(t.id==='vocabOrder'){state.vocabSettings.order=t.value;saveVocabSettings();}
@@ -522,11 +567,15 @@ app.addEventListener('change',e=>{
   else if(t.id==='vocabExamples'){state.vocabSettings.examples=t.checked;saveVocabSettings();}
   else if(t.id==='voiceEn'){state.vocabSettings.voiceEn=t.value;saveVocabSettings();}
   else if(t.id==='voiceHi'){state.vocabSettings.voiceHi=t.value;saveVocabSettings();}
+  else if(t.id==='dialogueVoiceEnS1'){state.vocabSettings.dialogueVoiceEnS1=t.value;saveVocabSettings();}
+  else if(t.id==='dialogueVoiceEnS2'){state.vocabSettings.dialogueVoiceEnS2=t.value;saveVocabSettings();}
+  else if(t.id==='dialogueVoiceHiS1'){state.vocabSettings.dialogueVoiceHiS1=t.value;saveVocabSettings();}
+  else if(t.id==='dialogueVoiceHiS2'){state.vocabSettings.dialogueVoiceHiS2=t.value;saveVocabSettings();}
   else if(t.id==='dialogueRate'){state.dialogueSettings.rate=Number(t.value);}
   else if(t.id==='dialogueGap'){state.dialogueSettings.gap=t.value==='manual'?'manual':Number(t.value);}
   else if(t.id==='restoreFile'&&t.files[0])restoreProgress(t.files[0]);
 });
 window.addEventListener('beforeunload',()=>{speechSynthesis.cancel();state.stream?.getTracks().forEach(t=>t.stop());});
 if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-speechSynthesis.onvoiceschanged=()=>{if(state.modal?.type==='vocab-settings')render();};
+if('speechSynthesis'in window)speechSynthesis.onvoiceschanged=()=>{if(['vocab-settings','app-settings'].includes(state.modal?.type))render();};
 loadData();
