@@ -1,0 +1,552 @@
+﻿No,ID,Topic,English phrase,Hindi phrase,Words,Source,Dialogue IDs
+1,hea-p-001,health,How can I help you today?,मैं आज आपकी कैसे सहायता कर सकता/सकती हूँ?,6,Core phrase library reviewed before V2.0.5,
+2,hea-p-002,health,Please tell me your full name and date of birth.,कृपया अपना पूरा नाम और जन्मतिथि बताइए।,10,Core phrase library reviewed before V2.0.5,
+3,hea-p-003,health,I have been feeling unwell for the last few days.,मैं पिछले कुछ दिनों से अस्वस्थ महसूस कर रहा/रही हूँ।,10,Core phrase library reviewed before V2.0.5,
+4,hea-p-004,health,I have a severe headache and feel nauseous.,मुझे तेज सिरदर्द है और जी मिचला रहा है।,8,Core phrase library reviewed before V2.0.5,
+5,hea-p-005,health,Have you had any other symptoms?,क्या आपको कोई अन्य लक्षण भी हुए हैं?,6,Core phrase library reviewed before V2.0.5,
+6,hea-p-006,health,I vomited last night and again this morning.,मुझे कल रात और आज सुबह फिर उल्टी हुई।,8,Core phrase library reviewed before V2.0.5,
+7,hea-p-007,health,I would like you to have a blood test.,मैं चाहता/चाहती हूँ कि आप रक्त जाँच करवाएँ।,9,Core phrase library reviewed before V2.0.5,
+8,hea-p-008,health,I will prescribe medicine for the nausea.,मैं जी मिचलाने के लिए दवा लिख दूँगा/दूँगी।,7,Core phrase library reviewed before V2.0.5,
+9,hea-p-009,health,Take one tablet twice a day after food.,भोजन के बाद दिन में दो बार एक गोली लें।,8,Core phrase library reviewed before V2.0.5,
+10,hea-p-010,health,Do not exceed the recommended dose.,बताई गई खुराक से अधिक दवा न लें।,6,Core phrase library reviewed before V2.0.5,
+11,hea-p-011,health,Please go to the pathology laboratory next door.,कृपया बगल की पैथोलॉजी प्रयोगशाला में जाएँ।,8,Core phrase library reviewed before V2.0.5,
+12,hea-p-012,health,The results should be available within two days.,परिणाम दो दिनों के भीतर उपलब्ध हो जाने चाहिए।,8,Core phrase library reviewed before V2.0.5,
+13,hea-p-013,health,Do I really need this test?,क्या मुझे यह जाँच सचमुच करवानी जरूरी है?,6,Core phrase library reviewed before V2.0.5,
+14,hea-p-014,health,This test is to rule out a more serious condition.,यह जाँच किसी अधिक गंभीर बीमारी की संभावना को दूर करने के लिए है।,10,Core phrase library reviewed before V2.0.5,
+15,hea-p-015,health,Please come back if the pain continues.,यदि दर्द जारी रहे तो कृपया वापस आएँ।,7,Core phrase library reviewed before V2.0.5,
+16,hea-p-016,health,Seek urgent medical help if your symptoms get worse.,लक्षण बिगड़ें तो तुरंत चिकित्सकीय सहायता लें।,9,Core phrase library reviewed before V2.0.5,
+17,hea-p-017,health,Are you allergic to any medicine?,क्या आपको किसी दवा से एलर्जी है?,6,Core phrase library reviewed before V2.0.5,
+18,hea-p-018,health,Please bring your Medicare card.,कृपया अपना मेडिकेयर कार्ड साथ लाएँ।,5,Core phrase library reviewed before V2.0.5,
+19,hea-p-019,health,The doctor has referred you to a specialist.,चिकित्सक ने आपको विशेषज्ञ के पास भेजा है।,8,Core phrase library reviewed before V2.0.5,
+20,hea-p-020,health,You will need a follow-up appointment.,आपको दोबारा जाँच के लिए अपॉइंटमेंट लेना होगा।,6,Core phrase library reviewed before V2.0.5,
+21,hea-p-021,health,Your information will remain confidential.,आपकी जानकारी गोपनीय रखी जाएगी।,5,Core phrase library reviewed before V2.0.5,
+22,hea-p-022,health,Please rest and drink plenty of water.,कृपया आराम करें और पर्याप्त पानी पिएँ।,7,Core phrase library reviewed before V2.0.5,
+23,hea-p-023,health,Stop taking the medicine if you develop a rash.,यदि त्वचा पर चकत्ते हों तो दवा लेना बंद कर दें।,9,Core phrase library reviewed before V2.0.5,
+24,hea-p-024,health,Thank you for explaining everything clearly.,सब कुछ स्पष्ट रूप से समझाने के लिए धन्यवाद।,6,Core phrase library reviewed before V2.0.5,
+25,hou-p-001,housing,I am calling to ask about rental bond assistance.,मैं किराये के बॉन्ड की सहायता के बारे में पूछने के लिए फोन कर रहा/रही हूँ।,9,Core phrase library reviewed before V2.0.5,
+26,hou-p-002,housing,You may be eligible for an interest-free bond loan.,आप ब्याज-मुक्त बॉन्ड ऋण के लिए पात्र हो सकते हैं।,9,Core phrase library reviewed before V2.0.5,
+27,hou-p-003,housing,A bond is a security deposit for the rental property.,बॉन्ड किराये की संपत्ति के लिए सुरक्षा जमा राशि है।,10,Core phrase library reviewed before V2.0.5,
+28,hou-p-004,housing,The landlord may ask for the bond before you move in.,मकान मालिक घर में प्रवेश से पहले बॉन्ड माँग सकता है।,11,Core phrase library reviewed before V2.0.5,
+29,hou-p-005,housing,The bond is held by the relevant tenancy authority.,बॉन्ड संबंधित किरायेदारी प्राधिकरण के पास रखा जाता है।,9,Core phrase library reviewed before V2.0.5,
+30,hou-p-006,housing,You must complete an application form.,आपको आवेदन पत्र पूरा करना होगा।,6,Core phrase library reviewed before V2.0.5,
+31,hou-p-007,housing,Please provide proof of identity and income.,कृपया पहचान और आय का प्रमाण दें।,7,Core phrase library reviewed before V2.0.5,
+32,hou-p-008,housing,How many bedrooms does the property have?,संपत्ति में कितने शयनकक्ष हैं?,7,Core phrase library reviewed before V2.0.5,
+33,hou-p-009,housing,How many people will live in the property?,संपत्ति में कितने लोग रहेंगे?,8,Core phrase library reviewed before V2.0.5,
+34,hou-p-010,housing,The amount depends on your household circumstances.,राशि आपके परिवार की परिस्थितियों पर निर्भर करती है।,7,Core phrase library reviewed before V2.0.5,
+35,hou-p-011,housing,This assistance is only for the rental bond.,यह सहायता केवल किराये के बॉन्ड के लिए है।,8,Core phrase library reviewed before V2.0.5,
+36,hou-p-012,housing,Other support may be available for moving costs.,स्थानांतरण खर्च के लिए अन्य सहायता उपलब्ध हो सकती है।,8,Core phrase library reviewed before V2.0.5,
+37,hou-p-013,housing,How do I repay the loan?,मैं ऋण का पुनर्भुगतान कैसे करूँ?,6,Core phrase library reviewed before V2.0.5,
+38,hou-p-014,housing,You can arrange repayments with the housing office.,आप आवास कार्यालय के साथ पुनर्भुगतान की व्यवस्था कर सकते हैं।,8,Core phrase library reviewed before V2.0.5,
+39,hou-p-015,housing,Please check the current eligibility rules before applying.,आवेदन से पहले वर्तमान पात्रता नियमों की जाँच करें।,8,Core phrase library reviewed before V2.0.5,
+40,hou-p-016,housing,The property needs an urgent repair.,संपत्ति में तत्काल मरम्मत की आवश्यकता है।,6,Core phrase library reviewed before V2.0.5,
+41,hou-p-017,housing,There is mould in the bedroom.,शयनकक्ष में फफूंद है।,6,Core phrase library reviewed before V2.0.5,
+42,hou-p-018,housing,I reported the water leak last week.,मैंने पिछले सप्ताह पानी के रिसाव की सूचना दी थी।,7,Core phrase library reviewed before V2.0.5,
+43,hou-p-019,housing,The landlord has issued a notice.,मकान मालिक ने नोटिस जारी किया है।,6,Core phrase library reviewed before V2.0.5,
+44,hou-p-020,housing,I would like to discuss a repayment plan.,मैं पुनर्भुगतान योजना पर चर्चा करना चाहता/चाहती हूँ।,8,Core phrase library reviewed before V2.0.5,
+45,hou-p-021,housing,Please keep copies of all documents.,कृपया सभी दस्तावेजों की प्रतियाँ रखें।,6,Core phrase library reviewed before V2.0.5,
+46,hou-p-022,housing,You may request mediation for the dispute.,आप विवाद के लिए मध्यस्थता का अनुरोध कर सकते हैं।,7,Core phrase library reviewed before V2.0.5,
+47,hou-p-023,housing,The inspection has been scheduled for Friday.,निरीक्षण शुक्रवार के लिए निर्धारित किया गया है।,7,Core phrase library reviewed before V2.0.5,
+48,hou-p-024,housing,Thank you for explaining the application process.,आवेदन प्रक्रिया समझाने के लिए धन्यवाद।,7,Core phrase library reviewed before V2.0.5,
+49,emp-p-001,employment,I would like to enquire about current job vacancies.,मैं वर्तमान नौकरी की रिक्तियों के बारे में पूछना चाहता/चाहती हूँ।,9,Core phrase library reviewed before V2.0.5,
+50,emp-p-002,employment,Are you hiring at the moment?,क्या आप इस समय भर्ती कर रहे हैं?,6,Core phrase library reviewed before V2.0.5,
+51,emp-p-003,employment,We are looking for a warehouse assistant.,हम एक गोदाम सहायक की तलाश कर रहे हैं।,7,Core phrase library reviewed before V2.0.5,
+52,emp-p-004,employment,The job involves picking and packing orders.,इस नौकरी में सामान चुनना और ऑर्डर पैक करना शामिल है।,7,Core phrase library reviewed before V2.0.5,
+53,emp-p-005,employment,My skills and experience suit this position.,मेरे कौशल और अनुभव इस पद के अनुकूल हैं।,7,Core phrase library reviewed before V2.0.5,
+54,emp-p-006,employment,Do you have an up-to-date resume?,क्या आपके पास अद्यतन रिज़्यूमे है?,6,Core phrase library reviewed before V2.0.5,
+55,emp-p-007,employment,Please describe your recent work experience.,कृपया अपने हाल के कार्य अनुभव का वर्णन करें।,6,Core phrase library reviewed before V2.0.5,
+56,emp-p-008,employment,I have five years of delivery experience.,मेरे पास सामान पहुँचाने का पाँच वर्षों का अनुभव है।,7,Core phrase library reviewed before V2.0.5,
+57,emp-p-009,employment,I have also worked in an Australian workplace.,मैंने ऑस्ट्रेलिया में भी काम किया है।,8,Core phrase library reviewed before V2.0.5,
+58,emp-p-010,employment,Please add that experience to your resume.,कृपया उस अनुभव को अपने रिज़्यूमे में जोड़ें।,7,Core phrase library reviewed before V2.0.5,
+59,emp-p-011,employment,Send your application to the email address on this card.,अपना आवेदन इस कार्ड पर दिए ईमेल पते पर भेजें।,10,Core phrase library reviewed before V2.0.5,
+60,emp-p-012,employment,Human Resources will contact shortlisted applicants.,मानव संसाधन विभाग चयनित आवेदकों से संपर्क करेगा।,6,Core phrase library reviewed before V2.0.5,
+61,emp-p-013,employment,What is the closing date for applications?,आवेदन की अंतिम तिथि क्या है?,7,Core phrase library reviewed before V2.0.5,
+62,emp-p-014,employment,Please apply as soon as possible.,कृपया जितनी जल्दी हो सके आवेदन करें।,6,Core phrase library reviewed before V2.0.5,
+63,emp-p-015,employment,The interview will take approximately thirty minutes.,साक्षात्कार में लगभग तीस मिनट लगेंगे।,7,Core phrase library reviewed before V2.0.5,
+64,emp-p-016,employment,Bring your licence and certificates to the interview.,साक्षात्कार में अपना लाइसेंस और प्रमाणपत्र लाएँ।,8,Core phrase library reviewed before V2.0.5,
+65,emp-p-017,employment,The position includes day and evening shifts.,इस पद में दिन और शाम की पालियाँ शामिल हैं।,7,Core phrase library reviewed before V2.0.5,
+66,emp-p-018,employment,Are you available to work on weekends?,क्या आप सप्ताहांत में काम करने के लिए उपलब्ध हैं?,7,Core phrase library reviewed before V2.0.5,
+67,emp-p-019,employment,The hourly rate will be discussed at the interview.,प्रति घंटा दर पर साक्षात्कार में चर्चा होगी।,9,Core phrase library reviewed before V2.0.5,
+68,emp-p-020,employment,You will receive workplace safety training.,आपको कार्यस्थल सुरक्षा प्रशिक्षण दिया जाएगा।,6,Core phrase library reviewed before V2.0.5,
+69,emp-p-021,employment,The first three months are a probation period.,पहले तीन महीने परिवीक्षा अवधि हैं।,8,Core phrase library reviewed before V2.0.5,
+70,emp-p-022,employment,Please let us know if you need reasonable adjustments.,यदि आपको उचित सहायता या बदलाव की आवश्यकता हो तो हमें बताएँ।,9,Core phrase library reviewed before V2.0.5,
+71,emp-p-023,employment,Thank you for considering my application.,मेरे आवेदन पर विचार करने के लिए धन्यवाद।,6,Core phrase library reviewed before V2.0.5,
+72,emp-p-024,employment,We will contact you after reviewing your documents.,दस्तावेजों की समीक्षा के बाद हम आपसे संपर्क करेंगे।,8,Core phrase library reviewed before V2.0.5,
+73,leg-p-001,legal,Please tell me what happened.,कृपया बताइए क्या हुआ।,5,Core phrase library reviewed before V2.0.5,
+74,leg-p-002,legal,A car hit my vehicle and left the scene.,एक कार ने मेरे वाहन को टक्कर मारी और घटनास्थल से चली गई।,9,Core phrase library reviewed before V2.0.5,
+75,leg-p-003,legal,Did you see the registration number?,क्या आपने पंजीकरण संख्या देखी?,6,Core phrase library reviewed before V2.0.5,
+76,leg-p-004,legal,I could not take a photograph of the number plate.,मैं नंबर प्लेट की फोटो नहीं ले सका/सकी।,10,Core phrase library reviewed before V2.0.5,
+77,leg-p-005,legal,I remember that it was a red sedan.,मुझे याद है कि वह लाल रंग की सेडान थी।,8,Core phrase library reviewed before V2.0.5,
+78,leg-p-006,legal,Were you or your passenger injured?,क्या आपको या आपके यात्री को चोट लगी?,6,Core phrase library reviewed before V2.0.5,
+79,leg-p-007,legal,Please seek medical attention if you feel unwell.,यदि आप अस्वस्थ महसूस करें तो चिकित्सकीय सहायता लें।,8,Core phrase library reviewed before V2.0.5,
+80,leg-p-008,legal,We will check nearby CCTV footage.,हम आसपास की सीसीटीवी रिकॉर्डिंग की जाँच करेंगे।,6,Core phrase library reviewed before V2.0.5,
+81,leg-p-009,legal,Please do not speculate about the other driver.,कृपया दूसरे चालक के बारे में अनुमान न लगाएँ।,8,Core phrase library reviewed before V2.0.5,
+82,leg-p-010,legal,Is your vehicle insured?,क्या आपके वाहन का बीमा है?,4,Core phrase library reviewed before V2.0.5,
+83,leg-p-011,legal,I only have third-party insurance.,मेरे पास केवल तृतीय-पक्ष बीमा है।,5,Core phrase library reviewed before V2.0.5,
+84,leg-p-012,legal,Contact your insurer as soon as possible.,जितनी जल्दी हो सके अपने बीमा प्रदाता से संपर्क करें।,7,Core phrase library reviewed before V2.0.5,
+85,leg-p-013,legal,Keep photographs and repair quotations as evidence.,फोटो और मरम्मत के कोटेशन सबूत के रूप में रखें।,7,Core phrase library reviewed before V2.0.5,
+86,leg-p-014,legal,This is your police event number.,यह आपकी पुलिस घटना संख्या है।,6,Core phrase library reviewed before V2.0.5,
+87,leg-p-015,legal,We will contact you if we need another statement.,यदि हमें दूसरा बयान चाहिए होगा तो हम आपसे संपर्क करेंगे।,9,Core phrase library reviewed before V2.0.5,
+88,leg-p-016,legal,The investigation may take some time.,जाँच में कुछ समय लग सकता है।,6,Core phrase library reviewed before V2.0.5,
+89,leg-p-017,legal,Do not contact the suspected driver yourself.,संदिग्ध चालक से स्वयं संपर्क न करें।,7,Core phrase library reviewed before V2.0.5,
+90,leg-p-018,legal,You may wish to obtain independent legal advice.,आप स्वतंत्र कानूनी सलाह लेना चाह सकते हैं।,8,Core phrase library reviewed before V2.0.5,
+91,leg-p-019,legal,I am very distressed about the repair cost.,मैं मरम्मत के खर्च को लेकर बहुत परेशान हूँ।,8,Core phrase library reviewed before V2.0.5,
+92,leg-p-020,legal,Please arrange a tow truck if the car is unsafe.,यदि कार चलाने के लिए सुरक्षित नहीं है तो टो ट्रक की व्यवस्था करें।,10,Core phrase library reviewed before V2.0.5,
+93,leg-p-021,legal,Were there any witnesses nearby?,क्या आसपास कोई गवाह था?,5,Core phrase library reviewed before V2.0.5,
+94,leg-p-022,legal,Which direction did the other vehicle travel?,दूसरा वाहन किस दिशा में गया?,7,Core phrase library reviewed before V2.0.5,
+95,leg-p-023,legal,Thank you for reporting the incident promptly.,घटना की तुरंत रिपोर्ट करने के लिए धन्यवाद।,7,Core phrase library reviewed before V2.0.5,
+96,leg-p-024,legal,Please quote this reference number in future enquiries.,भविष्य की पूछताछ में यह संदर्भ संख्या बताएँ।,8,Core phrase library reviewed before V2.0.5,
+97,ban-p-001,banking,I would like to open a bank account.,मैं बैंक खाता खोलना चाहता/चाहती हूँ।,8,Core phrase library reviewed before V2.0.5,
+98,ban-p-002,banking,Would you like an everyday account or a savings account?,क्या आप दैनिक लेन-देन खाता चाहते हैं या बचत खाता?,10,Core phrase library reviewed before V2.0.5,
+99,ban-p-003,banking,I would like to open both accounts.,मैं दोनों खाते खोलना चाहता/चाहती हूँ।,7,Core phrase library reviewed before V2.0.5,
+100,ban-p-004,banking,Please provide acceptable identification documents.,कृपया स्वीकार्य पहचान दस्तावेज दें।,5,Core phrase library reviewed before V2.0.5,
+101,ban-p-005,banking,We also need proof of your current address.,हमें आपके वर्तमान पते का प्रमाण भी चाहिए।,8,Core phrase library reviewed before V2.0.5,
+102,ban-p-006,banking,I can give you a list of suitable documents.,मैं आपको उपयुक्त दस्तावेजों की सूची दे सकता/सकती हूँ।,9,Core phrase library reviewed before V2.0.5,
+103,ban-p-007,banking,Do the copies need to be certified?,क्या प्रतियों का प्रमाणित होना आवश्यक है?,7,Core phrase library reviewed before V2.0.5,
+104,ban-p-008,banking,The account should be active within two business days.,खाता दो कार्यदिवसों के भीतर सक्रिय हो जाना चाहिए।,9,Core phrase library reviewed before V2.0.5,
+105,ban-p-009,banking,I would like to deposit three hundred dollars.,मैं तीन सौ डॉलर जमा करना चाहता/चाहती हूँ।,8,Core phrase library reviewed before V2.0.5,
+106,ban-p-010,banking,Please divide the amount equally between the accounts.,कृपया राशि को दोनों खातों में बराबर बाँट दें।,8,Core phrase library reviewed before V2.0.5,
+107,ban-p-011,banking,How do I order a cheque book?,मैं चेक बुक कैसे मँगाऊँ?,7,Core phrase library reviewed before V2.0.5,
+108,ban-p-012,banking,Complete this request form to order a cheque book.,चेक बुक मँगाने के लिए यह अनुरोध पत्र भरें।,9,Core phrase library reviewed before V2.0.5,
+109,ban-p-013,banking,It will be posted to your registered address.,इसे आपके पंजीकृत पते पर डाक से भेजा जाएगा।,8,Core phrase library reviewed before V2.0.5,
+110,ban-p-014,banking,Would you like a debit card as well?,क्या आप डेबिट कार्ड भी चाहते हैं?,8,Core phrase library reviewed before V2.0.5,
+111,ban-p-015,banking,Your PIN will be provided separately.,आपकी पिन अलग से दी जाएगी।,6,Core phrase library reviewed before V2.0.5,
+112,ban-p-016,banking,Please do not share your PIN with anyone.,कृपया अपनी पिन किसी के साथ साझा न करें।,8,Core phrase library reviewed before V2.0.5,
+113,ban-p-017,banking,You can register for online banking today.,आप आज ऑनलाइन बैंकिंग के लिए पंजीकरण कर सकते हैं।,7,Core phrase library reviewed before V2.0.5,
+114,ban-p-018,banking,There is no monthly fee for this account.,इस खाते पर कोई मासिक शुल्क नहीं है।,8,Core phrase library reviewed before V2.0.5,
+115,ban-p-019,banking,Please check the current terms and fees.,कृपया वर्तमान नियम और शुल्क जाँच लें।,7,Core phrase library reviewed before V2.0.5,
+116,ban-p-020,banking,This transaction was not authorised by me.,यह लेन-देन मेरी अनुमति से नहीं हुआ।,7,Core phrase library reviewed before V2.0.5,
+117,ban-p-021,banking,We will block the card immediately.,हम कार्ड को तुरंत बंद कर देंगे।,6,Core phrase library reviewed before V2.0.5,
+118,ban-p-022,banking,A replacement card will be sent to you.,आपको नया कार्ड भेजा जाएगा।,8,Core phrase library reviewed before V2.0.5,
+119,ban-p-023,banking,Please quote your account reference number.,कृपया अपना खाता संदर्भ संख्या बताएँ।,6,Core phrase library reviewed before V2.0.5,
+120,ban-p-024,banking,Thank you for helping me open the accounts.,खाते खोलने में सहायता करने के लिए धन्यवाद।,8,Core phrase library reviewed before V2.0.5,
+121,phr-v205-0001,health,book a medical appointment,चिकित्सकीय अपॉइंटमेंट लेना,4,Topic phrase bank informed by NAATI CCL domains,
+122,phr-v205-0002,health,provide your medical history,अपना चिकित्सा इतिहास बताना,4,Topic phrase bank informed by NAATI CCL domains,
+123,phr-v205-0003,health,bring the referral letter,रेफरल पत्र साथ लाना,4,Topic phrase bank informed by NAATI CCL domains,
+124,phr-v205-0004,health,describe your symptoms clearly,अपने लक्षण स्पष्ट रूप से बताना,4,Topic phrase bank informed by NAATI CCL domains,
+125,phr-v205-0005,health,the symptoms are getting worse,लक्षण बिगड़ रहे हैं,5,Topic phrase bank informed by NAATI CCL domains,
+126,phr-v205-0006,health,possible side effects,संभावित दुष्प्रभाव,3,Topic phrase bank informed by NAATI CCL domains,
+127,phr-v205-0007,health,collect the pathology results,पैथोलॉजी परिणाम प्राप्त करना,4,Topic phrase bank informed by NAATI CCL domains,
+128,phr-v205-0008,health,fasting is required,खाली पेट रहना आवश्यक है,3,Topic phrase bank informed by NAATI CCL domains,
+129,phr-v205-0009,health,go to the emergency department,आपातकालीन विभाग में जाना,5,Topic phrase bank informed by NAATI CCL domains,
+130,phr-v205-0010,health,sign the consent form,सहमति पत्र पर हस्ताक्षर करना,4,Topic phrase bank informed by NAATI CCL domains,
+131,phr-v205-0011,health,check the vaccination record,टीकाकरण रिकॉर्ड जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+132,phr-v205-0012,health,arrange a dental check-up,दाँतों की जाँच करवाना,4,Topic phrase bank informed by NAATI CCL domains,
+133,phr-v205-0013,health,take pain relief medicine,दर्द निवारक दवा लेना,4,Topic phrase bank informed by NAATI CCL domains,
+134,phr-v205-0014,health,attend a follow-up appointment,फॉलो-अप अपॉइंटमेंट में जाना,4,Topic phrase bank informed by NAATI CCL domains,
+135,phr-v205-0015,health,private health insurance cover,निजी स्वास्थ्य बीमा कवरेज,4,Topic phrase bank informed by NAATI CCL domains,
+136,phr-v205-0016,housing,sign the rental agreement,किराया समझौते पर हस्ताक्षर करना,4,Topic phrase bank informed by NAATI CCL domains,
+137,phr-v205-0017,housing,request a bond refund,बॉन्ड वापसी का अनुरोध करना,4,Topic phrase bank informed by NAATI CCL domains,
+138,phr-v205-0018,housing,report an urgent repair,तत्काल मरम्मत की सूचना देना,4,Topic phrase bank informed by NAATI CCL domains,
+139,phr-v205-0019,housing,complete the condition report,स्थिति रिपोर्ट पूरी करना,4,Topic phrase bank informed by NAATI CCL domains,
+140,phr-v205-0020,housing,pay the rent arrears,बकाया किराया चुकाना,4,Topic phrase bank informed by NAATI CCL domains,
+141,phr-v205-0021,housing,receive a notice to vacate,मकान खाली करने का नोटिस मिलना,5,Topic phrase bank informed by NAATI CCL domains,
+142,phr-v205-0022,housing,arrange a property inspection,संपत्ति निरीक्षण की व्यवस्था करना,4,Topic phrase bank informed by NAATI CCL domains,
+143,phr-v205-0023,housing,repair the water leak,पानी का रिसाव ठीक करना,4,Topic phrase bank informed by NAATI CCL domains,
+144,phr-v205-0024,housing,remove mould safely,फफूंद सुरक्षित रूप से हटाना,3,Topic phrase bank informed by NAATI CCL domains,
+145,phr-v205-0025,housing,challenge a rent increase,किराया वृद्धि को चुनौती देना,4,Topic phrase bank informed by NAATI CCL domains,
+146,phr-v205-0026,housing,resolve a tenancy dispute,किरायेदारी विवाद सुलझाना,4,Topic phrase bank informed by NAATI CCL domains,
+147,phr-v205-0027,housing,negotiate a payment arrangement,भुगतान व्यवस्था पर सहमति बनाना,4,Topic phrase bank informed by NAATI CCL domains,
+148,phr-v205-0028,housing,ask for landlord permission,मकान मालिक से अनुमति माँगना,4,Topic phrase bank informed by NAATI CCL domains,
+149,phr-v205-0029,housing,claim moving expenses,स्थानांतरण खर्च का दावा करना,3,Topic phrase bank informed by NAATI CCL domains,
+150,phr-v205-0030,housing,find temporary accommodation,अस्थायी आवास ढूँढना,3,Topic phrase bank informed by NAATI CCL domains,
+151,phr-v205-0031,education,complete the enrolment form,नामांकन फॉर्म पूरा करना,4,Topic phrase bank informed by NAATI CCL domains,
+152,phr-v205-0032,education,pay the course fee,पाठ्यक्रम शुल्क जमा करना,4,Topic phrase bank informed by NAATI CCL domains,
+153,phr-v205-0033,education,check the attendance record,उपस्थिति रिकॉर्ड जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+154,phr-v205-0034,education,attend a parent-teacher meeting,अभिभावक-शिक्षक बैठक में जाना,4,Topic phrase bank informed by NAATI CCL domains,
+155,phr-v205-0035,education,request learning support,अध्ययन सहायता का अनुरोध करना,3,Topic phrase bank informed by NAATI CCL domains,
+156,phr-v205-0036,education,report school bullying,स्कूल में बदमाशी की शिकायत करना,3,Topic phrase bank informed by NAATI CCL domains,
+157,phr-v205-0037,education,provide parental consent,अभिभावक की सहमति देना,3,Topic phrase bank informed by NAATI CCL domains,
+158,phr-v205-0038,education,apply for childcare subsidy,बाल देखभाल सब्सिडी के लिए आवेदन करना,4,Topic phrase bank informed by NAATI CCL domains,
+159,phr-v205-0039,education,confirm the course duration,पाठ्यक्रम अवधि की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+160,phr-v205-0040,education,meet the entry requirements,प्रवेश आवश्यकताएँ पूरी करना,4,Topic phrase bank informed by NAATI CCL domains,
+161,phr-v205-0041,education,receive the assessment result,मूल्यांकन परिणाम प्राप्त करना,4,Topic phrase bank informed by NAATI CCL domains,
+162,phr-v205-0042,education,check the class timetable,कक्षा समय-सारणी जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+163,phr-v205-0043,education,renew the library membership,पुस्तकालय सदस्यता नवीनीकृत करना,4,Topic phrase bank informed by NAATI CCL domains,
+164,phr-v205-0044,education,request a tuition refund,शिक्षण शुल्क वापसी माँगना,4,Topic phrase bank informed by NAATI CCL domains,
+165,phr-v205-0045,education,lodge an academic complaint,शैक्षणिक शिकायत दर्ज करना,4,Topic phrase bank informed by NAATI CCL domains,
+166,phr-v205-0046,employment,request a pay rise,वेतन वृद्धि का अनुरोध करना,4,Topic phrase bank informed by NAATI CCL domains,
+167,phr-v205-0047,employment,accept an extra shift,अतिरिक्त पाली स्वीकार करना,4,Topic phrase bank informed by NAATI CCL domains,
+168,phr-v205-0048,employment,check the overtime rate,ओवरटाइम दर जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+169,phr-v205-0049,employment,change the work roster,कार्य रोस्टर बदलना,4,Topic phrase bank informed by NAATI CCL domains,
+170,phr-v205-0050,employment,apply for annual leave,वार्षिक अवकाश के लिए आवेदन करना,4,Topic phrase bank informed by NAATI CCL domains,
+171,phr-v205-0051,employment,provide a medical certificate,चिकित्सा प्रमाणपत्र देना,4,Topic phrase bank informed by NAATI CCL domains,
+172,phr-v205-0052,employment,sign the employment contract,रोज़गार अनुबंध पर हस्ताक्षर करना,4,Topic phrase bank informed by NAATI CCL domains,
+173,phr-v205-0053,employment,complete the probation period,परिवीक्षा अवधि पूरी करना,4,Topic phrase bank informed by NAATI CCL domains,
+174,phr-v205-0054,employment,report a workplace injury,कार्यस्थल की चोट की सूचना देना,4,Topic phrase bank informed by NAATI CCL domains,
+175,phr-v205-0055,employment,lodge a compensation claim,मुआवज़े का दावा दर्ज करना,4,Topic phrase bank informed by NAATI CCL domains,
+176,phr-v205-0056,employment,make a discrimination complaint,भेदभाव की शिकायत करना,4,Topic phrase bank informed by NAATI CCL domains,
+177,phr-v205-0057,employment,check the pay slip,वेतन पर्ची जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+178,phr-v205-0058,employment,give notice of resignation,इस्तीफे की सूचना देना,4,Topic phrase bank informed by NAATI CCL domains,
+179,phr-v205-0059,employment,prepare for the job interview,नौकरी साक्षात्कार की तैयारी करना,5,Topic phrase bank informed by NAATI CCL domains,
+180,phr-v205-0060,employment,complete a reference check,संदर्भ जाँच पूरी करना,4,Topic phrase bank informed by NAATI CCL domains,
+181,phr-v205-0061,legal,give a police statement,पुलिस को बयान देना,4,Topic phrase bank informed by NAATI CCL domains,
+182,phr-v205-0062,legal,preserve the evidence,सबूत सुरक्षित रखना,3,Topic phrase bank informed by NAATI CCL domains,
+183,phr-v205-0063,legal,identify a witness,गवाह की पहचान करना,3,Topic phrase bank informed by NAATI CCL domains,
+184,phr-v205-0064,legal,quote the case reference,मामले की संदर्भ संख्या बताना,4,Topic phrase bank informed by NAATI CCL domains,
+185,phr-v205-0065,legal,confirm the court date,अदालत की तारीख की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+186,phr-v205-0066,legal,seek independent legal advice,स्वतंत्र कानूनी सलाह लेना,4,Topic phrase bank informed by NAATI CCL domains,
+187,phr-v205-0067,legal,report the theft immediately,चोरी की तुरंत रिपोर्ट करना,4,Topic phrase bank informed by NAATI CCL domains,
+188,phr-v205-0068,legal,follow the bail conditions,जमानत की शर्तों का पालन करना,4,Topic phrase bank informed by NAATI CCL domains,
+189,phr-v205-0069,legal,show the search warrant,तलाशी वारंट दिखाना,4,Topic phrase bank informed by NAATI CCL domains,
+190,phr-v205-0070,legal,verify your identity,अपनी पहचान सत्यापित करना,3,Topic phrase bank informed by NAATI CCL domains,
+191,phr-v205-0071,legal,assist with the investigation,जाँच में सहायता करना,4,Topic phrase bank informed by NAATI CCL domains,
+192,phr-v205-0072,legal,enter a guilty plea,दोष स्वीकार करना,4,Topic phrase bank informed by NAATI CCL domains,
+193,phr-v205-0073,legal,apply for compensation,मुआवज़े के लिए आवेदन करना,3,Topic phrase bank informed by NAATI CCL domains,
+194,phr-v205-0074,legal,contact victim support,पीड़ित सहायता सेवा से संपर्क करना,3,Topic phrase bank informed by NAATI CCL domains,
+195,phr-v205-0075,legal,apply for an intervention order,हस्तक्षेप आदेश के लिए आवेदन करना,5,Topic phrase bank informed by NAATI CCL domains,
+196,phr-v205-0076,banking,check the account balance,खाते की शेष राशि जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+197,phr-v205-0077,banking,cancel a direct debit,प्रत्यक्ष डेबिट रद्द करना,4,Topic phrase bank informed by NAATI CCL domains,
+198,phr-v205-0078,banking,transfer money overseas,विदेश में पैसा भेजना,3,Topic phrase bank informed by NAATI CCL domains,
+199,phr-v205-0079,banking,submit a loan application,ऋण आवेदन जमा करना,4,Topic phrase bank informed by NAATI CCL domains,
+200,phr-v205-0080,banking,compare interest rates,ब्याज दरों की तुलना करना,3,Topic phrase bank informed by NAATI CCL domains,
+201,phr-v205-0081,banking,agree to a repayment schedule,पुनर्भुगतान समय-सारणी पर सहमत होना,5,Topic phrase bank informed by NAATI CCL domains,
+202,phr-v205-0082,banking,replace the ATM card,एटीएम कार्ड बदलवाना,4,Topic phrase bank informed by NAATI CCL domains,
+203,phr-v205-0083,banking,reset the PIN,पिन रीसेट करना,3,Topic phrase bank informed by NAATI CCL domains,
+204,phr-v205-0084,banking,report a fraudulent transaction,धोखाधड़ी वाले लेन-देन की रिपोर्ट करना,4,Topic phrase bank informed by NAATI CCL domains,
+205,phr-v205-0085,banking,lodge the tax return,कर विवरणी जमा करना,4,Topic phrase bank informed by NAATI CCL domains,
+206,phr-v205-0086,banking,request a payment extension,भुगतान की अवधि बढ़ाने का अनुरोध करना,4,Topic phrase bank informed by NAATI CCL domains,
+207,phr-v205-0087,banking,understand the investment risk,निवेश जोखिम समझना,4,Topic phrase bank informed by NAATI CCL domains,
+208,phr-v205-0088,banking,download a bank statement,बैंक स्टेटमेंट डाउनलोड करना,4,Topic phrase bank informed by NAATI CCL domains,
+209,phr-v205-0089,banking,apply for a home loan,गृह ऋण के लिए आवेदन करना,5,Topic phrase bank informed by NAATI CCL domains,
+210,phr-v205-0090,banking,waive the account fee,खाता शुल्क माफ करना,4,Topic phrase bank informed by NAATI CCL domains,
+211,phr-v205-0091,consumer,request a full refund,पूरी धनवापसी का अनुरोध करना,4,Topic phrase bank informed by NAATI CCL domains,
+212,phr-v205-0092,consumer,check the warranty period,वारंटी अवधि जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+213,phr-v205-0093,consumer,return a defective product,खराब उत्पाद वापस करना,4,Topic phrase bank informed by NAATI CCL domains,
+214,phr-v205-0094,consumer,ask for a replacement,बदलाव की माँग करना,4,Topic phrase bank informed by NAATI CCL domains,
+215,phr-v205-0095,consumer,provide the purchase receipt,खरीद की रसीद देना,4,Topic phrase bank informed by NAATI CCL domains,
+216,phr-v205-0096,consumer,make a formal complaint,औपचारिक शिकायत करना,4,Topic phrase bank informed by NAATI CCL domains,
+217,phr-v205-0097,consumer,report a delayed delivery,देरी से हुई डिलीवरी की शिकायत करना,4,Topic phrase bank informed by NAATI CCL domains,
+218,phr-v205-0098,consumer,correct the wrong order,गलत ऑर्डर ठीक करना,4,Topic phrase bank informed by NAATI CCL domains,
+219,phr-v205-0099,consumer,ask about cancellation fees,रद्दीकरण शुल्क के बारे में पूछना,4,Topic phrase bank informed by NAATI CCL domains,
+220,phr-v205-0100,consumer,report a safety concern,सुरक्षा संबंधी चिंता बताना,4,Topic phrase bank informed by NAATI CCL domains,
+221,phr-v205-0101,consumer,accept store credit,स्टोर क्रेडिट स्वीकार करना,3,Topic phrase bank informed by NAATI CCL domains,
+222,phr-v205-0102,consumer,use the consumer guarantee,उपभोक्ता गारंटी का उपयोग करना,4,Topic phrase bank informed by NAATI CCL domains,
+223,phr-v205-0103,consumer,obtain a repair quote,मरम्मत का कोटेशन लेना,4,Topic phrase bank informed by NAATI CCL domains,
+224,phr-v205-0104,consumer,contact the service provider,सेवा प्रदाता से संपर्क करना,4,Topic phrase bank informed by NAATI CCL domains,
+225,phr-v205-0105,consumer,check the return policy,वापसी नीति जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+226,phr-v205-0106,insurance,quote the policy number,पॉलिसी संख्या बताना,4,Topic phrase bank informed by NAATI CCL domains,
+227,phr-v205-0107,insurance,pay the insurance premium,बीमा प्रीमियम चुकाना,4,Topic phrase bank informed by NAATI CCL domains,
+228,phr-v205-0108,insurance,check the policy excess,पॉलिसी की अतिरिक्त राशि जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+229,phr-v205-0109,insurance,complete the claim form,दावा फॉर्म पूरा करना,4,Topic phrase bank informed by NAATI CCL domains,
+230,phr-v205-0110,insurance,confirm the insured value,बीमित मूल्य की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+231,phr-v205-0111,insurance,check what is covered,कवरेज की जाँच करना,4,Topic phrase bank informed by NAATI CCL domains,
+232,phr-v205-0112,insurance,read the policy exclusions,पॉलिसी अपवाद पढ़ना,4,Topic phrase bank informed by NAATI CCL domains,
+233,phr-v205-0113,insurance,record the incident date,घटना की तारीख दर्ज करना,4,Topic phrase bank informed by NAATI CCL domains,
+234,phr-v205-0114,insurance,arrange a damage assessment,नुकसान का आकलन करवाना,4,Topic phrase bank informed by NAATI CCL domains,
+235,phr-v205-0115,insurance,request a replacement vehicle,वैकल्पिक वाहन का अनुरोध करना,4,Topic phrase bank informed by NAATI CCL domains,
+236,phr-v205-0116,insurance,take out life insurance,जीवन बीमा लेना,4,Topic phrase bank informed by NAATI CCL domains,
+237,phr-v205-0117,insurance,nominate a beneficiary,लाभार्थी नामित करना,3,Topic phrase bank informed by NAATI CCL domains,
+238,phr-v205-0118,insurance,renew the policy,पॉलिसी नवीनीकृत करना,3,Topic phrase bank informed by NAATI CCL domains,
+239,phr-v205-0119,insurance,appeal a rejected claim,अस्वीकृत दावे के खिलाफ अपील करना,4,Topic phrase bank informed by NAATI CCL domains,
+240,phr-v205-0120,insurance,attach supporting documents,सहायक दस्तावेज़ संलग्न करना,3,Topic phrase bank informed by NAATI CCL domains,
+241,phr-v205-0121,social,check your eligibility,अपनी पात्रता जाँचना,3,Topic phrase bank informed by NAATI CCL domains,
+242,phr-v205-0122,social,lodge an online claim,ऑनलाइन दावा जमा करना,4,Topic phrase bank informed by NAATI CCL domains,
+243,phr-v205-0123,social,complete the income test,आय परीक्षण पूरा करना,4,Topic phrase bank informed by NAATI CCL domains,
+244,phr-v205-0124,social,declare your assets,अपनी संपत्ति घोषित करना,3,Topic phrase bank informed by NAATI CCL domains,
+245,phr-v205-0125,social,apply for Carer Payment,देखभालकर्ता भुगतान के लिए आवेदन करना,4,Topic phrase bank informed by NAATI CCL domains,
+246,phr-v205-0126,social,receive Rent Assistance,किराया सहायता प्राप्त करना,3,Topic phrase bank informed by NAATI CCL domains,
+247,phr-v205-0127,social,claim the age pension,वृद्धावस्था पेंशन का दावा करना,4,Topic phrase bank informed by NAATI CCL domains,
+248,phr-v205-0128,social,use a concession card,रियायत कार्ड का उपयोग करना,4,Topic phrase bank informed by NAATI CCL domains,
+249,phr-v205-0129,social,serve the waiting period,प्रतीक्षा अवधि पूरी करना,4,Topic phrase bank informed by NAATI CCL domains,
+250,phr-v205-0130,social,provide supporting evidence,सहायक प्रमाण देना,3,Topic phrase bank informed by NAATI CCL domains,
+251,phr-v205-0131,social,update your circumstances,अपनी परिस्थितियाँ अपडेट करना,3,Topic phrase bank informed by NAATI CCL domains,
+252,phr-v205-0132,social,restore a suspended payment,निलंबित भुगतान बहाल करना,4,Topic phrase bank informed by NAATI CCL domains,
+253,phr-v205-0133,social,request a decision review,निर्णय की समीक्षा का अनुरोध करना,4,Topic phrase bank informed by NAATI CCL domains,
+254,phr-v205-0134,social,repay the Centrelink debt,सेंटरलिंक ऋण चुकाना,4,Topic phrase bank informed by NAATI CCL domains,
+255,phr-v205-0135,social,attend a service appointment,सेवा अपॉइंटमेंट में जाना,4,Topic phrase bank informed by NAATI CCL domains,
+256,phr-v205-0136,immigration,submit a visa application,वीज़ा आवेदन जमा करना,4,Topic phrase bank informed by NAATI CCL domains,
+257,phr-v205-0137,immigration,provide a valid passport,वैध पासपोर्ट देना,4,Topic phrase bank informed by NAATI CCL domains,
+258,phr-v205-0138,immigration,certify identity documents,पहचान दस्तावेज़ प्रमाणित करवाना,3,Topic phrase bank informed by NAATI CCL domains,
+259,phr-v205-0139,immigration,extend a temporary visa,अस्थायी वीज़ा बढ़वाना,4,Topic phrase bank informed by NAATI CCL domains,
+260,phr-v205-0140,immigration,prepare for the citizenship test,नागरिकता परीक्षा की तैयारी करना,5,Topic phrase bank informed by NAATI CCL domains,
+261,phr-v205-0141,immigration,apply for permanent residence,स्थायी निवास के लिए आवेदन करना,4,Topic phrase bank informed by NAATI CCL domains,
+262,phr-v205-0142,immigration,seek a protection visa,संरक्षण वीज़ा का अनुरोध करना,4,Topic phrase bank informed by NAATI CCL domains,
+263,phr-v205-0143,immigration,hold a bridging visa,ब्रिजिंग वीज़ा रखना,4,Topic phrase bank informed by NAATI CCL domains,
+264,phr-v205-0144,immigration,provide relationship evidence,संबंध का प्रमाण देना,3,Topic phrase bank informed by NAATI CCL domains,
+265,phr-v205-0145,immigration,obtain police clearance,पुलिस सत्यापन प्राप्त करना,3,Topic phrase bank informed by NAATI CCL domains,
+266,phr-v205-0146,immigration,complete the medical examination,चिकित्सकीय जाँच पूरी करना,4,Topic phrase bank informed by NAATI CCL domains,
+267,phr-v205-0147,immigration,check the application status,आवेदन की स्थिति जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+268,phr-v205-0148,immigration,follow the visa conditions,वीज़ा की शर्तों का पालन करना,4,Topic phrase bank informed by NAATI CCL domains,
+269,phr-v205-0149,immigration,confirm the departure date,प्रस्थान की तारीख की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+270,phr-v205-0150,immigration,consult a migration agent,प्रवासन एजेंट से सलाह लेना,4,Topic phrase bank informed by NAATI CCL domains,
+271,phr-v205-0151,transport,apply for a driver licence,ड्राइविंग लाइसेंस के लिए आवेदन करना,5,Topic phrase bank informed by NAATI CCL domains,
+272,phr-v205-0152,transport,upgrade a heavy vehicle licence,भारी वाहन लाइसेंस अपग्रेड करना,5,Topic phrase bank informed by NAATI CCL domains,
+273,phr-v205-0153,transport,book the road test,सड़क परीक्षण बुक करना,4,Topic phrase bank informed by NAATI CCL domains,
+274,phr-v205-0154,transport,renew the registration,पंजीकरण नवीनीकृत करना,3,Topic phrase bank informed by NAATI CCL domains,
+275,phr-v205-0155,transport,replace the number plate,नंबर प्लेट बदलवाना,4,Topic phrase bank informed by NAATI CCL domains,
+276,phr-v205-0156,transport,top up the Myki card,माइकी कार्ड में राशि भरना,5,Topic phrase bank informed by NAATI CCL domains,
+277,phr-v205-0157,transport,check the correct fare,सही किराया जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+278,phr-v205-0158,transport,read the service timetable,सेवा समय-सारणी देखना,4,Topic phrase bank informed by NAATI CCL domains,
+279,phr-v205-0159,transport,speak to the ticket inspector,टिकट निरीक्षक से बात करना,5,Topic phrase bank informed by NAATI CCL domains,
+280,phr-v205-0160,transport,pay a traffic fine,यातायात जुर्माना भरना,4,Topic phrase bank informed by NAATI CCL domains,
+281,phr-v205-0161,transport,appeal a licence suspension,लाइसेंस निलंबन के खिलाफ अपील करना,4,Topic phrase bank informed by NAATI CCL domains,
+282,phr-v205-0162,transport,pass the vehicle inspection,वाहन निरीक्षण पास करना,4,Topic phrase bank informed by NAATI CCL domains,
+283,phr-v205-0163,transport,wear a seatbelt,सीट बेल्ट पहनना,3,Topic phrase bank informed by NAATI CCL domains,
+284,phr-v205-0164,transport,call roadside assistance,सड़क सहायता सेवा को बुलाना,3,Topic phrase bank informed by NAATI CCL domains,
+285,phr-v205-0165,transport,check demerit points,डिमेरिट अंक जाँचना,3,Topic phrase bank informed by NAATI CCL domains,
+286,phr-v205-0166,business,present a business proposal,व्यावसायिक प्रस्ताव प्रस्तुत करना,4,Topic phrase bank informed by NAATI CCL domains,
+287,phr-v205-0167,business,request a written quotation,लिखित कोटेशन माँगना,4,Topic phrase bank informed by NAATI CCL domains,
+288,phr-v205-0168,business,issue a tax invoice,कर चालान जारी करना,4,Topic phrase bank informed by NAATI CCL domains,
+289,phr-v205-0169,business,confirm the order quantity,ऑर्डर की मात्रा की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+290,phr-v205-0170,business,agree on a delivery schedule,डिलीवरी समय-सारणी पर सहमत होना,5,Topic phrase bank informed by NAATI CCL domains,
+291,phr-v205-0171,business,negotiate the payment terms,भुगतान की शर्तों पर बातचीत करना,4,Topic phrase bank informed by NAATI CCL domains,
+292,phr-v205-0172,business,meet the quality standards,गुणवत्ता मानक पूरे करना,4,Topic phrase bank informed by NAATI CCL domains,
+293,phr-v205-0173,business,sign the supply contract,आपूर्ति अनुबंध पर हस्ताक्षर करना,4,Topic phrase bank informed by NAATI CCL domains,
+294,phr-v205-0174,business,contact the supplier,आपूर्तिकर्ता से संपर्क करना,3,Topic phrase bank informed by NAATI CCL domains,
+295,phr-v205-0175,business,report a production delay,उत्पादन में देरी की सूचना देना,4,Topic phrase bank informed by NAATI CCL domains,
+296,phr-v205-0176,business,prepare the meeting agenda,बैठक का एजेंडा तैयार करना,4,Topic phrase bank informed by NAATI CCL domains,
+297,phr-v205-0177,business,discuss a business partnership,व्यावसायिक साझेदारी पर चर्चा करना,4,Topic phrase bank informed by NAATI CCL domains,
+298,phr-v205-0178,business,calculate the profit margin,लाभ मार्जिन की गणना करना,4,Topic phrase bank informed by NAATI CCL domains,
+299,phr-v205-0179,business,open a customer account,ग्राहक खाता खोलना,4,Topic phrase bank informed by NAATI CCL domains,
+300,phr-v205-0180,business,approve the final design,अंतिम डिज़ाइन स्वीकृत करना,4,Topic phrase bank informed by NAATI CCL domains,
+301,phr-v205-0181,community,apply for a library card,पुस्तकालय कार्ड के लिए आवेदन करना,5,Topic phrase bank informed by NAATI CCL domains,
+302,phr-v205-0182,community,contact the local council,स्थानीय परिषद से संपर्क करना,4,Topic phrase bank informed by NAATI CCL domains,
+303,phr-v205-0183,community,attend fire safety training,अग्नि सुरक्षा प्रशिक्षण में भाग लेना,4,Topic phrase bank informed by NAATI CCL domains,
+304,phr-v205-0184,community,visit the community centre,सामुदायिक केंद्र जाना,4,Topic phrase bank informed by NAATI CCL domains,
+305,phr-v205-0185,community,request document translation,दस्तावेज़ अनुवाद का अनुरोध करना,3,Topic phrase bank informed by NAATI CCL domains,
+306,phr-v205-0186,community,book an interpreter,दुभाषिया बुक करना,3,Topic phrase bank informed by NAATI CCL domains,
+307,phr-v205-0187,community,register for a local event,स्थानीय कार्यक्रम के लिए पंजीकरण करना,5,Topic phrase bank informed by NAATI CCL domains,
+308,phr-v205-0188,community,provide an emergency contact,आपातकालीन संपर्क देना,4,Topic phrase bank informed by NAATI CCL domains,
+309,phr-v205-0189,community,read the public notice,सार्वजनिक सूचना पढ़ना,4,Topic phrase bank informed by NAATI CCL domains,
+310,phr-v205-0190,community,access community support,सामुदायिक सहायता प्राप्त करना,3,Topic phrase bank informed by NAATI CCL domains,
+311,phr-v205-0191,community,complete the service form,सेवा फॉर्म पूरा करना,4,Topic phrase bank informed by NAATI CCL domains,
+312,phr-v205-0192,community,confirm the appointment time,अपॉइंटमेंट समय की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+313,phr-v205-0193,community,show proof of identity,पहचान का प्रमाण दिखाना,4,Topic phrase bank informed by NAATI CCL domains,
+314,phr-v205-0194,community,make a service enquiry,सेवा संबंधी पूछताछ करना,4,Topic phrase bank informed by NAATI CCL domains,
+315,phr-v205-0195,community,provide customer feedback,ग्राहक प्रतिक्रिया देना,3,Topic phrase bank informed by NAATI CCL domains,
+316,phr-v205-0196,travel,confirm the flight booking,उड़ान बुकिंग की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+317,phr-v205-0197,travel,complete online check-in,ऑनलाइन चेक-इन पूरा करना,3,Topic phrase bank informed by NAATI CCL domains,
+318,phr-v205-0198,travel,download the boarding pass,बोर्डिंग पास डाउनलोड करना,4,Topic phrase bank informed by NAATI CCL domains,
+319,phr-v205-0199,travel,check the baggage allowance,सामान की सीमा जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+320,phr-v205-0200,travel,complete the customs declaration,सीमा शुल्क घोषणा पूरी करना,4,Topic phrase bank informed by NAATI CCL domains,
+321,phr-v205-0201,travel,go through passport control,पासपोर्ट नियंत्रण से गुजरना,4,Topic phrase bank informed by NAATI CCL domains,
+322,phr-v205-0202,travel,confirm the hotel reservation,होटल आरक्षण की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+323,phr-v205-0203,travel,check room availability,कमरे की उपलब्धता जाँचना,3,Topic phrase bank informed by NAATI CCL domains,
+324,phr-v205-0204,travel,read the cancellation policy,रद्दीकरण नीति पढ़ना,4,Topic phrase bank informed by NAATI CCL domains,
+325,phr-v205-0205,travel,buy travel insurance,यात्रा बीमा खरीदना,3,Topic phrase bank informed by NAATI CCL domains,
+326,phr-v205-0206,travel,find the departure gate,प्रस्थान द्वार ढूँढना,4,Topic phrase bank informed by NAATI CCL domains,
+327,phr-v205-0207,travel,report a delayed flight,विलंबित उड़ान की सूचना लेना,4,Topic phrase bank informed by NAATI CCL domains,
+328,phr-v205-0208,travel,catch the connecting flight,कनेक्टिंग उड़ान पकड़ना,4,Topic phrase bank informed by NAATI CCL domains,
+329,phr-v205-0209,travel,check the visa requirement,वीज़ा आवश्यकता जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+330,phr-v205-0210,travel,book a return ticket,वापसी टिकट बुक करना,4,Topic phrase bank informed by NAATI CCL domains,
+331,phr-v205-0211,family,register the marriage,विवाह पंजीकृत करना,3,Topic phrase bank informed by NAATI CCL domains,
+332,phr-v205-0212,family,request a birth certificate,जन्म प्रमाणपत्र का अनुरोध करना,4,Topic phrase bank informed by NAATI CCL domains,
+333,phr-v205-0213,family,confirm the relationship status,संबंध की स्थिति की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+334,phr-v205-0214,family,declare a de facto partner,डी फैक्टो साथी घोषित करना,5,Topic phrase bank informed by NAATI CCL domains,
+335,phr-v205-0215,family,contact a marriage bureau,विवाह ब्यूरो से संपर्क करना,4,Topic phrase bank informed by NAATI CCL domains,
+336,phr-v205-0216,family,provide family details,परिवार का विवरण देना,3,Topic phrase bank informed by NAATI CCL domains,
+337,phr-v205-0217,family,list a dependent child,आश्रित बच्चे का विवरण देना,4,Topic phrase bank informed by NAATI CCL domains,
+338,phr-v205-0218,family,obtain parental consent,अभिभावक की सहमति लेना,3,Topic phrase bank informed by NAATI CCL domains,
+339,phr-v205-0219,family,record the separation date,अलगाव की तारीख दर्ज करना,4,Topic phrase bank informed by NAATI CCL domains,
+340,phr-v205-0220,family,arrange an identity witness,पहचान के गवाह की व्यवस्था करना,4,Topic phrase bank informed by NAATI CCL domains,
+341,phr-v205-0221,family,apply for a name change,नाम परिवर्तन के लिए आवेदन करना,5,Topic phrase bank informed by NAATI CCL domains,
+342,phr-v205-0222,family,list every household member,घर के प्रत्येक सदस्य को दर्ज करना,4,Topic phrase bank informed by NAATI CCL domains,
+343,phr-v205-0223,family,book a registry appointment,पंजीकरण कार्यालय का अपॉइंटमेंट लेना,4,Topic phrase bank informed by NAATI CCL domains,
+344,phr-v205-0224,family,pay the registration fee,पंजीकरण शुल्क चुकाना,4,Topic phrase bank informed by NAATI CCL domains,
+345,phr-v205-0225,utilities,check the electricity bill,बिजली बिल जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+346,phr-v205-0226,utilities,pay the gas bill,गैस बिल चुकाना,4,Topic phrase bank informed by NAATI CCL domains,
+347,phr-v205-0227,utilities,submit a meter reading,मीटर रीडिंग जमा करना,4,Topic phrase bank informed by NAATI CCL domains,
+348,phr-v205-0228,utilities,set up a payment plan,भुगतान योजना बनाना,5,Topic phrase bank informed by NAATI CCL domains,
+349,phr-v205-0229,utilities,pay the overdue amount,बकाया राशि चुकाना,4,Topic phrase bank informed by NAATI CCL domains,
+350,phr-v205-0230,utilities,request hardship support,आर्थिक कठिनाई सहायता माँगना,3,Topic phrase bank informed by NAATI CCL domains,
+351,phr-v205-0231,utilities,connect the utility service,उपयोगिता सेवा जोड़ना,4,Topic phrase bank informed by NAATI CCL domains,
+352,phr-v205-0232,utilities,receive a disconnection notice,सेवा बंद करने का नोटिस मिलना,4,Topic phrase bank informed by NAATI CCL domains,
+353,phr-v205-0233,utilities,check the billing period,बिलिंग अवधि जाँचना,4,Topic phrase bank informed by NAATI CCL domains,
+354,phr-v205-0234,utilities,quote the account number,खाता संख्या बताना,4,Topic phrase bank informed by NAATI CCL domains,
+355,phr-v205-0235,utilities,confirm the due date,भुगतान की अंतिम तारीख की पुष्टि करना,4,Topic phrase bank informed by NAATI CCL domains,
+356,phr-v205-0236,utilities,pay by instalments,किस्तों में भुगतान करना,3,Topic phrase bank informed by NAATI CCL domains,
+357,phr-v205-0237,utilities,apply for an energy concession,ऊर्जा रियायत के लिए आवेदन करना,5,Topic phrase bank informed by NAATI CCL domains,
+358,phr-v205-0238,utilities,reduce energy usage,ऊर्जा उपयोग कम करना,3,Topic phrase bank informed by NAATI CCL domains,
+359,phr-v205-0239,education,course entry requirements,पाठ्यक्रम की प्रवेश आवश्यकताएँ,3,Dialogue-informed phrase: Admission in a Course,dialogue-001
+360,phr-v205-0240,education,six-month course duration,छह महीने की पाठ्यक्रम अवधि,3,Dialogue-informed phrase: Admission in a Course,dialogue-001
+361,phr-v205-0241,employment,warehouse assistant vacancy,गोदाम सहायक की रिक्ति,3,Dialogue-informed phrase: Applying for a Job,dialogue-002
+362,phr-v205-0242,employment,submit an updated resume,अद्यतन रिज़्यूमे जमा करना,4,Dialogue-informed phrase: Applying for a Job,dialogue-002
+363,phr-v205-0243,transport,heavy vehicle licence test,भारी वाहन लाइसेंस परीक्षण,4,Dialogue-informed phrase: Applying for a Truck's License,dialogue-003
+364,phr-v205-0244,transport,provide a driving record,ड्राइविंग रिकॉर्ड देना,4,Dialogue-informed phrase: Applying for a Truck's License,dialogue-003
+365,phr-v205-0245,banking,claim work-related expenses,काम से जुड़े खर्च का दावा करना,3,Dialogue-informed phrase: ATO Tax Lodgement,dialogue-004
+366,phr-v205-0246,immigration,citizenship ceremony invitation,नागरिकता समारोह का निमंत्रण,3,Dialogue-informed phrase: Australian Citizenship,dialogue-005
+367,phr-v205-0247,immigration,meet the residence requirement,निवास आवश्यकता पूरी करना,4,Dialogue-informed phrase: Australian Citizenship,dialogue-005
+368,phr-v205-0248,legal,report an armed robbery,सशस्त्र डकैती की रिपोर्ट करना,4,Dialogue-informed phrase: Bank Robbery,dialogue-006
+369,phr-v205-0249,legal,describe the suspect,संदिग्ध का हुलिया बताना,3,Dialogue-informed phrase: Bank Robbery,dialogue-006
+370,phr-v205-0250,education,report repeated bullying,बार-बार होने वाली बदमाशी की शिकायत करना,3,Dialogue-informed phrase: Bullying at School,dialogue-007
+371,phr-v205-0251,education,meet the school counsellor,स्कूल परामर्शदाता से मिलना,4,Dialogue-informed phrase: Bullying at School,dialogue-007
+372,phr-v205-0252,business,expand the milk business,दूध व्यवसाय का विस्तार करना,4,Dialogue-informed phrase: Milk Plant Business,dialogue-008
+373,phr-v205-0253,business,discuss production capacity,उत्पादन क्षमता पर चर्चा करना,3,Dialogue-informed phrase: Milk Plant Business,dialogue-008
+374,phr-v205-0254,transport,buy a concession ticket,रियायती टिकट खरीदना,4,Dialogue-informed phrase: Buying a Ticket,dialogue-009
+375,phr-v205-0255,transport,confirm the departure time,प्रस्थान समय की पुष्टि करना,4,Dialogue-informed phrase: Buying a Ticket,dialogue-009
+376,phr-v205-0256,education,student car insurance,विद्यार्थी कार बीमा,3,Dialogue-informed phrase: Car Insurance for a Student,dialogue-010
+377,phr-v205-0257,education,compare insurance premiums,बीमा प्रीमियम की तुलना करना,3,Dialogue-informed phrase: Car Insurance for a Student,dialogue-010
+378,phr-v205-0258,insurance,comprehensive car cover,व्यापक कार बीमा कवरेज,3,Dialogue-informed phrase: Car Insurance,dialogue-011
+379,phr-v205-0259,insurance,pay the policy excess,पॉलिसी की अतिरिक्त राशि चुकाना,4,Dialogue-informed phrase: Car Insurance,dialogue-011
+380,phr-v205-0260,business,confirm the guest numbers,मेहमानों की संख्या की पुष्टि करना,4,Dialogue-informed phrase: Catering Booking,dialogue-012
+381,phr-v205-0261,business,choose the catering menu,कैटरिंग मेनू चुनना,4,Dialogue-informed phrase: Catering Booking,dialogue-012
+382,phr-v205-0262,education,install school CCTV,स्कूल में सीसीटीवी लगाना,3,Dialogue-informed phrase: CCTV in School,dialogue-013
+383,phr-v205-0263,education,protect student privacy,विद्यार्थियों की गोपनीयता सुरक्षित रखना,3,Dialogue-informed phrase: CCTV in School,dialogue-013
+384,phr-v205-0264,social,claim Carer Payment,देखभालकर्ता भुगतान का दावा करना,3,Dialogue-informed phrase: Centrelink Carer Payment,dialogue-014
+385,phr-v205-0265,social,provide medical evidence,चिकित्सकीय प्रमाण देना,3,Dialogue-informed phrase: Centrelink Carer Payment,dialogue-014
+386,phr-v205-0266,education,check subsidy eligibility,सब्सिडी की पात्रता जाँचना,3,Dialogue-informed phrase: Child Care Subsidy,dialogue-015
+387,phr-v205-0267,education,confirm approved care hours,स्वीकृत देखभाल घंटों की पुष्टि करना,4,Dialogue-informed phrase: Child Care Subsidy,dialogue-015
+388,phr-v205-0268,education,update childcare details,बाल देखभाल विवरण अपडेट करना,3,Dialogue-informed phrase: Child Care Subsidy 2,dialogue-016
+389,phr-v205-0269,education,report a change in income,आय में बदलाव की सूचना देना,5,Dialogue-informed phrase: Child Care Subsidy 2,dialogue-016
+390,phr-v205-0270,legal,lodge a VCAT application,वीकैट आवेदन दर्ज करना,4,Dialogue-informed phrase: Complaint to VCAT,dialogue-017
+391,phr-v205-0271,legal,request urgent repairs,तत्काल मरम्मत का अनुरोध करना,3,Dialogue-informed phrase: Complaint to VCAT,dialogue-017
+392,phr-v205-0272,housing,obtain a building permit,निर्माण अनुमति प्राप्त करना,4,Dialogue-informed phrase: Constructing a House,dialogue-018
+393,phr-v205-0273,housing,approve the house plans,मकान के नक्शे स्वीकृत करना,4,Dialogue-informed phrase: Constructing a House,dialogue-018
+394,phr-v205-0274,housing,repair the cracked driveway,दरार वाले ड्राइववे की मरम्मत करना,4,Dialogue-informed phrase: Cracked Driveway,dialogue-019
+395,phr-v205-0275,travel,declare restricted goods,प्रतिबंधित वस्तुओं की घोषणा करना,3,Dialogue-informed phrase: Customs Issue,dialogue-020
+396,phr-v205-0276,travel,answer customs questions,सीमा शुल्क संबंधी प्रश्नों का उत्तर देना,3,Dialogue-informed phrase: Customs Issue,dialogue-020
+397,phr-v205-0277,consumer,complain about late delivery,देरी से हुई डिलीवरी की शिकायत करना,4,Dialogue-informed phrase: Delay in Deliveries,dialogue-021
+398,phr-v205-0278,consumer,request an updated delivery date,नई डिलीवरी तारीख माँगना,5,Dialogue-informed phrase: Delay in Deliveries,dialogue-021
+399,phr-v205-0279,banking,request more time to pay,भुगतान के लिए अधिक समय माँगना,5,Dialogue-informed phrase: Delay in Tax Payment,dialogue-022
+400,phr-v205-0280,banking,avoid a late-payment penalty,देर से भुगतान का जुर्माना टालना,4,Dialogue-informed phrase: Delay in Tax Payment,dialogue-022
+401,phr-v205-0281,health,book a dental appointment,दंत चिकित्सक का अपॉइंटमेंट लेना,4,Dialogue-informed phrase: Dentist and a Patient,dialogue-023
+402,phr-v205-0282,health,treat a painful tooth,दर्द वाले दाँत का इलाज करना,4,Dialogue-informed phrase: Dentist and a Patient,dialogue-023
+403,phr-v205-0283,employment,report workplace discrimination,कार्यस्थल के भेदभाव की शिकायत करना,3,Dialogue-informed phrase: Discrimination,dialogue-024
+404,phr-v205-0284,employment,request a fair investigation,निष्पक्ष जाँच का अनुरोध करना,4,Dialogue-informed phrase: Discrimination,dialogue-024
+405,phr-v205-0285,health,describe the main symptoms,मुख्य लक्षण बताना,4,Dialogue-informed phrase: Doctor and Patient,dialogue-025
+406,phr-v205-0286,health,follow the treatment plan,उपचार योजना का पालन करना,4,Dialogue-informed phrase: Doctor and Patient,dialogue-025
+407,phr-v205-0287,health,manage the dog’s weight,कुत्ते का वजन नियंत्रित करना,4,Dialogue-informed phrase: Dog's Obesity,dialogue-026
+408,phr-v205-0288,health,change the feeding routine,खिलाने की दिनचर्या बदलना,4,Dialogue-informed phrase: Dog's Obesity,dialogue-026
+409,phr-v205-0289,legal,report a drunk driver,नशे में चालक की रिपोर्ट करना,4,Dialogue-informed phrase: Drunk Driver,dialogue-027
+410,phr-v205-0290,legal,provide the vehicle location,वाहन का स्थान बताना,4,Dialogue-informed phrase: Drunk Driver,dialogue-027
+411,phr-v205-0291,immigration,apply for an ETA,ईटीए के लिए आवेदन करना,4,Dialogue-informed phrase: Electronic Travel Authority Visa,dialogue-028
+412,phr-v205-0292,immigration,check passport validity,पासपोर्ट की वैधता जाँचना,3,Dialogue-informed phrase: Electronic Travel Authority Visa,dialogue-028
+413,phr-v205-0293,legal,correct false information,गलत जानकारी सुधारना,3,Dialogue-informed phrase: False Information,dialogue-029
+414,phr-v205-0294,legal,provide a truthful statement,सच्चा बयान देना,4,Dialogue-informed phrase: False Information,dialogue-029
+415,phr-v205-0295,housing,choose the fence material,बाड़ की सामग्री चुनना,4,Dialogue-informed phrase: Fencing,dialogue-030
+416,phr-v205-0296,housing,confirm the boundary line,सीमा रेखा की पुष्टि करना,4,Dialogue-informed phrase: Fencing,dialogue-030
+417,phr-v205-0297,community,join the fire education program,अग्नि शिक्षा कार्यक्रम में शामिल होना,5,Dialogue-informed phrase: Fire Ed Program,dialogue-031
+418,phr-v205-0298,community,learn the evacuation procedure,निकासी प्रक्रिया सीखना,4,Dialogue-informed phrase: Fire Ed Program,dialogue-031
+419,phr-v205-0299,travel,check in for the flight,उड़ान के लिए चेक-इन करना,5,Dialogue-informed phrase: Flight Check-In,dialogue-032
+420,phr-v205-0300,travel,weigh the checked baggage,चेक-इन सामान का वजन करना,4,Dialogue-informed phrase: Flight Check-In,dialogue-032
+421,phr-v205-0301,travel,report a cancelled flight,रद्द उड़ान की शिकायत करना,4,Dialogue-informed phrase: Flight Customer Service,dialogue-033
+422,phr-v205-0302,travel,request alternative travel,वैकल्पिक यात्रा की माँग करना,3,Dialogue-informed phrase: Flight Customer Service,dialogue-033
+423,phr-v205-0303,housing,report flood damage,बाढ़ से हुए नुकसान की रिपोर्ट करना,3,Dialogue-informed phrase: Flooded House Insurance - Part 1,dialogue-034
+424,phr-v205-0304,housing,start an insurance claim,बीमा दावा शुरू करना,4,Dialogue-informed phrase: Flooded House Insurance - Part 1,dialogue-034
+425,phr-v205-0305,housing,arrange a damage inspection,नुकसान का निरीक्षण करवाना,4,Dialogue-informed phrase: Flooded House Insurance - Part 2,dialogue-035
+426,phr-v205-0306,housing,provide repair estimates,मरम्मत के अनुमान देना,3,Dialogue-informed phrase: Flooded House Insurance - Part 2,dialogue-035
+427,phr-v205-0307,legal,identify an ATO scam,एटीओ धोखाधड़ी की पहचान करना,4,Dialogue-informed phrase: Fraud call by ATO,dialogue-036
+428,phr-v205-0308,legal,protect personal information,व्यक्तिगत जानकारी सुरक्षित रखना,3,Dialogue-informed phrase: Fraud call by ATO,dialogue-036
+429,phr-v205-0309,legal,report a hit-and-run,टक्कर मारकर भागने की रिपोर्ट करना,3,Dialogue-informed phrase: Hit and Run,dialogue-037
+430,phr-v205-0310,legal,remember the number plate,नंबर प्लेट याद रखना,4,Dialogue-informed phrase: Hit and Run,dialogue-037
+431,phr-v205-0311,banking,compare home loan options,गृह ऋण विकल्पों की तुलना करना,4,Dialogue-informed phrase: Home Loans,dialogue-038
+432,phr-v205-0312,banking,calculate monthly repayments,मासिक किस्तों की गणना करना,3,Dialogue-informed phrase: Home Loans,dialogue-038
+433,phr-v205-0313,travel,reserve a hotel room,होटल का कमरा आरक्षित करना,4,Dialogue-informed phrase: Hotel Reservation,dialogue-039
+434,phr-v205-0314,travel,request a late checkout,देर से चेक-आउट का अनुरोध करना,4,Dialogue-informed phrase: Hotel Reservation,dialogue-039
+435,phr-v205-0315,immigration,answer immigration questions,आव्रजन संबंधी प्रश्नों का उत्तर देना,3,Dialogue-informed phrase: Immigration Check,dialogue-040
+436,phr-v205-0316,immigration,show your travel documents,यात्रा दस्तावेज़ दिखाना,4,Dialogue-informed phrase: Immigration Check,dialogue-040
+437,phr-v205-0317,health,check the immunisation schedule,टीकाकरण समय-सारणी जाँचना,4,Dialogue-informed phrase: Immunisation Enquiry,dialogue-041
+438,phr-v205-0318,health,bring the child’s health record,बच्चे का स्वास्थ्य रिकॉर्ड लाना,5,Dialogue-informed phrase: Immunisation Enquiry,dialogue-041
+439,phr-v205-0319,employment,submit an injury claim,चोट का दावा जमा करना,4,Dialogue-informed phrase: Injury Claim,dialogue-042
+440,phr-v205-0320,banking,discuss investment options,निवेश विकल्पों पर चर्चा करना,3,Dialogue-informed phrase: Investment,dialogue-043
+441,phr-v205-0321,banking,understand the financial risk,वित्तीय जोखिम समझना,4,Dialogue-informed phrase: Investment,dialogue-043
+442,phr-v205-0322,housing,report a laneway problem,गली की समस्या की सूचना देना,4,Dialogue-informed phrase: Laneway,dialogue-044
+443,phr-v205-0323,community,replace a lost library card,खोया पुस्तकालय कार्ड बदलवाना,5,Dialogue-informed phrase: Library Card Issue,dialogue-045
+444,phr-v205-0324,community,pay the replacement fee,बदलाव शुल्क चुकाना,4,Dialogue-informed phrase: Library Card Issue,dialogue-045
+445,phr-v205-0325,insurance,choose life insurance cover,जीवन बीमा कवरेज चुनना,4,Dialogue-informed phrase: Life Insurance,dialogue-046
+446,phr-v205-0326,insurance,nominate the beneficiary,लाभार्थी नामित करना,3,Dialogue-informed phrase: Life Insurance,dialogue-046
+447,phr-v205-0327,family,register with a marriage bureau,विवाह ब्यूरो में पंजीकरण करना,5,Dialogue-informed phrase: Marriage Bureau,dialogue-047
+448,phr-v205-0328,family,describe partner preferences,साथी संबंधी प्राथमिकताएँ बताना,3,Dialogue-informed phrase: Marriage Bureau,dialogue-047
+449,phr-v205-0329,consumer,report a faulty batch,खराब बैच की रिपोर्ट करना,4,Dialogue-informed phrase: Malproduction,dialogue-048
+450,phr-v205-0330,consumer,investigate the production fault,उत्पादन दोष की जाँच करना,4,Dialogue-informed phrase: Malproduction,dialogue-048
+451,phr-v205-0331,family,book a marriage registration,विवाह पंजीकरण बुक करना,4,Dialogue-informed phrase: Marriage Registration,dialogue-049
+452,phr-v205-0332,family,bring two witnesses,दो गवाह साथ लाना,3,Dialogue-informed phrase: Marriage Registration,dialogue-049
+453,phr-v205-0333,legal,assist a murder investigation,हत्या की जाँच में सहायता करना,4,Dialogue-informed phrase: Murder Investigation,dialogue-050
+454,phr-v205-0334,legal,give a witness statement,गवाह का बयान देना,4,Dialogue-informed phrase: Murder Investigation,dialogue-050
+455,phr-v205-0335,housing,resolve a neighbour dispute,पड़ोसी का विवाद सुलझाना,4,Dialogue-informed phrase: Neighbourhood Dispute,dialogue-051
+456,phr-v205-0336,housing,avoid further confrontation,आगे का टकराव टालना,3,Dialogue-informed phrase: Neighbourhood Dispute,dialogue-051
+457,phr-v205-0337,social,apply for the age pension,वृद्धावस्था पेंशन के लिए आवेदन करना,5,Dialogue-informed phrase: Old Age Pension,dialogue-052
+458,phr-v205-0338,social,complete the assets test,संपत्ति परीक्षण पूरा करना,4,Dialogue-informed phrase: Old Age Pension,dialogue-052
+459,phr-v205-0339,banking,open an everyday account,दैनिक लेन-देन खाता खोलना,4,Dialogue-informed phrase: Opening a Bank Account,dialogue-053
+460,phr-v205-0340,banking,certify the identity copies,पहचान की प्रतियाँ प्रमाणित करवाना,4,Dialogue-informed phrase: Opening a Bank Account,dialogue-053
+461,phr-v205-0341,immigration,seek onshore protection,ऑनशोर संरक्षण का अनुरोध करना,3,Dialogue-informed phrase: On-shore Protection Visa,dialogue-054
+462,phr-v205-0342,immigration,explain the fear of return,वापसी का डर समझाना,5,Dialogue-informed phrase: On-shore Protection Visa,dialogue-054
+463,phr-v205-0343,education,discuss the student’s progress,विद्यार्थी की प्रगति पर चर्चा करना,4,Dialogue-informed phrase: Parent Teacher Meeting,dialogue-055
+464,phr-v205-0344,education,improve classroom behaviour,कक्षा का व्यवहार सुधारना,3,Dialogue-informed phrase: Parent Teacher Meeting,dialogue-055
+465,phr-v205-0345,employment,ask for a salary review,वेतन समीक्षा का अनुरोध करना,5,Dialogue-informed phrase: Pay Rise,dialogue-056
+466,phr-v205-0346,employment,explain added responsibilities,अतिरिक्त जिम्मेदारियाँ समझाना,3,Dialogue-informed phrase: Pay Rise,dialogue-056
+467,phr-v205-0347,consumer,place a bulk order,थोक ऑर्डर देना,4,Dialogue-informed phrase: Placing an Order,dialogue-057
+468,phr-v205-0348,consumer,confirm the delivery address,डिलीवरी पते की पुष्टि करना,4,Dialogue-informed phrase: Placing an Order,dialogue-057
+469,phr-v205-0349,legal,follow the police instructions,पुलिस निर्देशों का पालन करना,4,Dialogue-informed phrase: Police Raid,dialogue-058
+470,phr-v205-0350,legal,remain outside the premises,परिसर के बाहर रहना,4,Dialogue-informed phrase: Police Raid,dialogue-058
+471,phr-v205-0351,health,discuss pregnancy options,गर्भावस्था के विकल्पों पर चर्चा करना,3,Dialogue-informed phrase: Pregnancy and Abortion,dialogue-059
+472,phr-v205-0352,health,provide informed consent,सूचित सहमति देना,3,Dialogue-informed phrase: Pregnancy and Abortion,dialogue-059
+473,phr-v205-0353,transport,replace a faulty Myki,खराब माइकी कार्ड बदलवाना,4,Dialogue-informed phrase: PTV Myki,dialogue-060
+474,phr-v205-0354,transport,transfer the card balance,कार्ड की शेष राशि स्थानांतरित करना,4,Dialogue-informed phrase: PTV Myki,dialogue-060
+475,phr-v205-0355,consumer,compare mobile phone plans,मोबाइल फोन योजनाओं की तुलना करना,4,Dialogue-informed phrase: Purchasing a New Phone,dialogue-061
+476,phr-v205-0356,consumer,check the contract period,अनुबंध अवधि जाँचना,4,Dialogue-informed phrase: Purchasing a New Phone,dialogue-061
+477,phr-v205-0357,health,prepare for a blood test,रक्त जाँच की तैयारी करना,5,Dialogue-informed phrase: Query About Blood Test,dialogue-062
+478,phr-v205-0358,health,ask whether fasting is needed,पूछना कि खाली पेट रहना है या नहीं,5,Dialogue-informed phrase: Query About Blood Test,dialogue-062
+479,phr-v205-0359,housing,plan the home renovation,घर की मरम्मत की योजना बनाना,4,Dialogue-informed phrase: Renovation,dialogue-063
+480,phr-v205-0360,housing,confirm the project budget,परियोजना बजट की पुष्टि करना,4,Dialogue-informed phrase: Renovation,dialogue-063
+481,phr-v205-0361,housing,apply for a bond loan,बॉन्ड ऋण के लिए आवेदन करना,5,Dialogue-informed phrase: Rent Assist Bond Loan,dialogue-064
+482,phr-v205-0362,housing,provide proof of rent,किराये का प्रमाण देना,4,Dialogue-informed phrase: Rent Assist Bond Loan,dialogue-064
+483,phr-v205-0363,consumer,return the unwanted product,अनचाहा उत्पाद वापस करना,4,Dialogue-informed phrase: Returning a Product,dialogue-065
+484,phr-v205-0364,consumer,show the original receipt,मूल रसीद दिखाना,4,Dialogue-informed phrase: Returning a Product,dialogue-065
+485,phr-v205-0365,consumer,give restaurant feedback,रेस्तराँ की प्रतिक्रिया देना,3,Dialogue-informed phrase: Restaurant Feedback,dialogue-066
+486,phr-v205-0366,consumer,report poor food quality,खराब भोजन गुणवत्ता की शिकायत करना,4,Dialogue-informed phrase: Restaurant Feedback,dialogue-066
+487,phr-v205-0367,health,treat a scorpion sting,बिच्छू के डंक का इलाज करना,4,Dialogue-informed phrase: Scorpion Bite,dialogue-067
+488,phr-v205-0368,health,seek urgent medical help,तुरंत चिकित्सकीय सहायता लेना,4,Dialogue-informed phrase: Scorpion Bite,dialogue-067
+489,phr-v205-0369,health,claim sickness allowance,बीमारी भत्ता का दावा करना,3,Dialogue-informed phrase: Sickness Allowance,dialogue-068
+490,phr-v205-0370,health,treat a stiff neck,गर्दन की अकड़न का इलाज करना,4,Dialogue-informed phrase: Stiff Neck,dialogue-069
+491,phr-v205-0371,health,avoid heavy lifting,भारी सामान उठाने से बचना,3,Dialogue-informed phrase: Stiff Neck,dialogue-069
+492,phr-v205-0372,education,lodge a student complaint,विद्यार्थी की शिकायत दर्ज करना,4,Dialogue-informed phrase: Student's Complaint,dialogue-070
+493,phr-v205-0373,education,request a course refund,पाठ्यक्रम शुल्क वापसी माँगना,4,Dialogue-informed phrase: Student's Complaint,dialogue-070
+494,phr-v205-0374,immigration,extend the temporary visa,अस्थायी वीज़ा बढ़वाना,4,Dialogue-informed phrase: Temporary Visa,dialogue-071
+495,phr-v205-0375,immigration,check the expiry date,समाप्ति तारीख जाँचना,4,Dialogue-informed phrase: Temporary Visa,dialogue-071
+496,phr-v205-0376,legal,report stolen property,चोरी हुई संपत्ति की रिपोर्ट करना,3,Dialogue-informed phrase: Theft,dialogue-072
+497,phr-v205-0377,legal,list the missing items,गुम वस्तुओं की सूची देना,4,Dialogue-informed phrase: Theft,dialogue-072
+498,phr-v205-0378,utilities,query a high utility bill,अधिक उपयोगिता बिल पर पूछताछ करना,5,Dialogue-informed phrase: Utility Bill,dialogue-073
+499,phr-v205-0379,utilities,check the meter reading,मीटर रीडिंग जाँचना,4,Dialogue-informed phrase: Utility Bill,dialogue-073
+500,phr-v205-0380,legal,contact Victoria Police,विक्टोरिया पुलिस से संपर्क करना,3,Dialogue-informed phrase: Victoria Police,dialogue-074
+501,phr-v205-0381,legal,quote the event number,घटना संख्या बताना,4,Dialogue-informed phrase: Victoria Police,dialogue-074
+502,phr-v205-0382,business,negotiate the partnership terms,साझेदारी की शर्तों पर बातचीत करना,4,Dialogue-informed phrase: Business Proposal,dialogue-075
+503,phr-v205-0383,health,relieve constipation symptoms,कब्ज के लक्षण कम करना,3,Dialogue-informed phrase: Constipation,dialogue-076
+504,phr-v205-0384,health,increase dietary fibre,आहार में रेशा बढ़ाना,3,Dialogue-informed phrase: Constipation,dialogue-076
+505,phr-v205-0385,immigration,apply for a de facto visa,डी फैक्टो वीज़ा के लिए आवेदन करना,6,Dialogue-informed phrase: De facto Visa,dialogue-077
+506,phr-v205-0386,immigration,prove the genuine relationship,वास्तविक संबंध का प्रमाण देना,4,Dialogue-informed phrase: De facto Visa,dialogue-077
+507,phr-v205-0387,travel,confirm the room booking,कमरे की बुकिंग की पुष्टि करना,4,Dialogue-informed phrase: Hotel Reservation,dialogue-078
+508,phr-v205-0388,travel,ask about breakfast inclusion,नाश्ता शामिल होने के बारे में पूछना,4,Dialogue-informed phrase: Hotel Reservation,dialogue-078
+509,phr-v205-0389,banking,report a retained ATM card,एटीएम में फँसे कार्ड की रिपोर्ट करना,5,Dialogue-informed phrase: ATM Card,dialogue-079
+510,phr-v205-0390,banking,request a replacement card,नया कार्ड माँगना,4,Dialogue-informed phrase: ATM Card,dialogue-079
+511,phr-v205-0391,employment,confirm the overtime payment,ओवरटाइम भुगतान की पुष्टि करना,4,Dialogue-informed phrase: Extra Shift,dialogue-080
+512,phr-v205-0392,immigration,prepare citizenship documents,नागरिकता दस्तावेज़ तैयार करना,3,Dialogue-informed phrase: Australian Citizenship,dialogue-081
+513,phr-v205-0393,immigration,attend the citizenship ceremony,नागरिकता समारोह में जाना,4,Dialogue-informed phrase: Australian Citizenship,dialogue-081
+514,phr-v205-0394,community,request a certified translation,प्रमाणित अनुवाद का अनुरोध करना,4,Dialogue-informed phrase: Document Translation,dialogue-082
+515,phr-v205-0395,community,confirm the translation fee,अनुवाद शुल्क की पुष्टि करना,4,Dialogue-informed phrase: Document Translation,dialogue-082
+516,phr-v205-0396,housing,repair the damaged fence,क्षतिग्रस्त बाड़ की मरम्मत करना,4,Dialogue-informed phrase: Fence Dog,dialogue-083
+517,phr-v205-0397,housing,keep the dog secure,कुत्ते को सुरक्षित रखना,4,Dialogue-informed phrase: Fence Dog,dialogue-083
+518,phr-v205-0398,health,discuss Down syndrome screening,डाउन सिंड्रोम जाँच पर चर्चा करना,4,Dialogue-informed phrase: Down Syndrome,dialogue-084
+519,phr-v205-0399,health,explain the test results,जाँच के परिणाम समझाना,4,Dialogue-informed phrase: Down Syndrome,dialogue-084
+520,phr-v205-0400,utilities,request electricity hardship support,बिजली बिल के लिए कठिनाई सहायता माँगना,4,Dialogue-informed phrase: Electricity Bill,dialogue-085
+521,phr-v205-0401,utilities,divide the bill into instalments,बिल को किस्तों में बाँटना,5,Dialogue-informed phrase: Electricity Bill,dialogue-085
+522,phr-v205-0402,community,please confirm the details,कृपया विवरण की पुष्टि कीजिए,4,General community interpreting phrase bank,
+523,phr-v205-0403,community,provide the required documents,आवश्यक दस्तावेज़ दीजिए,4,General community interpreting phrase bank,
+524,phr-v205-0404,community,complete the application form,आवेदन फॉर्म पूरा कीजिए,4,General community interpreting phrase bank,
+525,phr-v205-0405,community,sign at the bottom,नीचे हस्ताक्षर कीजिए,4,General community interpreting phrase bank,
+526,phr-v205-0406,community,keep a copy for your records,अपने रिकॉर्ड के लिए एक प्रति रखिए,6,General community interpreting phrase bank,
+527,phr-v205-0407,community,contact us as soon as possible,जितनी जल्दी हो सके हमसे संपर्क कीजिए,6,General community interpreting phrase bank,
+528,phr-v205-0408,community,the decision is still pending,निर्णय अभी लंबित है,5,General community interpreting phrase bank,
+529,phr-v205-0409,community,the application has been approved,आवेदन स्वीकृत हो गया है,5,General community interpreting phrase bank,
+530,phr-v205-0410,community,the request has been declined,अनुरोध अस्वीकार कर दिया गया है,5,General community interpreting phrase bank,
+531,phr-v205-0411,community,additional information is required,अतिरिक्त जानकारी आवश्यक है,4,General community interpreting phrase bank,
+532,phr-v205-0412,community,the deadline has passed,अंतिम तारीख बीत चुकी है,4,General community interpreting phrase bank,
+533,phr-v205-0413,community,within fourteen days,चौदह दिनों के भीतर,3,General community interpreting phrase bank,
+534,phr-v205-0414,community,before the due date,अंतिम तारीख से पहले,4,General community interpreting phrase bank,
+535,phr-v205-0415,community,after receiving the notice,नोटिस मिलने के बाद,4,General community interpreting phrase bank,
+536,phr-v205-0416,community,subject to approval,स्वीकृति के अधीन,3,General community interpreting phrase bank,
+537,phr-v205-0417,community,without further delay,और देरी किए बिना,3,General community interpreting phrase bank,
+538,phr-v205-0418,community,according to the policy,नीति के अनुसार,4,General community interpreting phrase bank,
+539,phr-v205-0419,community,under the current rules,वर्तमान नियमों के तहत,4,General community interpreting phrase bank,
+540,phr-v205-0420,community,depending on your circumstances,आपकी परिस्थितियों के अनुसार,4,General community interpreting phrase bank,
+541,phr-v205-0421,community,at your earliest convenience,आपकी सुविधानुसार जल्द से जल्द,4,General community interpreting phrase bank,
+542,phr-v205-0422,community,provide written confirmation,लिखित पुष्टि दीजिए,3,General community interpreting phrase bank,
+543,phr-v205-0423,community,request further information,अधिक जानकारी का अनुरोध करना,3,General community interpreting phrase bank,
+544,phr-v205-0424,community,make an appointment online,ऑनलाइन अपॉइंटमेंट लेना,4,General community interpreting phrase bank,
+545,phr-v205-0425,community,attend in person,व्यक्तिगत रूप से उपस्थित होना,3,General community interpreting phrase bank,
+546,phr-v205-0426,community,send it by email,इसे ईमेल से भेजना,4,General community interpreting phrase bank,
+547,phr-v205-0427,community,upload a clear copy,स्पष्ट प्रति अपलोड करना,4,General community interpreting phrase bank,
+548,phr-v205-0428,community,bring the original document,मूल दस्तावेज़ साथ लाना,4,General community interpreting phrase bank,
+549,phr-v205-0429,community,pay the required fee,आवश्यक शुल्क चुकाना,4,General community interpreting phrase bank,
+550,phr-v205-0430,community,ask for an interpreter,दुभाषिया माँगना,4,General community interpreting phrase bank,
+551,phr-v205-0431,community,keep the information confidential,जानकारी गोपनीय रखना,4,General community interpreting phrase bank,

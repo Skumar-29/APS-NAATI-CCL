@@ -1,4 +1,4 @@
-# APS NAATI CCL Practice — Friends Beta V2.0.4
+# APS NAATI CCL Practice — Friends Beta V2.0.5
 
 This folder is ready for GitHub Pages. Once deployed over HTTPS, friends can install it like an app on Mac, iPhone, Android and Windows. No Terminal is required.
 
@@ -62,3 +62,15 @@ This is available for all 85 dialogues and 1,073 segments. Mock Test answers rem
 - Previous, Next and direct page selection are available above and below the cards.
 - Search and filter changes automatically return to page 1.
 - **Play all current filters** includes every matching item, not only the visible page.
+
+
+## V2.0.5 curated phrase-library update
+
+- Removed the imported full dialogue segments that previously appeared after phrase 120.
+- Replaced them with **551 reviewed short phrases**.
+- Preserved the original 120 core phrase IDs for progress compatibility.
+- Added topic-based phrases covering all CCL domains used by the 85-dialogue library.
+- Added at least two dialogue-specific phrases for every one of the 85 dialogues.
+- Phrase cards contain no long multi-sentence dialogue segments.
+- Maximum English phrase length is 11 words.
+- Phrase pagination now shows 5 pages at up to 120 cards per page.

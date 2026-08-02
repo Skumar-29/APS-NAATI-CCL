@@ -1,12 +1,13 @@
 {
-  "version": "2.0.4",
+  "version": "2.0.5",
   "channel": "friends-beta",
   "name": "APS NAATI CCL Practice",
-  "build": "friends-beta-v204-pagination",
+  "build": "friends-beta-v205-curated-phrases",
   "releaseDate": "2026-08-01",
   "vocabularyCount": 3000,
   "dialogueCount": 85,
   "segmentCount": 1073,
   "comparisonGuides": 1073,
-  "contentRevision": 3
+  "contentRevision": 4,
+  "phraseCount": 551
 }
