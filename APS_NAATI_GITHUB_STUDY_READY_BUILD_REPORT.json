@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "1.0",
+  "buildVersion": "github-study-ready-2026-08-05-v2",
+  "createdAt": "2026-08-05T21:50:21+10:00",
+  "status": "github-study-ready-package-created",
+  "source": {
+    "repo": "/Users/sandeepkumar/Downloads/aps-naati-ccl-ios",
+    "source": "/Users/sandeepkumar/Downloads/aps-naati-ccl-ios/www",
+    "strictGit": true,
+    "branch": "phase-4-hybrid-assessment",
+    "head": "0f297d0",
+    "workingTreeClean": true,
+    "tag": "pilot50-batch01-runtime-integration-apple-silicon-build-v4"
+  },
+  "content": {
+    "counts": {
+      "dialogues": 85,
+      "segments": 1073,
+      "vocabulary": 3000,
+      "phrases": 551
+    },
+    "hindiCoverage": {
+      "dialogueSegmentsWithHindi": 1073,
+      "vocabularyWithHindi": 3000,
+      "phrasesWithHindi": 551
+    },
+    "paths": {
+      "dialogues": "content/packs/hi/dialogues.json",
+      "vocabulary": "content/packs/hi/vocabulary.json",
+      "phrases": "content/packs/hi/phrases.json"
+    },
+    "runtimeOverlay": "content/pilot50/batch01-runtime-overlay-v1.json"
+  },
+  "features": {
+    "searchRepair": true,
+    "searchAllHindiMaterial": true,
+    "skipListeningToRecording": true,
+    "skipRecordingToNextSegment": true,
+    "skippedResponsesScored": false,
+    "settingsVersionCheck": true,
+    "updatesDeleteLocalStorage": false,
+    "updatesDeleteIndexedDB": false,
+    "updatesClearOnlyAppCaches": true,
+    "existingProgressKeysChanged": false,
+    "canonicalContentModified": false,
+    "repositoryModified": false
+  },
+  "validation": {
+    "requiredFiles": [
+      "index.html",
+      "app.js",
+      "styles.css",
+      "scoring.js",
+      "manifest.webmanifest",
+      "version.json",
+      "sw.js",
+      "study-hotfix-v2.js",
+      "study-hotfix-v2.css",
+      ".nojekyll",
+      "content/languages.json",
+      "content/pilot50/batch01-runtime-overlay-v1.json"
+    ],
+    "javascriptSyntax": {
+      "app.js": {
+        "passed": true,
+        "stderr": ""
+      },
+      "scoring.js": {
+        "passed": true,
+        "stderr": ""
+      },
+      "study-hotfix-v2.js": {
+        "passed": true,
+        "stderr": ""
+      },
+      "sw.js": {
+        "passed": true,
+        "stderr": ""
+      }
+    },
+    "indexOrderPassed": true,
+    "featureMarkersPassed": true
+  },
+  "package": {
+    "name": "APS_NAATI_CCL_Practice_GitHub_Study_Ready_2026-08-05_v2",
+    "fileCount": 31,
+    "manifest": {
+      ".nojekyll": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "404.html": {
+        "bytes": 1147,
+        "sha256": "6bbb06f6e0864935eccb95ca0ef41700f163fe683d9af0c1ea84ab16ea1bf19b"
+      },
+      "GITHUB_UPLOAD_STEPS.txt": {
+        "bytes": 1740,
+        "sha256": "91953d1d954def0ba940428b58ec843336d677486bf369e83095ca048126e4c9"
+      },
+      "README.txt": {
+        "bytes": 1740,
+        "sha256": "91953d1d954def0ba940428b58ec843336d677486bf369e83095ca048126e4c9"
+      },
+      "app.js": {
+        "bytes": 119800,
+        "sha256": "d9e3cf4c4568ccb839c750a05770ab5e353e27c7517115d9c88c183ac9fea108"
+      },
+      "app.js.backup-before-auth-emulator": {
+        "bytes": 109293,
+        "sha256": "7439cf6dd9909c5d0b385fb6849628b576f1038789c988be1724150d7978d851"
+      },
+      "app.js.backup-before-production-guard-rollout": {
+        "bytes": 113102,
+        "sha256": "eb5b3798dfdc3f699da033a1173b1d53f32d226f762092d39cdb38227dbc9491"
+      },
+      "app.js.backup-before-token-helper": {
+        "bytes": 108851,
+        "sha256": "58002b38cc1d516afad0526361e421f244dcfcf54edb2b8c4a3eff38fe9947a9"
+      },
+      "app.js.backup-before-transcription-helper": {
+        "bytes": 109823,
+        "sha256": "9b8a4ed88ca34eeffc5f30f5591f128f6eb0a2c5155b237ee07eccbf7288c9a8"
+      },
+      "content/dialogues.json": {
+        "bytes": 3015797,
+        "sha256": "6f52e2e9c7d6909abb612f10474c5b8ca68d1a540b31f3ea74cc06d00c725c47"
+      },
+      "content/exam_info.json": {
+        "bytes": 1795,
+        "sha256": "0fc764649f52d0e619e4b911aafdd3f170d329229ae7b14663744bc94e50dfa1"
+      },
+      "content/languages.json": {
+        "bytes": 1868,
+        "sha256": "67a3b6b5fa0556570da10ea05b02c171ee24996ed43dcdeaaa289071708aaf5c"
+      },
+      "content/lesson0.json": {
+        "bytes": 25987,
+        "sha256": "63e0773b3848b437989255380c2eae72d07299682fa1689371d3d104b6505396"
+      },
+      "content/packs/hi/dialogues.json": {
+        "bytes": 3015797,
+        "sha256": "6f52e2e9c7d6909abb612f10474c5b8ca68d1a540b31f3ea74cc06d00c725c47"
+      },
+      "content/packs/hi/phrases.json": {
+        "bytes": 207414,
+        "sha256": "16a1b8fb876e31133d19fc0f07d292439b6836307fc3805d9eca449a39c7ef65"
+      },
+      "content/packs/hi/vocabulary.json": {
+        "bytes": 1837654,
+        "sha256": "6e7c1aaa45ba22bea23cb58fcbe6bcfef4e6aa882006641aba990bee8227753f"
+      },
+      "content/pilot50/batch01-runtime-overlay-v1.json": {
+        "bytes": 125040,
+        "sha256": "1c703dc4eb4fede4415ea78efd10336290e3ad95844ab294ea0a273bfcc0967d"
+      },
+      "content/starter_phrases.json": {
+        "bytes": 207414,
+        "sha256": "16a1b8fb876e31133d19fc0f07d292439b6836307fc3805d9eca449a39c7ef65"
+      },
+      "content/starter_vocab.json": {
+        "bytes": 1837654,
+        "sha256": "6e7c1aaa45ba22bea23cb58fcbe6bcfef4e6aa882006641aba990bee8227753f"
+      },
+      "icon-192.png": {
+        "bytes": 1000,
+        "sha256": "c7c5142cbea153770099b2182f0877a92dbb7a1d2fd619275b8dc9619a4ace8a"
+      },
+      "icon-512.png": {
+        "bytes": 3023,
+        "sha256": "ae90066e2a309100a732f578db2d61a94d31efe33ece63286cc0f0e24d3d05ec"
+      },
+      "icon.svg": {
+        "bytes": 480,
+        "sha256": "6b3a791f0301c4efadb117a464806d8fa5157dee5862b8b38cee8e3f0e7adf83"
+      },
+      "index.html": {
+        "bytes": 1302,
+        "sha256": "7b8fc23f292ddcff32d4a74af0d55d3fe14b9f28bee90e3a7024ae28c57ae0c7"
+      },
+      "manifest.webmanifest": {
+        "bytes": 873,
+        "sha256": "a49c67fb30d12255384033371224dcacddcb178ac44713f92fce44afd11e463d"
+      },
+      "pilot50-runtime-overlay.js": {
+        "bytes": 9251,
+        "sha256": "6067cf047153f7319d45586a082eab5321dad48fb5fa12f4de3a3263742e5e5a"
+      },
+      "scoring.js": {
+        "bytes": 12819,
+        "sha256": "b543d2fd2576177cafd43232ecd8c75a67cf4ce4717e1dcd9cf014ed6e3d1e0c"
+      },
+      "study-hotfix-v2.css": {
+        "bytes": 4284,
+        "sha256": "82b2faef648ea60ae22bb6e7f56438016098a9b764885b3c9f4dc90c09f715bf"
+      },
+      "study-hotfix-v2.js": {
+        "bytes": 27217,
+        "sha256": "42ce106cdd9fa1f7f78eade660bbd59c49b6ecac93f076da49fa43b98e78d331"
+      },
+      "styles.css": {
+        "bytes": 49044,
+        "sha256": "1e3d55709d42fed7083df186945131e7a02ed8d0626769c0b83b7cf5ffdafa0b"
+      },
+      "sw.js": {
+        "bytes": 2468,
+        "sha256": "1990e8cf85ea20ca80b0978a3950a561fe15ce43efdf3b544246093091f2a64e"
+      },
+      "version.json": {
+        "bytes": 433,
+        "sha256": "890c04f8be8028d175a56b9dfd5254a38d7c2c6cbdf1386bc6de766c831dc9de"
+      }
+    }
+  }
+}

@@ -1,0 +1,3238 @@
+{
+  "schemaVersion": "1.0",
+  "overlayVersion": "pilot50-batch01-runtime-overlay-v1",
+  "status": "human-approved-pilot-runtime-overlay",
+  "languagePack": "hi",
+  "createdAt": "2026-08-05T20:18:29+10:00",
+  "baseCheckpoint": "dfc9fdb",
+  "segmentIds": [
+    "dialogue-037-s04",
+    "dialogue-064-s11",
+    "dialogue-045-s11",
+    "dialogue-053-s11",
+    "dialogue-002-s05",
+    "dialogue-081-s12",
+    "dialogue-078-s09",
+    "dialogue-059-s08",
+    "dialogue-046-s10",
+    "dialogue-021-s12"
+  ],
+  "segments": {
+    "dialogue-037-s04": {
+      "segmentId": "dialogue-037-s04",
+      "dialogueId": "dialogue-037",
+      "dialogueTitle": "Hit and Run",
+      "topic": "legal",
+      "direction": "hi-en",
+      "content": {
+        "sourceText": "वह बिल्कुल नहीं रुका। मैं नंबर प्लेट नहीं देख पाई, लेकिन कार लाल रंग की टोयोटा कोरोला थी और वह उत्तर की ओर गई।",
+        "sampleAnswer": "The driver did not stop at all. I couldn't see the number plate, but the car was a red Toyota Corolla and it was heading north.",
+        "acceptedAlternatives": [
+          "He never stopped. I couldn't make out the registration number, but the vehicle was a red Toyota Corolla travelling north.",
+          "The driver failed to stop. I did not see the licence plate; it was a red Toyota Corolla heading north."
+        ],
+        "meaningUnits": [
+          {
+            "id": "l4a",
+            "label": "driver did not stop",
+            "acceptedConcepts": [
+              "driver did not stop",
+              "never stopped",
+              "failed to stop"
+            ],
+            "required": true
+          },
+          {
+            "id": "l4b",
+            "label": "number plate was not seen",
+            "acceptedConcepts": [
+              "could not see the number plate",
+              "did not see the licence plate",
+              "could not make out the registration number"
+            ],
+            "required": true
+          },
+          {
+            "id": "l4c",
+            "label": "vehicle was a red Toyota Corolla",
+            "acceptedConcepts": [
+              "red Toyota Corolla"
+            ],
+            "required": true
+          },
+          {
+            "id": "l4d",
+            "label": "vehicle travelled north",
+            "acceptedConcepts": [
+              "travelled north",
+              "headed north",
+              "was northbound"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "negation",
+            "value": "driver did not stop",
+            "severity": "major"
+          },
+          {
+            "type": "negation",
+            "value": "number plate was not seen",
+            "severity": "major"
+          },
+          {
+            "type": "colour",
+            "value": "red",
+            "severity": "moderate"
+          },
+          {
+            "type": "vehicle",
+            "value": "Toyota Corolla",
+            "severity": "moderate"
+          },
+          {
+            "type": "direction",
+            "value": "north",
+            "severity": "major"
+          }
+        ],
+        "comparisonPoints": [
+          "driver did NOT stop",
+          "number plate NOT seen",
+          "red Toyota Corolla",
+          "headed north"
+        ],
+        "noteTaking": {
+          "shortNotes": "drv ×stop | plate ×seen | red T. Corolla | N↑",
+          "skillTip": "Mark both negations clearly and record the vehicle colour, model and direction.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "leg-005",
+        "leg-008",
+        "leg-009",
+        "leg-041",
+        "leg-060",
+        "leg-076",
+        "leg-079",
+        "leg-082",
+        "leg-083",
+        "leg-091",
+        "leg-164",
+        "leg-169",
+        "pilot50-vocab-d037-s04-northbound-v1",
+        "tra-079"
+      ],
+      "phraseIds": [
+        "leg-p-005",
+        "leg-p-020",
+        "phr-v205-0310",
+        "pilot50-phrase-d037-s04-could-not-see-plate-v1",
+        "pilot50-phrase-d037-s04-driver-did-not-stop-v1",
+        "pilot50-phrase-d037-s04-heading-north-v1",
+        "pilot50-phrase-d037-s04-red-toyota-corolla-v1"
+      ],
+      "optionalVocabularyIds": [
+        "leg-006",
+        "leg-110",
+        "leg-112"
+      ],
+      "optionalPhraseIds": [
+        "leg-p-002",
+        "leg-p-003",
+        "leg-p-004",
+        "leg-p-009",
+        "leg-p-017"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-064-s11": {
+      "segmentId": "dialogue-064-s11",
+      "dialogueId": "dialogue-064",
+      "dialogueTitle": "Rent Assist Bond Loan",
+      "topic": "housing",
+      "direction": "en-hi",
+      "content": {
+        "sourceText": "A housing officer will explain the repayment options after assessing your application. Do not sign a lease until you understand whether assistance has been approved.",
+        "sampleAnswer": "आवेदन का आकलन करने के बाद आवास अधिकारी आपको पुनर्भुगतान के विकल्प समझाएगा। जब तक आपको यह स्पष्ट न हो जाए कि सहायता मंज़ूर हुई है या नहीं, तब तक लीज़ पर हस्ताक्षर न करें।",
+        "acceptedAlternatives": [
+          "आवेदन की जाँच के बाद अधिकारी भुगतान वापस करने के विकल्प बताएगा। सहायता की मंज़ूरी स्पष्ट होने से पहले किरायानामे पर हस्ताक्षर न करें।",
+          "आवास अधिकारी आवेदन का मूल्यांकन करने के बाद किस्तों या पुनर्भुगतान के विकल्प समझाएगा। मंज़ूरी की स्थिति समझे बिना लीज़ पर हस्ताक्षर न करें।"
+        ],
+        "meaningUnits": [
+          {
+            "id": "r11a",
+            "label": "application is assessed first",
+            "acceptedConcepts": [
+              "after assessing the application",
+              "after application assessment"
+            ],
+            "required": true
+          },
+          {
+            "id": "r11b",
+            "label": "housing officer explains repayment options",
+            "acceptedConcepts": [
+              "housing officer explains repayment options",
+              "officer explains repayment arrangements"
+            ],
+            "required": true
+          },
+          {
+            "id": "r11c",
+            "label": "do not sign the lease",
+            "acceptedConcepts": [
+              "do not sign the lease",
+              "must not sign the tenancy agreement"
+            ],
+            "required": true
+          },
+          {
+            "id": "r11d",
+            "label": "wait until approval status is understood",
+            "acceptedConcepts": [
+              "until assistance approval is clear",
+              "until you understand whether assistance is approved"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "sequence",
+            "value": "explanation occurs after application assessment",
+            "severity": "major"
+          },
+          {
+            "type": "negation",
+            "value": "do not sign the lease",
+            "severity": "major"
+          },
+          {
+            "type": "condition",
+            "value": "wait until assistance approval status is understood",
+            "severity": "major"
+          }
+        ],
+        "comparisonPoints": [
+          "application assessed first",
+          "officer explains repayment options",
+          "lease: do NOT sign",
+          "wait until approval status clear"
+        ],
+        "noteTaking": {
+          "shortNotes": "app assess → officer: repay opts | lease ×sign until approval clear",
+          "skillTip": "Show sequence with an arrow and mark the signing prohibition with ×.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "hou-016",
+        "hou-023",
+        "hou-027",
+        "hou-028",
+        "hou-135",
+        "hou-139",
+        "hou-141",
+        "hou-144",
+        "hou-188",
+        "pilot50-vocab-d064-s11-assistance-approval-v1",
+        "pilot50-vocab-d064-s11-housing-officer-v1",
+        "pilot50-vocab-d064-s11-repayment-options-v1"
+      ],
+      "phraseIds": [
+        "hou-p-010",
+        "hou-p-015",
+        "hou-p-023",
+        "hou-p-024",
+        "phr-v205-0016",
+        "pilot50-phrase-d064-s11-after-assessing-application-v1",
+        "pilot50-phrase-d064-s11-do-not-sign-lease-v1",
+        "pilot50-phrase-d064-s11-explain-repayment-options-v1",
+        "pilot50-phrase-d064-s11-until-assistance-approved-v1"
+      ],
+      "optionalVocabularyIds": [
+        "ban-046",
+        "hou-024",
+        "hou-025",
+        "hou-098",
+        "hou-140",
+        "soc-095"
+      ],
+      "optionalPhraseIds": [
+        "hou-p-001",
+        "hou-p-011",
+        "hou-p-014"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-045-s11": {
+      "segmentId": "dialogue-045-s11",
+      "dialogueId": "dialogue-045",
+      "dialogueTitle": "Library Card Issue",
+      "topic": "community",
+      "direction": "en-hi",
+      "content": {
+        "sourceText": "Yes, up to six books. You must return them within four weeks. If you fail to return them on time, you will be charged 10 cents per day. If a book is lost or stolen, you will have to pay the full cost of the book, including any overdue charges.",
+        "sampleAnswer": "जी हाँ, आप अधिकतम छह किताबें उधार ले सकते हैं। आपको उन्हें चार सप्ताह के भीतर वापस करना होगा। समय पर वापस न करने पर प्रतिदिन 10 सेंट का विलंब शुल्क लगेगा। यदि कोई किताब खो जाती है या चोरी हो जाती है, तो आपको बकाया विलंब शुल्क सहित उस किताब की पूरी कीमत चुकानी होगी।",
+        "acceptedAlternatives": [
+          "हाँ, आप छह किताबें तक ले सकते हैं। उन्हें चार सप्ताह में लौटाना होगा। देर होने पर हर दिन 10 सेंट का शुल्क लगेगा। किताब खोने या चोरी होने पर उसकी पूरी कीमत और बकाया विलंब शुल्क देना होगा।",
+          "जी, अधिकतम छह पुस्तकें। चार सप्ताह के भीतर वापस करें। देर से लौटाने पर प्रतिदिन 10 सेंट और खोई या चोरी हुई पुस्तक के लिए उसकी पूरी लागत, साथ में बकाया शुल्क, देना होगा।"
+        ],
+        "meaningUnits": [
+          {
+            "id": "dialogue-045-s11u1",
+            "label": "may borrow up to six books",
+            "acceptedConcepts": [
+              "up to six books",
+              "maximum six books"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-045-s11u2",
+            "label": "books must be returned within four weeks",
+            "acceptedConcepts": [
+              "return within four weeks",
+              "four-week loan period"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-045-s11u3",
+            "label": "late return incurs 10 cents per day",
+            "acceptedConcepts": [
+              "10 cents per day",
+              "daily overdue charge of 10 cents"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-045-s11u4",
+            "label": "lost or stolen book requires full payment",
+            "acceptedConcepts": [
+              "pay full cost if lost",
+              "pay full cost if stolen"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-045-s11u5",
+            "label": "overdue charges are also payable",
+            "acceptedConcepts": [
+              "including overdue charges",
+              "plus overdue fees"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "number",
+            "value": "maximum six books",
+            "severity": "major"
+          },
+          {
+            "type": "duration",
+            "value": "within four weeks",
+            "severity": "major"
+          },
+          {
+            "type": "amount",
+            "value": "10 cents per day",
+            "severity": "major"
+          },
+          {
+            "type": "condition",
+            "value": "if a book is lost or stolen",
+            "severity": "major"
+          },
+          {
+            "type": "amount",
+            "value": "full book cost plus overdue charges",
+            "severity": "major"
+          }
+        ],
+        "comparisonPoints": [
+          "≤6 books",
+          "return within 4 weeks",
+          "late: 10c/day",
+          "lost/stolen: full cost + overdue charges"
+        ],
+        "noteTaking": {
+          "shortNotes": "≤6 books | return ≤4 wks | late 10c/day | lost/stolen → full cost + overdue",
+          "skillTip": "Write every number and connect each charge to its condition.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "bus-119",
+        "com-021",
+        "com-049",
+        "com-050",
+        "com-052",
+        "com-053",
+        "com-054",
+        "com-083",
+        "com-088",
+        "com-090",
+        "com-125",
+        "pilot50-vocab-d045-s11-borrowing-limit-v1",
+        "pilot50-vocab-d045-s11-four-week-loan-period-v1",
+        "pilot50-vocab-d045-s11-full-replacement-cost-v1",
+        "pilot50-vocab-d045-s11-lost-stolen-book-v1"
+      ],
+      "phraseIds": [
+        "phr-v205-0186",
+        "phr-v205-0192",
+        "phr-v205-0193",
+        "phr-v205-0408",
+        "phr-v205-0409",
+        "phr-v205-0418",
+        "phr-v205-0429",
+        "pilot50-phrase-d045-s11-borrow-six-books-v1",
+        "pilot50-phrase-d045-s11-including-overdue-charges-v1",
+        "pilot50-phrase-d045-s11-pay-full-book-cost-v1",
+        "pilot50-phrase-d045-s11-return-four-weeks-v1",
+        "pilot50-phrase-d045-s11-ten-cents-per-day-v1"
+      ],
+      "optionalVocabularyIds": [
+        "com-009",
+        "com-039",
+        "ins-037",
+        "leg-075"
+      ],
+      "optionalPhraseIds": [
+        "phr-v205-0229",
+        "phr-v205-0324"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-053-s11": {
+      "segmentId": "dialogue-053-s11",
+      "dialogueId": "dialogue-053",
+      "dialogueTitle": "Opening a Bank Account",
+      "topic": "banking",
+      "direction": "en-hi",
+      "content": {
+        "sourceText": "We can start the registration today, but full access will only work after the accounts are active and your contact details are verified.",
+        "sampleAnswer": "हम आज पंजीकरण शुरू कर सकते हैं, लेकिन आपको पूरी पहुँच तभी मिलेगी जब खाते सक्रिय हो जाएँ और आपके संपर्क विवरण सत्यापित हो जाएँ।",
+        "acceptedAlternatives": [
+          "रजिस्ट्रेशन आज शुरू किया जा सकता है, लेकिन खाते चालू होने और संपर्क विवरण की पुष्टि होने के बाद ही पूरी पहुँच मिलेगी।",
+          "हम आज आपका पंजीकरण शुरू कर देंगे। सभी सुविधाएँ तभी उपलब्ध होंगी जब खाते सक्रिय हो जाएँ और संपर्क जानकारी सत्यापित हो जाए।"
+        ],
+        "meaningUnits": [
+          {
+            "id": "b11a",
+            "label": "registration can start today",
+            "acceptedConcepts": [
+              "start registration today",
+              "registration can begin today"
+            ],
+            "required": true
+          },
+          {
+            "id": "b11b",
+            "label": "full access requires active accounts",
+            "acceptedConcepts": [
+              "full access after accounts are active",
+              "accounts must be active"
+            ],
+            "required": true
+          },
+          {
+            "id": "b11c",
+            "label": "contact details must be verified",
+            "acceptedConcepts": [
+              "contact details verified",
+              "contact information confirmed"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "time",
+            "value": "registration can start today",
+            "severity": "moderate"
+          },
+          {
+            "type": "condition",
+            "value": "full access only after accounts are active",
+            "severity": "major"
+          },
+          {
+            "type": "condition",
+            "value": "contact details must be verified",
+            "severity": "major"
+          }
+        ],
+        "comparisonPoints": [
+          "registration: today",
+          "full access only after accounts active",
+          "contact details verified"
+        ],
+        "noteTaking": {
+          "shortNotes": "reg today | full access only after acct active + contact verified",
+          "skillTip": "Use 'only after' to capture both required conditions.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "ban-018",
+        "ban-027",
+        "ban-070",
+        "ban-071",
+        "ban-094",
+        "ban-095",
+        "ban-106",
+        "ban-108",
+        "ban-143",
+        "ban-145",
+        "ban-157",
+        "ban-189",
+        "emp-054",
+        "pilot50-vocab-d053-s11-registration-v1"
+      ],
+      "phraseIds": [
+        "ban-p-008",
+        "ban-p-010",
+        "ban-p-013",
+        "ban-p-019",
+        "ban-p-021",
+        "pilot50-phrase-d053-s11-accounts-active-v1",
+        "pilot50-phrase-d053-s11-contact-details-verified-v1",
+        "pilot50-phrase-d053-s11-full-access-only-v1",
+        "pilot50-phrase-d053-s11-start-registration-today-v1"
+      ],
+      "optionalVocabularyIds": [],
+      "optionalPhraseIds": [
+        "ban-p-005",
+        "ban-p-017",
+        "ban-p-024",
+        "phr-v205-0402"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-002-s05": {
+      "segmentId": "dialogue-002-s05",
+      "dialogueId": "dialogue-002",
+      "dialogueTitle": "Applying for a Job",
+      "topic": "employment",
+      "direction": "en-hi",
+      "content": {
+        "sourceText": "That sounds relevant. Do you have an up-to-date résumé, and can you describe your most recent work in Australia?",
+        "sampleAnswer": "यह अनुभव प्रासंगिक लगता है। क्या आपके पास नवीनतम रिज़्यूमे है? और क्या आप ऑस्ट्रेलिया में अपने सबसे हाल के काम के बारे में बता सकती हैं?",
+        "acceptedAlternatives": [
+          "यह अनुभव इस पद से संबंधित लगता है। क्या आपका रिज़्यूमे अद्यतन है, और क्या आप ऑस्ट्रेलिया में अपनी पिछली नौकरी के बारे में बता सकती हैं?",
+          "यह अनुभव काम का लगता है। क्या आपके पास अप-टू-डेट रिज़्यूमे है? साथ ही, ऑस्ट्रेलिया में अपने सबसे हाल के कार्य अनुभव के बारे में बताइए।"
+        ],
+        "meaningUnits": [
+          {
+            "id": "e5a",
+            "label": "experience sounds relevant",
+            "acceptedConcepts": [
+              "experience is relevant",
+              "experience is suitable"
+            ],
+            "required": true
+          },
+          {
+            "id": "e5b",
+            "label": "asks for an up-to-date résumé",
+            "acceptedConcepts": [
+              "up-to-date résumé",
+              "updated CV",
+              "latest résumé"
+            ],
+            "required": true
+          },
+          {
+            "id": "e5c",
+            "label": "asks about the most recent work in Australia",
+            "acceptedConcepts": [
+              "most recent work in Australia",
+              "latest Australian job",
+              "recent Australian work experience"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "recency",
+            "value": "résumé must be up to date",
+            "severity": "moderate"
+          },
+          {
+            "type": "recency",
+            "value": "most recent work",
+            "severity": "major"
+          },
+          {
+            "type": "location",
+            "value": "in Australia",
+            "severity": "major"
+          }
+        ],
+        "comparisonPoints": [
+          "experience relevant",
+          "updated résumé?",
+          "most recent work in Australia?"
+        ],
+        "noteTaking": {
+          "shortNotes": "exp relevant | CV updated? | latest AU work?",
+          "skillTip": "Mark both questions and preserve 'most recent' plus 'in Australia'.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "emp-010",
+        "emp-013",
+        "emp-103",
+        "emp-104",
+        "emp-105",
+        "emp-106",
+        "emp-109",
+        "emp-113",
+        "emp-118",
+        "emp-166",
+        "pilot50-vocab-d002-s05-australian-work-experience-v1",
+        "pilot50-vocab-d002-s05-most-recent-work-v1"
+      ],
+      "phraseIds": [
+        "emp-p-006",
+        "emp-p-007",
+        "emp-p-009",
+        "emp-p-018",
+        "pilot50-phrase-d002-s05-recent-work-australia-v1",
+        "pilot50-phrase-d002-s05-sounds-relevant-v1"
+      ],
+      "optionalVocabularyIds": [
+        "emp-021",
+        "emp-031",
+        "emp-102",
+        "emp-117"
+      ],
+      "optionalPhraseIds": [
+        "emp-p-001",
+        "emp-p-002",
+        "emp-p-010",
+        "emp-p-016"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-081-s12": {
+      "segmentId": "dialogue-081-s12",
+      "dialogueId": "dialogue-081",
+      "dialogueTitle": "Australian Citizenship",
+      "topic": "immigration",
+      "direction": "hi-en",
+      "content": {
+        "sourceText": "मेरे पति बहुत अच्छी अंग्रेज़ी बोलते हैं, क्योंकि वह उच्च-कौशल वाले कार्यस्थल पर काम करते हैं। लेकिन मुझे यकीन नहीं है कि मैं परीक्षा पास कर पाऊँगी।",
+        "sampleAnswer": "My husband speaks English very well because he works in a highly skilled workplace. However, I am not sure that I will be able to pass the test.",
+        "acceptedAlternatives": [
+          "My husband is very fluent in English because he works in a highly skilled work environment, but I am unsure whether I can pass the exam.",
+          "My husband speaks excellent English due to his highly skilled workplace, whereas I am not confident that I will pass the test."
+        ],
+        "meaningUnits": [
+          {
+            "id": "dialogue-081-s12u1",
+            "label": "husband speaks English very well",
+            "acceptedConcepts": [
+              "husband speaks English very well",
+              "husband is fluent in English"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-081-s12u2",
+            "label": "reason is his highly skilled work environment",
+            "acceptedConcepts": [
+              "works in a highly skilled workplace",
+              "high-skill work environment"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-081-s12u3",
+            "label": "speaker is unsure about passing the test",
+            "acceptedConcepts": [
+              "not sure I can pass",
+              "unsure whether I will pass",
+              "not confident about passing"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "speaker",
+            "value": "husband speaks English well",
+            "severity": "moderate"
+          },
+          {
+            "type": "cause",
+            "value": "because of highly skilled work environment",
+            "severity": "moderate"
+          },
+          {
+            "type": "uncertainty",
+            "value": "speaker is not sure she can pass the test",
+            "severity": "major"
+          }
+        ],
+        "comparisonPoints": [
+          "husband: English very well",
+          "because: skilled work environment",
+          "speaker: unsure about passing test"
+        ],
+        "noteTaking": {
+          "shortNotes": "husband Eng ++ ← skilled work env | me: ? pass test",
+          "skillTip": "Keep the husband and the speaker separate; mark uncertainty with ?.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "emp-014",
+        "emp-044",
+        "fam-008",
+        "imm-006",
+        "imm-019",
+        "imm-032",
+        "imm-033",
+        "imm-063",
+        "imm-092",
+        "imm-111",
+        "imm-118",
+        "imm-130",
+        "imm-131",
+        "pilot50-vocab-d081-s12-pass-test-v1",
+        "pilot50-vocab-d081-s12-speak-english-well-v1"
+      ],
+      "phraseIds": [
+        "phr-v205-0141",
+        "phr-v205-0146",
+        "phr-v205-0147",
+        "phr-v205-0150",
+        "phr-v205-0291",
+        "phr-v205-0385",
+        "pilot50-phrase-d081-s12-highly-skilled-workplace-v1",
+        "pilot50-phrase-d081-s12-husband-speaks-english-v1",
+        "pilot50-phrase-d081-s12-unsure-pass-test-v1"
+      ],
+      "optionalVocabularyIds": [
+        "imm-065",
+        "imm-117"
+      ],
+      "optionalPhraseIds": [
+        "phr-v205-0140",
+        "phr-v205-0393"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-078-s09": {
+      "segmentId": "dialogue-078-s09",
+      "dialogueId": "dialogue-078",
+      "dialogueTitle": "Hotel Reservation",
+      "topic": "travel",
+      "direction": "en-hi",
+      "content": {
+        "sourceText": "To confirm the booking, we need some details and an advance payment of $500. This payment is non-refundable if you change your mind or cancel. Once you make the payment, we will send you a confirmation email.",
+        "sampleAnswer": "बुकिंग की पुष्टि के लिए हमें कुछ जानकारी और 500 डॉलर का अग्रिम भुगतान चाहिए। यदि आप अपना मन बदलते हैं या बुकिंग रद्द करते हैं, तो यह राशि वापस नहीं होगी। भुगतान करने के बाद आपको हमारी ओर से पुष्टि का ईमेल मिलेगा।",
+        "acceptedAlternatives": [
+          "आरक्षण की पुष्टि करने के लिए कुछ विवरण और 500 डॉलर अग्रिम देना होगा। मन बदलने या रद्द करने पर यह रकम वापस नहीं मिलेगी। भुगतान होते ही हम आपको पुष्टि का ईमेल भेजेंगे।",
+          "बुकिंग कन्फर्म करने के लिए हमें आपकी जानकारी और 500 डॉलर का एडवांस चाहिए। बदलाव या कैंसलेशन की स्थिति में यह नॉन-रिफंडेबल है। भुगतान के बाद आपको ईमेल मिल जाएगा।"
+        ],
+        "meaningUnits": [
+          {
+            "id": "dialogue-078-s09u1",
+            "label": "details are required to confirm booking",
+            "acceptedConcepts": [
+              "details needed for confirmation",
+              "information required to confirm booking"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-078-s09u2",
+            "label": "$500 advance payment is required",
+            "acceptedConcepts": [
+              "$500 advance payment",
+              "pay 500 dollars in advance"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-078-s09u3",
+            "label": "payment is non-refundable after change of mind or cancellation",
+            "acceptedConcepts": [
+              "non-refundable if change of mind",
+              "no refund on cancellation"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-078-s09u4",
+            "label": "confirmation email is sent after payment",
+            "acceptedConcepts": [
+              "email after payment",
+              "confirmation email once paid"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "amount",
+            "value": "$500",
+            "severity": "major"
+          },
+          {
+            "type": "negation",
+            "value": "payment is non-refundable",
+            "severity": "major"
+          },
+          {
+            "type": "condition",
+            "value": "change of mind or cancellation",
+            "severity": "major"
+          },
+          {
+            "type": "sequence",
+            "value": "confirmation email after payment",
+            "severity": "moderate"
+          }
+        ],
+        "comparisonPoints": [
+          "confirmation: details + $500 advance",
+          "change mind/cancel → no refund",
+          "payment made → confirmation email"
+        ],
+        "noteTaking": {
+          "shortNotes": "confirm: details + $500 adv | change/cancel → ×refund | paid → email",
+          "skillTip": "Connect the non-refund rule to both conditions and keep the payment-email sequence.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "pilot50-vocab-d078-s09-change-mind-v1",
+        "pilot50-vocab-d078-s09-confirmation-email-v1",
+        "pilot50-vocab-d078-s09-non-refundable-v1",
+        "soc-080",
+        "trv-056",
+        "trv-066",
+        "trv-113",
+        "trv-118",
+        "trv-119",
+        "trv-120",
+        "trv-121",
+        "trv-122",
+        "trv-123",
+        "trv-124",
+        "trv-147",
+        "trv-166"
+      ],
+      "phraseIds": [
+        "phr-v205-0196",
+        "phr-v205-0199",
+        "phr-v205-0202",
+        "phr-v205-0299",
+        "phr-v205-0300",
+        "phr-v205-0301",
+        "pilot50-phrase-d078-s09-advance-payment-500-v1",
+        "pilot50-phrase-d078-s09-after-payment-v1",
+        "pilot50-phrase-d078-s09-non-refundable-cancel-v1",
+        "pilot50-phrase-d078-s09-send-confirmation-email-v1"
+      ],
+      "optionalVocabularyIds": [
+        "trv-130"
+      ],
+      "optionalPhraseIds": [
+        "phr-v205-0204",
+        "phr-v205-0387",
+        "phr-v205-0426"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-059-s08": {
+      "segmentId": "dialogue-059-s08",
+      "dialogueId": "dialogue-059",
+      "dialogueTitle": "Pregnancy and Abortion",
+      "topic": "health",
+      "direction": "hi-en",
+      "content": {
+        "sourceText": "आपकी रक्त-जाँच की रिपोर्ट आने के बाद हम निर्णय ले सकेंगे। ध्यान रखें कि गर्भावस्था के तीन महीने बाद गर्भपात कराने में अतिरिक्त स्वास्थ्य जोखिम हो सकते हैं।",
+        "sampleAnswer": "We can make a decision once your blood test results are available. Please bear in mind that having an abortion after three months of pregnancy may involve additional health risks.",
+        "acceptedAlternatives": [
+          "Once we receive your blood test results, we will be able to decide. Please remember that an abortion after the first three months may carry additional health risks."
+        ],
+        "meaningUnits": [
+          {
+            "id": "dialogue-059-s08u1",
+            "label": "decision follows receipt of blood test results",
+            "acceptedConcepts": [
+              "decide after blood test results",
+              "decision once results are available"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-059-s08u2",
+            "label": "warning about possible additional risks after three months",
+            "acceptedConcepts": [
+              "after three months may involve additional risks",
+              "possible health risks later in pregnancy"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "sequence",
+            "value": "decision after blood test results are available",
+            "severity": "major"
+          },
+          {
+            "type": "duration",
+            "value": "after three months of pregnancy",
+            "severity": "major"
+          },
+          {
+            "type": "modality",
+            "value": "may involve additional health risks",
+            "severity": "major"
+          }
+        ],
+        "comparisonPoints": [
+          "blood results first → decision",
+          "after 3 months",
+          "possible additional health risks"
+        ],
+        "noteTaking": {
+          "shortNotes": "blood results → decide | >3 months → possible health risks",
+          "skillTip": "Keep the sequence, gestational timing and cautious modality 'may'.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "fam-095",
+        "hea-015",
+        "hea-018",
+        "hea-031",
+        "hea-134",
+        "hea-201",
+        "hea-202",
+        "hea-203",
+        "hea-205",
+        "hea-209",
+        "hea-213",
+        "hea-217",
+        "pilot50-vocab-d059-s08-abortion-v1",
+        "pilot50-vocab-d059-s08-health-risk-v1",
+        "pilot50-vocab-d059-s08-make-decision-v1"
+      ],
+      "phraseIds": [
+        "hea-p-003",
+        "hea-p-009",
+        "hea-p-013",
+        "hea-p-014",
+        "hea-p-017",
+        "hea-p-024",
+        "pilot50-phrase-d059-s08-additional-health-risks-v1",
+        "pilot50-phrase-d059-s08-results-available-v1",
+        "pilot50-phrase-d059-s08-three-months-pregnancy-v1"
+      ],
+      "optionalVocabularyIds": [
+        "hea-017",
+        "hea-118"
+      ],
+      "optionalPhraseIds": [
+        "hea-p-007",
+        "phr-v205-0357"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-046-s10": {
+      "segmentId": "dialogue-046-s10",
+      "dialogueId": "dialogue-046",
+      "dialogueTitle": "Life Insurance",
+      "topic": "insurance",
+      "direction": "hi-en",
+      "content": {
+        "sourceText": "मेरी मासिक आय 5,800 डॉलर है, यानी सालाना 69,600 डॉलर। मेरे परिवार में चार लोग मुझ पर निर्भर हैं—मेरे तीन बच्चे और मेरे पति। जीवन बीमा के लिए मुझे हर महीने कितना प्रीमियम देना होगा?",
+        "sampleAnswer": "My monthly income is $5,800, which comes to $69,600 a year. Four members of my family depend on me—my three children and my husband. How much would I need to pay each month for life insurance?",
+        "acceptedAlternatives": [
+          "I earn $5,800 per month, or $69,600 annually. I have four dependants: my three children and my husband. What monthly premium would I have to pay for life insurance?"
+        ],
+        "meaningUnits": [
+          {
+            "id": "dialogue-046-s10u1",
+            "label": "monthly income is $5,800",
+            "acceptedConcepts": [
+              "monthly income $5,800",
+              "earn 5,800 dollars per month"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-046-s10u2",
+            "label": "annual income is $69,600",
+            "acceptedConcepts": [
+              "annual income $69,600",
+              "69,600 dollars a year"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-046-s10u3",
+            "label": "four family members are financially dependent",
+            "acceptedConcepts": [
+              "four dependants",
+              "four family members depend on speaker"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-046-s10u4",
+            "label": "dependants are three children and husband",
+            "acceptedConcepts": [
+              "three children and husband",
+              "3 kids plus husband"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-046-s10u5",
+            "label": "asks monthly life-insurance premium",
+            "acceptedConcepts": [
+              "monthly insurance premium",
+              "how much to pay each month for life insurance"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "amount",
+            "value": "$5,800 per month",
+            "severity": "major"
+          },
+          {
+            "type": "amount",
+            "value": "$69,600 per year",
+            "severity": "major"
+          },
+          {
+            "type": "number",
+            "value": "four dependants",
+            "severity": "major"
+          },
+          {
+            "type": "number",
+            "value": "three children and one husband",
+            "severity": "major"
+          },
+          {
+            "type": "frequency",
+            "value": "monthly life-insurance premium",
+            "severity": "major"
+          }
+        ],
+        "comparisonPoints": [
+          "income $5,800/month",
+          "$69,600/year",
+          "4 dependants = 3 children + husband",
+          "monthly life-insurance premium?"
+        ],
+        "noteTaking": {
+          "shortNotes": "$5,800/mo → $69,600/yr | dep 4 = 3 kids + husband | premium/mo?",
+          "skillTip": "Check arithmetic and currency before memorising any figure.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "imm-004",
+        "ins-026",
+        "ins-121",
+        "ins-125",
+        "ins-129",
+        "ins-131",
+        "ins-133",
+        "ins-136",
+        "ins-138",
+        "ins-139",
+        "ins-140",
+        "ins-152",
+        "ins-174",
+        "ins-178",
+        "pilot50-vocab-d046-s10-annual-income-v1",
+        "pilot50-vocab-d046-s10-monthly-income-v1"
+      ],
+      "phraseIds": [
+        "phr-v205-0107",
+        "phr-v205-0109",
+        "phr-v205-0110",
+        "phr-v205-0111",
+        "phr-v205-0113",
+        "phr-v205-0118",
+        "phr-v205-0119",
+        "pilot50-phrase-d046-s10-family-dependants-v1",
+        "pilot50-phrase-d046-s10-monthly-premium-amount-v1"
+      ],
+      "optionalVocabularyIds": [
+        "ban-066"
+      ],
+      "optionalPhraseIds": [
+        "phr-v205-0326"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    },
+    "dialogue-021-s12": {
+      "segmentId": "dialogue-021-s12",
+      "dialogueId": "dialogue-021",
+      "dialogueTitle": "Delay in Deliveries",
+      "topic": "consumer",
+      "direction": "hi-en",
+      "content": {
+        "sourceText": "खैर, हम अक्सर अपनी सबसे ज़रूरी खेपों के लिए UPS, FedEx और DHL जैसी डिलीवरी सेवाओं का उपयोग करते हैं। वे 48 घंटे के भीतर घर-घर डिलीवरी की गारंटी देते हैं। हालाँकि, वे सस्ते नहीं हैं।",
+        "sampleAnswer": "Well, for our most urgent shipments, we often use delivery services such as UPS, FedEx and DHL. They guarantee door-to-door delivery within 48 hours. However, they are not cheap.",
+        "acceptedAlternatives": [
+          "For urgent consignments, we usually use couriers such as UPS, FedEx or DHL. They guarantee door-to-door delivery within 48 hours, although their services are expensive.",
+          "We often rely on UPS, FedEx and DHL for our most urgent shipments. They promise door-to-door delivery within 48 hours, but they are not cheap."
+        ],
+        "meaningUnits": [
+          {
+            "id": "dialogue-021-s12u1",
+            "label": "uses UPS, FedEx or DHL for urgent shipments",
+            "acceptedConcepts": [
+              "UPS FedEx DHL for urgent shipments",
+              "uses major couriers for urgent consignments"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-021-s12u2",
+            "label": "door-to-door delivery guaranteed within 48 hours",
+            "acceptedConcepts": [
+              "door-to-door within 48 hours",
+              "48-hour delivery guarantee"
+            ],
+            "required": true
+          },
+          {
+            "id": "dialogue-021-s12u3",
+            "label": "services are not cheap",
+            "acceptedConcepts": [
+              "not cheap",
+              "expensive services"
+            ],
+            "required": true
+          }
+        ],
+        "criticalDetails": [
+          {
+            "type": "name",
+            "value": "UPS, FedEx and DHL",
+            "severity": "moderate"
+          },
+          {
+            "type": "service",
+            "value": "door-to-door delivery",
+            "severity": "major"
+          },
+          {
+            "type": "duration",
+            "value": "within 48 hours",
+            "severity": "major"
+          },
+          {
+            "type": "negation",
+            "value": "services are not cheap",
+            "severity": "moderate"
+          }
+        ],
+        "comparisonPoints": [
+          "urgent shipments: UPS/FedEx/DHL",
+          "door-to-door guaranteed within 48h",
+          "not cheap"
+        ],
+        "noteTaking": {
+          "shortNotes": "urgent ship → UPS/FedEx/DHL | door-door ≤48h guaranteed | not cheap",
+          "skillTip": "Record provider names, the 48-hour guarantee and the cost contrast.",
+          "method": "Capture the speaker, action, exact critical details, negation and conditions. Use short symbols rather than full sentences."
+        }
+      },
+      "fieldAliases": {
+        "sourceFields": [
+          "source"
+        ],
+        "answerFields": [
+          "sampleAnswer"
+        ]
+      },
+      "vocabularyIds": [
+        "bus-102",
+        "con-004",
+        "con-013",
+        "con-029",
+        "con-039",
+        "con-065",
+        "con-127",
+        "con-139",
+        "con-140",
+        "con-142",
+        "con-149",
+        "con-160",
+        "con-161",
+        "con-164",
+        "emp-022",
+        "pilot50-vocab-d021-s12-door-to-door-delivery-v1"
+      ],
+      "phraseIds": [
+        "phr-v205-0094",
+        "phr-v205-0095",
+        "phr-v205-0099",
+        "phr-v205-0277",
+        "phr-v205-0329",
+        "phr-v205-0330",
+        "pilot50-phrase-d021-s12-guarantee-delivery-48-hours-v1",
+        "pilot50-phrase-d021-s12-not-cheap-v1",
+        "pilot50-phrase-d021-s12-urgent-shipments-v1",
+        "pilot50-phrase-d021-s12-use-ups-fedex-dhl-v1"
+      ],
+      "optionalVocabularyIds": [
+        "con-162"
+      ],
+      "optionalPhraseIds": [
+        "phr-v205-0097",
+        "phr-v205-0348"
+      ],
+      "approvalStatus": "human-approved-for-pilot-runtime",
+      "productionApproved": false
+    }
+  },
+  "vocabulary": [
+    {
+      "kind": "core",
+      "topic": "health",
+      "english": "abortion",
+      "hindi": "गर्भपात",
+      "directMeaning": true,
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "status": "human-approved-pilot-proposal",
+      "sourceType": "pilot50-human-reviewed",
+      "exampleEnglish": "We discussed the available abortion options.",
+      "exampleHindi": "हमने उपलब्ध गर्भपात विकल्पों पर चर्चा की।",
+      "synonyms": [
+        "termination of pregnancy"
+      ],
+      "acceptedHindi": [
+        "गर्भसमापन"
+      ],
+      "id": "pilot50-vocab-d059-s08-abortion-v1",
+      "dialogueLinks": [
+        "dialogue-059"
+      ],
+      "segmentLinks": [
+        "dialogue-059-s08"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d059-s08-abortion-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "kind": "core",
+      "topic": "health",
+      "english": "health risk",
+      "hindi": "स्वास्थ्य जोखिम",
+      "directMeaning": true,
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "status": "human-approved-pilot-proposal",
+      "sourceType": "pilot50-human-reviewed",
+      "exampleEnglish": "The doctor explained the possible health risks.",
+      "exampleHindi": "डॉक्टर ने संभावित स्वास्थ्य जोखिमों के बारे में बताया।",
+      "synonyms": [],
+      "acceptedHindi": [],
+      "id": "pilot50-vocab-d059-s08-health-risk-v1",
+      "dialogueLinks": [
+        "dialogue-059"
+      ],
+      "segmentLinks": [
+        "dialogue-059-s08"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d059-s08-health-risk-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "kind": "core",
+      "topic": "health",
+      "english": "make a decision",
+      "hindi": "निर्णय लेना",
+      "directMeaning": true,
+      "partOfSpeech": "action",
+      "difficulty": "foundation",
+      "status": "human-approved-pilot-proposal",
+      "sourceType": "pilot50-human-reviewed",
+      "exampleEnglish": "We can make a decision after receiving the test results.",
+      "exampleHindi": "जाँच की रिपोर्ट मिलने के बाद हम निर्णय ले सकते हैं।",
+      "synonyms": [
+        "decide"
+      ],
+      "acceptedHindi": [
+        "फैसला लेना"
+      ],
+      "id": "pilot50-vocab-d059-s08-make-decision-v1",
+      "dialogueLinks": [
+        "dialogue-059"
+      ],
+      "segmentLinks": [
+        "dialogue-059-s08"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d059-s08-make-decision-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "kind": "core",
+      "topic": "insurance",
+      "english": "monthly income",
+      "hindi": "मासिक आय",
+      "directMeaning": true,
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "status": "human-approved-pilot-proposal",
+      "sourceType": "pilot50-human-reviewed",
+      "exampleEnglish": "My monthly income is $5,800.",
+      "exampleHindi": "मेरी मासिक आय 5,800 डॉलर है।",
+      "synonyms": [],
+      "acceptedHindi": [],
+      "id": "pilot50-vocab-d046-s10-monthly-income-v1",
+      "dialogueLinks": [
+        "dialogue-046"
+      ],
+      "segmentLinks": [
+        "dialogue-046-s10"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d046-s10-monthly-income-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "kind": "core",
+      "topic": "insurance",
+      "english": "annual income",
+      "hindi": "वार्षिक आय",
+      "directMeaning": true,
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "status": "human-approved-pilot-proposal",
+      "sourceType": "pilot50-human-reviewed",
+      "exampleEnglish": "My annual income is $69,600.",
+      "exampleHindi": "मेरी वार्षिक आय 69,600 डॉलर है।",
+      "synonyms": [
+        "yearly income"
+      ],
+      "acceptedHindi": [
+        "सालाना आय"
+      ],
+      "id": "pilot50-vocab-d046-s10-annual-income-v1",
+      "dialogueLinks": [
+        "dialogue-046"
+      ],
+      "segmentLinks": [
+        "dialogue-046-s10"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d046-s10-annual-income-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "northbound",
+      "hindi": "उत्तर की ओर जाने वाला",
+      "kind": "core",
+      "topic": "legal",
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "The car was heading north.",
+      "exampleHindi": "कार उत्तर की ओर जा रही थी।",
+      "synonyms": [
+        "heading north"
+      ],
+      "acceptedHindi": [
+        "उत्तर की ओर",
+        "उत्तरगामी"
+      ],
+      "id": "pilot50-vocab-d037-s04-northbound-v1",
+      "dialogueLinks": [
+        "dialogue-037"
+      ],
+      "segmentLinks": [
+        "dialogue-037-s04"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d037-s04-northbound-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "housing officer",
+      "hindi": "आवास अधिकारी",
+      "kind": "core",
+      "topic": "housing",
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "A housing officer will assess your application.",
+      "exampleHindi": "आवास अधिकारी आपके आवेदन का आकलन करेगा।",
+      "synonyms": [],
+      "acceptedHindi": [],
+      "id": "pilot50-vocab-d064-s11-housing-officer-v1",
+      "dialogueLinks": [
+        "dialogue-064"
+      ],
+      "segmentLinks": [
+        "dialogue-064-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d064-s11-housing-officer-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "repayment options",
+      "hindi": "पुनर्भुगतान के विकल्प",
+      "kind": "core",
+      "topic": "housing",
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "The officer will explain the repayment options.",
+      "exampleHindi": "अधिकारी पुनर्भुगतान के विकल्प समझाएगा।",
+      "synonyms": [
+        "repayment choices"
+      ],
+      "acceptedHindi": [],
+      "id": "pilot50-vocab-d064-s11-repayment-options-v1",
+      "dialogueLinks": [
+        "dialogue-064"
+      ],
+      "segmentLinks": [
+        "dialogue-064-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d064-s11-repayment-options-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "approval of assistance",
+      "hindi": "सहायता की मंज़ूरी",
+      "kind": "core",
+      "topic": "housing",
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "Wait for approval of the assistance.",
+      "exampleHindi": "सहायता की मंज़ूरी मिलने तक प्रतीक्षा करें।",
+      "synonyms": [
+        "assistance approval"
+      ],
+      "acceptedHindi": [
+        "सहायता की स्वीकृति"
+      ],
+      "id": "pilot50-vocab-d064-s11-assistance-approval-v1",
+      "dialogueLinks": [
+        "dialogue-064"
+      ],
+      "segmentLinks": [
+        "dialogue-064-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d064-s11-assistance-approval-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "borrowing limit",
+      "hindi": "उधार लेने की सीमा",
+      "kind": "core",
+      "topic": "community",
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "The borrowing limit is six books.",
+      "exampleHindi": "उधार लेने की सीमा छह किताबें है।",
+      "synonyms": [
+        "loan limit"
+      ],
+      "acceptedHindi": [],
+      "id": "pilot50-vocab-d045-s11-borrowing-limit-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d045-s11-borrowing-limit-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "four-week loan period",
+      "hindi": "चार सप्ताह की उधारी अवधि",
+      "kind": "core",
+      "topic": "community",
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "The library has a four-week loan period.",
+      "exampleHindi": "पुस्तकालय में चार सप्ताह की उधारी अवधि है।",
+      "synonyms": [
+        "four-week borrowing period"
+      ],
+      "acceptedHindi": [
+        "चार सप्ताह की ऋण अवधि"
+      ],
+      "id": "pilot50-vocab-d045-s11-four-week-loan-period-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d045-s11-four-week-loan-period-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "lost or stolen book",
+      "hindi": "खोई या चोरी हुई किताब",
+      "kind": "core",
+      "topic": "community",
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "You must report a lost or stolen book.",
+      "exampleHindi": "आपको खोई या चोरी हुई किताब की सूचना देनी होगी।",
+      "synonyms": [],
+      "acceptedHindi": [
+        "गुम या चोरी हुई किताब"
+      ],
+      "id": "pilot50-vocab-d045-s11-lost-stolen-book-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d045-s11-lost-stolen-book-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "full replacement cost",
+      "hindi": "पूरी प्रतिस्थापन लागत",
+      "kind": "core",
+      "topic": "community",
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "You may have to pay the full replacement cost.",
+      "exampleHindi": "आपको पूरी प्रतिस्थापन लागत चुकानी पड़ सकती है।",
+      "synonyms": [
+        "full cost of replacement"
+      ],
+      "acceptedHindi": [
+        "बदलने की पूरी लागत",
+        "पूरी प्रतिस्थापन कीमत"
+      ],
+      "id": "pilot50-vocab-d045-s11-full-replacement-cost-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d045-s11-full-replacement-cost-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "registration",
+      "hindi": "पंजीकरण",
+      "kind": "core",
+      "topic": "banking",
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "We can start the registration today.",
+      "exampleHindi": "हम आज पंजीकरण शुरू कर सकते हैं।",
+      "synonyms": [
+        "enrolment"
+      ],
+      "acceptedHindi": [
+        "रजिस्ट्रेशन"
+      ],
+      "id": "pilot50-vocab-d053-s11-registration-v1",
+      "dialogueLinks": [
+        "dialogue-053"
+      ],
+      "segmentLinks": [
+        "dialogue-053-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d053-s11-registration-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "most recent work",
+      "hindi": "सबसे हाल का काम",
+      "kind": "core",
+      "topic": "employment",
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "Please describe your most recent work.",
+      "exampleHindi": "कृपया अपने सबसे हाल के काम के बारे में बताइए।",
+      "synonyms": [
+        "latest work experience"
+      ],
+      "acceptedHindi": [
+        "सबसे हाल का कार्य अनुभव"
+      ],
+      "id": "pilot50-vocab-d002-s05-most-recent-work-v1",
+      "dialogueLinks": [
+        "dialogue-002"
+      ],
+      "segmentLinks": [
+        "dialogue-002-s05"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d002-s05-most-recent-work-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "Australian work experience",
+      "hindi": "ऑस्ट्रेलिया में कार्य अनुभव",
+      "kind": "core",
+      "topic": "employment",
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "Do you have Australian work experience?",
+      "exampleHindi": "क्या आपके पास ऑस्ट्रेलिया में कार्य अनुभव है?",
+      "synonyms": [],
+      "acceptedHindi": [
+        "ऑस्ट्रेलियाई कार्य अनुभव"
+      ],
+      "id": "pilot50-vocab-d002-s05-australian-work-experience-v1",
+      "dialogueLinks": [
+        "dialogue-002"
+      ],
+      "segmentLinks": [
+        "dialogue-002-s05"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d002-s05-australian-work-experience-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "speak English well",
+      "hindi": "अच्छी अंग्रेज़ी बोलना",
+      "kind": "core",
+      "topic": "immigration",
+      "partOfSpeech": "action",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "My husband can speak English well.",
+      "exampleHindi": "मेरे पति अच्छी अंग्रेज़ी बोल सकते हैं।",
+      "synonyms": [
+        "speak English fluently"
+      ],
+      "acceptedHindi": [
+        "अच्छी तरह अंग्रेज़ी बोलना"
+      ],
+      "id": "pilot50-vocab-d081-s12-speak-english-well-v1",
+      "dialogueLinks": [
+        "dialogue-081"
+      ],
+      "segmentLinks": [
+        "dialogue-081-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d081-s12-speak-english-well-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "pass a test",
+      "hindi": "परीक्षा पास करना",
+      "kind": "core",
+      "topic": "immigration",
+      "partOfSpeech": "action",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "I hope I can pass the test.",
+      "exampleHindi": "मुझे आशा है कि मैं परीक्षा पास कर पाऊँगी।",
+      "synonyms": [
+        "pass the test"
+      ],
+      "acceptedHindi": [],
+      "id": "pilot50-vocab-d081-s12-pass-test-v1",
+      "dialogueLinks": [
+        "dialogue-081"
+      ],
+      "segmentLinks": [
+        "dialogue-081-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d081-s12-pass-test-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "non-refundable",
+      "hindi": "वापस न होने वाला",
+      "kind": "core",
+      "topic": "travel",
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "The advance payment is non-refundable.",
+      "exampleHindi": "अग्रिम भुगतान वापस नहीं होगा।",
+      "synonyms": [
+        "not refundable"
+      ],
+      "acceptedHindi": [
+        "गैर-वापसी योग्य",
+        "राशि वापस नहीं होगी"
+      ],
+      "id": "pilot50-vocab-d078-s09-non-refundable-v1",
+      "dialogueLinks": [
+        "dialogue-078"
+      ],
+      "segmentLinks": [
+        "dialogue-078-s09"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d078-s09-non-refundable-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "confirmation email",
+      "hindi": "पुष्टि ईमेल",
+      "kind": "core",
+      "topic": "travel",
+      "partOfSpeech": "term",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "We will send a confirmation email.",
+      "exampleHindi": "हम पुष्टि का ईमेल भेजेंगे।",
+      "synonyms": [
+        "email confirmation"
+      ],
+      "acceptedHindi": [
+        "पुष्टि का ईमेल"
+      ],
+      "id": "pilot50-vocab-d078-s09-confirmation-email-v1",
+      "dialogueLinks": [
+        "dialogue-078"
+      ],
+      "segmentLinks": [
+        "dialogue-078-s09"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d078-s09-confirmation-email-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "change your mind",
+      "hindi": "अपना मन बदलना",
+      "kind": "core",
+      "topic": "travel",
+      "partOfSpeech": "action",
+      "difficulty": "foundation",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "The payment is not refundable if you change your mind.",
+      "exampleHindi": "यदि आप अपना मन बदलते हैं, तो भुगतान वापस नहीं होगा।",
+      "synonyms": [
+        "change one's mind"
+      ],
+      "acceptedHindi": [],
+      "id": "pilot50-vocab-d078-s09-change-mind-v1",
+      "dialogueLinks": [
+        "dialogue-078"
+      ],
+      "segmentLinks": [
+        "dialogue-078-s09"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d078-s09-change-mind-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "door-to-door delivery",
+      "hindi": "घर-घर डिलीवरी",
+      "kind": "core",
+      "topic": "consumer",
+      "partOfSpeech": "term",
+      "difficulty": "intermediate",
+      "directMeaning": true,
+      "status": "human-review-pending-pilot-proposal",
+      "sourceType": "pilot50-bilingual-review",
+      "exampleEnglish": "They provide door-to-door delivery.",
+      "exampleHindi": "वे घर-घर डिलीवरी प्रदान करते हैं।",
+      "synonyms": [
+        "door-to-door service"
+      ],
+      "acceptedHindi": [
+        "घर तक डिलीवरी"
+      ],
+      "id": "pilot50-vocab-d021-s12-door-to-door-delivery-v1",
+      "dialogueLinks": [
+        "dialogue-021"
+      ],
+      "segmentLinks": [
+        "dialogue-021-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-vocab-d021-s12-door-to-door-delivery-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    }
+  ],
+  "phrases": [
+    {
+      "topic": "health",
+      "english": "once the blood test results are available",
+      "hindi": "रक्त-जाँच की रिपोर्ट आने के बाद",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-approved-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-059-s08",
+      "dialogueIds": [
+        "dialogue-059"
+      ],
+      "id": "pilot50-phrase-d059-s08-results-available-v1",
+      "dialogueLinks": [
+        "dialogue-059"
+      ],
+      "segmentLinks": [
+        "dialogue-059-s08"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d059-s08-results-available-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "topic": "health",
+      "english": "after three months of pregnancy",
+      "hindi": "गर्भावस्था के तीन महीने बाद",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-approved-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-059-s08",
+      "dialogueIds": [
+        "dialogue-059"
+      ],
+      "id": "pilot50-phrase-d059-s08-three-months-pregnancy-v1",
+      "dialogueLinks": [
+        "dialogue-059"
+      ],
+      "segmentLinks": [
+        "dialogue-059-s08"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d059-s08-three-months-pregnancy-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "topic": "health",
+      "english": "may involve additional health risks",
+      "hindi": "अतिरिक्त स्वास्थ्य जोखिम हो सकते हैं",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-approved-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-059-s08",
+      "dialogueIds": [
+        "dialogue-059"
+      ],
+      "id": "pilot50-phrase-d059-s08-additional-health-risks-v1",
+      "dialogueLinks": [
+        "dialogue-059"
+      ],
+      "segmentLinks": [
+        "dialogue-059-s08"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d059-s08-additional-health-risks-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "topic": "insurance",
+      "english": "four family members depend on me",
+      "hindi": "परिवार के चार सदस्य मुझ पर निर्भर हैं",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-approved-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-046-s10",
+      "dialogueIds": [
+        "dialogue-046"
+      ],
+      "id": "pilot50-phrase-d046-s10-family-dependants-v1",
+      "dialogueLinks": [
+        "dialogue-046"
+      ],
+      "segmentLinks": [
+        "dialogue-046-s10"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d046-s10-family-dependants-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "topic": "insurance",
+      "english": "monthly premium amount",
+      "hindi": "मासिक प्रीमियम राशि",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-approved-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-046-s10",
+      "dialogueIds": [
+        "dialogue-046"
+      ],
+      "exampleEnglish": "How much would the monthly premium be?",
+      "exampleHindi": "मासिक प्रीमियम कितना होगा?",
+      "id": "pilot50-phrase-d046-s10-monthly-premium-amount-v1",
+      "dialogueLinks": [
+        "dialogue-046"
+      ],
+      "segmentLinks": [
+        "dialogue-046-s10"
+      ],
+      "contentVersion": "pilot50-replacement-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T16:45:29+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d046-s10-monthly-premium-amount-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "the driver did not stop",
+      "hindi": "चालक बिल्कुल नहीं रुका",
+      "topic": "legal",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-037-s04",
+      "dialogueIds": [
+        "dialogue-037"
+      ],
+      "id": "pilot50-phrase-d037-s04-driver-did-not-stop-v1",
+      "dialogueLinks": [
+        "dialogue-037"
+      ],
+      "segmentLinks": [
+        "dialogue-037-s04"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d037-s04-driver-did-not-stop-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "could not see the number plate",
+      "hindi": "नंबर प्लेट नहीं देख पाई",
+      "topic": "legal",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-037-s04",
+      "dialogueIds": [
+        "dialogue-037"
+      ],
+      "acceptedHindi": [
+        "नंबर प्लेट नहीं देख पाया",
+        "नंबर प्लेट नहीं देख सका",
+        "नंबर प्लेट नहीं देख सकी"
+      ],
+      "id": "pilot50-phrase-d037-s04-could-not-see-plate-v1",
+      "dialogueLinks": [
+        "dialogue-037"
+      ],
+      "segmentLinks": [
+        "dialogue-037-s04"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d037-s04-could-not-see-plate-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "a red Toyota Corolla",
+      "hindi": "लाल रंग की टोयोटा कोरोला",
+      "topic": "legal",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-037-s04",
+      "dialogueIds": [
+        "dialogue-037"
+      ],
+      "id": "pilot50-phrase-d037-s04-red-toyota-corolla-v1",
+      "dialogueLinks": [
+        "dialogue-037"
+      ],
+      "segmentLinks": [
+        "dialogue-037-s04"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d037-s04-red-toyota-corolla-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "heading north",
+      "hindi": "उत्तर की ओर जा रही थी",
+      "topic": "legal",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-037-s04",
+      "dialogueIds": [
+        "dialogue-037"
+      ],
+      "acceptedHindi": [
+        "उत्तर की ओर जा रहा था",
+        "उत्तर दिशा में जा रही थी",
+        "उत्तर दिशा में जा रहा था"
+      ],
+      "id": "pilot50-phrase-d037-s04-heading-north-v1",
+      "dialogueLinks": [
+        "dialogue-037"
+      ],
+      "segmentLinks": [
+        "dialogue-037-s04"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d037-s04-heading-north-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "after assessing your application",
+      "hindi": "आपके आवेदन का आकलन करने के बाद",
+      "topic": "housing",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-064-s11",
+      "dialogueIds": [
+        "dialogue-064"
+      ],
+      "id": "pilot50-phrase-d064-s11-after-assessing-application-v1",
+      "dialogueLinks": [
+        "dialogue-064"
+      ],
+      "segmentLinks": [
+        "dialogue-064-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d064-s11-after-assessing-application-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "explain the repayment options",
+      "hindi": "पुनर्भुगतान के विकल्प समझाना",
+      "topic": "housing",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-064-s11",
+      "dialogueIds": [
+        "dialogue-064"
+      ],
+      "id": "pilot50-phrase-d064-s11-explain-repayment-options-v1",
+      "dialogueLinks": [
+        "dialogue-064"
+      ],
+      "segmentLinks": [
+        "dialogue-064-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d064-s11-explain-repayment-options-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "do not sign the lease",
+      "hindi": "लीज़ पर हस्ताक्षर न करें",
+      "topic": "housing",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-064-s11",
+      "dialogueIds": [
+        "dialogue-064"
+      ],
+      "acceptedHindi": [
+        "किरायानामा हस्ताक्षर न करें"
+      ],
+      "id": "pilot50-phrase-d064-s11-do-not-sign-lease-v1",
+      "dialogueLinks": [
+        "dialogue-064"
+      ],
+      "segmentLinks": [
+        "dialogue-064-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d064-s11-do-not-sign-lease-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "until assistance has been approved",
+      "hindi": "जब तक सहायता मंज़ूर न हो जाए",
+      "topic": "housing",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-064-s11",
+      "dialogueIds": [
+        "dialogue-064"
+      ],
+      "acceptedHindi": [
+        "जब तक सहायता स्वीकृत न हो जाए",
+        "सहायता मंज़ूर होने तक"
+      ],
+      "id": "pilot50-phrase-d064-s11-until-assistance-approved-v1",
+      "dialogueLinks": [
+        "dialogue-064"
+      ],
+      "segmentLinks": [
+        "dialogue-064-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-batch01-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T17:56:26+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d064-s11-until-assistance-approved-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "borrow up to six books",
+      "hindi": "अधिकतम छह किताबें उधार लेना",
+      "topic": "community",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-045-s11",
+      "dialogueIds": [
+        "dialogue-045"
+      ],
+      "id": "pilot50-phrase-d045-s11-borrow-six-books-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d045-s11-borrow-six-books-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "return them within four weeks",
+      "hindi": "उन्हें चार सप्ताह के भीतर वापस करना",
+      "topic": "community",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-045-s11",
+      "dialogueIds": [
+        "dialogue-045"
+      ],
+      "id": "pilot50-phrase-d045-s11-return-four-weeks-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d045-s11-return-four-weeks-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "10 cents per day",
+      "hindi": "प्रतिदिन 10 सेंट",
+      "topic": "community",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-045-s11",
+      "dialogueIds": [
+        "dialogue-045"
+      ],
+      "id": "pilot50-phrase-d045-s11-ten-cents-per-day-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d045-s11-ten-cents-per-day-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "pay the full cost of the book",
+      "hindi": "किताब की पूरी कीमत चुकाना",
+      "topic": "community",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-045-s11",
+      "dialogueIds": [
+        "dialogue-045"
+      ],
+      "id": "pilot50-phrase-d045-s11-pay-full-book-cost-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d045-s11-pay-full-book-cost-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "including overdue charges",
+      "hindi": "बकाया विलंब शुल्क सहित",
+      "topic": "community",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-045-s11",
+      "dialogueIds": [
+        "dialogue-045"
+      ],
+      "id": "pilot50-phrase-d045-s11-including-overdue-charges-v1",
+      "dialogueLinks": [
+        "dialogue-045"
+      ],
+      "segmentLinks": [
+        "dialogue-045-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d045-s11-including-overdue-charges-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "start the registration today",
+      "hindi": "आज पंजीकरण शुरू करना",
+      "topic": "banking",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-053-s11",
+      "dialogueIds": [
+        "dialogue-053"
+      ],
+      "id": "pilot50-phrase-d053-s11-start-registration-today-v1",
+      "dialogueLinks": [
+        "dialogue-053"
+      ],
+      "segmentLinks": [
+        "dialogue-053-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d053-s11-start-registration-today-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "full access will only work",
+      "hindi": "पूरी पहुँच तभी मिलेगी",
+      "topic": "banking",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-053-s11",
+      "dialogueIds": [
+        "dialogue-053"
+      ],
+      "acceptedHindi": [
+        "पूरी पहुँच तभी उपलब्ध होगी"
+      ],
+      "id": "pilot50-phrase-d053-s11-full-access-only-v1",
+      "dialogueLinks": [
+        "dialogue-053"
+      ],
+      "segmentLinks": [
+        "dialogue-053-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d053-s11-full-access-only-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "after the accounts are active",
+      "hindi": "खाते सक्रिय होने के बाद",
+      "topic": "banking",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-053-s11",
+      "dialogueIds": [
+        "dialogue-053"
+      ],
+      "id": "pilot50-phrase-d053-s11-accounts-active-v1",
+      "dialogueLinks": [
+        "dialogue-053"
+      ],
+      "segmentLinks": [
+        "dialogue-053-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d053-s11-accounts-active-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "contact details are verified",
+      "hindi": "संपर्क विवरण सत्यापित हो जाएँ",
+      "topic": "banking",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-053-s11",
+      "dialogueIds": [
+        "dialogue-053"
+      ],
+      "acceptedHindi": [
+        "संपर्क विवरण की पुष्टि हो जाए"
+      ],
+      "id": "pilot50-phrase-d053-s11-contact-details-verified-v1",
+      "dialogueLinks": [
+        "dialogue-053"
+      ],
+      "segmentLinks": [
+        "dialogue-053-s11"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batch02-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d053-s11-contact-details-verified-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "that sounds relevant",
+      "hindi": "यह प्रासंगिक लगता है",
+      "topic": "employment",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-002-s05",
+      "dialogueIds": [
+        "dialogue-002"
+      ],
+      "acceptedHindi": [
+        "यह अनुभव प्रासंगिक लगता है"
+      ],
+      "id": "pilot50-phrase-d002-s05-sounds-relevant-v1",
+      "dialogueLinks": [
+        "dialogue-002"
+      ],
+      "segmentLinks": [
+        "dialogue-002-s05"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d002-s05-sounds-relevant-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "describe your most recent work in Australia",
+      "hindi": "ऑस्ट्रेलिया में अपने सबसे हाल के काम का वर्णन करें",
+      "topic": "employment",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-002-s05",
+      "dialogueIds": [
+        "dialogue-002"
+      ],
+      "acceptedHindi": [
+        "ऑस्ट्रेलिया में अपने सबसे हाल के काम के बारे में बताइए"
+      ],
+      "id": "pilot50-phrase-d002-s05-recent-work-australia-v1",
+      "dialogueLinks": [
+        "dialogue-002"
+      ],
+      "segmentLinks": [
+        "dialogue-002-s05"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d002-s05-recent-work-australia-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "my husband speaks English very well",
+      "hindi": "मेरे पति बहुत अच्छी अंग्रेज़ी बोलते हैं",
+      "topic": "immigration",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-081-s12",
+      "dialogueIds": [
+        "dialogue-081"
+      ],
+      "id": "pilot50-phrase-d081-s12-husband-speaks-english-v1",
+      "dialogueLinks": [
+        "dialogue-081"
+      ],
+      "segmentLinks": [
+        "dialogue-081-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d081-s12-husband-speaks-english-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "a highly skilled workplace",
+      "hindi": "उच्च-कौशल वाला कार्यस्थल",
+      "topic": "immigration",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-081-s12",
+      "dialogueIds": [
+        "dialogue-081"
+      ],
+      "id": "pilot50-phrase-d081-s12-highly-skilled-workplace-v1",
+      "dialogueLinks": [
+        "dialogue-081"
+      ],
+      "segmentLinks": [
+        "dialogue-081-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d081-s12-highly-skilled-workplace-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "I am not sure I can pass the test",
+      "hindi": "मुझे यकीन नहीं है कि मैं परीक्षा पास कर पाऊँगी",
+      "topic": "immigration",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-081-s12",
+      "dialogueIds": [
+        "dialogue-081"
+      ],
+      "acceptedHindi": [
+        "मुझे यकीन नहीं है कि मैं परीक्षा पास कर पाऊँगा"
+      ],
+      "id": "pilot50-phrase-d081-s12-unsure-pass-test-v1",
+      "dialogueLinks": [
+        "dialogue-081"
+      ],
+      "segmentLinks": [
+        "dialogue-081-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d081-s12-unsure-pass-test-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "an advance payment of $500",
+      "hindi": "500 डॉलर का अग्रिम भुगतान",
+      "topic": "travel",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-078-s09",
+      "dialogueIds": [
+        "dialogue-078"
+      ],
+      "id": "pilot50-phrase-d078-s09-advance-payment-500-v1",
+      "dialogueLinks": [
+        "dialogue-078"
+      ],
+      "segmentLinks": [
+        "dialogue-078-s09"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d078-s09-advance-payment-500-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "non-refundable if you cancel",
+      "hindi": "रद्द करने पर राशि वापस नहीं होगी",
+      "topic": "travel",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-078-s09",
+      "dialogueIds": [
+        "dialogue-078"
+      ],
+      "id": "pilot50-phrase-d078-s09-non-refundable-cancel-v1",
+      "dialogueLinks": [
+        "dialogue-078"
+      ],
+      "segmentLinks": [
+        "dialogue-078-s09"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d078-s09-non-refundable-cancel-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "once you make the payment",
+      "hindi": "भुगतान करने के बाद",
+      "topic": "travel",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-078-s09",
+      "dialogueIds": [
+        "dialogue-078"
+      ],
+      "id": "pilot50-phrase-d078-s09-after-payment-v1",
+      "dialogueLinks": [
+        "dialogue-078"
+      ],
+      "segmentLinks": [
+        "dialogue-078-s09"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d078-s09-after-payment-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "send a confirmation email",
+      "hindi": "पुष्टि का ईमेल भेजना",
+      "topic": "travel",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-078-s09",
+      "dialogueIds": [
+        "dialogue-078"
+      ],
+      "id": "pilot50-phrase-d078-s09-send-confirmation-email-v1",
+      "dialogueLinks": [
+        "dialogue-078"
+      ],
+      "segmentLinks": [
+        "dialogue-078-s09"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d078-s09-send-confirmation-email-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "for our most urgent shipments",
+      "hindi": "अपनी सबसे ज़रूरी खेपों के लिए",
+      "topic": "consumer",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-021-s12",
+      "dialogueIds": [
+        "dialogue-021"
+      ],
+      "id": "pilot50-phrase-d021-s12-urgent-shipments-v1",
+      "dialogueLinks": [
+        "dialogue-021"
+      ],
+      "segmentLinks": [
+        "dialogue-021-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d021-s12-urgent-shipments-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "use UPS, FedEx and DHL",
+      "hindi": "UPS, FedEx और DHL का उपयोग करना",
+      "topic": "consumer",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-021-s12",
+      "dialogueIds": [
+        "dialogue-021"
+      ],
+      "id": "pilot50-phrase-d021-s12-use-ups-fedex-dhl-v1",
+      "dialogueLinks": [
+        "dialogue-021"
+      ],
+      "segmentLinks": [
+        "dialogue-021-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d021-s12-use-ups-fedex-dhl-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "guarantee door-to-door delivery within 48 hours",
+      "hindi": "48 घंटे के भीतर घर-घर डिलीवरी की गारंटी देना",
+      "topic": "consumer",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-021-s12",
+      "dialogueIds": [
+        "dialogue-021"
+      ],
+      "id": "pilot50-phrase-d021-s12-guarantee-delivery-48-hours-v1",
+      "dialogueLinks": [
+        "dialogue-021"
+      ],
+      "segmentLinks": [
+        "dialogue-021-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d021-s12-guarantee-delivery-48-hours-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    },
+    {
+      "english": "they are not cheap",
+      "hindi": "वे सस्ते नहीं हैं",
+      "topic": "consumer",
+      "phraseType": "short NAATI practice phrase",
+      "status": "human-review-pending-pilot-proposal",
+      "source": "Pilot 50 reviewed segment dialogue-021-s12",
+      "dialogueIds": [
+        "dialogue-021"
+      ],
+      "id": "pilot50-phrase-d021-s12-not-cheap-v1",
+      "dialogueLinks": [
+        "dialogue-021"
+      ],
+      "segmentLinks": [
+        "dialogue-021-s12"
+      ],
+      "contentVersion": "pilot50-remaining-eight-replacement-content-batches03-04-v1",
+      "approvalStatus": "human-approved-for-pilot-overlay",
+      "approvedAt": "2026-08-05T18:36:28+10:00",
+      "approvedByRole": "content-owner",
+      "canonical": false,
+      "canonicalPromotion": {
+        "status": "pending",
+        "strategy": "alias-preserving-migration",
+        "progressKey": "pilot50-phrase-d021-s12-not-cheap-v1",
+        "migrationRequiredIfCanonicalIdChanges": true
+      }
+    }
+  ],
+  "progressAliases": {
+    "pilot50-vocab-d059-s08-abortion-v1": "pilot50-vocab-d059-s08-abortion-v1",
+    "pilot50-vocab-d059-s08-health-risk-v1": "pilot50-vocab-d059-s08-health-risk-v1",
+    "pilot50-vocab-d059-s08-make-decision-v1": "pilot50-vocab-d059-s08-make-decision-v1",
+    "pilot50-vocab-d046-s10-monthly-income-v1": "pilot50-vocab-d046-s10-monthly-income-v1",
+    "pilot50-vocab-d046-s10-annual-income-v1": "pilot50-vocab-d046-s10-annual-income-v1",
+    "pilot50-vocab-d037-s04-northbound-v1": "pilot50-vocab-d037-s04-northbound-v1",
+    "pilot50-vocab-d064-s11-housing-officer-v1": "pilot50-vocab-d064-s11-housing-officer-v1",
+    "pilot50-vocab-d064-s11-repayment-options-v1": "pilot50-vocab-d064-s11-repayment-options-v1",
+    "pilot50-vocab-d064-s11-assistance-approval-v1": "pilot50-vocab-d064-s11-assistance-approval-v1",
+    "pilot50-vocab-d045-s11-borrowing-limit-v1": "pilot50-vocab-d045-s11-borrowing-limit-v1",
+    "pilot50-vocab-d045-s11-four-week-loan-period-v1": "pilot50-vocab-d045-s11-four-week-loan-period-v1",
+    "pilot50-vocab-d045-s11-lost-stolen-book-v1": "pilot50-vocab-d045-s11-lost-stolen-book-v1",
+    "pilot50-vocab-d045-s11-full-replacement-cost-v1": "pilot50-vocab-d045-s11-full-replacement-cost-v1",
+    "pilot50-vocab-d053-s11-registration-v1": "pilot50-vocab-d053-s11-registration-v1",
+    "pilot50-vocab-d002-s05-most-recent-work-v1": "pilot50-vocab-d002-s05-most-recent-work-v1",
+    "pilot50-vocab-d002-s05-australian-work-experience-v1": "pilot50-vocab-d002-s05-australian-work-experience-v1",
+    "pilot50-vocab-d081-s12-speak-english-well-v1": "pilot50-vocab-d081-s12-speak-english-well-v1",
+    "pilot50-vocab-d081-s12-pass-test-v1": "pilot50-vocab-d081-s12-pass-test-v1",
+    "pilot50-vocab-d078-s09-non-refundable-v1": "pilot50-vocab-d078-s09-non-refundable-v1",
+    "pilot50-vocab-d078-s09-confirmation-email-v1": "pilot50-vocab-d078-s09-confirmation-email-v1",
+    "pilot50-vocab-d078-s09-change-mind-v1": "pilot50-vocab-d078-s09-change-mind-v1",
+    "pilot50-vocab-d021-s12-door-to-door-delivery-v1": "pilot50-vocab-d021-s12-door-to-door-delivery-v1",
+    "pilot50-phrase-d059-s08-results-available-v1": "pilot50-phrase-d059-s08-results-available-v1",
+    "pilot50-phrase-d059-s08-three-months-pregnancy-v1": "pilot50-phrase-d059-s08-three-months-pregnancy-v1",
+    "pilot50-phrase-d059-s08-additional-health-risks-v1": "pilot50-phrase-d059-s08-additional-health-risks-v1",
+    "pilot50-phrase-d046-s10-family-dependants-v1": "pilot50-phrase-d046-s10-family-dependants-v1",
+    "pilot50-phrase-d046-s10-monthly-premium-amount-v1": "pilot50-phrase-d046-s10-monthly-premium-amount-v1",
+    "pilot50-phrase-d037-s04-driver-did-not-stop-v1": "pilot50-phrase-d037-s04-driver-did-not-stop-v1",
+    "pilot50-phrase-d037-s04-could-not-see-plate-v1": "pilot50-phrase-d037-s04-could-not-see-plate-v1",
+    "pilot50-phrase-d037-s04-red-toyota-corolla-v1": "pilot50-phrase-d037-s04-red-toyota-corolla-v1",
+    "pilot50-phrase-d037-s04-heading-north-v1": "pilot50-phrase-d037-s04-heading-north-v1",
+    "pilot50-phrase-d064-s11-after-assessing-application-v1": "pilot50-phrase-d064-s11-after-assessing-application-v1",
+    "pilot50-phrase-d064-s11-explain-repayment-options-v1": "pilot50-phrase-d064-s11-explain-repayment-options-v1",
+    "pilot50-phrase-d064-s11-do-not-sign-lease-v1": "pilot50-phrase-d064-s11-do-not-sign-lease-v1",
+    "pilot50-phrase-d064-s11-until-assistance-approved-v1": "pilot50-phrase-d064-s11-until-assistance-approved-v1",
+    "pilot50-phrase-d045-s11-borrow-six-books-v1": "pilot50-phrase-d045-s11-borrow-six-books-v1",
+    "pilot50-phrase-d045-s11-return-four-weeks-v1": "pilot50-phrase-d045-s11-return-four-weeks-v1",
+    "pilot50-phrase-d045-s11-ten-cents-per-day-v1": "pilot50-phrase-d045-s11-ten-cents-per-day-v1",
+    "pilot50-phrase-d045-s11-pay-full-book-cost-v1": "pilot50-phrase-d045-s11-pay-full-book-cost-v1",
+    "pilot50-phrase-d045-s11-including-overdue-charges-v1": "pilot50-phrase-d045-s11-including-overdue-charges-v1",
+    "pilot50-phrase-d053-s11-start-registration-today-v1": "pilot50-phrase-d053-s11-start-registration-today-v1",
+    "pilot50-phrase-d053-s11-full-access-only-v1": "pilot50-phrase-d053-s11-full-access-only-v1",
+    "pilot50-phrase-d053-s11-accounts-active-v1": "pilot50-phrase-d053-s11-accounts-active-v1",
+    "pilot50-phrase-d053-s11-contact-details-verified-v1": "pilot50-phrase-d053-s11-contact-details-verified-v1",
+    "pilot50-phrase-d002-s05-sounds-relevant-v1": "pilot50-phrase-d002-s05-sounds-relevant-v1",
+    "pilot50-phrase-d002-s05-recent-work-australia-v1": "pilot50-phrase-d002-s05-recent-work-australia-v1",
+    "pilot50-phrase-d081-s12-husband-speaks-english-v1": "pilot50-phrase-d081-s12-husband-speaks-english-v1",
+    "pilot50-phrase-d081-s12-highly-skilled-workplace-v1": "pilot50-phrase-d081-s12-highly-skilled-workplace-v1",
+    "pilot50-phrase-d081-s12-unsure-pass-test-v1": "pilot50-phrase-d081-s12-unsure-pass-test-v1",
+    "pilot50-phrase-d078-s09-advance-payment-500-v1": "pilot50-phrase-d078-s09-advance-payment-500-v1",
+    "pilot50-phrase-d078-s09-non-refundable-cancel-v1": "pilot50-phrase-d078-s09-non-refundable-cancel-v1",
+    "pilot50-phrase-d078-s09-after-payment-v1": "pilot50-phrase-d078-s09-after-payment-v1",
+    "pilot50-phrase-d078-s09-send-confirmation-email-v1": "pilot50-phrase-d078-s09-send-confirmation-email-v1",
+    "pilot50-phrase-d021-s12-urgent-shipments-v1": "pilot50-phrase-d021-s12-urgent-shipments-v1",
+    "pilot50-phrase-d021-s12-use-ups-fedex-dhl-v1": "pilot50-phrase-d021-s12-use-ups-fedex-dhl-v1",
+    "pilot50-phrase-d021-s12-guarantee-delivery-48-hours-v1": "pilot50-phrase-d021-s12-guarantee-delivery-48-hours-v1",
+    "pilot50-phrase-d021-s12-not-cheap-v1": "pilot50-phrase-d021-s12-not-cheap-v1"
+  },
+  "counts": {
+    "segments": 10,
+    "replacementRequests": 81,
+    "selectedExistingLinks": 26,
+    "optionalSupportingLinks": 12,
+    "newVocabulary": 22,
+    "newPhrases": 35,
+    "newRecords": 57
+  },
+  "runtimeRules": {
+    "canonicalLoadsFirst": true,
+    "overlayLoadsAfterCanonical": true,
+    "rejectDuplicateIds": true,
+    "approvedSegmentsOnly": true,
+    "stableProgressKeys": true,
+    "aliasPreservingMigration": true,
+    "productionApproved": false
+  },
+  "sourceArtifacts": {
+    "approvedSegmentOverlay": "assessment/pilot50/approved-overlays/pilot50-batch01-human-approved-v1.json",
+    "finalReplacementIndex": "assessment/pilot50/approved-overlays/pilot50-batch01-all-replacement-resolutions-v1.json",
+    "decisionArtifacts": [
+      "assessment/pilot50/replacement-search/pilot50-two-segments-replacement-decisions-v1.json",
+      "assessment/pilot50/replacement-search/remaining-eight-search-batches/pilot50-remaining-eight-search-batch-01-decisions-v1.json",
+      "assessment/pilot50/replacement-search/remaining-eight-search-batches/pilot50-remaining-eight-search-batch-02-decisions-v1.json",
+      "assessment/pilot50/replacement-search/remaining-eight-search-batches/pilot50-remaining-eight-search-batches-03-04-decisions-v1.json"
+    ],
+    "contentOverlays": [
+      "assessment/pilot50/approved-overlays/pilot50-two-segments-replacement-content-v1.json",
+      "assessment/pilot50/approved-overlays/pilot50-remaining-eight-replacement-content-batch01-v1.json",
+      "assessment/pilot50/approved-overlays/pilot50-remaining-eight-replacement-content-batch02-v1.json",
+      "assessment/pilot50/approved-overlays/pilot50-remaining-eight-replacement-content-batches03-04-v1.json"
+    ]
+  }
+}

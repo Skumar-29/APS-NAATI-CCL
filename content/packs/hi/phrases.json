@@ -1,0 +1,5454 @@
+{
+  "schemaVersion": "2.0.5",
+  "count": 551,
+  "items": [
+    {
+      "id": "hea-p-001",
+      "topic": "health",
+      "english": "How can I help you today?",
+      "hindi": "मैं आज आपकी कैसे सहायता कर सकता/सकती हूँ?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-002",
+      "topic": "health",
+      "english": "Please tell me your full name and date of birth.",
+      "hindi": "कृपया अपना पूरा नाम और जन्मतिथि बताइए।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-003",
+      "topic": "health",
+      "english": "I have been feeling unwell for the last few days.",
+      "hindi": "मैं पिछले कुछ दिनों से अस्वस्थ महसूस कर रहा/रही हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-004",
+      "topic": "health",
+      "english": "I have a severe headache and feel nauseous.",
+      "hindi": "मुझे तेज सिरदर्द है और जी मिचला रहा है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-005",
+      "topic": "health",
+      "english": "Have you had any other symptoms?",
+      "hindi": "क्या आपको कोई अन्य लक्षण भी हुए हैं?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-006",
+      "topic": "health",
+      "english": "I vomited last night and again this morning.",
+      "hindi": "मुझे कल रात और आज सुबह फिर उल्टी हुई।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-007",
+      "topic": "health",
+      "english": "I would like you to have a blood test.",
+      "hindi": "मैं चाहता/चाहती हूँ कि आप रक्त जाँच करवाएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-008",
+      "topic": "health",
+      "english": "I will prescribe medicine for the nausea.",
+      "hindi": "मैं जी मिचलाने के लिए दवा लिख दूँगा/दूँगी।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-009",
+      "topic": "health",
+      "english": "Take one tablet twice a day after food.",
+      "hindi": "भोजन के बाद दिन में दो बार एक गोली लें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-010",
+      "topic": "health",
+      "english": "Do not exceed the recommended dose.",
+      "hindi": "बताई गई खुराक से अधिक दवा न लें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-011",
+      "topic": "health",
+      "english": "Please go to the pathology laboratory next door.",
+      "hindi": "कृपया बगल की पैथोलॉजी प्रयोगशाला में जाएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-012",
+      "topic": "health",
+      "english": "The results should be available within two days.",
+      "hindi": "परिणाम दो दिनों के भीतर उपलब्ध हो जाने चाहिए।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-013",
+      "topic": "health",
+      "english": "Do I really need this test?",
+      "hindi": "क्या मुझे यह जाँच सचमुच करवानी जरूरी है?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-014",
+      "topic": "health",
+      "english": "This test is to rule out a more serious condition.",
+      "hindi": "यह जाँच किसी अधिक गंभीर बीमारी की संभावना को दूर करने के लिए है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-015",
+      "topic": "health",
+      "english": "Please come back if the pain continues.",
+      "hindi": "यदि दर्द जारी रहे तो कृपया वापस आएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-016",
+      "topic": "health",
+      "english": "Seek urgent medical help if your symptoms get worse.",
+      "hindi": "लक्षण बिगड़ें तो तुरंत चिकित्सकीय सहायता लें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-017",
+      "topic": "health",
+      "english": "Are you allergic to any medicine?",
+      "hindi": "क्या आपको किसी दवा से एलर्जी है?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-018",
+      "topic": "health",
+      "english": "Please bring your Medicare card.",
+      "hindi": "कृपया अपना मेडिकेयर कार्ड साथ लाएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-019",
+      "topic": "health",
+      "english": "The doctor has referred you to a specialist.",
+      "hindi": "चिकित्सक ने आपको विशेषज्ञ के पास भेजा है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-020",
+      "topic": "health",
+      "english": "You will need a follow-up appointment.",
+      "hindi": "आपको दोबारा जाँच के लिए अपॉइंटमेंट लेना होगा।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-021",
+      "topic": "health",
+      "english": "Your information will remain confidential.",
+      "hindi": "आपकी जानकारी गोपनीय रखी जाएगी।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-022",
+      "topic": "health",
+      "english": "Please rest and drink plenty of water.",
+      "hindi": "कृपया आराम करें और पर्याप्त पानी पिएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-023",
+      "topic": "health",
+      "english": "Stop taking the medicine if you develop a rash.",
+      "hindi": "यदि त्वचा पर चकत्ते हों तो दवा लेना बंद कर दें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hea-p-024",
+      "topic": "health",
+      "english": "Thank you for explaining everything clearly.",
+      "hindi": "सब कुछ स्पष्ट रूप से समझाने के लिए धन्यवाद।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-001",
+      "topic": "housing",
+      "english": "I am calling to ask about rental bond assistance.",
+      "hindi": "मैं किराये के बॉन्ड की सहायता के बारे में पूछने के लिए फोन कर रहा/रही हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-002",
+      "topic": "housing",
+      "english": "You may be eligible for an interest-free bond loan.",
+      "hindi": "आप ब्याज-मुक्त बॉन्ड ऋण के लिए पात्र हो सकते हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-003",
+      "topic": "housing",
+      "english": "A bond is a security deposit for the rental property.",
+      "hindi": "बॉन्ड किराये की संपत्ति के लिए सुरक्षा जमा राशि है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-004",
+      "topic": "housing",
+      "english": "The landlord may ask for the bond before you move in.",
+      "hindi": "मकान मालिक घर में प्रवेश से पहले बॉन्ड माँग सकता है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-005",
+      "topic": "housing",
+      "english": "The bond is held by the relevant tenancy authority.",
+      "hindi": "बॉन्ड संबंधित किरायेदारी प्राधिकरण के पास रखा जाता है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-006",
+      "topic": "housing",
+      "english": "You must complete an application form.",
+      "hindi": "आपको आवेदन पत्र पूरा करना होगा।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-007",
+      "topic": "housing",
+      "english": "Please provide proof of identity and income.",
+      "hindi": "कृपया पहचान और आय का प्रमाण दें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-008",
+      "topic": "housing",
+      "english": "How many bedrooms does the property have?",
+      "hindi": "संपत्ति में कितने शयनकक्ष हैं?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-009",
+      "topic": "housing",
+      "english": "How many people will live in the property?",
+      "hindi": "संपत्ति में कितने लोग रहेंगे?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-010",
+      "topic": "housing",
+      "english": "The amount depends on your household circumstances.",
+      "hindi": "राशि आपके परिवार की परिस्थितियों पर निर्भर करती है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-011",
+      "topic": "housing",
+      "english": "This assistance is only for the rental bond.",
+      "hindi": "यह सहायता केवल किराये के बॉन्ड के लिए है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-012",
+      "topic": "housing",
+      "english": "Other support may be available for moving costs.",
+      "hindi": "स्थानांतरण खर्च के लिए अन्य सहायता उपलब्ध हो सकती है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-013",
+      "topic": "housing",
+      "english": "How do I repay the loan?",
+      "hindi": "मैं ऋण का पुनर्भुगतान कैसे करूँ?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-014",
+      "topic": "housing",
+      "english": "You can arrange repayments with the housing office.",
+      "hindi": "आप आवास कार्यालय के साथ पुनर्भुगतान की व्यवस्था कर सकते हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-015",
+      "topic": "housing",
+      "english": "Please check the current eligibility rules before applying.",
+      "hindi": "आवेदन से पहले वर्तमान पात्रता नियमों की जाँच करें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-016",
+      "topic": "housing",
+      "english": "The property needs an urgent repair.",
+      "hindi": "संपत्ति में तत्काल मरम्मत की आवश्यकता है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-017",
+      "topic": "housing",
+      "english": "There is mould in the bedroom.",
+      "hindi": "शयनकक्ष में फफूंद है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-018",
+      "topic": "housing",
+      "english": "I reported the water leak last week.",
+      "hindi": "मैंने पिछले सप्ताह पानी के रिसाव की सूचना दी थी।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-019",
+      "topic": "housing",
+      "english": "The landlord has issued a notice.",
+      "hindi": "मकान मालिक ने नोटिस जारी किया है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-020",
+      "topic": "housing",
+      "english": "I would like to discuss a repayment plan.",
+      "hindi": "मैं पुनर्भुगतान योजना पर चर्चा करना चाहता/चाहती हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-021",
+      "topic": "housing",
+      "english": "Please keep copies of all documents.",
+      "hindi": "कृपया सभी दस्तावेजों की प्रतियाँ रखें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-022",
+      "topic": "housing",
+      "english": "You may request mediation for the dispute.",
+      "hindi": "आप विवाद के लिए मध्यस्थता का अनुरोध कर सकते हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-023",
+      "topic": "housing",
+      "english": "The inspection has been scheduled for Friday.",
+      "hindi": "निरीक्षण शुक्रवार के लिए निर्धारित किया गया है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "hou-p-024",
+      "topic": "housing",
+      "english": "Thank you for explaining the application process.",
+      "hindi": "आवेदन प्रक्रिया समझाने के लिए धन्यवाद।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-001",
+      "topic": "employment",
+      "english": "I would like to enquire about current job vacancies.",
+      "hindi": "मैं वर्तमान नौकरी की रिक्तियों के बारे में पूछना चाहता/चाहती हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-002",
+      "topic": "employment",
+      "english": "Are you hiring at the moment?",
+      "hindi": "क्या आप इस समय भर्ती कर रहे हैं?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-003",
+      "topic": "employment",
+      "english": "We are looking for a warehouse assistant.",
+      "hindi": "हम एक गोदाम सहायक की तलाश कर रहे हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-004",
+      "topic": "employment",
+      "english": "The job involves picking and packing orders.",
+      "hindi": "इस नौकरी में सामान चुनना और ऑर्डर पैक करना शामिल है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-005",
+      "topic": "employment",
+      "english": "My skills and experience suit this position.",
+      "hindi": "मेरे कौशल और अनुभव इस पद के अनुकूल हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-006",
+      "topic": "employment",
+      "english": "Do you have an up-to-date resume?",
+      "hindi": "क्या आपके पास अद्यतन रिज़्यूमे है?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-007",
+      "topic": "employment",
+      "english": "Please describe your recent work experience.",
+      "hindi": "कृपया अपने हाल के कार्य अनुभव का वर्णन करें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-008",
+      "topic": "employment",
+      "english": "I have five years of delivery experience.",
+      "hindi": "मेरे पास सामान पहुँचाने का पाँच वर्षों का अनुभव है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-009",
+      "topic": "employment",
+      "english": "I have also worked in an Australian workplace.",
+      "hindi": "मैंने ऑस्ट्रेलिया में भी काम किया है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-010",
+      "topic": "employment",
+      "english": "Please add that experience to your resume.",
+      "hindi": "कृपया उस अनुभव को अपने रिज़्यूमे में जोड़ें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-011",
+      "topic": "employment",
+      "english": "Send your application to the email address on this card.",
+      "hindi": "अपना आवेदन इस कार्ड पर दिए ईमेल पते पर भेजें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-012",
+      "topic": "employment",
+      "english": "Human Resources will contact shortlisted applicants.",
+      "hindi": "मानव संसाधन विभाग चयनित आवेदकों से संपर्क करेगा।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-013",
+      "topic": "employment",
+      "english": "What is the closing date for applications?",
+      "hindi": "आवेदन की अंतिम तिथि क्या है?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-014",
+      "topic": "employment",
+      "english": "Please apply as soon as possible.",
+      "hindi": "कृपया जितनी जल्दी हो सके आवेदन करें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-015",
+      "topic": "employment",
+      "english": "The interview will take approximately thirty minutes.",
+      "hindi": "साक्षात्कार में लगभग तीस मिनट लगेंगे।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-016",
+      "topic": "employment",
+      "english": "Bring your licence and certificates to the interview.",
+      "hindi": "साक्षात्कार में अपना लाइसेंस और प्रमाणपत्र लाएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-017",
+      "topic": "employment",
+      "english": "The position includes day and evening shifts.",
+      "hindi": "इस पद में दिन और शाम की पालियाँ शामिल हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-018",
+      "topic": "employment",
+      "english": "Are you available to work on weekends?",
+      "hindi": "क्या आप सप्ताहांत में काम करने के लिए उपलब्ध हैं?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-019",
+      "topic": "employment",
+      "english": "The hourly rate will be discussed at the interview.",
+      "hindi": "प्रति घंटा दर पर साक्षात्कार में चर्चा होगी।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-020",
+      "topic": "employment",
+      "english": "You will receive workplace safety training.",
+      "hindi": "आपको कार्यस्थल सुरक्षा प्रशिक्षण दिया जाएगा।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-021",
+      "topic": "employment",
+      "english": "The first three months are a probation period.",
+      "hindi": "पहले तीन महीने परिवीक्षा अवधि हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-022",
+      "topic": "employment",
+      "english": "Please let us know if you need reasonable adjustments.",
+      "hindi": "यदि आपको उचित सहायता या बदलाव की आवश्यकता हो तो हमें बताएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-023",
+      "topic": "employment",
+      "english": "Thank you for considering my application.",
+      "hindi": "मेरे आवेदन पर विचार करने के लिए धन्यवाद।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "emp-p-024",
+      "topic": "employment",
+      "english": "We will contact you after reviewing your documents.",
+      "hindi": "दस्तावेजों की समीक्षा के बाद हम आपसे संपर्क करेंगे।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-001",
+      "topic": "legal",
+      "english": "Please tell me what happened.",
+      "hindi": "कृपया बताइए क्या हुआ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-002",
+      "topic": "legal",
+      "english": "A car hit my vehicle and left the scene.",
+      "hindi": "एक कार ने मेरे वाहन को टक्कर मारी और घटनास्थल से चली गई।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-003",
+      "topic": "legal",
+      "english": "Did you see the registration number?",
+      "hindi": "क्या आपने पंजीकरण संख्या देखी?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-004",
+      "topic": "legal",
+      "english": "I could not take a photograph of the number plate.",
+      "hindi": "मैं नंबर प्लेट की फोटो नहीं ले सका/सकी।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-005",
+      "topic": "legal",
+      "english": "I remember that it was a red sedan.",
+      "hindi": "मुझे याद है कि वह लाल रंग की सेडान थी।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-006",
+      "topic": "legal",
+      "english": "Were you or your passenger injured?",
+      "hindi": "क्या आपको या आपके यात्री को चोट लगी?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-007",
+      "topic": "legal",
+      "english": "Please seek medical attention if you feel unwell.",
+      "hindi": "यदि आप अस्वस्थ महसूस करें तो चिकित्सकीय सहायता लें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-008",
+      "topic": "legal",
+      "english": "We will check nearby CCTV footage.",
+      "hindi": "हम आसपास की सीसीटीवी रिकॉर्डिंग की जाँच करेंगे।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-009",
+      "topic": "legal",
+      "english": "Please do not speculate about the other driver.",
+      "hindi": "कृपया दूसरे चालक के बारे में अनुमान न लगाएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-010",
+      "topic": "legal",
+      "english": "Is your vehicle insured?",
+      "hindi": "क्या आपके वाहन का बीमा है?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-011",
+      "topic": "legal",
+      "english": "I only have third-party insurance.",
+      "hindi": "मेरे पास केवल तृतीय-पक्ष बीमा है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-012",
+      "topic": "legal",
+      "english": "Contact your insurer as soon as possible.",
+      "hindi": "जितनी जल्दी हो सके अपने बीमा प्रदाता से संपर्क करें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-013",
+      "topic": "legal",
+      "english": "Keep photographs and repair quotations as evidence.",
+      "hindi": "फोटो और मरम्मत के कोटेशन सबूत के रूप में रखें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-014",
+      "topic": "legal",
+      "english": "This is your police event number.",
+      "hindi": "यह आपकी पुलिस घटना संख्या है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-015",
+      "topic": "legal",
+      "english": "We will contact you if we need another statement.",
+      "hindi": "यदि हमें दूसरा बयान चाहिए होगा तो हम आपसे संपर्क करेंगे।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-016",
+      "topic": "legal",
+      "english": "The investigation may take some time.",
+      "hindi": "जाँच में कुछ समय लग सकता है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-017",
+      "topic": "legal",
+      "english": "Do not contact the suspected driver yourself.",
+      "hindi": "संदिग्ध चालक से स्वयं संपर्क न करें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-018",
+      "topic": "legal",
+      "english": "You may wish to obtain independent legal advice.",
+      "hindi": "आप स्वतंत्र कानूनी सलाह लेना चाह सकते हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-019",
+      "topic": "legal",
+      "english": "I am very distressed about the repair cost.",
+      "hindi": "मैं मरम्मत के खर्च को लेकर बहुत परेशान हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-020",
+      "topic": "legal",
+      "english": "Please arrange a tow truck if the car is unsafe.",
+      "hindi": "यदि कार चलाने के लिए सुरक्षित नहीं है तो टो ट्रक की व्यवस्था करें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-021",
+      "topic": "legal",
+      "english": "Were there any witnesses nearby?",
+      "hindi": "क्या आसपास कोई गवाह था?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-022",
+      "topic": "legal",
+      "english": "Which direction did the other vehicle travel?",
+      "hindi": "दूसरा वाहन किस दिशा में गया?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-023",
+      "topic": "legal",
+      "english": "Thank you for reporting the incident promptly.",
+      "hindi": "घटना की तुरंत रिपोर्ट करने के लिए धन्यवाद।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "leg-p-024",
+      "topic": "legal",
+      "english": "Please quote this reference number in future enquiries.",
+      "hindi": "भविष्य की पूछताछ में यह संदर्भ संख्या बताएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-001",
+      "topic": "banking",
+      "english": "I would like to open a bank account.",
+      "hindi": "मैं बैंक खाता खोलना चाहता/चाहती हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-002",
+      "topic": "banking",
+      "english": "Would you like an everyday account or a savings account?",
+      "hindi": "क्या आप दैनिक लेन-देन खाता चाहते हैं या बचत खाता?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-003",
+      "topic": "banking",
+      "english": "I would like to open both accounts.",
+      "hindi": "मैं दोनों खाते खोलना चाहता/चाहती हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-004",
+      "topic": "banking",
+      "english": "Please provide acceptable identification documents.",
+      "hindi": "कृपया स्वीकार्य पहचान दस्तावेज दें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-005",
+      "topic": "banking",
+      "english": "We also need proof of your current address.",
+      "hindi": "हमें आपके वर्तमान पते का प्रमाण भी चाहिए।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-006",
+      "topic": "banking",
+      "english": "I can give you a list of suitable documents.",
+      "hindi": "मैं आपको उपयुक्त दस्तावेजों की सूची दे सकता/सकती हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-007",
+      "topic": "banking",
+      "english": "Do the copies need to be certified?",
+      "hindi": "क्या प्रतियों का प्रमाणित होना आवश्यक है?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-008",
+      "topic": "banking",
+      "english": "The account should be active within two business days.",
+      "hindi": "खाता दो कार्यदिवसों के भीतर सक्रिय हो जाना चाहिए।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-009",
+      "topic": "banking",
+      "english": "I would like to deposit three hundred dollars.",
+      "hindi": "मैं तीन सौ डॉलर जमा करना चाहता/चाहती हूँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-010",
+      "topic": "banking",
+      "english": "Please divide the amount equally between the accounts.",
+      "hindi": "कृपया राशि को दोनों खातों में बराबर बाँट दें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-011",
+      "topic": "banking",
+      "english": "How do I order a cheque book?",
+      "hindi": "मैं चेक बुक कैसे मँगाऊँ?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-012",
+      "topic": "banking",
+      "english": "Complete this request form to order a cheque book.",
+      "hindi": "चेक बुक मँगाने के लिए यह अनुरोध पत्र भरें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-013",
+      "topic": "banking",
+      "english": "It will be posted to your registered address.",
+      "hindi": "इसे आपके पंजीकृत पते पर डाक से भेजा जाएगा।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-014",
+      "topic": "banking",
+      "english": "Would you like a debit card as well?",
+      "hindi": "क्या आप डेबिट कार्ड भी चाहते हैं?",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-015",
+      "topic": "banking",
+      "english": "Your PIN will be provided separately.",
+      "hindi": "आपकी पिन अलग से दी जाएगी।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-016",
+      "topic": "banking",
+      "english": "Please do not share your PIN with anyone.",
+      "hindi": "कृपया अपनी पिन किसी के साथ साझा न करें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-017",
+      "topic": "banking",
+      "english": "You can register for online banking today.",
+      "hindi": "आप आज ऑनलाइन बैंकिंग के लिए पंजीकरण कर सकते हैं।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-018",
+      "topic": "banking",
+      "english": "There is no monthly fee for this account.",
+      "hindi": "इस खाते पर कोई मासिक शुल्क नहीं है।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-019",
+      "topic": "banking",
+      "english": "Please check the current terms and fees.",
+      "hindi": "कृपया वर्तमान नियम और शुल्क जाँच लें।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-020",
+      "topic": "banking",
+      "english": "This transaction was not authorised by me.",
+      "hindi": "यह लेन-देन मेरी अनुमति से नहीं हुआ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-021",
+      "topic": "banking",
+      "english": "We will block the card immediately.",
+      "hindi": "हम कार्ड को तुरंत बंद कर देंगे।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-022",
+      "topic": "banking",
+      "english": "A replacement card will be sent to you.",
+      "hindi": "आपको नया कार्ड भेजा जाएगा।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-023",
+      "topic": "banking",
+      "english": "Please quote your account reference number.",
+      "hindi": "कृपया अपना खाता संदर्भ संख्या बताएँ।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "ban-p-024",
+      "topic": "banking",
+      "english": "Thank you for helping me open the accounts.",
+      "hindi": "खाते खोलने में सहायता करने के लिए धन्यवाद।",
+      "status": "core-reviewed",
+      "source": "Core phrase library reviewed before V2.0.5",
+      "phraseType": "functional phrase"
+    },
+    {
+      "id": "phr-v205-0001",
+      "topic": "health",
+      "english": "book a medical appointment",
+      "hindi": "चिकित्सकीय अपॉइंटमेंट लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0002",
+      "topic": "health",
+      "english": "provide your medical history",
+      "hindi": "अपना चिकित्सा इतिहास बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0003",
+      "topic": "health",
+      "english": "bring the referral letter",
+      "hindi": "रेफरल पत्र साथ लाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0004",
+      "topic": "health",
+      "english": "describe your symptoms clearly",
+      "hindi": "अपने लक्षण स्पष्ट रूप से बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0005",
+      "topic": "health",
+      "english": "the symptoms are getting worse",
+      "hindi": "लक्षण बिगड़ रहे हैं",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0006",
+      "topic": "health",
+      "english": "possible side effects",
+      "hindi": "संभावित दुष्प्रभाव",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0007",
+      "topic": "health",
+      "english": "collect the pathology results",
+      "hindi": "पैथोलॉजी परिणाम प्राप्त करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0008",
+      "topic": "health",
+      "english": "fasting is required",
+      "hindi": "खाली पेट रहना आवश्यक है",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0009",
+      "topic": "health",
+      "english": "go to the emergency department",
+      "hindi": "आपातकालीन विभाग में जाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0010",
+      "topic": "health",
+      "english": "sign the consent form",
+      "hindi": "सहमति पत्र पर हस्ताक्षर करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0011",
+      "topic": "health",
+      "english": "check the vaccination record",
+      "hindi": "टीकाकरण रिकॉर्ड जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0012",
+      "topic": "health",
+      "english": "arrange a dental check-up",
+      "hindi": "दाँतों की जाँच करवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0013",
+      "topic": "health",
+      "english": "take pain relief medicine",
+      "hindi": "दर्द निवारक दवा लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0014",
+      "topic": "health",
+      "english": "attend a follow-up appointment",
+      "hindi": "फॉलो-अप अपॉइंटमेंट में जाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0015",
+      "topic": "health",
+      "english": "private health insurance cover",
+      "hindi": "निजी स्वास्थ्य बीमा कवरेज",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0016",
+      "topic": "housing",
+      "english": "sign the rental agreement",
+      "hindi": "किराया समझौते पर हस्ताक्षर करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0017",
+      "topic": "housing",
+      "english": "request a bond refund",
+      "hindi": "बॉन्ड वापसी का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0018",
+      "topic": "housing",
+      "english": "report an urgent repair",
+      "hindi": "तत्काल मरम्मत की सूचना देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0019",
+      "topic": "housing",
+      "english": "complete the condition report",
+      "hindi": "स्थिति रिपोर्ट पूरी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0020",
+      "topic": "housing",
+      "english": "pay the rent arrears",
+      "hindi": "बकाया किराया चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0021",
+      "topic": "housing",
+      "english": "receive a notice to vacate",
+      "hindi": "मकान खाली करने का नोटिस मिलना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0022",
+      "topic": "housing",
+      "english": "arrange a property inspection",
+      "hindi": "संपत्ति निरीक्षण की व्यवस्था करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0023",
+      "topic": "housing",
+      "english": "repair the water leak",
+      "hindi": "पानी का रिसाव ठीक करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0024",
+      "topic": "housing",
+      "english": "remove mould safely",
+      "hindi": "फफूंद सुरक्षित रूप से हटाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0025",
+      "topic": "housing",
+      "english": "challenge a rent increase",
+      "hindi": "किराया वृद्धि को चुनौती देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0026",
+      "topic": "housing",
+      "english": "resolve a tenancy dispute",
+      "hindi": "किरायेदारी विवाद सुलझाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0027",
+      "topic": "housing",
+      "english": "negotiate a payment arrangement",
+      "hindi": "भुगतान व्यवस्था पर सहमति बनाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0028",
+      "topic": "housing",
+      "english": "ask for landlord permission",
+      "hindi": "मकान मालिक से अनुमति माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0029",
+      "topic": "housing",
+      "english": "claim moving expenses",
+      "hindi": "स्थानांतरण खर्च का दावा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0030",
+      "topic": "housing",
+      "english": "find temporary accommodation",
+      "hindi": "अस्थायी आवास ढूँढना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0031",
+      "topic": "education",
+      "english": "complete the enrolment form",
+      "hindi": "नामांकन फॉर्म पूरा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0032",
+      "topic": "education",
+      "english": "pay the course fee",
+      "hindi": "पाठ्यक्रम शुल्क जमा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0033",
+      "topic": "education",
+      "english": "check the attendance record",
+      "hindi": "उपस्थिति रिकॉर्ड जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0034",
+      "topic": "education",
+      "english": "attend a parent-teacher meeting",
+      "hindi": "अभिभावक-शिक्षक बैठक में जाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0035",
+      "topic": "education",
+      "english": "request learning support",
+      "hindi": "अध्ययन सहायता का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0036",
+      "topic": "education",
+      "english": "report school bullying",
+      "hindi": "स्कूल में बदमाशी की शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0037",
+      "topic": "education",
+      "english": "provide parental consent",
+      "hindi": "अभिभावक की सहमति देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0038",
+      "topic": "education",
+      "english": "apply for childcare subsidy",
+      "hindi": "बाल देखभाल सब्सिडी के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0039",
+      "topic": "education",
+      "english": "confirm the course duration",
+      "hindi": "पाठ्यक्रम अवधि की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0040",
+      "topic": "education",
+      "english": "meet the entry requirements",
+      "hindi": "प्रवेश आवश्यकताएँ पूरी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0041",
+      "topic": "education",
+      "english": "receive the assessment result",
+      "hindi": "मूल्यांकन परिणाम प्राप्त करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0042",
+      "topic": "education",
+      "english": "check the class timetable",
+      "hindi": "कक्षा समय-सारणी जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0043",
+      "topic": "education",
+      "english": "renew the library membership",
+      "hindi": "पुस्तकालय सदस्यता नवीनीकृत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0044",
+      "topic": "education",
+      "english": "request a tuition refund",
+      "hindi": "शिक्षण शुल्क वापसी माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0045",
+      "topic": "education",
+      "english": "lodge an academic complaint",
+      "hindi": "शैक्षणिक शिकायत दर्ज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0046",
+      "topic": "employment",
+      "english": "request a pay rise",
+      "hindi": "वेतन वृद्धि का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0047",
+      "topic": "employment",
+      "english": "accept an extra shift",
+      "hindi": "अतिरिक्त पाली स्वीकार करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0048",
+      "topic": "employment",
+      "english": "check the overtime rate",
+      "hindi": "ओवरटाइम दर जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0049",
+      "topic": "employment",
+      "english": "change the work roster",
+      "hindi": "कार्य रोस्टर बदलना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0050",
+      "topic": "employment",
+      "english": "apply for annual leave",
+      "hindi": "वार्षिक अवकाश के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0051",
+      "topic": "employment",
+      "english": "provide a medical certificate",
+      "hindi": "चिकित्सा प्रमाणपत्र देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0052",
+      "topic": "employment",
+      "english": "sign the employment contract",
+      "hindi": "रोज़गार अनुबंध पर हस्ताक्षर करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0053",
+      "topic": "employment",
+      "english": "complete the probation period",
+      "hindi": "परिवीक्षा अवधि पूरी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0054",
+      "topic": "employment",
+      "english": "report a workplace injury",
+      "hindi": "कार्यस्थल की चोट की सूचना देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0055",
+      "topic": "employment",
+      "english": "lodge a compensation claim",
+      "hindi": "मुआवज़े का दावा दर्ज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0056",
+      "topic": "employment",
+      "english": "make a discrimination complaint",
+      "hindi": "भेदभाव की शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0057",
+      "topic": "employment",
+      "english": "check the pay slip",
+      "hindi": "वेतन पर्ची जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0058",
+      "topic": "employment",
+      "english": "give notice of resignation",
+      "hindi": "इस्तीफे की सूचना देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0059",
+      "topic": "employment",
+      "english": "prepare for the job interview",
+      "hindi": "नौकरी साक्षात्कार की तैयारी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0060",
+      "topic": "employment",
+      "english": "complete a reference check",
+      "hindi": "संदर्भ जाँच पूरी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0061",
+      "topic": "legal",
+      "english": "give a police statement",
+      "hindi": "पुलिस को बयान देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0062",
+      "topic": "legal",
+      "english": "preserve the evidence",
+      "hindi": "सबूत सुरक्षित रखना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0063",
+      "topic": "legal",
+      "english": "identify a witness",
+      "hindi": "गवाह की पहचान करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0064",
+      "topic": "legal",
+      "english": "quote the case reference",
+      "hindi": "मामले की संदर्भ संख्या बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0065",
+      "topic": "legal",
+      "english": "confirm the court date",
+      "hindi": "अदालत की तारीख की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0066",
+      "topic": "legal",
+      "english": "seek independent legal advice",
+      "hindi": "स्वतंत्र कानूनी सलाह लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0067",
+      "topic": "legal",
+      "english": "report the theft immediately",
+      "hindi": "चोरी की तुरंत रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0068",
+      "topic": "legal",
+      "english": "follow the bail conditions",
+      "hindi": "जमानत की शर्तों का पालन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0069",
+      "topic": "legal",
+      "english": "show the search warrant",
+      "hindi": "तलाशी वारंट दिखाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0070",
+      "topic": "legal",
+      "english": "verify your identity",
+      "hindi": "अपनी पहचान सत्यापित करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0071",
+      "topic": "legal",
+      "english": "assist with the investigation",
+      "hindi": "जाँच में सहायता करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0072",
+      "topic": "legal",
+      "english": "enter a guilty plea",
+      "hindi": "दोष स्वीकार करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0073",
+      "topic": "legal",
+      "english": "apply for compensation",
+      "hindi": "मुआवज़े के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0074",
+      "topic": "legal",
+      "english": "contact victim support",
+      "hindi": "पीड़ित सहायता सेवा से संपर्क करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0075",
+      "topic": "legal",
+      "english": "apply for an intervention order",
+      "hindi": "हस्तक्षेप आदेश के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0076",
+      "topic": "banking",
+      "english": "check the account balance",
+      "hindi": "खाते की शेष राशि जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0077",
+      "topic": "banking",
+      "english": "cancel a direct debit",
+      "hindi": "प्रत्यक्ष डेबिट रद्द करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0078",
+      "topic": "banking",
+      "english": "transfer money overseas",
+      "hindi": "विदेश में पैसा भेजना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0079",
+      "topic": "banking",
+      "english": "submit a loan application",
+      "hindi": "ऋण आवेदन जमा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0080",
+      "topic": "banking",
+      "english": "compare interest rates",
+      "hindi": "ब्याज दरों की तुलना करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0081",
+      "topic": "banking",
+      "english": "agree to a repayment schedule",
+      "hindi": "पुनर्भुगतान समय-सारणी पर सहमत होना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0082",
+      "topic": "banking",
+      "english": "replace the ATM card",
+      "hindi": "एटीएम कार्ड बदलवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0083",
+      "topic": "banking",
+      "english": "reset the PIN",
+      "hindi": "पिन रीसेट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0084",
+      "topic": "banking",
+      "english": "report a fraudulent transaction",
+      "hindi": "धोखाधड़ी वाले लेन-देन की रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0085",
+      "topic": "banking",
+      "english": "lodge the tax return",
+      "hindi": "कर विवरणी जमा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0086",
+      "topic": "banking",
+      "english": "request a payment extension",
+      "hindi": "भुगतान की अवधि बढ़ाने का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0087",
+      "topic": "banking",
+      "english": "understand the investment risk",
+      "hindi": "निवेश जोखिम समझना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0088",
+      "topic": "banking",
+      "english": "download a bank statement",
+      "hindi": "बैंक स्टेटमेंट डाउनलोड करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0089",
+      "topic": "banking",
+      "english": "apply for a home loan",
+      "hindi": "गृह ऋण के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0090",
+      "topic": "banking",
+      "english": "waive the account fee",
+      "hindi": "खाता शुल्क माफ करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0091",
+      "topic": "consumer",
+      "english": "request a full refund",
+      "hindi": "पूरी धनवापसी का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0092",
+      "topic": "consumer",
+      "english": "check the warranty period",
+      "hindi": "वारंटी अवधि जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0093",
+      "topic": "consumer",
+      "english": "return a defective product",
+      "hindi": "खराब उत्पाद वापस करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0094",
+      "topic": "consumer",
+      "english": "ask for a replacement",
+      "hindi": "बदलाव की माँग करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0095",
+      "topic": "consumer",
+      "english": "provide the purchase receipt",
+      "hindi": "खरीद की रसीद देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0096",
+      "topic": "consumer",
+      "english": "make a formal complaint",
+      "hindi": "औपचारिक शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0097",
+      "topic": "consumer",
+      "english": "report a delayed delivery",
+      "hindi": "देरी से हुई डिलीवरी की शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0098",
+      "topic": "consumer",
+      "english": "correct the wrong order",
+      "hindi": "गलत ऑर्डर ठीक करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0099",
+      "topic": "consumer",
+      "english": "ask about cancellation fees",
+      "hindi": "रद्दीकरण शुल्क के बारे में पूछना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0100",
+      "topic": "consumer",
+      "english": "report a safety concern",
+      "hindi": "सुरक्षा संबंधी चिंता बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0101",
+      "topic": "consumer",
+      "english": "accept store credit",
+      "hindi": "स्टोर क्रेडिट स्वीकार करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0102",
+      "topic": "consumer",
+      "english": "use the consumer guarantee",
+      "hindi": "उपभोक्ता गारंटी का उपयोग करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0103",
+      "topic": "consumer",
+      "english": "obtain a repair quote",
+      "hindi": "मरम्मत का कोटेशन लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0104",
+      "topic": "consumer",
+      "english": "contact the service provider",
+      "hindi": "सेवा प्रदाता से संपर्क करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0105",
+      "topic": "consumer",
+      "english": "check the return policy",
+      "hindi": "वापसी नीति जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0106",
+      "topic": "insurance",
+      "english": "quote the policy number",
+      "hindi": "पॉलिसी संख्या बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0107",
+      "topic": "insurance",
+      "english": "pay the insurance premium",
+      "hindi": "बीमा प्रीमियम चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0108",
+      "topic": "insurance",
+      "english": "check the policy excess",
+      "hindi": "पॉलिसी की अतिरिक्त राशि जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0109",
+      "topic": "insurance",
+      "english": "complete the claim form",
+      "hindi": "दावा फॉर्म पूरा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0110",
+      "topic": "insurance",
+      "english": "confirm the insured value",
+      "hindi": "बीमित मूल्य की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0111",
+      "topic": "insurance",
+      "english": "check what is covered",
+      "hindi": "कवरेज की जाँच करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0112",
+      "topic": "insurance",
+      "english": "read the policy exclusions",
+      "hindi": "पॉलिसी अपवाद पढ़ना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0113",
+      "topic": "insurance",
+      "english": "record the incident date",
+      "hindi": "घटना की तारीख दर्ज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0114",
+      "topic": "insurance",
+      "english": "arrange a damage assessment",
+      "hindi": "नुकसान का आकलन करवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0115",
+      "topic": "insurance",
+      "english": "request a replacement vehicle",
+      "hindi": "वैकल्पिक वाहन का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0116",
+      "topic": "insurance",
+      "english": "take out life insurance",
+      "hindi": "जीवन बीमा लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0117",
+      "topic": "insurance",
+      "english": "nominate a beneficiary",
+      "hindi": "लाभार्थी नामित करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0118",
+      "topic": "insurance",
+      "english": "renew the policy",
+      "hindi": "पॉलिसी नवीनीकृत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0119",
+      "topic": "insurance",
+      "english": "appeal a rejected claim",
+      "hindi": "अस्वीकृत दावे के खिलाफ अपील करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0120",
+      "topic": "insurance",
+      "english": "attach supporting documents",
+      "hindi": "सहायक दस्तावेज़ संलग्न करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0121",
+      "topic": "social",
+      "english": "check your eligibility",
+      "hindi": "अपनी पात्रता जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0122",
+      "topic": "social",
+      "english": "lodge an online claim",
+      "hindi": "ऑनलाइन दावा जमा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0123",
+      "topic": "social",
+      "english": "complete the income test",
+      "hindi": "आय परीक्षण पूरा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0124",
+      "topic": "social",
+      "english": "declare your assets",
+      "hindi": "अपनी संपत्ति घोषित करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0125",
+      "topic": "social",
+      "english": "apply for Carer Payment",
+      "hindi": "देखभालकर्ता भुगतान के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0126",
+      "topic": "social",
+      "english": "receive Rent Assistance",
+      "hindi": "किराया सहायता प्राप्त करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0127",
+      "topic": "social",
+      "english": "claim the age pension",
+      "hindi": "वृद्धावस्था पेंशन का दावा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0128",
+      "topic": "social",
+      "english": "use a concession card",
+      "hindi": "रियायत कार्ड का उपयोग करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0129",
+      "topic": "social",
+      "english": "serve the waiting period",
+      "hindi": "प्रतीक्षा अवधि पूरी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0130",
+      "topic": "social",
+      "english": "provide supporting evidence",
+      "hindi": "सहायक प्रमाण देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0131",
+      "topic": "social",
+      "english": "update your circumstances",
+      "hindi": "अपनी परिस्थितियाँ अपडेट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0132",
+      "topic": "social",
+      "english": "restore a suspended payment",
+      "hindi": "निलंबित भुगतान बहाल करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0133",
+      "topic": "social",
+      "english": "request a decision review",
+      "hindi": "निर्णय की समीक्षा का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0134",
+      "topic": "social",
+      "english": "repay the Centrelink debt",
+      "hindi": "सेंटरलिंक ऋण चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0135",
+      "topic": "social",
+      "english": "attend a service appointment",
+      "hindi": "सेवा अपॉइंटमेंट में जाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0136",
+      "topic": "immigration",
+      "english": "submit a visa application",
+      "hindi": "वीज़ा आवेदन जमा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0137",
+      "topic": "immigration",
+      "english": "provide a valid passport",
+      "hindi": "वैध पासपोर्ट देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0138",
+      "topic": "immigration",
+      "english": "certify identity documents",
+      "hindi": "पहचान दस्तावेज़ प्रमाणित करवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0139",
+      "topic": "immigration",
+      "english": "extend a temporary visa",
+      "hindi": "अस्थायी वीज़ा बढ़वाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0140",
+      "topic": "immigration",
+      "english": "prepare for the citizenship test",
+      "hindi": "नागरिकता परीक्षा की तैयारी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0141",
+      "topic": "immigration",
+      "english": "apply for permanent residence",
+      "hindi": "स्थायी निवास के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0142",
+      "topic": "immigration",
+      "english": "seek a protection visa",
+      "hindi": "संरक्षण वीज़ा का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0143",
+      "topic": "immigration",
+      "english": "hold a bridging visa",
+      "hindi": "ब्रिजिंग वीज़ा रखना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0144",
+      "topic": "immigration",
+      "english": "provide relationship evidence",
+      "hindi": "संबंध का प्रमाण देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0145",
+      "topic": "immigration",
+      "english": "obtain police clearance",
+      "hindi": "पुलिस सत्यापन प्राप्त करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0146",
+      "topic": "immigration",
+      "english": "complete the medical examination",
+      "hindi": "चिकित्सकीय जाँच पूरी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0147",
+      "topic": "immigration",
+      "english": "check the application status",
+      "hindi": "आवेदन की स्थिति जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0148",
+      "topic": "immigration",
+      "english": "follow the visa conditions",
+      "hindi": "वीज़ा की शर्तों का पालन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0149",
+      "topic": "immigration",
+      "english": "confirm the departure date",
+      "hindi": "प्रस्थान की तारीख की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0150",
+      "topic": "immigration",
+      "english": "consult a migration agent",
+      "hindi": "प्रवासन एजेंट से सलाह लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0151",
+      "topic": "transport",
+      "english": "apply for a driver licence",
+      "hindi": "ड्राइविंग लाइसेंस के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0152",
+      "topic": "transport",
+      "english": "upgrade a heavy vehicle licence",
+      "hindi": "भारी वाहन लाइसेंस अपग्रेड करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0153",
+      "topic": "transport",
+      "english": "book the road test",
+      "hindi": "सड़क परीक्षण बुक करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0154",
+      "topic": "transport",
+      "english": "renew the registration",
+      "hindi": "पंजीकरण नवीनीकृत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0155",
+      "topic": "transport",
+      "english": "replace the number plate",
+      "hindi": "नंबर प्लेट बदलवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0156",
+      "topic": "transport",
+      "english": "top up the Myki card",
+      "hindi": "माइकी कार्ड में राशि भरना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0157",
+      "topic": "transport",
+      "english": "check the correct fare",
+      "hindi": "सही किराया जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0158",
+      "topic": "transport",
+      "english": "read the service timetable",
+      "hindi": "सेवा समय-सारणी देखना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0159",
+      "topic": "transport",
+      "english": "speak to the ticket inspector",
+      "hindi": "टिकट निरीक्षक से बात करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0160",
+      "topic": "transport",
+      "english": "pay a traffic fine",
+      "hindi": "यातायात जुर्माना भरना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0161",
+      "topic": "transport",
+      "english": "appeal a licence suspension",
+      "hindi": "लाइसेंस निलंबन के खिलाफ अपील करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0162",
+      "topic": "transport",
+      "english": "pass the vehicle inspection",
+      "hindi": "वाहन निरीक्षण पास करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0163",
+      "topic": "transport",
+      "english": "wear a seatbelt",
+      "hindi": "सीट बेल्ट पहनना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0164",
+      "topic": "transport",
+      "english": "call roadside assistance",
+      "hindi": "सड़क सहायता सेवा को बुलाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0165",
+      "topic": "transport",
+      "english": "check demerit points",
+      "hindi": "डिमेरिट अंक जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0166",
+      "topic": "business",
+      "english": "present a business proposal",
+      "hindi": "व्यावसायिक प्रस्ताव प्रस्तुत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0167",
+      "topic": "business",
+      "english": "request a written quotation",
+      "hindi": "लिखित कोटेशन माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0168",
+      "topic": "business",
+      "english": "issue a tax invoice",
+      "hindi": "कर चालान जारी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0169",
+      "topic": "business",
+      "english": "confirm the order quantity",
+      "hindi": "ऑर्डर की मात्रा की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0170",
+      "topic": "business",
+      "english": "agree on a delivery schedule",
+      "hindi": "डिलीवरी समय-सारणी पर सहमत होना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0171",
+      "topic": "business",
+      "english": "negotiate the payment terms",
+      "hindi": "भुगतान की शर्तों पर बातचीत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0172",
+      "topic": "business",
+      "english": "meet the quality standards",
+      "hindi": "गुणवत्ता मानक पूरे करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0173",
+      "topic": "business",
+      "english": "sign the supply contract",
+      "hindi": "आपूर्ति अनुबंध पर हस्ताक्षर करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0174",
+      "topic": "business",
+      "english": "contact the supplier",
+      "hindi": "आपूर्तिकर्ता से संपर्क करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0175",
+      "topic": "business",
+      "english": "report a production delay",
+      "hindi": "उत्पादन में देरी की सूचना देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0176",
+      "topic": "business",
+      "english": "prepare the meeting agenda",
+      "hindi": "बैठक का एजेंडा तैयार करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0177",
+      "topic": "business",
+      "english": "discuss a business partnership",
+      "hindi": "व्यावसायिक साझेदारी पर चर्चा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0178",
+      "topic": "business",
+      "english": "calculate the profit margin",
+      "hindi": "लाभ मार्जिन की गणना करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0179",
+      "topic": "business",
+      "english": "open a customer account",
+      "hindi": "ग्राहक खाता खोलना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0180",
+      "topic": "business",
+      "english": "approve the final design",
+      "hindi": "अंतिम डिज़ाइन स्वीकृत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0181",
+      "topic": "community",
+      "english": "apply for a library card",
+      "hindi": "पुस्तकालय कार्ड के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0182",
+      "topic": "community",
+      "english": "contact the local council",
+      "hindi": "स्थानीय परिषद से संपर्क करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0183",
+      "topic": "community",
+      "english": "attend fire safety training",
+      "hindi": "अग्नि सुरक्षा प्रशिक्षण में भाग लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0184",
+      "topic": "community",
+      "english": "visit the community centre",
+      "hindi": "सामुदायिक केंद्र जाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0185",
+      "topic": "community",
+      "english": "request document translation",
+      "hindi": "दस्तावेज़ अनुवाद का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0186",
+      "topic": "community",
+      "english": "book an interpreter",
+      "hindi": "दुभाषिया बुक करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0187",
+      "topic": "community",
+      "english": "register for a local event",
+      "hindi": "स्थानीय कार्यक्रम के लिए पंजीकरण करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0188",
+      "topic": "community",
+      "english": "provide an emergency contact",
+      "hindi": "आपातकालीन संपर्क देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0189",
+      "topic": "community",
+      "english": "read the public notice",
+      "hindi": "सार्वजनिक सूचना पढ़ना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0190",
+      "topic": "community",
+      "english": "access community support",
+      "hindi": "सामुदायिक सहायता प्राप्त करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0191",
+      "topic": "community",
+      "english": "complete the service form",
+      "hindi": "सेवा फॉर्म पूरा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0192",
+      "topic": "community",
+      "english": "confirm the appointment time",
+      "hindi": "अपॉइंटमेंट समय की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0193",
+      "topic": "community",
+      "english": "show proof of identity",
+      "hindi": "पहचान का प्रमाण दिखाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0194",
+      "topic": "community",
+      "english": "make a service enquiry",
+      "hindi": "सेवा संबंधी पूछताछ करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0195",
+      "topic": "community",
+      "english": "provide customer feedback",
+      "hindi": "ग्राहक प्रतिक्रिया देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0196",
+      "topic": "travel",
+      "english": "confirm the flight booking",
+      "hindi": "उड़ान बुकिंग की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0197",
+      "topic": "travel",
+      "english": "complete online check-in",
+      "hindi": "ऑनलाइन चेक-इन पूरा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0198",
+      "topic": "travel",
+      "english": "download the boarding pass",
+      "hindi": "बोर्डिंग पास डाउनलोड करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0199",
+      "topic": "travel",
+      "english": "check the baggage allowance",
+      "hindi": "सामान की सीमा जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0200",
+      "topic": "travel",
+      "english": "complete the customs declaration",
+      "hindi": "सीमा शुल्क घोषणा पूरी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0201",
+      "topic": "travel",
+      "english": "go through passport control",
+      "hindi": "पासपोर्ट नियंत्रण से गुजरना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0202",
+      "topic": "travel",
+      "english": "confirm the hotel reservation",
+      "hindi": "होटल आरक्षण की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0203",
+      "topic": "travel",
+      "english": "check room availability",
+      "hindi": "कमरे की उपलब्धता जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0204",
+      "topic": "travel",
+      "english": "read the cancellation policy",
+      "hindi": "रद्दीकरण नीति पढ़ना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0205",
+      "topic": "travel",
+      "english": "buy travel insurance",
+      "hindi": "यात्रा बीमा खरीदना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0206",
+      "topic": "travel",
+      "english": "find the departure gate",
+      "hindi": "प्रस्थान द्वार ढूँढना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0207",
+      "topic": "travel",
+      "english": "report a delayed flight",
+      "hindi": "विलंबित उड़ान की सूचना लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0208",
+      "topic": "travel",
+      "english": "catch the connecting flight",
+      "hindi": "कनेक्टिंग उड़ान पकड़ना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0209",
+      "topic": "travel",
+      "english": "check the visa requirement",
+      "hindi": "वीज़ा आवश्यकता जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0210",
+      "topic": "travel",
+      "english": "book a return ticket",
+      "hindi": "वापसी टिकट बुक करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0211",
+      "topic": "family",
+      "english": "register the marriage",
+      "hindi": "विवाह पंजीकृत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0212",
+      "topic": "family",
+      "english": "request a birth certificate",
+      "hindi": "जन्म प्रमाणपत्र का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0213",
+      "topic": "family",
+      "english": "confirm the relationship status",
+      "hindi": "संबंध की स्थिति की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0214",
+      "topic": "family",
+      "english": "declare a de facto partner",
+      "hindi": "डी फैक्टो साथी घोषित करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0215",
+      "topic": "family",
+      "english": "contact a marriage bureau",
+      "hindi": "विवाह ब्यूरो से संपर्क करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0216",
+      "topic": "family",
+      "english": "provide family details",
+      "hindi": "परिवार का विवरण देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0217",
+      "topic": "family",
+      "english": "list a dependent child",
+      "hindi": "आश्रित बच्चे का विवरण देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0218",
+      "topic": "family",
+      "english": "obtain parental consent",
+      "hindi": "अभिभावक की सहमति लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0219",
+      "topic": "family",
+      "english": "record the separation date",
+      "hindi": "अलगाव की तारीख दर्ज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0220",
+      "topic": "family",
+      "english": "arrange an identity witness",
+      "hindi": "पहचान के गवाह की व्यवस्था करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0221",
+      "topic": "family",
+      "english": "apply for a name change",
+      "hindi": "नाम परिवर्तन के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0222",
+      "topic": "family",
+      "english": "list every household member",
+      "hindi": "घर के प्रत्येक सदस्य को दर्ज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0223",
+      "topic": "family",
+      "english": "book a registry appointment",
+      "hindi": "पंजीकरण कार्यालय का अपॉइंटमेंट लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0224",
+      "topic": "family",
+      "english": "pay the registration fee",
+      "hindi": "पंजीकरण शुल्क चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0225",
+      "topic": "utilities",
+      "english": "check the electricity bill",
+      "hindi": "बिजली बिल जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0226",
+      "topic": "utilities",
+      "english": "pay the gas bill",
+      "hindi": "गैस बिल चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0227",
+      "topic": "utilities",
+      "english": "submit a meter reading",
+      "hindi": "मीटर रीडिंग जमा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0228",
+      "topic": "utilities",
+      "english": "set up a payment plan",
+      "hindi": "भुगतान योजना बनाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0229",
+      "topic": "utilities",
+      "english": "pay the overdue amount",
+      "hindi": "बकाया राशि चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0230",
+      "topic": "utilities",
+      "english": "request hardship support",
+      "hindi": "आर्थिक कठिनाई सहायता माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0231",
+      "topic": "utilities",
+      "english": "connect the utility service",
+      "hindi": "उपयोगिता सेवा जोड़ना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0232",
+      "topic": "utilities",
+      "english": "receive a disconnection notice",
+      "hindi": "सेवा बंद करने का नोटिस मिलना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0233",
+      "topic": "utilities",
+      "english": "check the billing period",
+      "hindi": "बिलिंग अवधि जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0234",
+      "topic": "utilities",
+      "english": "quote the account number",
+      "hindi": "खाता संख्या बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0235",
+      "topic": "utilities",
+      "english": "confirm the due date",
+      "hindi": "भुगतान की अंतिम तारीख की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0236",
+      "topic": "utilities",
+      "english": "pay by instalments",
+      "hindi": "किस्तों में भुगतान करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0237",
+      "topic": "utilities",
+      "english": "apply for an energy concession",
+      "hindi": "ऊर्जा रियायत के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0238",
+      "topic": "utilities",
+      "english": "reduce energy usage",
+      "hindi": "ऊर्जा उपयोग कम करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Topic phrase bank informed by NAATI CCL domains",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0239",
+      "topic": "education",
+      "english": "course entry requirements",
+      "hindi": "पाठ्यक्रम की प्रवेश आवश्यकताएँ",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Admission in a Course",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-001"
+      ]
+    },
+    {
+      "id": "phr-v205-0240",
+      "topic": "education",
+      "english": "six-month course duration",
+      "hindi": "छह महीने की पाठ्यक्रम अवधि",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Admission in a Course",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-001"
+      ]
+    },
+    {
+      "id": "phr-v205-0241",
+      "topic": "employment",
+      "english": "warehouse assistant vacancy",
+      "hindi": "गोदाम सहायक की रिक्ति",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Applying for a Job",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-002"
+      ]
+    },
+    {
+      "id": "phr-v205-0242",
+      "topic": "employment",
+      "english": "submit an updated resume",
+      "hindi": "अद्यतन रिज़्यूमे जमा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Applying for a Job",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-002"
+      ]
+    },
+    {
+      "id": "phr-v205-0243",
+      "topic": "transport",
+      "english": "heavy vehicle licence test",
+      "hindi": "भारी वाहन लाइसेंस परीक्षण",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Applying for a Truck's License",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-003"
+      ]
+    },
+    {
+      "id": "phr-v205-0244",
+      "topic": "transport",
+      "english": "provide a driving record",
+      "hindi": "ड्राइविंग रिकॉर्ड देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Applying for a Truck's License",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-003"
+      ]
+    },
+    {
+      "id": "phr-v205-0245",
+      "topic": "banking",
+      "english": "claim work-related expenses",
+      "hindi": "काम से जुड़े खर्च का दावा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: ATO Tax Lodgement",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-004"
+      ]
+    },
+    {
+      "id": "phr-v205-0246",
+      "topic": "immigration",
+      "english": "citizenship ceremony invitation",
+      "hindi": "नागरिकता समारोह का निमंत्रण",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Australian Citizenship",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-005"
+      ]
+    },
+    {
+      "id": "phr-v205-0247",
+      "topic": "immigration",
+      "english": "meet the residence requirement",
+      "hindi": "निवास आवश्यकता पूरी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Australian Citizenship",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-005"
+      ]
+    },
+    {
+      "id": "phr-v205-0248",
+      "topic": "legal",
+      "english": "report an armed robbery",
+      "hindi": "सशस्त्र डकैती की रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Bank Robbery",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-006"
+      ]
+    },
+    {
+      "id": "phr-v205-0249",
+      "topic": "legal",
+      "english": "describe the suspect",
+      "hindi": "संदिग्ध का हुलिया बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Bank Robbery",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-006"
+      ]
+    },
+    {
+      "id": "phr-v205-0250",
+      "topic": "education",
+      "english": "report repeated bullying",
+      "hindi": "बार-बार होने वाली बदमाशी की शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Bullying at School",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-007"
+      ]
+    },
+    {
+      "id": "phr-v205-0251",
+      "topic": "education",
+      "english": "meet the school counsellor",
+      "hindi": "स्कूल परामर्शदाता से मिलना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Bullying at School",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-007"
+      ]
+    },
+    {
+      "id": "phr-v205-0252",
+      "topic": "business",
+      "english": "expand the milk business",
+      "hindi": "दूध व्यवसाय का विस्तार करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Milk Plant Business",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-008"
+      ]
+    },
+    {
+      "id": "phr-v205-0253",
+      "topic": "business",
+      "english": "discuss production capacity",
+      "hindi": "उत्पादन क्षमता पर चर्चा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Milk Plant Business",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-008"
+      ]
+    },
+    {
+      "id": "phr-v205-0254",
+      "topic": "transport",
+      "english": "buy a concession ticket",
+      "hindi": "रियायती टिकट खरीदना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Buying a Ticket",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-009"
+      ]
+    },
+    {
+      "id": "phr-v205-0255",
+      "topic": "transport",
+      "english": "confirm the departure time",
+      "hindi": "प्रस्थान समय की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Buying a Ticket",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-009"
+      ]
+    },
+    {
+      "id": "phr-v205-0256",
+      "topic": "education",
+      "english": "student car insurance",
+      "hindi": "विद्यार्थी कार बीमा",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Car Insurance for a Student",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-010"
+      ]
+    },
+    {
+      "id": "phr-v205-0257",
+      "topic": "education",
+      "english": "compare insurance premiums",
+      "hindi": "बीमा प्रीमियम की तुलना करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Car Insurance for a Student",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-010"
+      ]
+    },
+    {
+      "id": "phr-v205-0258",
+      "topic": "insurance",
+      "english": "comprehensive car cover",
+      "hindi": "व्यापक कार बीमा कवरेज",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Car Insurance",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-011"
+      ]
+    },
+    {
+      "id": "phr-v205-0259",
+      "topic": "insurance",
+      "english": "pay the policy excess",
+      "hindi": "पॉलिसी की अतिरिक्त राशि चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Car Insurance",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-011"
+      ]
+    },
+    {
+      "id": "phr-v205-0260",
+      "topic": "business",
+      "english": "confirm the guest numbers",
+      "hindi": "मेहमानों की संख्या की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Catering Booking",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-012"
+      ]
+    },
+    {
+      "id": "phr-v205-0261",
+      "topic": "business",
+      "english": "choose the catering menu",
+      "hindi": "कैटरिंग मेनू चुनना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Catering Booking",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-012"
+      ]
+    },
+    {
+      "id": "phr-v205-0262",
+      "topic": "education",
+      "english": "install school CCTV",
+      "hindi": "स्कूल में सीसीटीवी लगाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: CCTV in School",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-013"
+      ]
+    },
+    {
+      "id": "phr-v205-0263",
+      "topic": "education",
+      "english": "protect student privacy",
+      "hindi": "विद्यार्थियों की गोपनीयता सुरक्षित रखना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: CCTV in School",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-013"
+      ]
+    },
+    {
+      "id": "phr-v205-0264",
+      "topic": "social",
+      "english": "claim Carer Payment",
+      "hindi": "देखभालकर्ता भुगतान का दावा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Centrelink Carer Payment",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-014"
+      ]
+    },
+    {
+      "id": "phr-v205-0265",
+      "topic": "social",
+      "english": "provide medical evidence",
+      "hindi": "चिकित्सकीय प्रमाण देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Centrelink Carer Payment",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-014"
+      ]
+    },
+    {
+      "id": "phr-v205-0266",
+      "topic": "education",
+      "english": "check subsidy eligibility",
+      "hindi": "सब्सिडी की पात्रता जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Child Care Subsidy",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-015"
+      ]
+    },
+    {
+      "id": "phr-v205-0267",
+      "topic": "education",
+      "english": "confirm approved care hours",
+      "hindi": "स्वीकृत देखभाल घंटों की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Child Care Subsidy",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-015"
+      ]
+    },
+    {
+      "id": "phr-v205-0268",
+      "topic": "education",
+      "english": "update childcare details",
+      "hindi": "बाल देखभाल विवरण अपडेट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Child Care Subsidy 2",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-016"
+      ]
+    },
+    {
+      "id": "phr-v205-0269",
+      "topic": "education",
+      "english": "report a change in income",
+      "hindi": "आय में बदलाव की सूचना देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Child Care Subsidy 2",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-016"
+      ]
+    },
+    {
+      "id": "phr-v205-0270",
+      "topic": "legal",
+      "english": "lodge a VCAT application",
+      "hindi": "वीकैट आवेदन दर्ज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Complaint to VCAT",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-017"
+      ]
+    },
+    {
+      "id": "phr-v205-0271",
+      "topic": "legal",
+      "english": "request urgent repairs",
+      "hindi": "तत्काल मरम्मत का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Complaint to VCAT",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-017"
+      ]
+    },
+    {
+      "id": "phr-v205-0272",
+      "topic": "housing",
+      "english": "obtain a building permit",
+      "hindi": "निर्माण अनुमति प्राप्त करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Constructing a House",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-018"
+      ]
+    },
+    {
+      "id": "phr-v205-0273",
+      "topic": "housing",
+      "english": "approve the house plans",
+      "hindi": "मकान के नक्शे स्वीकृत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Constructing a House",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-018"
+      ]
+    },
+    {
+      "id": "phr-v205-0274",
+      "topic": "housing",
+      "english": "repair the cracked driveway",
+      "hindi": "दरार वाले ड्राइववे की मरम्मत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Cracked Driveway",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-019"
+      ]
+    },
+    {
+      "id": "phr-v205-0275",
+      "topic": "travel",
+      "english": "declare restricted goods",
+      "hindi": "प्रतिबंधित वस्तुओं की घोषणा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Customs Issue",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-020"
+      ]
+    },
+    {
+      "id": "phr-v205-0276",
+      "topic": "travel",
+      "english": "answer customs questions",
+      "hindi": "सीमा शुल्क संबंधी प्रश्नों का उत्तर देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Customs Issue",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-020"
+      ]
+    },
+    {
+      "id": "phr-v205-0277",
+      "topic": "consumer",
+      "english": "complain about late delivery",
+      "hindi": "देरी से हुई डिलीवरी की शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Delay in Deliveries",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-021"
+      ]
+    },
+    {
+      "id": "phr-v205-0278",
+      "topic": "consumer",
+      "english": "request an updated delivery date",
+      "hindi": "नई डिलीवरी तारीख माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Delay in Deliveries",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-021"
+      ]
+    },
+    {
+      "id": "phr-v205-0279",
+      "topic": "banking",
+      "english": "request more time to pay",
+      "hindi": "भुगतान के लिए अधिक समय माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Delay in Tax Payment",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-022"
+      ]
+    },
+    {
+      "id": "phr-v205-0280",
+      "topic": "banking",
+      "english": "avoid a late-payment penalty",
+      "hindi": "देर से भुगतान का जुर्माना टालना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Delay in Tax Payment",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-022"
+      ]
+    },
+    {
+      "id": "phr-v205-0281",
+      "topic": "health",
+      "english": "book a dental appointment",
+      "hindi": "दंत चिकित्सक का अपॉइंटमेंट लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Dentist and a Patient",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-023"
+      ]
+    },
+    {
+      "id": "phr-v205-0282",
+      "topic": "health",
+      "english": "treat a painful tooth",
+      "hindi": "दर्द वाले दाँत का इलाज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Dentist and a Patient",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-023"
+      ]
+    },
+    {
+      "id": "phr-v205-0283",
+      "topic": "employment",
+      "english": "report workplace discrimination",
+      "hindi": "कार्यस्थल के भेदभाव की शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Discrimination",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-024"
+      ]
+    },
+    {
+      "id": "phr-v205-0284",
+      "topic": "employment",
+      "english": "request a fair investigation",
+      "hindi": "निष्पक्ष जाँच का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Discrimination",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-024"
+      ]
+    },
+    {
+      "id": "phr-v205-0285",
+      "topic": "health",
+      "english": "describe the main symptoms",
+      "hindi": "मुख्य लक्षण बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Doctor and Patient",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-025"
+      ]
+    },
+    {
+      "id": "phr-v205-0286",
+      "topic": "health",
+      "english": "follow the treatment plan",
+      "hindi": "उपचार योजना का पालन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Doctor and Patient",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-025"
+      ]
+    },
+    {
+      "id": "phr-v205-0287",
+      "topic": "health",
+      "english": "manage the dog’s weight",
+      "hindi": "कुत्ते का वजन नियंत्रित करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Dog's Obesity",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-026"
+      ]
+    },
+    {
+      "id": "phr-v205-0288",
+      "topic": "health",
+      "english": "change the feeding routine",
+      "hindi": "खिलाने की दिनचर्या बदलना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Dog's Obesity",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-026"
+      ]
+    },
+    {
+      "id": "phr-v205-0289",
+      "topic": "legal",
+      "english": "report a drunk driver",
+      "hindi": "नशे में चालक की रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Drunk Driver",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-027"
+      ]
+    },
+    {
+      "id": "phr-v205-0290",
+      "topic": "legal",
+      "english": "provide the vehicle location",
+      "hindi": "वाहन का स्थान बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Drunk Driver",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-027"
+      ]
+    },
+    {
+      "id": "phr-v205-0291",
+      "topic": "immigration",
+      "english": "apply for an ETA",
+      "hindi": "ईटीए के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Electronic Travel Authority Visa",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-028"
+      ]
+    },
+    {
+      "id": "phr-v205-0292",
+      "topic": "immigration",
+      "english": "check passport validity",
+      "hindi": "पासपोर्ट की वैधता जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Electronic Travel Authority Visa",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-028"
+      ]
+    },
+    {
+      "id": "phr-v205-0293",
+      "topic": "legal",
+      "english": "correct false information",
+      "hindi": "गलत जानकारी सुधारना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: False Information",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-029"
+      ]
+    },
+    {
+      "id": "phr-v205-0294",
+      "topic": "legal",
+      "english": "provide a truthful statement",
+      "hindi": "सच्चा बयान देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: False Information",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-029"
+      ]
+    },
+    {
+      "id": "phr-v205-0295",
+      "topic": "housing",
+      "english": "choose the fence material",
+      "hindi": "बाड़ की सामग्री चुनना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Fencing",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-030"
+      ]
+    },
+    {
+      "id": "phr-v205-0296",
+      "topic": "housing",
+      "english": "confirm the boundary line",
+      "hindi": "सीमा रेखा की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Fencing",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-030"
+      ]
+    },
+    {
+      "id": "phr-v205-0297",
+      "topic": "community",
+      "english": "join the fire education program",
+      "hindi": "अग्नि शिक्षा कार्यक्रम में शामिल होना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Fire Ed Program",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-031"
+      ]
+    },
+    {
+      "id": "phr-v205-0298",
+      "topic": "community",
+      "english": "learn the evacuation procedure",
+      "hindi": "निकासी प्रक्रिया सीखना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Fire Ed Program",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-031"
+      ]
+    },
+    {
+      "id": "phr-v205-0299",
+      "topic": "travel",
+      "english": "check in for the flight",
+      "hindi": "उड़ान के लिए चेक-इन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Flight Check-In",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-032"
+      ]
+    },
+    {
+      "id": "phr-v205-0300",
+      "topic": "travel",
+      "english": "weigh the checked baggage",
+      "hindi": "चेक-इन सामान का वजन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Flight Check-In",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-032"
+      ]
+    },
+    {
+      "id": "phr-v205-0301",
+      "topic": "travel",
+      "english": "report a cancelled flight",
+      "hindi": "रद्द उड़ान की शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Flight Customer Service",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-033"
+      ]
+    },
+    {
+      "id": "phr-v205-0302",
+      "topic": "travel",
+      "english": "request alternative travel",
+      "hindi": "वैकल्पिक यात्रा की माँग करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Flight Customer Service",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-033"
+      ]
+    },
+    {
+      "id": "phr-v205-0303",
+      "topic": "housing",
+      "english": "report flood damage",
+      "hindi": "बाढ़ से हुए नुकसान की रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Flooded House Insurance - Part 1",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-034"
+      ]
+    },
+    {
+      "id": "phr-v205-0304",
+      "topic": "housing",
+      "english": "start an insurance claim",
+      "hindi": "बीमा दावा शुरू करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Flooded House Insurance - Part 1",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-034"
+      ]
+    },
+    {
+      "id": "phr-v205-0305",
+      "topic": "housing",
+      "english": "arrange a damage inspection",
+      "hindi": "नुकसान का निरीक्षण करवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Flooded House Insurance - Part 2",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-035"
+      ]
+    },
+    {
+      "id": "phr-v205-0306",
+      "topic": "housing",
+      "english": "provide repair estimates",
+      "hindi": "मरम्मत के अनुमान देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Flooded House Insurance - Part 2",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-035"
+      ]
+    },
+    {
+      "id": "phr-v205-0307",
+      "topic": "legal",
+      "english": "identify an ATO scam",
+      "hindi": "एटीओ धोखाधड़ी की पहचान करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Fraud call by ATO",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-036"
+      ]
+    },
+    {
+      "id": "phr-v205-0308",
+      "topic": "legal",
+      "english": "protect personal information",
+      "hindi": "व्यक्तिगत जानकारी सुरक्षित रखना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Fraud call by ATO",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-036"
+      ]
+    },
+    {
+      "id": "phr-v205-0309",
+      "topic": "legal",
+      "english": "report a hit-and-run",
+      "hindi": "टक्कर मारकर भागने की रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Hit and Run",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-037"
+      ]
+    },
+    {
+      "id": "phr-v205-0310",
+      "topic": "legal",
+      "english": "remember the number plate",
+      "hindi": "नंबर प्लेट याद रखना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Hit and Run",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-037"
+      ]
+    },
+    {
+      "id": "phr-v205-0311",
+      "topic": "banking",
+      "english": "compare home loan options",
+      "hindi": "गृह ऋण विकल्पों की तुलना करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Home Loans",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-038"
+      ]
+    },
+    {
+      "id": "phr-v205-0312",
+      "topic": "banking",
+      "english": "calculate monthly repayments",
+      "hindi": "मासिक किस्तों की गणना करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Home Loans",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-038"
+      ]
+    },
+    {
+      "id": "phr-v205-0313",
+      "topic": "travel",
+      "english": "reserve a hotel room",
+      "hindi": "होटल का कमरा आरक्षित करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Hotel Reservation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-039"
+      ]
+    },
+    {
+      "id": "phr-v205-0314",
+      "topic": "travel",
+      "english": "request a late checkout",
+      "hindi": "देर से चेक-आउट का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Hotel Reservation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-039"
+      ]
+    },
+    {
+      "id": "phr-v205-0315",
+      "topic": "immigration",
+      "english": "answer immigration questions",
+      "hindi": "आव्रजन संबंधी प्रश्नों का उत्तर देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Immigration Check",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-040"
+      ]
+    },
+    {
+      "id": "phr-v205-0316",
+      "topic": "immigration",
+      "english": "show your travel documents",
+      "hindi": "यात्रा दस्तावेज़ दिखाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Immigration Check",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-040"
+      ]
+    },
+    {
+      "id": "phr-v205-0317",
+      "topic": "health",
+      "english": "check the immunisation schedule",
+      "hindi": "टीकाकरण समय-सारणी जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Immunisation Enquiry",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-041"
+      ]
+    },
+    {
+      "id": "phr-v205-0318",
+      "topic": "health",
+      "english": "bring the child’s health record",
+      "hindi": "बच्चे का स्वास्थ्य रिकॉर्ड लाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Immunisation Enquiry",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-041"
+      ]
+    },
+    {
+      "id": "phr-v205-0319",
+      "topic": "employment",
+      "english": "submit an injury claim",
+      "hindi": "चोट का दावा जमा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Injury Claim",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-042"
+      ]
+    },
+    {
+      "id": "phr-v205-0320",
+      "topic": "banking",
+      "english": "discuss investment options",
+      "hindi": "निवेश विकल्पों पर चर्चा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Investment",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-043"
+      ]
+    },
+    {
+      "id": "phr-v205-0321",
+      "topic": "banking",
+      "english": "understand the financial risk",
+      "hindi": "वित्तीय जोखिम समझना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Investment",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-043"
+      ]
+    },
+    {
+      "id": "phr-v205-0322",
+      "topic": "housing",
+      "english": "report a laneway problem",
+      "hindi": "गली की समस्या की सूचना देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Laneway",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-044"
+      ]
+    },
+    {
+      "id": "phr-v205-0323",
+      "topic": "community",
+      "english": "replace a lost library card",
+      "hindi": "खोया पुस्तकालय कार्ड बदलवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Library Card Issue",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-045"
+      ]
+    },
+    {
+      "id": "phr-v205-0324",
+      "topic": "community",
+      "english": "pay the replacement fee",
+      "hindi": "बदलाव शुल्क चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Library Card Issue",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-045"
+      ]
+    },
+    {
+      "id": "phr-v205-0325",
+      "topic": "insurance",
+      "english": "choose life insurance cover",
+      "hindi": "जीवन बीमा कवरेज चुनना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Life Insurance",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-046"
+      ]
+    },
+    {
+      "id": "phr-v205-0326",
+      "topic": "insurance",
+      "english": "nominate the beneficiary",
+      "hindi": "लाभार्थी नामित करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Life Insurance",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-046"
+      ]
+    },
+    {
+      "id": "phr-v205-0327",
+      "topic": "family",
+      "english": "register with a marriage bureau",
+      "hindi": "विवाह ब्यूरो में पंजीकरण करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Marriage Bureau",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-047"
+      ]
+    },
+    {
+      "id": "phr-v205-0328",
+      "topic": "family",
+      "english": "describe partner preferences",
+      "hindi": "साथी संबंधी प्राथमिकताएँ बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Marriage Bureau",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-047"
+      ]
+    },
+    {
+      "id": "phr-v205-0329",
+      "topic": "consumer",
+      "english": "report a faulty batch",
+      "hindi": "खराब बैच की रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Malproduction",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-048"
+      ]
+    },
+    {
+      "id": "phr-v205-0330",
+      "topic": "consumer",
+      "english": "investigate the production fault",
+      "hindi": "उत्पादन दोष की जाँच करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Malproduction",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-048"
+      ]
+    },
+    {
+      "id": "phr-v205-0331",
+      "topic": "family",
+      "english": "book a marriage registration",
+      "hindi": "विवाह पंजीकरण बुक करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Marriage Registration",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-049"
+      ]
+    },
+    {
+      "id": "phr-v205-0332",
+      "topic": "family",
+      "english": "bring two witnesses",
+      "hindi": "दो गवाह साथ लाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Marriage Registration",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-049"
+      ]
+    },
+    {
+      "id": "phr-v205-0333",
+      "topic": "legal",
+      "english": "assist a murder investigation",
+      "hindi": "हत्या की जाँच में सहायता करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Murder Investigation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-050"
+      ]
+    },
+    {
+      "id": "phr-v205-0334",
+      "topic": "legal",
+      "english": "give a witness statement",
+      "hindi": "गवाह का बयान देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Murder Investigation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-050"
+      ]
+    },
+    {
+      "id": "phr-v205-0335",
+      "topic": "housing",
+      "english": "resolve a neighbour dispute",
+      "hindi": "पड़ोसी का विवाद सुलझाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Neighbourhood Dispute",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-051"
+      ]
+    },
+    {
+      "id": "phr-v205-0336",
+      "topic": "housing",
+      "english": "avoid further confrontation",
+      "hindi": "आगे का टकराव टालना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Neighbourhood Dispute",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-051"
+      ]
+    },
+    {
+      "id": "phr-v205-0337",
+      "topic": "social",
+      "english": "apply for the age pension",
+      "hindi": "वृद्धावस्था पेंशन के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Old Age Pension",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-052"
+      ]
+    },
+    {
+      "id": "phr-v205-0338",
+      "topic": "social",
+      "english": "complete the assets test",
+      "hindi": "संपत्ति परीक्षण पूरा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Old Age Pension",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-052"
+      ]
+    },
+    {
+      "id": "phr-v205-0339",
+      "topic": "banking",
+      "english": "open an everyday account",
+      "hindi": "दैनिक लेन-देन खाता खोलना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Opening a Bank Account",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-053"
+      ]
+    },
+    {
+      "id": "phr-v205-0340",
+      "topic": "banking",
+      "english": "certify the identity copies",
+      "hindi": "पहचान की प्रतियाँ प्रमाणित करवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Opening a Bank Account",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-053"
+      ]
+    },
+    {
+      "id": "phr-v205-0341",
+      "topic": "immigration",
+      "english": "seek onshore protection",
+      "hindi": "ऑनशोर संरक्षण का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: On-shore Protection Visa",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-054"
+      ]
+    },
+    {
+      "id": "phr-v205-0342",
+      "topic": "immigration",
+      "english": "explain the fear of return",
+      "hindi": "वापसी का डर समझाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: On-shore Protection Visa",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-054"
+      ]
+    },
+    {
+      "id": "phr-v205-0343",
+      "topic": "education",
+      "english": "discuss the student’s progress",
+      "hindi": "विद्यार्थी की प्रगति पर चर्चा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Parent Teacher Meeting",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-055"
+      ]
+    },
+    {
+      "id": "phr-v205-0344",
+      "topic": "education",
+      "english": "improve classroom behaviour",
+      "hindi": "कक्षा का व्यवहार सुधारना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Parent Teacher Meeting",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-055"
+      ]
+    },
+    {
+      "id": "phr-v205-0345",
+      "topic": "employment",
+      "english": "ask for a salary review",
+      "hindi": "वेतन समीक्षा का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Pay Rise",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-056"
+      ]
+    },
+    {
+      "id": "phr-v205-0346",
+      "topic": "employment",
+      "english": "explain added responsibilities",
+      "hindi": "अतिरिक्त जिम्मेदारियाँ समझाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Pay Rise",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-056"
+      ]
+    },
+    {
+      "id": "phr-v205-0347",
+      "topic": "consumer",
+      "english": "place a bulk order",
+      "hindi": "थोक ऑर्डर देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Placing an Order",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-057"
+      ]
+    },
+    {
+      "id": "phr-v205-0348",
+      "topic": "consumer",
+      "english": "confirm the delivery address",
+      "hindi": "डिलीवरी पते की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Placing an Order",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-057"
+      ]
+    },
+    {
+      "id": "phr-v205-0349",
+      "topic": "legal",
+      "english": "follow the police instructions",
+      "hindi": "पुलिस निर्देशों का पालन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Police Raid",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-058"
+      ]
+    },
+    {
+      "id": "phr-v205-0350",
+      "topic": "legal",
+      "english": "remain outside the premises",
+      "hindi": "परिसर के बाहर रहना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Police Raid",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-058"
+      ]
+    },
+    {
+      "id": "phr-v205-0351",
+      "topic": "health",
+      "english": "discuss pregnancy options",
+      "hindi": "गर्भावस्था के विकल्पों पर चर्चा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Pregnancy and Abortion",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-059"
+      ]
+    },
+    {
+      "id": "phr-v205-0352",
+      "topic": "health",
+      "english": "provide informed consent",
+      "hindi": "सूचित सहमति देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Pregnancy and Abortion",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-059"
+      ]
+    },
+    {
+      "id": "phr-v205-0353",
+      "topic": "transport",
+      "english": "replace a faulty Myki",
+      "hindi": "खराब माइकी कार्ड बदलवाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: PTV Myki",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-060"
+      ]
+    },
+    {
+      "id": "phr-v205-0354",
+      "topic": "transport",
+      "english": "transfer the card balance",
+      "hindi": "कार्ड की शेष राशि स्थानांतरित करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: PTV Myki",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-060"
+      ]
+    },
+    {
+      "id": "phr-v205-0355",
+      "topic": "consumer",
+      "english": "compare mobile phone plans",
+      "hindi": "मोबाइल फोन योजनाओं की तुलना करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Purchasing a New Phone",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-061"
+      ]
+    },
+    {
+      "id": "phr-v205-0356",
+      "topic": "consumer",
+      "english": "check the contract period",
+      "hindi": "अनुबंध अवधि जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Purchasing a New Phone",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-061"
+      ]
+    },
+    {
+      "id": "phr-v205-0357",
+      "topic": "health",
+      "english": "prepare for a blood test",
+      "hindi": "रक्त जाँच की तैयारी करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Query About Blood Test",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-062"
+      ]
+    },
+    {
+      "id": "phr-v205-0358",
+      "topic": "health",
+      "english": "ask whether fasting is needed",
+      "hindi": "पूछना कि खाली पेट रहना है या नहीं",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Query About Blood Test",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-062"
+      ]
+    },
+    {
+      "id": "phr-v205-0359",
+      "topic": "housing",
+      "english": "plan the home renovation",
+      "hindi": "घर की मरम्मत की योजना बनाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Renovation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-063"
+      ]
+    },
+    {
+      "id": "phr-v205-0360",
+      "topic": "housing",
+      "english": "confirm the project budget",
+      "hindi": "परियोजना बजट की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Renovation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-063"
+      ]
+    },
+    {
+      "id": "phr-v205-0361",
+      "topic": "housing",
+      "english": "apply for a bond loan",
+      "hindi": "बॉन्ड ऋण के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Rent Assist Bond Loan",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-064"
+      ]
+    },
+    {
+      "id": "phr-v205-0362",
+      "topic": "housing",
+      "english": "provide proof of rent",
+      "hindi": "किराये का प्रमाण देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Rent Assist Bond Loan",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-064"
+      ]
+    },
+    {
+      "id": "phr-v205-0363",
+      "topic": "consumer",
+      "english": "return the unwanted product",
+      "hindi": "अनचाहा उत्पाद वापस करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Returning a Product",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-065"
+      ]
+    },
+    {
+      "id": "phr-v205-0364",
+      "topic": "consumer",
+      "english": "show the original receipt",
+      "hindi": "मूल रसीद दिखाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Returning a Product",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-065"
+      ]
+    },
+    {
+      "id": "phr-v205-0365",
+      "topic": "consumer",
+      "english": "give restaurant feedback",
+      "hindi": "रेस्तराँ की प्रतिक्रिया देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Restaurant Feedback",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-066"
+      ]
+    },
+    {
+      "id": "phr-v205-0366",
+      "topic": "consumer",
+      "english": "report poor food quality",
+      "hindi": "खराब भोजन गुणवत्ता की शिकायत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Restaurant Feedback",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-066"
+      ]
+    },
+    {
+      "id": "phr-v205-0367",
+      "topic": "health",
+      "english": "treat a scorpion sting",
+      "hindi": "बिच्छू के डंक का इलाज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Scorpion Bite",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-067"
+      ]
+    },
+    {
+      "id": "phr-v205-0368",
+      "topic": "health",
+      "english": "seek urgent medical help",
+      "hindi": "तुरंत चिकित्सकीय सहायता लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Scorpion Bite",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-067"
+      ]
+    },
+    {
+      "id": "phr-v205-0369",
+      "topic": "health",
+      "english": "claim sickness allowance",
+      "hindi": "बीमारी भत्ता का दावा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Sickness Allowance",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-068"
+      ]
+    },
+    {
+      "id": "phr-v205-0370",
+      "topic": "health",
+      "english": "treat a stiff neck",
+      "hindi": "गर्दन की अकड़न का इलाज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Stiff Neck",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-069"
+      ]
+    },
+    {
+      "id": "phr-v205-0371",
+      "topic": "health",
+      "english": "avoid heavy lifting",
+      "hindi": "भारी सामान उठाने से बचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Stiff Neck",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-069"
+      ]
+    },
+    {
+      "id": "phr-v205-0372",
+      "topic": "education",
+      "english": "lodge a student complaint",
+      "hindi": "विद्यार्थी की शिकायत दर्ज करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Student's Complaint",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-070"
+      ]
+    },
+    {
+      "id": "phr-v205-0373",
+      "topic": "education",
+      "english": "request a course refund",
+      "hindi": "पाठ्यक्रम शुल्क वापसी माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Student's Complaint",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-070"
+      ]
+    },
+    {
+      "id": "phr-v205-0374",
+      "topic": "immigration",
+      "english": "extend the temporary visa",
+      "hindi": "अस्थायी वीज़ा बढ़वाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Temporary Visa",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-071"
+      ]
+    },
+    {
+      "id": "phr-v205-0375",
+      "topic": "immigration",
+      "english": "check the expiry date",
+      "hindi": "समाप्ति तारीख जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Temporary Visa",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-071"
+      ]
+    },
+    {
+      "id": "phr-v205-0376",
+      "topic": "legal",
+      "english": "report stolen property",
+      "hindi": "चोरी हुई संपत्ति की रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Theft",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-072"
+      ]
+    },
+    {
+      "id": "phr-v205-0377",
+      "topic": "legal",
+      "english": "list the missing items",
+      "hindi": "गुम वस्तुओं की सूची देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Theft",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-072"
+      ]
+    },
+    {
+      "id": "phr-v205-0378",
+      "topic": "utilities",
+      "english": "query a high utility bill",
+      "hindi": "अधिक उपयोगिता बिल पर पूछताछ करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Utility Bill",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-073"
+      ]
+    },
+    {
+      "id": "phr-v205-0379",
+      "topic": "utilities",
+      "english": "check the meter reading",
+      "hindi": "मीटर रीडिंग जाँचना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Utility Bill",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-073"
+      ]
+    },
+    {
+      "id": "phr-v205-0380",
+      "topic": "legal",
+      "english": "contact Victoria Police",
+      "hindi": "विक्टोरिया पुलिस से संपर्क करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Victoria Police",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-074"
+      ]
+    },
+    {
+      "id": "phr-v205-0381",
+      "topic": "legal",
+      "english": "quote the event number",
+      "hindi": "घटना संख्या बताना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Victoria Police",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-074"
+      ]
+    },
+    {
+      "id": "phr-v205-0382",
+      "topic": "business",
+      "english": "negotiate the partnership terms",
+      "hindi": "साझेदारी की शर्तों पर बातचीत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Business Proposal",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-075"
+      ]
+    },
+    {
+      "id": "phr-v205-0383",
+      "topic": "health",
+      "english": "relieve constipation symptoms",
+      "hindi": "कब्ज के लक्षण कम करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Constipation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-076"
+      ]
+    },
+    {
+      "id": "phr-v205-0384",
+      "topic": "health",
+      "english": "increase dietary fibre",
+      "hindi": "आहार में रेशा बढ़ाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Constipation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-076"
+      ]
+    },
+    {
+      "id": "phr-v205-0385",
+      "topic": "immigration",
+      "english": "apply for a de facto visa",
+      "hindi": "डी फैक्टो वीज़ा के लिए आवेदन करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: De facto Visa",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-077"
+      ]
+    },
+    {
+      "id": "phr-v205-0386",
+      "topic": "immigration",
+      "english": "prove the genuine relationship",
+      "hindi": "वास्तविक संबंध का प्रमाण देना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: De facto Visa",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-077"
+      ]
+    },
+    {
+      "id": "phr-v205-0387",
+      "topic": "travel",
+      "english": "confirm the room booking",
+      "hindi": "कमरे की बुकिंग की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Hotel Reservation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-078"
+      ]
+    },
+    {
+      "id": "phr-v205-0388",
+      "topic": "travel",
+      "english": "ask about breakfast inclusion",
+      "hindi": "नाश्ता शामिल होने के बारे में पूछना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Hotel Reservation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-078"
+      ]
+    },
+    {
+      "id": "phr-v205-0389",
+      "topic": "banking",
+      "english": "report a retained ATM card",
+      "hindi": "एटीएम में फँसे कार्ड की रिपोर्ट करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: ATM Card",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-079"
+      ]
+    },
+    {
+      "id": "phr-v205-0390",
+      "topic": "banking",
+      "english": "request a replacement card",
+      "hindi": "नया कार्ड माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: ATM Card",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-079"
+      ]
+    },
+    {
+      "id": "phr-v205-0391",
+      "topic": "employment",
+      "english": "confirm the overtime payment",
+      "hindi": "ओवरटाइम भुगतान की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Extra Shift",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-080"
+      ]
+    },
+    {
+      "id": "phr-v205-0392",
+      "topic": "immigration",
+      "english": "prepare citizenship documents",
+      "hindi": "नागरिकता दस्तावेज़ तैयार करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Australian Citizenship",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-081"
+      ]
+    },
+    {
+      "id": "phr-v205-0393",
+      "topic": "immigration",
+      "english": "attend the citizenship ceremony",
+      "hindi": "नागरिकता समारोह में जाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Australian Citizenship",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-081"
+      ]
+    },
+    {
+      "id": "phr-v205-0394",
+      "topic": "community",
+      "english": "request a certified translation",
+      "hindi": "प्रमाणित अनुवाद का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Document Translation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-082"
+      ]
+    },
+    {
+      "id": "phr-v205-0395",
+      "topic": "community",
+      "english": "confirm the translation fee",
+      "hindi": "अनुवाद शुल्क की पुष्टि करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Document Translation",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-082"
+      ]
+    },
+    {
+      "id": "phr-v205-0396",
+      "topic": "housing",
+      "english": "repair the damaged fence",
+      "hindi": "क्षतिग्रस्त बाड़ की मरम्मत करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Fence Dog",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-083"
+      ]
+    },
+    {
+      "id": "phr-v205-0397",
+      "topic": "housing",
+      "english": "keep the dog secure",
+      "hindi": "कुत्ते को सुरक्षित रखना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Fence Dog",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-083"
+      ]
+    },
+    {
+      "id": "phr-v205-0398",
+      "topic": "health",
+      "english": "discuss Down syndrome screening",
+      "hindi": "डाउन सिंड्रोम जाँच पर चर्चा करना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Down Syndrome",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-084"
+      ]
+    },
+    {
+      "id": "phr-v205-0399",
+      "topic": "health",
+      "english": "explain the test results",
+      "hindi": "जाँच के परिणाम समझाना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Down Syndrome",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-084"
+      ]
+    },
+    {
+      "id": "phr-v205-0400",
+      "topic": "utilities",
+      "english": "request electricity hardship support",
+      "hindi": "बिजली बिल के लिए कठिनाई सहायता माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Electricity Bill",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-085"
+      ]
+    },
+    {
+      "id": "phr-v205-0401",
+      "topic": "utilities",
+      "english": "divide the bill into instalments",
+      "hindi": "बिल को किस्तों में बाँटना",
+      "status": "reviewed-v2.0.5",
+      "source": "Dialogue-informed phrase: Electricity Bill",
+      "phraseType": "short NAATI practice phrase",
+      "dialogueIds": [
+        "dialogue-085"
+      ]
+    },
+    {
+      "id": "phr-v205-0402",
+      "topic": "community",
+      "english": "please confirm the details",
+      "hindi": "कृपया विवरण की पुष्टि कीजिए",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0403",
+      "topic": "community",
+      "english": "provide the required documents",
+      "hindi": "आवश्यक दस्तावेज़ दीजिए",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0404",
+      "topic": "community",
+      "english": "complete the application form",
+      "hindi": "आवेदन फॉर्म पूरा कीजिए",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0405",
+      "topic": "community",
+      "english": "sign at the bottom",
+      "hindi": "नीचे हस्ताक्षर कीजिए",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0406",
+      "topic": "community",
+      "english": "keep a copy for your records",
+      "hindi": "अपने रिकॉर्ड के लिए एक प्रति रखिए",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0407",
+      "topic": "community",
+      "english": "contact us as soon as possible",
+      "hindi": "जितनी जल्दी हो सके हमसे संपर्क कीजिए",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0408",
+      "topic": "community",
+      "english": "the decision is still pending",
+      "hindi": "निर्णय अभी लंबित है",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0409",
+      "topic": "community",
+      "english": "the application has been approved",
+      "hindi": "आवेदन स्वीकृत हो गया है",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0410",
+      "topic": "community",
+      "english": "the request has been declined",
+      "hindi": "अनुरोध अस्वीकार कर दिया गया है",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0411",
+      "topic": "community",
+      "english": "additional information is required",
+      "hindi": "अतिरिक्त जानकारी आवश्यक है",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0412",
+      "topic": "community",
+      "english": "the deadline has passed",
+      "hindi": "अंतिम तारीख बीत चुकी है",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0413",
+      "topic": "community",
+      "english": "within fourteen days",
+      "hindi": "चौदह दिनों के भीतर",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0414",
+      "topic": "community",
+      "english": "before the due date",
+      "hindi": "अंतिम तारीख से पहले",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0415",
+      "topic": "community",
+      "english": "after receiving the notice",
+      "hindi": "नोटिस मिलने के बाद",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0416",
+      "topic": "community",
+      "english": "subject to approval",
+      "hindi": "स्वीकृति के अधीन",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0417",
+      "topic": "community",
+      "english": "without further delay",
+      "hindi": "और देरी किए बिना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0418",
+      "topic": "community",
+      "english": "according to the policy",
+      "hindi": "नीति के अनुसार",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0419",
+      "topic": "community",
+      "english": "under the current rules",
+      "hindi": "वर्तमान नियमों के तहत",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0420",
+      "topic": "community",
+      "english": "depending on your circumstances",
+      "hindi": "आपकी परिस्थितियों के अनुसार",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0421",
+      "topic": "community",
+      "english": "at your earliest convenience",
+      "hindi": "आपकी सुविधानुसार जल्द से जल्द",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0422",
+      "topic": "community",
+      "english": "provide written confirmation",
+      "hindi": "लिखित पुष्टि दीजिए",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0423",
+      "topic": "community",
+      "english": "request further information",
+      "hindi": "अधिक जानकारी का अनुरोध करना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0424",
+      "topic": "community",
+      "english": "make an appointment online",
+      "hindi": "ऑनलाइन अपॉइंटमेंट लेना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0425",
+      "topic": "community",
+      "english": "attend in person",
+      "hindi": "व्यक्तिगत रूप से उपस्थित होना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0426",
+      "topic": "community",
+      "english": "send it by email",
+      "hindi": "इसे ईमेल से भेजना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0427",
+      "topic": "community",
+      "english": "upload a clear copy",
+      "hindi": "स्पष्ट प्रति अपलोड करना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0428",
+      "topic": "community",
+      "english": "bring the original document",
+      "hindi": "मूल दस्तावेज़ साथ लाना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0429",
+      "topic": "community",
+      "english": "pay the required fee",
+      "hindi": "आवश्यक शुल्क चुकाना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0430",
+      "topic": "community",
+      "english": "ask for an interpreter",
+      "hindi": "दुभाषिया माँगना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    },
+    {
+      "id": "phr-v205-0431",
+      "topic": "community",
+      "english": "keep the information confidential",
+      "hindi": "जानकारी गोपनीय रखना",
+      "status": "reviewed-v2.0.5",
+      "source": "General community interpreting phrase bank",
+      "phraseType": "short NAATI practice phrase"
+    }
+  ]
+}
