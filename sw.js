@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-study-ready-20260805-v2';
+const CACHE_NAME = 'aps-naati-study-ready-20260806-v3';
 const PRECACHE = [
   "./",
   "./index.html",
@@ -28,8 +28,8 @@ const PRECACHE = [
   "./manifest.webmanifest",
   "./pilot50-runtime-overlay.js",
   "./scoring.js",
-  "./study-hotfix-v2.css",
-  "./study-hotfix-v2.js",
+  "./study-hotfix-v3.css",
+  "./study-hotfix-v3.js",
   "./styles.css",
   "./version.json"
 ];

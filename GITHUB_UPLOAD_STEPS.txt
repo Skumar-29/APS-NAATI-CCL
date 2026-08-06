@@ -1,4 +1,4 @@
-APS NAATI CCL PRACTICE - GITHUB STUDY-READY BUILD
+APS NAATI CCL PRACTICE - GITHUB STUDY-READY FIXED BUILD V3
 ===================================================
 
 PURPOSE
@@ -46,3 +46,15 @@ GITHUB UPLOAD
 10. Open the published page once while online.
 
 Do not upload only the ZIP file. Upload the extracted contents.
+
+
+V3 FIXES
+--------
+- Dialogue speech now waits for browser voices and retries browser resume.
+- Practice search matches dialogue title, topic, situation, English segments,
+  Hindi segments, model answers and comparison points.
+- Use the Clear search button to return to all dialogues.
+- For best dialogue audio on a laptop, use current Google Chrome and make sure
+  the browser tab is not muted.
+
+- Fixed a dialogue-page render loop that could stop Play from responding.

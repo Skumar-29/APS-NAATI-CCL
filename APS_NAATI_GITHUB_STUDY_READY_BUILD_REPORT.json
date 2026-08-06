@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
-  "buildVersion": "github-study-ready-2026-08-05-v2",
-  "createdAt": "2026-08-05T21:50:21+10:00",
-  "status": "github-study-ready-package-created",
+  "buildVersion": "github-study-ready-2026-08-06-v3",
+  "createdAt": "2026-08-06T10:28:00+10:00",
+  "status": "github-study-ready-fixed-package-created",
   "source": {
     "repo": "/Users/sandeepkumar/Downloads/aps-naati-ccl-ios",
     "source": "/Users/sandeepkumar/Downloads/aps-naati-ccl-ios/www",
@@ -43,7 +43,14 @@
     "updatesClearOnlyAppCaches": true,
     "existingProgressKeysChanged": false,
     "canonicalContentModified": false,
-    "repositoryModified": false
+    "repositoryModified": false,
+    "dialoguePlaybackReliabilityFix": true,
+    "practiceSearchEnglishHindiTitleTopic": true,
+    "practiceSearchClearButton": true,
+    "terminalRequired": false,
+    "dialogueMutationLoopFixed": true,
+    "dialogueControlsRenderHook": true,
+    "settingsUpdateCardVerified": true
   },
   "validation": {
     "requiredFiles": [
@@ -82,44 +89,96 @@
     "featureMarkersPassed": true
   },
   "package": {
-    "name": "APS_NAATI_CCL_Practice_GitHub_Study_Ready_2026-08-05_v2",
-    "fileCount": 31,
+    "name": "APS_NAATI_CCL_GitHub_Ready_Fixed_2026-08-06",
+    "fileCount": 44,
     "manifest": {
-      ".nojekyll": {
-        "bytes": 0,
-        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-      },
       "404.html": {
         "bytes": 1147,
         "sha256": "6bbb06f6e0864935eccb95ca0ef41700f163fe683d9af0c1ea84ab16ea1bf19b"
       },
+      "APS_NAATI_GITHUB_STUDY_READY_BUILD_REPORT.json": {
+        "bytes": 9402,
+        "sha256": "8c2911bd0a2dd107632376c3c09728e41709d57e05a0b80789f684627bdb5249"
+      },
+      "BETA_PRIVACY_NOTICE.md": {
+        "bytes": 497,
+        "sha256": "238e4f59f4ea6800390f1b34d87c2935b8fb1e0d0d2ec39bea5cac626b26a7e5"
+      },
+      "DIALOGUE_COMPARISON_AUDIT_V2.0.3.csv": {
+        "bytes": 881262,
+        "sha256": "f330e7abcbb59ed9021e03efbd0a06d173897296ad7c9d284d62de1146947535"
+      },
+      "FRIENDS_TEST_CHECKLIST.md": {
+        "bytes": 600,
+        "sha256": "4827c3085134dfbf072417d334906ba50762a8029388a8cae5a916b362d2c441"
+      },
       "GITHUB_UPLOAD_STEPS.txt": {
-        "bytes": 1740,
-        "sha256": "91953d1d954def0ba940428b58ec843336d677486bf369e83095ca048126e4c9"
+        "bytes": 2221,
+        "sha256": "ee7735d91d0c865926bf3aa5fd145ab5f98d010a26acb5ed8c0f902da8c2f76e"
+      },
+      "PHRASE_AUDIT_V2.0.5.csv": {
+        "bytes": 102573,
+        "sha256": "49066a408468e99e87f9cbdbc12891355badd861f8c40cb4a3d2b1f7a9942825"
+      },
+      "PHRASE_LIBRARY_METHOD_V2.0.5.md": {
+        "bytes": 1044,
+        "sha256": "1c84e8a6548ad4c8443430c6973495ea3b155e2ac4e5c5a16623d8cf002b154f"
+      },
+      "QA_REPORT_V2.0.3.md": {
+        "bytes": 2101,
+        "sha256": "97e24aa848fc4e1fa42d280d7fc476ca5c2a4ee6c99c0cffa2dde263a04a500a"
+      },
+      "QA_REPORT_V2.0.4.md": {
+        "bytes": 1433,
+        "sha256": "95b0b333c1f7b2306c2b29eba8458fb9d3ea17949ee591c0a5fcb01f9143d22f"
+      },
+      "QA_REPORT_V2.0.5.md": {
+        "bytes": 1574,
+        "sha256": "d640d29742c87601de036d12985a3a065bf88ecc69f579c82bdf1c94a4e21759"
+      },
+      "QA_REPORT_V2.0.6.md": {
+        "bytes": 2865,
+        "sha256": "c6b89aac2e0dfcec90957e1653a606cbcd31e962c2903ce504f784eb4b439c74"
+      },
+      "QA_REPORT_V2.0.7.md": {
+        "bytes": 2674,
+        "sha256": "700051677b859b091c9396e43a8aaf8644b2bfce7db050be3db9612ff025d3c5"
+      },
+      "README.md": {
+        "bytes": 4529,
+        "sha256": "d2c09c04c576d2e7a2a9b26e54d15ca6fdd8a9910f646151bd571446c7e34534"
       },
       "README.txt": {
-        "bytes": 1740,
-        "sha256": "91953d1d954def0ba940428b58ec843336d677486bf369e83095ca048126e4c9"
+        "bytes": 2221,
+        "sha256": "ee7735d91d0c865926bf3aa5fd145ab5f98d010a26acb5ed8c0f902da8c2f76e"
+      },
+      "UPDATE_NOTES_V2.0.3.md": {
+        "bytes": 1059,
+        "sha256": "7ed52bce1824ab1bab8fb3fbfe45bc3f9664362900d0a6c33a3a718c07d78e7a"
+      },
+      "UPDATE_NOTES_V2.0.4.md": {
+        "bytes": 768,
+        "sha256": "5334b29e2b2a868bd1f195df53aeadbfcb048466178cf32db79663b14df6b9e1"
+      },
+      "UPDATE_NOTES_V2.0.5.md": {
+        "bytes": 951,
+        "sha256": "38f22c294fe9e76bac93000d99dd5eb4709b5eac8e20e4c154952cbc5e2aac8e"
+      },
+      "UPDATE_NOTES_V2.0.6.md": {
+        "bytes": 1097,
+        "sha256": "9326399dbb22da20cb697f45dcc7daa67f483d4ce046ce63bb644bbb74c7ea62"
+      },
+      "UPDATE_NOTES_V2.0.7.md": {
+        "bytes": 904,
+        "sha256": "c1f2ea61a07d4bdc8dff4a33ed58ac8b2436f2ea6fde242fd412f30d44753beb"
+      },
+      "VOCABULARY_AUDIT_V2.0.3.csv": {
+        "bytes": 383722,
+        "sha256": "11aa7740c6123b9d527213097be010d8b7c69fcdea63f980a9d35e7ee321ce4f"
       },
       "app.js": {
-        "bytes": 119800,
-        "sha256": "d9e3cf4c4568ccb839c750a05770ab5e353e27c7517115d9c88c183ac9fea108"
-      },
-      "app.js.backup-before-auth-emulator": {
-        "bytes": 109293,
-        "sha256": "7439cf6dd9909c5d0b385fb6849628b576f1038789c988be1724150d7978d851"
-      },
-      "app.js.backup-before-production-guard-rollout": {
-        "bytes": 113102,
-        "sha256": "eb5b3798dfdc3f699da033a1173b1d53f32d226f762092d39cdb38227dbc9491"
-      },
-      "app.js.backup-before-token-helper": {
-        "bytes": 108851,
-        "sha256": "58002b38cc1d516afad0526361e421f244dcfcf54edb2b8c4a3eff38fe9947a9"
-      },
-      "app.js.backup-before-transcription-helper": {
-        "bytes": 109823,
-        "sha256": "9b8a4ed88ca34eeffc5f30f5591f128f6eb0a2c5155b237ee07eccbf7288c9a8"
+        "bytes": 121117,
+        "sha256": "1b019aa6d27e3f69cc20b01fd3fe8d47a9af53928a94a53c02ea32fb1da1f9eb"
       },
       "content/dialogues.json": {
         "bytes": 3015797,
@@ -175,7 +234,7 @@
       },
       "index.html": {
         "bytes": 1302,
-        "sha256": "7b8fc23f292ddcff32d4a74af0d55d3fe14b9f28bee90e3a7024ae28c57ae0c7"
+        "sha256": "f99b7cd7092ec5b3b574b72a0b3af27df59e4434180ca1ab58d05e5377c412c3"
       },
       "manifest.webmanifest": {
         "bytes": 873,
@@ -189,13 +248,13 @@
         "bytes": 12819,
         "sha256": "b543d2fd2576177cafd43232ecd8c75a67cf4ce4717e1dcd9cf014ed6e3d1e0c"
       },
-      "study-hotfix-v2.css": {
-        "bytes": 4284,
-        "sha256": "82b2faef648ea60ae22bb6e7f56438016098a9b764885b3c9f4dc90c09f715bf"
+      "study-hotfix-v3.css": {
+        "bytes": 4805,
+        "sha256": "ddfb94997488b6ca6be586df35bdc2898693ce1b7a79cd55cc2cff3c39579a5d"
       },
-      "study-hotfix-v2.js": {
-        "bytes": 27217,
-        "sha256": "42ce106cdd9fa1f7f78eade660bbd59c49b6ecac93f076da49fa43b98e78d331"
+      "study-hotfix-v3.js": {
+        "bytes": 32529,
+        "sha256": "c62feb064417189ca0bcb324ee0ba148b53df5be9330b84582927956d260177e"
       },
       "styles.css": {
         "bytes": 49044,
@@ -203,12 +262,18 @@
       },
       "sw.js": {
         "bytes": 2468,
-        "sha256": "1990e8cf85ea20ca80b0978a3950a561fe15ce43efdf3b544246093091f2a64e"
+        "sha256": "57c22dab50887f6b8a429dd6bb8bdf1331ebff79ba3c8cc91b47d8fb5342b8b9"
       },
       "version.json": {
-        "bytes": 433,
-        "sha256": "890c04f8be8028d175a56b9dfd5254a38d7c2c6cbdf1386bc6de766c831dc9de"
+        "bytes": 582,
+        "sha256": "2b25b70c8c4e52117eb1ba1d3085dab4598ad90b638f6fcf3f64a5dfaea902c9"
       }
     }
+  },
+  "contentValidation": {
+    "dialogues": 85,
+    "segments": 1073,
+    "vocabulary": 3000,
+    "phrases": 551
   }
 }

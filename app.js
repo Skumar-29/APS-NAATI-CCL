@@ -30,6 +30,19 @@ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const getJSON=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||'')||fallback}catch{return fallback}};
 const setJSON=(key,v)=>localStorage.setItem(key,JSON.stringify(v));
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
+const normaliseSearchText=(value='')=>String(value)
+  .normalize('NFKC')
+  .toLocaleLowerCase('en-AU')
+  .replace(/[^\p{L}\p{N}]+/gu,' ')
+  .replace(/\s+/g,' ')
+  .trim();
+const searchMatches=(haystack,query)=>{
+  const h=normaliseSearchText(haystack),q=normaliseSearchText(query);
+  if(!q)return true;
+  if(h.includes(q))return true;
+  return q.split(' ').filter(Boolean).every(token=>h.includes(token));
+};
+
 
 function firebaseAuthPlugin(){return window.Capacitor?.Plugins?.FirebaseAuthentication||null;}
 
@@ -493,12 +506,40 @@ function learnCard(item){
   return `<article class="learn-card ${open?'open':''}"><div class="learn-top"><small>${topicLabels[item.topic]||'Community'} ${isPhrase?'· PHRASE':''}</small><span class="mini-status ${st}">${statusIcons[st]} ${statusLabels[st]}</span></div>${practiceBadge}<button class="card-main" data-action="reveal" data-id="${item.id}"><h3>${esc(item.english)}</h3><p>${open?esc(item.hindi):'Tap to reveal Hindi'}</p>${open&&item.exampleEnglish?`<div class="example"><b>Example</b>${esc(item.exampleEnglish)}<br><span>${esc(item.exampleHindi)}</span></div>`:''}</button><div class="card-actions"><button data-action="speak-item" data-id="${item.id}" data-type="${state.learn.type}">🔊 Play</button><button data-action="single-item-player" data-id="${item.id}" data-type="${state.learn.type}">Open player ›</button></div></article>`;
 }
 
+function dialogueSearchText(dialogue){
+  const segmentText=(dialogue.segments||[]).flatMap(segment=>[
+    segment.source,
+    segment.model,
+    segment.sampleAnswer,
+    segment.noteHint,
+    segment.contentStatus,
+    ...(segment.acceptedAlternatives||[]),
+    ...(segment.comparisonPoints||[]),
+    ...((segment.meaningUnits||[]).flatMap(unit=>[
+      unit.label,
+      ...(unit.acceptedConcepts||[])
+    ]))
+  ]).filter(Boolean).join(' ');
+  return [
+    dialogue.id,
+    dialogue.title,
+    dialogue.situation,
+    dialogue.topic,
+    topicLabels[dialogue.topic]||'',
+    dialogue.difficulty,
+    dialogue.reviewStatus,
+    segmentText
+  ].filter(Boolean).join(' ');
+}
 function filteredDialogues(){
-  const q=state.practice.query.trim().toLowerCase(),records=dialogueStatsMap();
+  const q=state.practice.query,records=dialogueStatsMap();
   return state.dialogues.filter(d=>{
     const done=(records[d.id]?.practiceCount||0)>0;
     const completionOk=state.practice.completion==='all'||(state.practice.completion==='completed'?done:!done);
-    return (state.practice.topic==='all'||d.topic===state.practice.topic)&&(state.practice.difficulty==='all'||d.difficulty===state.practice.difficulty)&&(state.practice.review==='all'||(state.practice.review==='reviewed'?/human-edited/i.test(d.reviewStatus):!/human-edited/i.test(d.reviewStatus)))&&completionOk&&(!q||`${d.title} ${d.situation} ${topicLabels[d.topic]||''}`.toLowerCase().includes(q));
+    return (state.practice.topic==='all'||d.topic===state.practice.topic)&&
+      (state.practice.difficulty==='all'||d.difficulty===state.practice.difficulty)&&
+      (state.practice.review==='all'||(state.practice.review==='reviewed'?/human-edited/i.test(d.reviewStatus):!/human-edited/i.test(d.reviewStatus)))&&
+      completionOk&&searchMatches(dialogueSearchText(d),q);
   });
 }
 function practice(){
@@ -506,7 +547,7 @@ function practice(){
   return shell(`${header('Dialogue Practice','All supplied dialogues with learning, practice and review modes')}
   <div class="info">The source transcript is <b>off by default</b>. Your completed-dialogue history and practice counts are saved automatically on this device.</div>
   <section class="completion-summary"><div><strong>${totals.completed}</strong><span>completed dialogues</span></div><div><strong>${totals.remaining}</strong><span>remaining dialogues</span></div><div><strong>${totals.totalPractices}</strong><span>total dialogue practices</span></div></section>
-  <section class="dialogue-filter-panel"><label class="search"><span>⌕</span><input id="practiceQuery" placeholder="Search dialogue title or situation" value="${esc(state.practice.query)}"></label><select id="practiceTopic">${topicOptions(state.practice.topic)}</select><select id="practiceDifficulty"><option value="all">All levels</option>${['Foundation','Developing','Exam level'].map(x=>`<option value="${x}" ${state.practice.difficulty===x?'selected':''}>${x}</option>`).join('')}</select><select id="practiceReview"><option value="all">All content</option><option value="reviewed" ${state.practice.review==='reviewed'?'selected':''}>Human-edited set</option><option value="imported" ${state.practice.review==='imported'?'selected':''}>Imported library</option></select><select id="practiceCompletion"><option value="all" ${state.practice.completion==='all'?'selected':''}>All dialogues</option><option value="remaining" ${state.practice.completion==='remaining'?'selected':''}>Remaining</option><option value="completed" ${state.practice.completion==='completed'?'selected':''}>Completed</option></select></section>
+  <section class="dialogue-filter-panel"><label class="search"><span>⌕</span><input id="practiceQuery" type="search" inputmode="search" autocomplete="off" aria-label="Search dialogue title, topic, English or Hindi" placeholder="Search title, topic, English or Hindi" value="${esc(state.practice.query)}"></label>${state.practice.query?button('Clear search','clear-practice-search','secondary compact'):''}<select id="practiceTopic">${topicOptions(state.practice.topic)}</select><select id="practiceDifficulty"><option value="all">All levels</option>${['Foundation','Developing','Exam level'].map(x=>`<option value="${x}" ${state.practice.difficulty===x?'selected':''}>${x}</option>`).join('')}</select><select id="practiceReview"><option value="all">All content</option><option value="reviewed" ${state.practice.review==='reviewed'?'selected':''}>Human-edited set</option><option value="imported" ${state.practice.review==='imported'?'selected':''}>Imported library</option></select><select id="practiceCompletion"><option value="all" ${state.practice.completion==='all'?'selected':''}>All dialogues</option><option value="remaining" ${state.practice.completion==='remaining'?'selected':''}>Remaining</option><option value="completed" ${state.practice.completion==='completed'?'selected':''}>Completed</option></select></section>
   <div class="dialogue-count"><b>${list.length}</b> dialogues match the filters</div>
   <div class="dialogues">${list.map(d=>{const r=records[d.id]||{practiceCount:0};const done=r.practiceCount>0;return `<article class="dialogue-card"><div class="tags"><span>${topicLabels[d.topic]||'Community'}</span><em>${d.difficulty}</em></div><div class="dialogue-progress ${done?'done':'remaining'}"><b>${done?'✓ Completed':'○ Remaining'}</b><span>${done?`Practised ${r.practiceCount} ${r.practiceCount===1?'time':'times'}${r.bestLow!==null?` · best ${r.bestLow}–${r.bestHigh}/45`:''}`:'Not practised yet'}</span></div><h3>${esc(d.title)}</h3><p>${esc(d.situation)}</p><div class="content-quality ${/human-edited/i.test(d.reviewStatus)?'reviewed':'imported'}">${/human-edited/i.test(d.reviewStatus)?'✓ Human-edited pilot content':'◇ Imported from your library · bilingual review recommended'}</div><div class="meta">${d.estimatedMinutes} min · ${d.segments.length} segments · Audio + recording${r.lastPractisedAt?` · last ${new Date(r.lastPractisedAt).toLocaleDateString()}`:''}</div><div class="actions">${button('Learning Mode','open-dialogue','secondary',`data-id="${d.id}" data-mode="learning"`)}${button(done?'Practise again →':'Practice →','open-dialogue','primary',`data-id="${d.id}" data-mode="practice"`)}</div></article>`;}).join('')||'<div class="empty wide-card"><h3>No dialogues match</h3><p>Change the topic, level, completion status or search.</p></div>'}</div>`);
 }
@@ -1155,6 +1196,7 @@ app.addEventListener('click',async e=>{
   else if(a==='vocab-prev')stepVocab(-1);
   else if(a==='vocab-next')stepVocab(1);
   else if(a==='vocab-status'){const itemId=state.vocabPlayer.queue[state.vocabPlayer.index];setItemStatus(itemId,id);}
+  else if(a==='clear-practice-search'){state.practice.query='';render();}
   else if(a==='open-dialogue')openDialogue(id,el.dataset.mode);
   else if(a==='shuffle-mock'){state.mockPair=null;render();}
   else if(a==='start-mock')startMock();

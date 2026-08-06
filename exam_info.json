@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "2026.08.01",
+  "effectiveDate": "2026-08-01",
+  "lastChecked": "2026-08-01",
+  "disclaimer": "Independent preparation information. Always confirm current requirements on official NAATI pages before the test.",
+  "facts": {
+    "delivery": "Online",
+    "dialogues": 2,
+    "approxWordsPerDialogue": 300,
+    "maximumMarksPerDialogue": 45,
+    "maximumTotalMarks": 90,
+    "minimumTotalPass": 63,
+    "minimumPerDialogue": 29,
+    "maximumPerformanceMinutes": 20,
+    "penaltyFreeRepeatsPerDialogue": 1,
+    "testFeeAud": 814,
+    "freePracticeDialogues": 1
+  },
+  "candidateRules": [
+    "Interpret each segment after the chime into the other language.",
+    "Use direct speech rather than reporting what a speaker said.",
+    "One segment per dialogue may be repeated without penalty; later repeats may attract deductions.",
+    "Only pen and loose blank paper may be used for notes; electronic resources and typed notes are not permitted.",
+    "Headsets, headphones and earphones are not permitted.",
+    "Complete the official system check at least 48 hours before the test using the same setup planned for test day."
+  ],
+  "sources": [
+    {
+      "title": "Credentialed Community Language Test",
+      "url": "https://www.naati.com.au/migration-assessments/ccl/"
+    },
+    {
+      "title": "CCL Candidate Instructions",
+      "url": "https://www.naati.com.au/resources/candidate-instructions-ccl/"
+    },
+    {
+      "title": "CCL Frequently Asked Questions",
+      "url": "https://www.naati.com.au/resources/faq/"
+    },
+    {
+      "title": "NAATI Fees",
+      "url": "https://www.naati.com.au/resources/fees/"
+    },
+    {
+      "title": "Official CCL Practice Test",
+      "url": "https://www.naati.com.au/ccl-practice-test/"
+    }
+  ]
+}

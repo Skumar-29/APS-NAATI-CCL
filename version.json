@@ -1,13 +1,14 @@
 {
   "schemaVersion": "1.0",
-  "version": "github-study-ready-2026-08-05-v2",
-  "releasedAt": "2026-08-05T21:50:20+10:00",
+  "version": "github-study-ready-2026-08-06-v3",
+  "releasedAt": "2026-08-06T10:28:00+10:00",
   "critical": false,
-  "minimumSupportedVersion": "github-study-ready-2026-08-05-v2",
+  "minimumSupportedVersion": "github-study-ready-2026-08-06-v3",
   "releaseNotes": [
-    "Fixed search",
-    "Added separate listening and recording skip controls",
-    "Added Check & update latest version in Settings",
-    "Preserves practice progress and recordings during updates"
+    "Fixed dialogue playback reliability in web browsers",
+    "Fixed Practice search for title, topic, English and Hindi segment text",
+    "Added a clear-search control while preserving filter state",
+    "Kept separate Skip Listening and Skip Recording controls",
+    "Kept Check & update latest version without deleting progress or recordings"
   ]
 }
