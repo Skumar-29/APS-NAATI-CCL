@@ -1,16 +1,33 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-study-ready-20260806-v3';
+const CACHE_NAME = 'aps-naati-study-ready-20260806-v4';
 const PRECACHE = [
   "./",
   "./index.html",
-  "./.nojekyll",
   "./404.html",
+  "./APS_NAATI_GITHUB_STUDY_READY_BUILD_REPORT.json",
+  "./BETA_PRIVACY_NOTICE.md",
+  "./DIALOGUE_COMPARISON_AUDIT_V2.0.3.csv",
+  "./FRIENDS_TEST_CHECKLIST.md",
+  "./GITHUB_UPLOAD_STEPS.txt",
+  "./PHRASE_AUDIT_V2.0.5.csv",
+  "./PHRASE_LIBRARY_METHOD_V2.0.5.md",
+  "./QA_REPORT_GITHUB_STUDY_READY_V4.md",
+  "./QA_REPORT_V2.0.3.md",
+  "./QA_REPORT_V2.0.4.md",
+  "./QA_REPORT_V2.0.5.md",
+  "./QA_REPORT_V2.0.6.md",
+  "./QA_REPORT_V2.0.7.md",
+  "./README.md",
+  "./README.txt",
+  "./UPDATE_NOTES_V2.0.3.md",
+  "./UPDATE_NOTES_V2.0.4.md",
+  "./UPDATE_NOTES_V2.0.5.md",
+  "./UPDATE_NOTES_V2.0.6.md",
+  "./UPDATE_NOTES_V2.0.7.md",
+  "./UPLOAD_THIS_VERSION.txt",
+  "./VOCABULARY_AUDIT_V2.0.3.csv",
   "./app.js",
-  "./app.js.backup-before-auth-emulator",
-  "./app.js.backup-before-production-guard-rollout",
-  "./app.js.backup-before-token-helper",
-  "./app.js.backup-before-transcription-helper",
   "./content/dialogues.json",
   "./content/exam_info.json",
   "./content/languages.json",
@@ -28,8 +45,8 @@ const PRECACHE = [
   "./manifest.webmanifest",
   "./pilot50-runtime-overlay.js",
   "./scoring.js",
-  "./study-hotfix-v3.css",
-  "./study-hotfix-v3.js",
+  "./study-hotfix-v4.css",
+  "./study-hotfix-v4.js",
   "./styles.css",
   "./version.json"
 ];
@@ -62,13 +79,12 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request)
+      fetch(event.request, {cache: 'no-store'})
         .then(response => {
           const copy = response.clone();
           caches.open(CACHE_NAME)

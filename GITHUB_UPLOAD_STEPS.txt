@@ -1,60 +1,28 @@
-APS NAATI CCL PRACTICE - GITHUB STUDY-READY FIXED BUILD V3
-===================================================
+APS NAATI CCL Practice — GitHub Study Ready v4
 
-PURPOSE
--------
-This package is for immediate browser practice on Mac and mobile through
-GitHub Pages. Native iOS and Mac packaging will resume after 21 August.
+THIS ZIP IS READY FOR GITHUB PAGES
+==================================
 
-INCLUDED
---------
-- 85 English-Hindi/Hindi-English dialogues
-- 1,073 dialogue segments
-- 3,000 vocabulary items
-- 551 phrases
-- current Hindi language pack
-- current Pilot 50 Batch 1 runtime overlay
-- fixed search handling
-- Search all Hindi material
-- separate Skip Listening -> Record Now control
-- separate Skip Recording -> Next Segment control
-- skipped recordings never receive a false score
-- Settings includes Check & update latest version
-- updates refresh app files without deleting localStorage or IndexedDB
-- existing progress storage keys and recording database are preserved
+Fixed in this version:
+- Recording and playback work in the browser without Firebase.
+- Browser transcript and local comparison are used when available.
+- Compare Answer still works manually when no browser transcript is available.
+- The first Skip button is inside the top-right of the listening card.
+- The second Skip button is inside the top-right of the response card.
+- Both buttons are labelled only “Skip”.
+- The old floating skip controls are removed.
+- Practice search, dialogue playback and Check & update latest version remain included.
+- Existing progress and browser recordings are preserved.
 
-IMPORTANT
----------
-Use Continue as Guest in a normal browser build.
-Use current Google Chrome on Mac for the most reliable microphone recording.
-Allow microphone permission when Chrome asks.
-Cloud transcription may still depend on the separate production backend and
-authenticated native workflow. Browser recording and manual comparison remain
-available.
-
-GITHUB UPLOAD
--------------
-1. Double-click the ZIP file.
+UPLOAD
+------
+1. Extract this ZIP on the laptop.
 2. Open the extracted folder.
-3. Open the existing GitHub repository.
-4. Choose Add file -> Upload files.
-5. Upload EVERYTHING INSIDE this folder.
-6. Confirm index.html is directly at the repository root.
-7. Commit the uploaded files.
-8. In Settings -> Pages, use main branch and /(root).
-9. Keep the same GitHub Pages address to preserve browser progress.
-10. Open the published page once while online.
+3. In GitHub, open the existing repository.
+4. Select Add file → Upload files.
+5. Upload EVERYTHING INSIDE the extracted folder.
+6. Replace the existing files and commit.
+7. Wait for GitHub Pages to publish.
+8. Open the app and select Settings → Check & update latest version.
 
-Do not upload only the ZIP file. Upload the extracted contents.
-
-
-V3 FIXES
---------
-- Dialogue speech now waits for browser voices and retries browser resume.
-- Practice search matches dialogue title, topic, situation, English segments,
-  Hindi segments, model answers and comparison points.
-- Use the Clear search button to return to all dialogues.
-- For best dialogue audio on a laptop, use current Google Chrome and make sure
-  the browser tab is not muted.
-
-- Fixed a dialogue-page render loop that could stop Play from responding.
+Use current Google Chrome and allow microphone permission.

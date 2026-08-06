@@ -1,0 +1,21 @@
+APS NAATI CCL Practice — GitHub Study Ready v4
+
+Upload this version to GitHub Pages.
+
+Included:
+- Local recording and playback without Firebase
+- Browser/local Compare Answer workflow
+- Neatly positioned Skip buttons inside both dialogue cards
+- Fixed Practice search
+- Reliable dialogue playback
+- Check & update latest version
+- All Hindi materials
+
+Upload:
+1. Extract this ZIP.
+2. Upload everything INSIDE the extracted folder to the root of the GitHub repository.
+3. Replace existing files and commit.
+4. Open the GitHub Pages site.
+5. Open Settings and press Check & update latest version.
+
+Saved browser progress and recordings are preserved.

@@ -1,0 +1,343 @@
+.aps-study-search-shell {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  right: 14px;
+  z-index: 10020;
+  width: min(430px, calc(100vw - 28px));
+  font-family: inherit;
+}
+
+.aps-study-search-toggle {
+  display: block;
+  margin-left: auto;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  backdrop-filter: blur(14px);
+  font-weight: 800;
+}
+
+.aps-study-search-panel {
+  margin-top: 8px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 18px;
+  background: rgba(18,24,36,.97);
+  color: #fff;
+  box-shadow: 0 18px 60px rgba(0,0,0,.34);
+  max-height: min(72vh, 680px);
+  overflow: hidden;
+}
+
+.aps-study-search-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.aps-study-search-heading button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.aps-study-search-label {
+  display: grid;
+  gap: 6px;
+}
+
+.aps-study-search-label span,
+.aps-study-search-summary,
+.aps-dialogue-skip-bar small {
+  font-size: 12px;
+  opacity: .82;
+}
+
+#apsStudySearchInput {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font: inherit;
+}
+
+.aps-study-search-summary {
+  margin: 10px 2px 8px;
+}
+
+.aps-study-search-results {
+  display: grid;
+  gap: 8px;
+  max-height: min(48vh, 470px);
+  overflow: auto;
+  padding-right: 3px;
+}
+
+.aps-study-search-result {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 10px;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  border-radius: 12px;
+}
+
+.aps-study-search-result strong,
+.aps-study-search-result small {
+  grid-column: 2;
+}
+
+.aps-study-search-kind {
+  grid-row: 1 / span 2;
+  min-width: 58px;
+  padding: 4px 7px;
+  border-radius: 999px;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(255,255,255,.12);
+}
+
+.aps-dialogue-skip-bar {
+  position: fixed;
+  left: 50%;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 10010;
+  width: min(720px, calc(100vw - 24px));
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 18px;
+  background: rgba(18,24,36,.96);
+  color: #fff;
+  box-shadow: 0 18px 60px rgba(0,0,0,.34);
+  backdrop-filter: blur(16px);
+}
+
+.aps-dialogue-skip-title {
+  margin-bottom: 8px;
+  font-weight: 850;
+}
+
+.aps-dialogue-skip-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-bottom: 7px;
+}
+
+.aps-dialogue-skip-actions button {
+  min-height: 46px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 850;
+}
+
+.aps-skip-listening {
+  background: #f0f4ff;
+  color: #13203a;
+}
+
+.aps-skip-recording {
+  background: #fff3d6;
+  color: #352300;
+}
+
+.aps-dialogue-skip-actions button:disabled {
+  opacity: .55;
+}
+
+.aps-update-card {
+  margin: 16px 0 8px;
+  padding: 16px;
+  border: 1px solid rgba(117, 169, 255, .35);
+  border-radius: 16px;
+  background: rgba(29, 47, 78, .12);
+  color: inherit;
+}
+
+body > .aps-update-card {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 10030;
+  width: min(420px, calc(100vw - 36px));
+  background: rgba(18, 24, 36, .97);
+  color: #fff;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, .34);
+}
+
+.aps-update-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.aps-update-heading span {
+  font-size: 12px;
+  opacity: .78;
+  overflow-wrap: anywhere;
+}
+
+.aps-update-card p {
+  margin: 8px 0 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: .86;
+}
+
+#apsCheckUpdateButton {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 850;
+}
+
+.aps-update-status {
+  margin-top: 9px;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .82;
+}
+
+.aps-update-status[data-tone="success"] {
+  color: #72d99b;
+  opacity: 1;
+}
+
+.aps-update-status[data-tone="error"] {
+  color: #ff9d9d;
+  opacity: 1;
+}
+
+@media (max-width: 620px) {
+  .aps-study-search-shell {
+    top: auto;
+    bottom: calc(118px + env(safe-area-inset-bottom));
+  }
+
+  .aps-dialogue-skip-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .aps-dialogue-skip-bar {
+    padding: 10px;
+  }
+}
+
+
+/* Practice search v3 */
+.dialogue-filter-panel .search {
+  min-width: min(430px, 100%);
+  flex: 1 1 330px;
+}
+.dialogue-filter-panel #practiceQuery {
+  width: 100%;
+  min-height: 44px;
+}
+.dialogue-filter-panel [data-action="clear-practice-search"] {
+  min-height: 44px;
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .dialogue-filter-panel .search,
+  .dialogue-filter-panel #practiceQuery,
+  .dialogue-filter-panel select,
+  .dialogue-filter-panel [data-action="clear-practice-search"] {
+    width: 100%;
+  }
+}
+
+
+/* Inline dialogue skip controls v4 */
+#apsDialogueSkipBar {
+  display: none !important;
+}
+
+.source-card,
+.recording-panel {
+  position: relative;
+}
+
+.source-card {
+  padding-top: 62px;
+}
+
+.recording-panel {
+  padding-top: 62px;
+}
+
+.aps-inline-skip {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  z-index: 4;
+  min-width: 86px;
+  min-height: 44px;
+  padding: 9px 18px;
+  border: 1px solid #b9cfe0;
+  border-radius: 12px;
+  background: #f4f8fb;
+  color: #0d5689;
+  box-shadow: 0 5px 14px rgba(24, 55, 80, .08);
+  font-weight: 850;
+  line-height: 1;
+}
+
+.aps-inline-skip:hover {
+  background: #e8f2f9;
+  border-color: #8db2cd;
+}
+
+.aps-inline-skip:focus-visible {
+  outline: 3px solid rgba(20, 115, 184, .28);
+  outline-offset: 2px;
+}
+
+.aps-inline-skip:disabled {
+  opacity: .5;
+}
+
+.aps-inline-skip-recording {
+  background: #fff8e8;
+  border-color: #efd8a4;
+  color: #80500f;
+}
+
+.aps-inline-skip-recording:hover {
+  background: #fff0ca;
+  border-color: #e3c178;
+}
+
+.local-only-note {
+  color: #356a59;
+  background: #eef9f5;
+  border: 1px solid #cce9df;
+  padding: 11px 13px;
+  border-radius: 12px;
+}
+
+@media (max-width: 700px) {
+  .source-card,
+  .recording-panel {
+    padding-top: 58px;
+  }
+
+  .aps-inline-skip {
+    top: 12px;
+    right: 12px;
+    min-width: 74px;
+    min-height: 42px;
+    padding: 8px 14px;
+  }
+}

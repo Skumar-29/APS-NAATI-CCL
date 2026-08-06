@@ -46,6 +46,12 @@ const searchMatches=(haystack,query)=>{
 
 function firebaseAuthPlugin(){return window.Capacitor?.Plugins?.FirebaseAuthentication||null;}
 
+function nativeCloudTranscriptionAvailable(){
+  const plugin=firebaseAuthPlugin();
+  const isNative=Boolean(window.Capacitor?.isNativePlatform?.());
+  return Boolean(plugin&&isNative);
+}
+
 const LOCAL_FIREBASE_TEST={
   mode:'production',
   host:'10.0.0.37',
@@ -616,14 +622,17 @@ function dialoguePlayerOverlay(){
   const isLearning=state.dialogueMode==='learning',isMock=state.dialogueMode==='mock';
   return `<div class="fullscreen dialogue-screen"><header class="top"><button data-action="exit-dialogue">← Exit</button><div><strong>${esc(d.title)}</strong><span>${modeLabels[state.dialogueMode]}</span></div><div class="top-actions"><span>${state.segmentIndex+1}/${segments.length}</span><button data-action="app-settings">⚙ Voice</button></div></header><div class="direction-progress"><i class="en"></i><i style="width:${(state.segmentIndex+1)/segments.length*100}%"></i><i class="hi"></i></div>
   <main class="dialogue-player"><section class="segment-head"><div><span class="language-pill ${seg.sourceLanguage}">${seg.sourceLanguage==='en'?'ENGLISH':'हिन्दी'}</span><h2>Listen, then interpret into ${target}</h2></div>${!isMock?`<div class="dialogue-controls"><label>Speed<select id="dialogueRate" ${state.playerStatus==='playing'||state.recording?'disabled':''}>${[.6,.75,.9,1,1.15].map(x=>`<option value="${x}" ${Number(state.dialogueSettings.rate)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Response gap<select id="dialogueGap" ${state.playerStatus==='playing'||state.recording?'disabled':''}><option value="manual" ${state.dialogueSettings.gap==='manual'?'selected':''}>Manual</option>${[5,10,15,20,30,45,60].map(x=>`<option value="${x}" ${Number(state.dialogueSettings.gap)===x?'selected':''}>${x}s</option>`).join('')}</select></label>${!isMock?`<button class="transcript-toggle ${state.dialogueSettings.showSourceTranscript?'on':''}" data-action="toggle-source-transcript">Transcript ${state.dialogueSettings.showSourceTranscript?'On':'Off'}</button>`:''}</div>`:''}</section>
-  <section class="source-card ${state.playerStatus==='ready'?'waiting':''}"><div class="source-icon">${state.playerStatus==='playing'?'◖))':state.recording?'●':'▶'}</div><p>${!isMock&&state.dialogueSettings.showSourceTranscript?esc(seg.source):`<span class="transcript-hidden-message">${isMock?'Source transcript is hidden in Mock Test Mode.':'Source transcript is hidden. Use the Transcript On/Off button when you want to read it.'}</span>`}</p><div class="source-actions">${button(state.playerStatus==='playing'?'Playing…':response?'Play source again':'Play segment','play-dialogue-segment','primary',state.playerStatus==='playing'||state.recording?'disabled':'')}${button(`Repeat (${state.repeats}${state.dialogueMode==='learning'?'':'/1 free'})`,'repeat-dialogue-segment','secondary',state.playerStatus==='playing'||state.recording?'disabled':'')}</div></section>
+  <section class="source-card ${state.playerStatus==='ready'?'waiting':''}">${!isMock?`<button class="aps-inline-skip aps-inline-skip-listening" data-action="skip-listening" type="button" aria-label="Skip listening and start recording" title="Skip listening and start recording" ${state.recording?'disabled':''}>Skip</button>`:''}<div class="source-icon">${state.playerStatus==='playing'?'◖))':state.recording?'●':'▶'}</div><p>${!isMock&&state.dialogueSettings.showSourceTranscript?esc(seg.source):`<span class="transcript-hidden-message">${isMock?'Source transcript is hidden in Mock Test Mode.':'Source transcript is hidden. Use the Transcript On/Off button when you want to read it.'}</span>`}</p><div class="source-actions">${button(state.playerStatus==='playing'?'Playing…':response?'Play source again':'Play segment','play-dialogue-segment','primary',state.playerStatus==='playing'||state.recording?'disabled':'')}${button(`Repeat (${state.repeats}${state.dialogueMode==='learning'?'':'/1 free'})`,'repeat-dialogue-segment','secondary',state.playerStatus==='playing'||state.recording?'disabled':'')}</div></section>
   ${recordingPanel(response,seg)}
   ${isLearning&&response&&response.showTranscript?learningFeedback(response,seg):''}
   <footer class="segment-footer">${button('‹ Previous','dialogue-prev','secondary',state.segmentIndex===0?'disabled':'')}<span>${state.completed.size}/${segments.length} completed</span>${state.segmentIndex===segments.length-1?button('Finish dialogue →','finish-dialogue','primary',!response?'disabled':''):button('Next segment →','dialogue-next','primary',!response?'disabled':'')}</footer></main>${renderModal()}</div>`;
 }
 function recordingPanel(response,seg){
+  const skipRecordingControl=state.dialogueMode==='mock'
+    ?''
+    :`<button class="aps-inline-skip aps-inline-skip-recording" data-action="skip-recording" type="button" aria-label="Skip recording and continue" title="Skip recording and continue">Skip</button>`;
   if(state.micError){
-    return `<section class="recording-panel error">
+    return `<section class="recording-panel error">${skipRecordingControl}
       <h3>Microphone needs attention</h3>
       <p>${esc(state.micError)}</p>
       ${button('Try microphone again','retry-mic','secondary')}
@@ -631,7 +640,7 @@ function recordingPanel(response,seg){
   }
 
   if(state.recording){
-    return `<section class="recording-panel active">
+    return `<section class="recording-panel active">${skipRecordingControl}
       <div class="record-dot"></div>
       <div>
         <h3>Recording your ${seg.sourceLanguage==='en'?'Hindi':'English'} interpretation</h3>
@@ -639,8 +648,8 @@ function recordingPanel(response,seg){
           ?'Speak naturally, then press Finish.'
           :`${state.countdown} seconds remaining`}</p>
         <div class="live-transcript hidden-live">
-          Your spoken answer is being recorded. The transcript will appear
-          after cloud processing is complete.
+          Your answer is being recorded and saved in this browser.
+          Browser speech recognition is optional; playback always remains available.
         </div>
       </div>
       ${button('Finish','finish-recording','danger')}
@@ -648,7 +657,7 @@ function recordingPanel(response,seg){
   }
 
   if(state.recordingError){
-    return `<section class="recording-panel error">
+    return `<section class="recording-panel error">${skipRecordingControl}
       <div>
         <h3>Recording was not saved</h3>
         <p>${esc(state.recordingError)}</p>
@@ -658,7 +667,7 @@ function recordingPanel(response,seg){
   }
 
   if(!response){
-    return `<section class="recording-panel">
+    return `<section class="recording-panel">${skipRecordingControl}
       <div class="mic-circle">🎙</div>
       <div>
         <h3>Recording starts automatically after the chime</h3>
@@ -673,25 +682,25 @@ function recordingPanel(response,seg){
     ?`${Math.floor(duration/60)}:${String(Math.round(duration%60)).padStart(2,'0')}`
     :'—';
 
-  const compareReady=
-    response.cloudTranscriptionStatus==='completed' &&
-    Boolean(String(response.cloudTranscript||'').trim());
+  const browserTranscript=String(
+    response.cloudTranscript||response.transcript||''
+  ).trim();
+  const compareReady=Boolean(
+    response.recordingUrl||response.recordingId||browserTranscript
+  );
 
-  const cloudStatus=
-    response.cloudTranscriptionStatus==='processing'
-      ?'<p class="recording-verified">Cloud transcription: processing…</p>'
-      :response.cloudTranscriptionStatus==='completed'
-        ?`<div class="automatic-transcript draft-transcript">
-            <small>CLOUD TRANSCRIPT · PRACTICE COMPARISON ONLY</small>
-            <p>${esc(response.cloudTranscript||'No transcript was returned.')}</p>
-            <em>Provider: ${esc(response.cloudTranscriptionProvider||'unknown')}</em>
-          </div>`
-        :response.cloudTranscriptionStatus==='failed'
-          ?`<p class="recording-failure">
-              Cloud transcription failed:
-              ${esc(response.cloudTranscriptionError||'Unknown error')}
-            </p>`
-          :'<p class="recording-failure">Cloud transcription did not start.</p>';
+  const transcriptStatus=browserTranscript
+    ?`<div class="automatic-transcript draft-transcript">
+        <small>${response.cloudTranscript?'CLOUD TRANSCRIPT':'BROWSER TRANSCRIPT'} · PRACTICE COMPARISON ONLY</small>
+        <p>${esc(browserTranscript)}</p>
+        <em>${response.cloudTranscript
+          ?`Provider: ${esc(response.cloudTranscriptionProvider||'cloud')}`
+          :'Created in this browser. Check it against your saved recording.'}</em>
+      </div>`
+    :`<p class="recording-verified local-only-note">
+        Recording saved locally. Automatic browser transcript was unavailable,
+        but playback and manual comparison still work without Firebase.
+      </p>`;
 
   const compareControl=!isMock
     ?button(
@@ -702,14 +711,14 @@ function recordingPanel(response,seg){
       )
     :'';
 
-  return `<section class="recording-panel complete">
+  return `<section class="recording-panel complete">${skipRecordingControl}
     <div class="recording-playback">
       <h3>Response recorded</h3>
       <div class="recording-verified">
         ✓ Saved and playback-verified · ${durationText}
       </div>
 
-      ${cloudStatus}
+      ${transcriptStatus}
 
       ${response.recordingUrl
         ?`<audio controls preload="metadata"
@@ -741,6 +750,11 @@ function comparisonPanel(seg,response){
   const transcript=String(
     response.cloudTranscript||response.transcript||''
   ).trim();
+  const transcriptLabel=response.cloudTranscript
+    ?'YOUR CLOUD TRANSCRIPT'
+    :transcript
+      ?'YOUR BROWSER TRANSCRIPT'
+      :'YOUR SAVED RECORDING';
 
   const r=response.practiceComparison||null;
 
@@ -792,9 +806,11 @@ function comparisonPanel(seg,response){
 
     <div class="comparison-grid">
       <article class="sample-answer-box">
-        <small>YOUR CLOUD TRANSCRIPT</small>
-        <p>${esc(transcript||'No cloud transcript was returned.')}</p>
-        <em>Check this transcript against your recording before relying on the comparison.</em>
+        <small>${transcriptLabel}</small>
+        <p>${esc(transcript||'No automatic browser transcript was available. Play your saved recording above and compare it manually with the sample interpretation.')}</p>
+        <em>${transcript
+          ?'Check this browser transcript against your recording before relying on the comparison.'
+          :'Your recording is saved locally and remains available without Firebase.'}</em>
       </article>
 
       <article class="sample-answer-box">
@@ -839,7 +855,11 @@ function comparisonPanel(seg,response){
       </div>
 
       <p class="feedback-followup">
-        This comparison uses the cloud transcript and local matching rules.
+        This comparison uses ${response.cloudTranscript
+          ?'the verified cloud transcript'
+          :transcript
+            ?'your browser transcript'
+            :'your saved recording and manual review'} with local matching rules.
         It does not make another AI request and is not an official NAATI mark.
       </p>
     </section>
@@ -891,8 +911,9 @@ function learningFeedback(response,seg){
     </div>
 
     <p class="feedback-followup">
-      Review your cloud transcript, the sample interpretation and the key
-      meaning checklist. Choose <b>Record again</b> to practise the corrected response.
+      Review your ${response.cloudTranscript?'cloud transcript':'browser transcript'},
+      the sample interpretation and the key meaning checklist.
+      Choose <b>Record again</b> to practise the corrected response.
     </p>
   </section>`;
 }
@@ -1120,17 +1141,78 @@ async function playDialogueSegment(repeat=false){
   if(state.dialogueSettings.gap!=='manual'){state.countdown=Number(state.dialogueSettings.gap);clearInterval(state.timer);state.timer=setInterval(()=>{state.countdown--;render();if(state.countdown<=0){clearInterval(state.timer);finishRecording();}},1000);}
 }
 async function finishRecording(){
-  if(!state.recording)return;clearInterval(state.timer);await stopSpeechRecognition();const blob=await stopRecording();
-  const seg=getActiveSegments()[state.segmentIndex],startDelay=state.speechStartedAt?(state.speechStartedAt-state.recordingStartedAt)/1000:0;
+  if(!state.recording)return;
+  clearInterval(state.timer);
+  await stopSpeechRecognition();
+  const blob=await stopRecording();
+  const seg=getActiveSegments()[state.segmentIndex];
+  const startDelay=state.speechStartedAt
+    ?(state.speechStartedAt-state.recordingStartedAt)/1000
+    :0;
   if(!blob){state.playerStatus='ready';render();return;}
-  const assessment={status:'unassessed',coverage:0,deduction:0,captured:[],review:['AI scoring is waiting for the verified cloud-transcription system.'],critical:[],units:[],strengths:['Your complete recording was saved and verified for playback.'],advice:['Replay the recording and compare it manually until AI analysis is enabled.']};
-  const response={segmentId:seg.id,transcript:state.transcript.trim(),transcriptStatus:state.transcriptStatus,recordingId:state.recordingId,recordingUrl:state.recordingUrl,recordingStatus:'saved',recordingMime:blob.type,recordingSize:blob.size,showTranscript:false,startDelay,duration:state.recordingDuration||((Date.now()-state.recordingStartedAt)/1000),assessment};
-  state.responses[state.segmentIndex]=response;state.completed.add(seg.id);state.playerStatus='complete';render();
 
-  void requestCloudTranscriptionForResponse(blob,seg,response)
-    .finally(()=>{
-      if(state.responses.includes(response))render();
-    });
+  const browserTranscript=state.transcript.trim();
+  let assessment={
+    status:'unassessed',
+    coverage:0,
+    deduction:0,
+    captured:[],
+    review:[
+      browserTranscript
+        ?'The browser transcript could not be assessed automatically.'
+        :'No automatic browser transcript was available. Use playback and the sample answer for manual comparison.'
+    ],
+    critical:[],
+    units:[],
+    strengths:['Your complete recording was saved and verified for playback.'],
+    advice:['Replay your recording and compare it with the sample interpretation.']
+  };
+
+  if(browserTranscript){
+    try{
+      assessment=APSScoring.assessSegment(
+        seg,
+        browserTranscript,
+        {startDelay:Number(startDelay||0)}
+      );
+    }catch(error){
+      assessment.review=[
+        error?.message||'Local browser comparison could not be generated.'
+      ];
+    }
+  }
+
+  const response={
+    segmentId:seg.id,
+    transcript:browserTranscript,
+    browserTranscript,
+    transcriptSource:browserTranscript?'browser-speech-recognition':'recording-only',
+    transcriptStatus:state.transcriptStatus,
+    recordingId:state.recordingId,
+    recordingUrl:state.recordingUrl,
+    recordingStatus:'saved',
+    recordingMime:blob.type,
+    recordingSize:blob.size,
+    showTranscript:false,
+    startDelay,
+    duration:state.recordingDuration||((Date.now()-state.recordingStartedAt)/1000),
+    assessment,
+    practiceComparison:browserTranscript?assessment:null,
+    practiceComparisonSource:browserTranscript?'browser-transcript-local-v1':'manual-recording-comparison',
+    cloudTranscriptionStatus:'not-required-web'
+  };
+
+  state.responses[state.segmentIndex]=response;
+  state.completed.add(seg.id);
+  state.playerStatus='complete';
+  render();
+
+  if(nativeCloudTranscriptionAvailable()){
+    void requestCloudTranscriptionForResponse(blob,seg,response)
+      .finally(()=>{
+        if(state.responses.includes(response))render();
+      });
+  }
 }
 function assessAndSaveDialogue(){
   const d=state.dialogue,segments=getActiveSegments();if(state.responses.filter(Boolean).length<segments.length)return showToast('Complete all segments first');
@@ -1201,6 +1283,8 @@ app.addEventListener('click',async e=>{
   else if(a==='shuffle-mock'){state.mockPair=null;render();}
   else if(a==='start-mock')startMock();
   else if(a==='exit-dialogue'){if(state.recording)await finishRecording();stopAllSpeech();state.overlay=null;state.tab=state.dialogueMode==='mock'?'mock':'practice';render();}
+  else if(a==='skip-listening')await window.APSStudyControls?.skipListeningAndRecord?.();
+  else if(a==='skip-recording')window.APSStudyControls?.skipRecordingAndContinue?.();
   else if(a==='play-dialogue-segment')playDialogueSegment(false);
   else if(a==='repeat-dialogue-segment')playDialogueSegment(true);
   else if(a==='finish-recording')finishRecording();
@@ -1209,12 +1293,8 @@ app.addEventListener('click',async e=>{
   else if(a==='toggle-response-transcript'){
     const response=state.responses[state.segmentIndex];
 
-    if(
-      !response ||
-      response.cloudTranscriptionStatus!=='completed' ||
-      !String(response.cloudTranscript||'').trim()
-    ){
-      showToast('Wait for cloud transcription to finish before comparing.');
+    if(!response){
+      showToast('Record an answer before comparing.');
       return;
     }
 
