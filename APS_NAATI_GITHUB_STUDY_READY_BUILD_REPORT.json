@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
-  "buildVersion": "github-study-ready-2026-08-07-v5",
-  "createdAt": "2026-08-07T15:20:00+10:00",
-  "status": "github-study-ready-v5-organised-search-buttons",
+  "buildVersion": "github-study-ready-2026-08-07-v9",
+  "createdAt": "2026-08-07T23:29:00+10:00",
+  "status": "github-study-ready-v9-practice-history-recall-created",
   "content": {
     "dialogues": 85,
     "segments": 1073,
@@ -19,12 +19,78 @@
     "settingsOverlapFixed": true,
     "localRecordingWithoutFirebase": true,
     "inlineSkipControls": true,
-    "updatesPreserveLocalStorageAndIndexedDB": true
+    "updatesPreserveLocalStorageAndIndexedDB": true,
+    "crossDeviceCloudProgressSync": true,
+    "firebaseWebAuthentication": true,
+    "googleWebSignInPath": true,
+    "emailWebSignInPath": true,
+    "manualCloudRefreshButton": true,
+    "manualCloudSyncNowButton": true,
+    "automaticProgressSync": true,
+    "firstSignInMergesExistingLocalProgress": true,
+    "recordingsUploadedToCloud": false,
+    "deviceVoiceSelectionsSynced": false,
+    "guestCloudSync": false,
+    "playerSettingsLayoutFixed": true,
+    "firebaseConsoleSetupGuideIncluded": true,
+    "hideEnglish": true,
+    "hideHindi": true,
+    "tapCurrentCardToReveal": true,
+    "revealResetsOnNextPrevious": true,
+    "voiceProviderChanged": false,
+    "browserExposedVoiceDiscoveryRefresh": true,
+    "dailyPracticeHistory": true,
+    "last7DaysSummary": true,
+    "studyStreak": true,
+    "vocabularyRecallStages": [
+      "1d",
+      "1w",
+      "2w",
+      "4w"
+    ],
+    "phraseRecallStages": [
+      "1d",
+      "1w",
+      "2w",
+      "4w"
+    ],
+    "dialogueRecallStages": [
+      "1d",
+      "1w",
+      "2w",
+      "4w"
+    ],
+    "recallIntervalsSelectable": true,
+    "recallSoundReminderWhileOpen": true,
+    "browserNotificationWhileOpen": true,
+    "closedAppScheduledPush": false,
+    "practiceHistoryCloudSync": true,
+    "recallCloudSync": true
   },
   "validation": {
-    "javascriptSyntax": "run separately with node --check",
-    "responsiveLayout": "static CSS audit at desktop/tablet/mobile breakpoints",
-    "browserAutomation": "not available in this execution environment; package retains previous working runtime behavior"
+    "javascriptSyntax": {
+      "app.js": "passed",
+      "study-hotfix-v5.js": "passed",
+      "study-progress-v9.js": "passed",
+      "cloud-sync-v7.js": "passed",
+      "sw.js": "passed"
+    },
+    "contentCounts": {
+      "dialogues": 85,
+      "segments": 1073,
+      "baseVocabulary": 3000,
+      "basePhrases": 551
+    },
+    "recallSchedulingUnitTests": "passed",
+    "selectedIntervalScheduling": "passed",
+    "last7DaysGeneration": "passed",
+    "cloudMergePolicy": {
+      "practiceDaily": "merge by stable device/day id and newest updatedAt",
+      "recallProgress": "merge per item by newest updatedAt",
+      "recallSettings": "newest settings timestamp wins"
+    },
+    "browserAutomation": "not executed in this environment because local browser navigation is blocked by administrator policy",
+    "staticPackageValidation": "passed"
   },
   "manifest": {
     "404.html": {
@@ -38,6 +104,10 @@
     "DIALOGUE_COMPARISON_AUDIT_V2.0.3.csv": {
       "bytes": 881262,
       "sha256": "f330e7abcbb59ed9021e03efbd0a06d173897296ad7c9d284d62de1146947535"
+    },
+    "FIREBASE_CLOUD_SYNC_SETUP.txt": {
+      "bytes": 2413,
+      "sha256": "332d4d1ea9a290a1932863745e64502f5a13c0d7e4bc8e73af911ce2ca5afa5a"
     },
     "FRIENDS_TEST_CHECKLIST.md": {
       "bytes": 600,
@@ -62,6 +132,22 @@
     "QA_REPORT_GITHUB_STUDY_READY_V5.md": {
       "bytes": 552,
       "sha256": "edf7ebd7890c76b9cc75baae580acc1d2712304b9fce657c44397b0091d701b9"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V6.md": {
+      "bytes": 1136,
+      "sha256": "844d24ce7e01c28c7f274d4eba7cae9203279321fb1f4041b1920f9e5c895e8e"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V7.md": {
+      "bytes": 3283,
+      "sha256": "79f287948000693eb7c80e93b546a23d95178dac56260e9c1413fa5e188b1185"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V8.md": {
+      "bytes": 1316,
+      "sha256": "c4f4801360dadfafbfe92b98c256fcd091860337ee2db0a295c975facf217729"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V9.md": {
+      "bytes": 2146,
+      "sha256": "67e0b5b58f13bad68dc36129388973fb0020a5e4cce975b19d1c112b127e6d3b"
     },
     "QA_REPORT_V2.0.3.md": {
       "bytes": 2101,
@@ -88,8 +174,8 @@
       "sha256": "d2c09c04c576d2e7a2a9b26e54d15ca6fdd8a9910f646151bd571446c7e34534"
     },
     "README.txt": {
-      "bytes": 1153,
-      "sha256": "529ab34bb853a3a71a502f13ff6bc4e8d2e22c4e3560e831b403a11f3d419209"
+      "bytes": 1834,
+      "sha256": "9a90cb4c594e06641fdd3d4d2ce6b28ddf59fca5146584b8c15ea8193040a48e"
     },
     "UPDATE_NOTES_V2.0.3.md": {
       "bytes": 1059,
@@ -112,16 +198,24 @@
       "sha256": "c1f2ea61a07d4bdc8dff4a33ed58ac8b2436f2ea6fde242fd412f30d44753beb"
     },
     "UPLOAD_THIS_VERSION.txt": {
-      "bytes": 411,
-      "sha256": "32fa7c371fe92bceceaf2b06bb1332b38dc8d2e822e369d7f742b1d08dec9752"
+      "bytes": 159,
+      "sha256": "8c6a75b0cf43501bf84e3545255223689ba8fd7b3e2818f1ec1d9e50718774cb"
     },
     "VOCABULARY_AUDIT_V2.0.3.csv": {
       "bytes": 383722,
       "sha256": "11aa7740c6123b9d527213097be010d8b7c69fcdea63f980a9d35e7ee321ce4f"
     },
     "app.js": {
-      "bytes": 124500,
-      "sha256": "039c460da669ee230139b86722ece3184dd375100f9989c4677c9c0ae1e6f553"
+      "bytes": 128637,
+      "sha256": "41c61654dad621031fe3e03f9ae076346b2dc52b6f43743fcd29235890a1c9a3"
+    },
+    "cloud-sync-v7.css": {
+      "bytes": 6295,
+      "sha256": "f0050f95ccf8556874c0d15edbc164d114949d4224f07eece6ee8a9f8ee8c286"
+    },
+    "cloud-sync-v7.js": {
+      "bytes": 37395,
+      "sha256": "ee32ccd989b39c315b1d46c037683864cddfe92358c4164a69a540f3f44fca77"
     },
     "content/dialogues.json": {
       "bytes": 3015797,
@@ -176,8 +270,8 @@
       "sha256": "6b3a791f0301c4efadb117a464806d8fa5157dee5862b8b38cee8e3f0e7adf83"
     },
     "index.html": {
-      "bytes": 1302,
-      "sha256": "0a6b9461daf62e53402d7cbb35ce0c156fc10ac4d40afb16d73cbd3bf82125dd"
+      "bytes": 1506,
+      "sha256": "5afb967256e8bb7f39fe25eaa8b852562b63c6c40befbb2ad97e0995865df5f6"
     },
     "manifest.webmanifest": {
       "bytes": 873,
@@ -197,19 +291,27 @@
     },
     "study-hotfix-v5.js": {
       "bytes": 34180,
-      "sha256": "54bce38853a74e037eca89d4222f1234f4dae67c6721be022a42b096a5c6e5a5"
+      "sha256": "936314af57d186132d096df8f34b83744c9dd1b7bdd839f0558670a2d98669cb"
+    },
+    "study-progress-v9.css": {
+      "bytes": 6684,
+      "sha256": "7abe3fa387428ab00c4c50e56aa729c56fe92eb0828af2c6239ff8c50dc45a0f"
+    },
+    "study-progress-v9.js": {
+      "bytes": 42714,
+      "sha256": "9682e1bc74a768d25d317de59b94b8c0fd5d6305824b4fca0000dba7180b07e8"
     },
     "styles.css": {
-      "bytes": 49044,
-      "sha256": "1e3d55709d42fed7083df186945131e7a02ed8d0626769c0b83b7cf5ffdafa0b"
+      "bytes": 50855,
+      "sha256": "d19f2dad2a9c3eaa8208c7452583861c2972e2077e852c8464bd8e1da79d55e8"
     },
     "sw.js": {
-      "bytes": 2791,
-      "sha256": "76bc787528a7a804c52d8d5e5320f8ab977c644276a84535a3713c2d59389639"
+      "bytes": 3538,
+      "sha256": "9a06b1b499e39f6ff189e14b8bb070023de7495e642107b3ab11a348abdff1dc"
     },
     "version.json": {
-      "bytes": 855,
-      "sha256": "777d0aceee47efeb291bdede7619411ab8eeac6ea3753914e9765420d5e932b8"
+      "bytes": 1218,
+      "sha256": "34e55eca884c7b4764a35ab872918dab0360fbc867d0a61d6233d5213218d9d5"
     }
   }
 }

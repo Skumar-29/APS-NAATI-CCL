@@ -1,14 +1,20 @@
 {
   "schemaVersion": "1.0",
-  "version": "github-study-ready-2026-08-07-v6",
-  "releasedAt": "2026-08-07T15:30:00+10:00",
+  "version": "github-study-ready-2026-08-07-v9",
+  "releasedAt": "2026-08-07T23:29:00+10:00",
   "critical": false,
   "minimumSupportedVersion": "github-study-ready-2026-08-06-v4",
   "releaseNotes": [
-    "Verified and corrected In order and Random order for both vocabulary and phrase playlists",
-    "Random order now uses Fisher-Yates shuffling instead of random Array.sort",
-    "Changing Order while a vocabulary or phrase player is open now applies immediately",
-    "Switching back to In order restores the canonical Hindi-pack sequence while keeping the current card selected",
-    "All v5 search, button layout, local recording, inline Skip and update features are retained"
+    "Added day-by-day practice history with Today and Last 7 Days summaries",
+    "Added study-time, dialogue, segment, vocabulary, phrase, recall and average-score daily records",
+    "Added separate Vocabulary recall lists for 1 Day, 1 Week, 2 Weeks and 4 Weeks",
+    "Added separate Phrase recall lists for 1 Day, 1 Week, 2 Weeks and 4 Weeks",
+    "Added Dialogue recall by complete dialogue with Start buttons from each due stage",
+    "Recall stages can be enabled or disabled individually in Settings",
+    "Completing one recall stage schedules the next enabled stage",
+    "Added daily reminder time, sound, browser notification permission and Test reminder controls",
+    "Added v9 practice-history and recall data to cloud sync and manual backup/restore",
+    "Recordings remain local to each device; cloud sync continues to sync learning progress only",
+    "All v8 Hide English/Hide Hindi, tap-to-reveal, voice discovery, search, recording and skip controls are retained"
   ]
 }

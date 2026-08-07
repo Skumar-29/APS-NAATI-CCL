@@ -14,8 +14,8 @@ const state={
   learn:{type:'words',topic:'all',status:'all',completion:'all',query:'',page:1,pageSize:120,revealed:new Set()},
   practice:{topic:'all',difficulty:'all',query:'',review:'all',completion:'all'},
   mockPair:null,
-  vocabPlayer:{queue:[],index:0,playing:false,token:0,gapRemaining:0,title:'All vocabulary'},
-  vocabSettings:{rate:.9,rateEn:.9,rateHi:.9,translationDelay:1.5,gap:2,repeat:1,order:'sequential',reading:'en-hi',examples:true,voiceEn:'',voiceHi:'',dialogueVoiceEnS1:'',dialogueVoiceEnS2:'',dialogueVoiceHiS1:'',dialogueVoiceHiS2:''},
+  vocabPlayer:{queue:[],index:0,playing:false,token:0,gapRemaining:0,title:'All vocabulary',revealCurrent:false},
+  vocabSettings:{rate:.9,rateEn:.9,rateHi:.9,translationDelay:1.5,gap:2,repeat:1,order:'sequential',reading:'en-hi',examples:true,hideEnglish:false,hideHindi:false,voiceEn:'',voiceHi:'',dialogueVoiceEnS1:'',dialogueVoiceEnS2:'',dialogueVoiceHiS1:'',dialogueVoiceHiS2:''},
   dialogue:null,dialogueMode:'learning',segmentIndex:0,responses:[],completed:new Set(),repeats:0,
   dialogueSettings:{rate:.9,gap:20,showSourceTranscript:false},
   playerStatus:'ready',countdown:0,timer:null,feedback:null,retryIds:null,
@@ -367,6 +367,8 @@ function normaliseVocabSettings(raw={}){
   if(!['en-hi','hi-en','english','hindi'].includes(v.reading))v.reading='en-hi';
   if(!['sequential','random'].includes(v.order))v.order='sequential';
   v.examples=v.examples!==false;
+  v.hideEnglish=v.hideEnglish===true;
+  v.hideHindi=v.hideHindi===true;
 }
 
 async function loadLanguagePack(languageId){
@@ -588,7 +590,7 @@ function progress(){
 function lessonOverlay(){
   const chapter=state.lessonData.chapters[state.lesson.chapter],slide=chapter.slides[state.lesson.slide],totalSlides=state.lessonData.chapters.reduce((s,c)=>s+c.slides.length,0),done=state.lessonData.chapters.slice(0,state.lesson.chapter).reduce((s,c)=>s+c.slides.length,0)+state.lesson.slide+1;
   if(state.lesson.quiz)return lessonQuiz();
-  return `<div class="fullscreen lesson-screen"><header class="top"><button data-action="close-overlay">← Exit lesson</button><div><strong>Lesson 0</strong><span>Chapter ${state.lesson.chapter+1} of ${state.lessonData.chapters.length}</span></div><div class="top-actions"><button class="top-search-button" data-action="global-search" type="button" aria-label="Search all Hindi material" aria-expanded="false">⌕ <b>Search</b></button><button data-action="lesson-quiz">Quiz</button><button data-action="app-settings">⚙ Voice</button></div></header><div class="progress"><i style="width:${done/totalSlides*100}%"></i></div>
+  return `<div class="fullscreen lesson-screen"><header class="top"><button data-action="close-overlay">← Exit lesson</button><div><strong>Lesson 0</strong><span>Chapter ${state.lesson.chapter+1} of ${state.lessonData.chapters.length}</span></div><div class="top-actions"><button class="top-search-button" data-action="global-search" type="button" aria-label="Search all Hindi material" aria-expanded="false">⌕ <b>Search</b></button><button data-action="lesson-quiz">Quiz</button><button class="player-settings-button" data-action="app-settings" aria-label="Open settings" title="Settings">⚙ <b>Settings</b></button></div></header><div class="progress"><i style="width:${done/totalSlides*100}%"></i></div>
   <main class="lesson-layout"><aside class="chapter-list">${state.lessonData.chapters.map((c,i)=>`<button data-action="lesson-chapter" data-id="${i}" class="${i===state.lesson.chapter?'active':''}"><b>${i+1}</b><span>${esc(c.title)}<small>${c.duration}</small></span></button>`).join('')}</aside>
   <section class="presentation"><div class="presentation-stage"><div class="presenter-avatar"><div>APS</div><span>CCL Coach</span></div><div class="slide-content"><small>${esc(chapter.title)}</small><h1>${esc(slide.title)}</h1><p>${esc(slide.body)}</p><div class="slide-badge">Official information reviewed ${esc(state.lessonData.lastVerified)}</div></div><div class="visual-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
   ${state.lesson.captions?`<div class="captions">${esc(lessonNarration(slide))}</div>`:''}
@@ -609,8 +611,18 @@ function vocabPlayerOverlay(){
   const vp=state.vocabPlayer,item=allVocabItems().find(x=>x.id===vp.queue[vp.index]);
   if(!item)return `<div class="fullscreen"><div class="empty"><h2>No items in this playlist</h2>${button('Close','close-overlay')}</div></div>`;
   const st=itemStatus(item.id),progress=(vp.index+1)/vp.queue.length*100;
+  const hideEnglish=state.vocabSettings.hideEnglish===true;
+  const hideHindi=state.vocabSettings.hideHindi===true;
+  const recallActive=hideEnglish||hideHindi;
+  const revealed=recallActive&&vp.revealCurrent===true;
+  const englishHidden=hideEnglish&&!revealed;
+  const hindiHidden=hideHindi&&!revealed;
+  const showExamples=Boolean(item.exampleEnglish&&state.vocabSettings.examples&&(!recallActive||revealed));
+  const stageAction=recallActive?' data-action="toggle-recall-reveal" tabindex="0" role="button" aria-label="Reveal or hide the meaning for this card"':'';
   return `<div class="fullscreen vocab-player-screen"><header class="top"><button data-action="close-vocab-player">← Exit</button><div><strong>${esc(vp.title)}</strong><span>${vp.index+1}/${vp.queue.length}</span></div><div class="top-actions"><button class="top-search-button" data-action="global-search" type="button" aria-label="Search all Hindi material" aria-expanded="false">⌕ <b>Search</b></button><button class="compact-settings-button" data-action="vocab-settings" aria-label="Open vocabulary settings"><span aria-hidden="true">⚙</span><b>Settings</b></button></div></header><div class="progress"><i style="width:${progress}%"></i></div>
-  <main class="vocab-player"><div class="vocab-topic">${topicLabels[item.topic]||'Community'} · ${item.itemType==='phrase'?'Phrase':'NAATI vocabulary'}</div><section class="word-stage"><button class="speaker-button" data-action="speak-current">🔊</button><h1>${esc(item.english)}</h1><h2>${esc(item.hindi)}</h2>${item.exampleEnglish&&state.vocabSettings.examples?`<div class="player-example"><b>Example</b><p>${esc(item.exampleEnglish)}</p><span>${esc(item.exampleHindi)}</span></div>`:''}</section>
+  <main class="vocab-player"><div class="vocab-topic">${topicLabels[item.topic]||'Community'} · ${item.itemType==='phrase'?'Phrase':'NAATI vocabulary'}</div>
+  <section class="recall-display-controls" aria-label="Recall display options"><span>Recall</span><button type="button" data-action="toggle-hide-english" class="recall-display-toggle ${hideEnglish?'active':''}" aria-pressed="${hideEnglish?'true':'false'}">Hide English</button><button type="button" data-action="toggle-hide-hindi" class="recall-display-toggle ${hideHindi?'active':''}" aria-pressed="${hideHindi?'true':'false'}">Hide Hindi</button></section>
+  <section class="word-stage ${recallActive?'recall-active':''} ${revealed?'recall-revealed':''}"${stageAction}><button class="speaker-button" data-action="speak-current" aria-label="Play pronunciation">🔊</button><h1 class="recall-language english ${englishHidden?'is-hidden':''}">${englishHidden?'<span class="recall-hidden-label">English hidden</span>':esc(item.english)}</h1><h2 class="recall-language hindi ${hindiHidden?'is-hidden':''}">${hindiHidden?'<span class="recall-hidden-label">Hindi hidden</span>':esc(item.hindi)}</h2>${showExamples?`<div class="player-example"><b>Example</b><p>${esc(item.exampleEnglish)}</p><span>${esc(item.exampleHindi)}</span></div>`:''}${recallActive?`<div class="recall-reveal-hint">${revealed?'Tap card again to hide':'Tap anywhere on this card to reveal'}</div>`:''}</section>
   <div class="player-timeline"><span>${vp.playing?vp.gapRemaining>0?`Next item in ${vp.gapRemaining}s`:'Speaking…':'Paused'}</span><div><i style="width:${progress}%"></i></div></div>
   <div class="transport"><button data-action="vocab-prev">‹<span>Previous</span></button><button class="main-play" data-action="vocab-toggle">${vp.playing?'Ⅱ':'▶'}</button><button data-action="vocab-next"><span>Next</span>›</button></div>
   <section class="status-control"><h3>Change word status</h3><div>${Object.entries(statusLabels).map(([id,label])=>`<button data-action="vocab-status" data-id="${id}" class="${st===id?'active':''} ${id}"><b>${statusIcons[id]}</b><span>${label}</span></button>`).join('')}</div></section>
@@ -620,7 +632,7 @@ function vocabPlayerOverlay(){
 function dialoguePlayerOverlay(){
   const d=state.dialogue,segments=getActiveSegments(),seg=segments[state.segmentIndex],response=state.responses[state.segmentIndex],target=seg.sourceLanguage==='en'?'Hindi':'English';
   const isLearning=state.dialogueMode==='learning',isMock=state.dialogueMode==='mock';
-  return `<div class="fullscreen dialogue-screen"><header class="top"><button data-action="exit-dialogue">← Exit</button><div><strong>${esc(d.title)}</strong><span>${modeLabels[state.dialogueMode]}</span></div><div class="top-actions"><span>${state.segmentIndex+1}/${segments.length}</span><button class="top-search-button" data-action="global-search" type="button" aria-label="Search all Hindi material" aria-expanded="false">⌕ <b>Search</b></button><button data-action="app-settings">⚙ Voice</button></div></header><div class="direction-progress"><i class="en"></i><i style="width:${(state.segmentIndex+1)/segments.length*100}%"></i><i class="hi"></i></div>
+  return `<div class="fullscreen dialogue-screen"><header class="top"><button data-action="exit-dialogue">← Exit</button><div><strong>${esc(d.title)}</strong><span>${modeLabels[state.dialogueMode]}</span></div><div class="top-actions"><span>${state.segmentIndex+1}/${segments.length}</span><button class="top-search-button" data-action="global-search" type="button" aria-label="Search all Hindi material" aria-expanded="false">⌕ <b>Search</b></button><button class="player-settings-button" data-action="app-settings" aria-label="Open settings" title="Settings">⚙ <b>Settings</b></button></div></header><div class="direction-progress"><i class="en"></i><i style="width:${(state.segmentIndex+1)/segments.length*100}%"></i><i class="hi"></i></div>
   <main class="dialogue-player"><section class="segment-head"><div><span class="language-pill ${seg.sourceLanguage}">${seg.sourceLanguage==='en'?'ENGLISH':'हिन्दी'}</span><h2>Listen, then interpret into ${target}</h2></div>${!isMock?`<div class="dialogue-controls"><label>Speed<select id="dialogueRate" ${state.playerStatus==='playing'||state.recording?'disabled':''}>${[.6,.75,.9,1,1.15].map(x=>`<option value="${x}" ${Number(state.dialogueSettings.rate)===x?'selected':''}>${x}×</option>`).join('')}</select></label><label>Response gap<select id="dialogueGap" ${state.playerStatus==='playing'||state.recording?'disabled':''}><option value="manual" ${state.dialogueSettings.gap==='manual'?'selected':''}>Manual</option>${[5,10,15,20,30,45,60].map(x=>`<option value="${x}" ${Number(state.dialogueSettings.gap)===x?'selected':''}>${x}s</option>`).join('')}</select></label>${!isMock?`<button class="transcript-toggle ${state.dialogueSettings.showSourceTranscript?'on':''}" data-action="toggle-source-transcript">Transcript ${state.dialogueSettings.showSourceTranscript?'On':'Off'}</button>`:''}</div>`:''}</section>
   <section class="source-card ${state.playerStatus==='ready'?'waiting':''}">${!isMock?`<button class="aps-inline-skip aps-inline-skip-listening" data-action="skip-listening" type="button" aria-label="Skip listening and start recording" title="Skip listening and start recording" ${state.recording?'disabled':''}>Skip</button>`:''}<div class="source-icon">${state.playerStatus==='playing'?'◖))':state.recording?'●':'▶'}</div><p>${!isMock&&state.dialogueSettings.showSourceTranscript?esc(seg.source):`<span class="transcript-hidden-message">${isMock?'Source transcript is hidden in Mock Test Mode.':'Source transcript is hidden. Use the Transcript On/Off button when you want to read it.'}</span>`}</p><div class="source-actions">${button(state.playerStatus==='playing'?'Playing…':response?'Play source again':'Play segment','play-dialogue-segment','primary',state.playerStatus==='playing'||state.recording?'disabled':'')}${button(`Repeat (${state.repeats}${state.dialogueMode==='learning'?'':'/1 free'})`,'repeat-dialogue-segment','secondary',state.playerStatus==='playing'||state.recording?'disabled':'')}</div></section>
   ${recordingPanel(response,seg)}
@@ -962,8 +974,23 @@ function renderModal(){
   return '';
 }
 function speechVoices(){return 'speechSynthesis'in window?speechSynthesis.getVoices():[];}
-function availableVoices(lang){const prefix=lang==='hi'?'hi':'en';return speechVoices().filter(v=>(v.lang||'').toLowerCase().startsWith(prefix)).sort((a,b)=>`${a.lang} ${a.name}`.localeCompare(`${b.lang} ${b.name}`));}
+function availableVoices(lang){
+  const prefix=lang==='hi'?'hi':'en',seen=new Set();
+  return speechVoices().filter(v=>{
+    const code=String(v.lang||'').toLowerCase().replace('_','-');
+    if(!code.startsWith(prefix))return false;
+    const key=`${v.voiceURI||v.name}|${v.name}|${code}`;
+    if(seen.has(key))return false;seen.add(key);return true;
+  }).sort((a,b)=>`${a.lang} ${a.name}`.localeCompare(`${b.lang} ${b.name}`));
+}
 function voiceCounts(){return {en:availableVoices('en').length,hi:availableVoices('hi').length};}
+async function refreshVoiceCatalog(){
+  if(!('speechSynthesis'in window))return;
+  speechSynthesis.cancel();
+  const waits=[0,120,350,800,1500];
+  for(const ms of waits){if(ms)await delay(ms);speechSynthesis.getVoices();if(['vocab-settings','app-settings'].includes(state.modal?.type))render();}
+}
+
 function voiceOptions(lang,selected){return availableVoices(lang).map(v=>`<option value="${esc(v.name)}" ${v.name===selected?'selected':''}>${esc(v.name)} (${esc(v.lang)})${v.localService?' · device':''}</option>`).join('');}
 function voiceSettingRow(label,id,lang,selected,speaker){const fallback=speaker==='general'?'Automatic system voice':'Use learning voice';return `<div class="voice-setting-row"><label>${esc(label)}<select id="${id}"><option value="">${fallback}</option>${voiceOptions(lang,selected)}</select></label><button data-action="preview-voice" data-lang="${lang}" data-speaker="${speaker}">▶ Preview</button></div>`;}
 
@@ -1066,7 +1093,7 @@ function startVocabularyPlaylist(useModal=true,single=null){
   else {queue=state.modal?.queue||buildPlaylist();title=state.modal?.title||`${topicLabels[state.learn.topic]} · ${state.learn.status==='all'?'All statuses':statusLabels[state.learn.status]}`;}
   if(!queue.length){state.modal=null;showToast('No words match these filters');return;}
   const resume=getJSON(storageKeys.vocabResume,{});let index=0;if(resume.title===title&&queue.includes(resume.id))index=queue.indexOf(resume.id);
-  Object.assign(state.vocabPlayer,{queue,index,playing:false,token:state.vocabPlayer.token+1,title});state.modal=null;state.overlay='vocab-player';render();
+  Object.assign(state.vocabPlayer,{queue,index,playing:false,token:state.vocabPlayer.token+1,title,revealCurrent:false});state.modal=null;state.overlay='vocab-player';render();
 }
 async function speakVocabItem({autoplay=false}={}){
   const vp=state.vocabPlayer,item=allVocabItems().find(x=>x.id===vp.queue[vp.index]);if(!item)return;
@@ -1087,7 +1114,7 @@ async function speakVocabItem({autoplay=false}={}){
   vp.gapRemaining=0;moveVocab(1,false);render();await delay(100);if(vp.playing)speakVocabItem({autoplay:true});
 }
 function moveVocab(delta,rerender=true){
-  const vp=state.vocabPlayer;if(!vp.queue.length)return;let i=vp.index+delta;if(i>=vp.queue.length)i=0;if(i<0)i=vp.queue.length-1;vp.index=i;const id=vp.queue[i];setJSON(storageKeys.vocabResume,{title:vp.title,id,updatedAt:new Date().toISOString()});if(rerender)render();
+  const vp=state.vocabPlayer;if(!vp.queue.length)return;let i=vp.index+delta;if(i>=vp.queue.length)i=0;if(i<0)i=vp.queue.length-1;vp.index=i;vp.revealCurrent=false;const id=vp.queue[i];setJSON(storageKeys.vocabResume,{title:vp.title,id,updatedAt:new Date().toISOString()});if(rerender)render();
 }
 async function stepVocab(delta){const was=state.vocabPlayer.playing;state.vocabPlayer.token++;speechSynthesis.cancel();moveVocab(delta);await speakVocabItem({autoplay:was});if(was&&state.vocabPlayer.playing===false){state.vocabPlayer.playing=true;speakVocabItem({autoplay:true});}}
 function saveVocabSettings(){setJSON(storageKeys.vocabSettings,state.vocabSettings);}
@@ -1298,12 +1325,15 @@ app.addEventListener('click',async e=>{
   else if(a==='switch-language'){const id=el.dataset.language;if(id!==state.selectedLanguage){await chooseLanguage(id);state.modal=null;state.tab='home';}else{state.modal=null;render();}}
   else if(a==='manage-languages'){state.modal={type:'manage-languages'};render();}
   else if(a==='app-settings'){stopAllSpeech();state.modal={type:'app-settings'};render();}
-  else if(a==='refresh-voices'){speechSynthesis.cancel();speechVoices();render();showToast('Voice list refreshed');}
+  else if(a==='refresh-voices'){await refreshVoiceCatalog();render();showToast('Voice list refreshed');}
   else if(a==='reset-voices'){Object.assign(state.vocabSettings,{voiceEn:'',voiceHi:'',dialogueVoiceEnS1:'',dialogueVoiceEnS2:'',dialogueVoiceHiS1:'',dialogueVoiceHiS2:''});saveVocabSettings();render();showToast('Automatic voices selected');}
   else if(a==='preview-voice'){speechSynthesis.cancel();const lang=el.dataset.lang||'en',speaker=el.dataset.speaker||'general',text=lang==='hi'?'नमस्ते। यह आपकी चुनी हुई हिन्दी आवाज़ का नमूना है।':'Hello. This is a preview of your selected English voice.';await speak(text,lang,.9,null,speaker);}
   else if(a==='confirm-playlist')startVocabularyPlaylist();
   else if(a==='close-vocab-player'){stopAllSpeech();state.overlay=null;state.tab='learn';render();}
   else if(a==='vocab-settings'){state.modal={type:'vocab-settings'};render();}
+  else if(a==='toggle-hide-english'){state.vocabSettings.hideEnglish=!state.vocabSettings.hideEnglish;state.vocabPlayer.revealCurrent=false;saveVocabSettings();render();}
+  else if(a==='toggle-hide-hindi'){state.vocabSettings.hideHindi=!state.vocabSettings.hideHindi;state.vocabPlayer.revealCurrent=false;saveVocabSettings();render();}
+  else if(a==='toggle-recall-reveal'){if(state.vocabSettings.hideEnglish||state.vocabSettings.hideHindi){state.vocabPlayer.revealCurrent=!state.vocabPlayer.revealCurrent;render();}}
   else if(a==='speak-current'){state.vocabPlayer.playing=false;state.vocabPlayer.token++;await speakVocabItem({autoplay:false});render();}
   else if(a==='vocab-toggle'){if(state.vocabPlayer.playing){state.vocabPlayer.playing=false;state.vocabPlayer.token++;speechSynthesis.cancel();render();}else{state.vocabPlayer.playing=true;render();speakVocabItem({autoplay:true});}}
   else if(a==='vocab-prev')stepVocab(-1);
@@ -1424,5 +1454,5 @@ app.addEventListener('change',e=>{
 app.addEventListener('error',e=>{const audio=e.target;if(audio?.tagName==='AUDIO'&&audio.dataset.recordingId){const response=state.responses.find(r=>r?.recordingId===audio.dataset.recordingId);if(response){response.recordingStatus='playback-error';showToast('This recording cannot be played. Please record the segment again.');}}},true);
 window.addEventListener('beforeunload',()=>{speechSynthesis.cancel();state.stream?.getTracks().forEach(t=>t.stop());});
 if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-if('speechSynthesis'in window)speechSynthesis.onvoiceschanged=()=>{if(['vocab-settings','app-settings'].includes(state.modal?.type))render();};
+if('speechSynthesis'in window){speechSynthesis.onvoiceschanged=()=>{if(['vocab-settings','app-settings'].includes(state.modal?.type))render();};setTimeout(()=>speechSynthesis.getVoices(),0);setTimeout(()=>speechSynthesis.getVoices(),500);}
 loadData();

@@ -26,3 +26,18 @@ UPLOAD
 8. Open the app and select Settings → Check & update latest version.
 
 Use current Google Chrome and allow microphone permission.
+
+
+V7 CROSS-DEVICE SYNC
+--------------------
+See FIREBASE_CLOUD_SYNC_SETUP.txt for the one-time browser setup. No Terminal is required.
+
+
+V9 PRACTICE HISTORY & RECALL
+----------------------------
+- Progress now shows Today and Last 7 Days practice history.
+- Vocabulary, Phrases and Dialogues have separate 1 Day / 1 Week / 2 Weeks / 4 Weeks recall stages.
+- Choose recall intervals in Settings.
+- Daily reminder time, sound and browser-notification controls are in Settings.
+- GitHub background reminder limitation: reliable alerts while the app is fully closed require push support.
+- Practice history and recall data can sync across signed-in devices after Firebase cloud setup.
