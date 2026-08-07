@@ -1,21 +1,12 @@
-APS NAATI CCL Practice — GitHub Study Ready v4
+UPLOAD THIS VERSION: APS NAATI CCL GitHub Ready v6
 
-Upload this version to GitHub Pages.
+Extract this ZIP and upload ALL files/folders inside this folder to the root of the existing GitHub Pages repository.
 
-Included:
-- Local recording and playback without Firebase
-- Browser/local Compare Answer workflow
-- Neatly positioned Skip buttons inside both dialogue cards
-- Fixed Practice search
-- Reliable dialogue playback
-- Check & update latest version
-- All Hindi materials
-
-Upload:
-1. Extract this ZIP.
-2. Upload everything INSIDE the extracted folder to the root of the GitHub repository.
-3. Replace existing files and commit.
-4. Open the GitHub Pages site.
-5. Open Settings and press Check & update latest version.
-
-Saved browser progress and recordings are preserved.
+Verified/fixed in v6:
+- Vocabulary In order sequence follows the source Hindi pack order.
+- Vocabulary Random uses a proper Fisher-Yates shuffle.
+- Phrase In order sequence follows the source Hindi pack order.
+- Phrase Random uses a proper Fisher-Yates shuffle.
+- Changing Order while the player is open applies immediately.
+- Switching back to In order restores canonical sequence and keeps the current item selected.
+- v5 search/button layout, local recording, Skip controls and update checker are retained.

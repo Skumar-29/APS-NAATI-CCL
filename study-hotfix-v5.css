@@ -1,0 +1,352 @@
+
+/* APS NAATI GitHub v5: organised navigation, search and button layout */
+.app-header {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+}
+.app-header .header-copy { min-width: 0; }
+.app-header .header-tools {
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+}
+.header-search,
+.header-settings {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #c8dcea;
+  background: #fff;
+  color: var(--blue);
+  border-radius: 13px;
+  padding: 9px 12px;
+  font-weight: 850;
+  line-height: 1;
+  box-shadow: 0 5px 16px rgba(36,69,92,.06);
+  white-space: nowrap;
+}
+.header-search:hover,
+.header-settings:hover,
+.header-search:focus-visible,
+.header-settings:focus-visible {
+  background: #edf5fb;
+  outline: 2px solid rgba(13,86,137,.16);
+  outline-offset: 2px;
+}
+.header-search span,
+.header-settings span { font-size: 20px; line-height: 1; }
+.header-search b,
+.header-settings b { font-size: 13px; }
+
+.aps-study-search-shell {
+  position: fixed;
+  top: var(--aps-search-top, 76px);
+  left: var(--aps-search-left, auto);
+  z-index: 10020;
+  width: var(--aps-search-width, min(460px, calc(100vw - 28px)));
+  max-width: calc(100vw - 28px);
+  font-family: inherit;
+}
+.aps-study-search-shell[hidden] { display: none !important; }
+.aps-study-search-panel {
+  padding: 15px;
+  border: 1px solid rgba(23,61,91,.18);
+  border-radius: 18px;
+  background: rgba(255,255,255,.985);
+  color: var(--ink);
+  box-shadow: 0 20px 60px rgba(20,46,67,.24);
+  max-height: min(72vh, 680px);
+  overflow: hidden;
+  backdrop-filter: blur(18px);
+}
+.aps-study-search-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.aps-study-search-heading strong { display: block; font-size: 17px; }
+.aps-study-search-heading small { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+.aps-study-search-heading button {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+  color: var(--ink);
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+}
+.aps-study-search-label { display: grid; gap: 6px; }
+.aps-study-search-label span,
+.aps-study-search-summary { font-size: 12px; color: var(--muted); }
+#apsStudySearchInput {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #c5d7e5;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  outline: none;
+}
+#apsStudySearchInput:focus {
+  border-color: var(--blue2);
+  box-shadow: 0 0 0 3px rgba(20,115,184,.12);
+}
+.aps-study-search-summary { margin: 10px 2px 8px; }
+.aps-study-search-results {
+  display: grid;
+  gap: 7px;
+  max-height: min(46vh, 440px);
+  overflow: auto;
+  padding-right: 3px;
+}
+.aps-study-search-result {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2px 10px;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: #f9fbfd;
+  color: var(--ink);
+  border-radius: 12px;
+}
+.aps-study-search-result:hover { background: #edf6fc; }
+.aps-study-search-result strong,
+.aps-study-search-result small { grid-column: 2; min-width: 0; overflow-wrap: anywhere; }
+.aps-study-search-result small { color: var(--muted); }
+.aps-study-search-kind {
+  grid-row: 1 / span 2;
+  min-width: 58px;
+  padding: 4px 7px;
+  border-radius: 999px;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--blue);
+  background: #e9f3fa;
+}
+
+/* Practice search is one clean row, filters are a separate predictable row. */
+.dialogue-filter-panel {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+  padding: 16px !important;
+}
+.practice-search-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  min-width: 0;
+}
+.practice-search-row .search {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 48px;
+  background: #fff;
+}
+.practice-search-row #practiceQuery { width: 100%; min-width: 0; min-height: 46px; }
+.practice-clear { min-width: 76px; min-height: 48px; white-space: nowrap; }
+.practice-filter-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 10px;
+}
+.practice-filter-row label { display: grid; gap: 6px; min-width: 0; }
+.practice-filter-row label > span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.practice-filter-row select { width: 100%; min-width: 0; min-height: 46px; }
+
+/* Learn and language search stay aligned and responsive too. */
+.filter-panel .filter-row {
+  display: grid;
+  grid-template-columns: minmax(280px,2fr) repeat(3,minmax(145px,1fr));
+  gap: 10px;
+  align-items: stretch;
+}
+.filter-panel .search { min-width: 0; min-height: 46px; background: #fff; }
+.filter-panel .search input { min-width: 0; min-height: 44px; }
+.language-search { width: 100%; }
+.language-search input { width: 100%; }
+
+/* Consistent button sizing without changing the app's visual identity. */
+.hero-actions button,
+.dialogue-card .actions button,
+.filter-summary button,
+.settings-actions button { min-height: 44px; }
+.dialogue-card .actions { align-items: stretch; }
+.dialogue-card .actions button { flex: 1 1 150px; }
+.top-actions { display: flex; align-items: center; justify-content: flex-end; gap: 7px; min-width: 0; }
+.top-actions button { min-height: 40px; white-space: nowrap; }
+.top-search-button { display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
+.top-search-button b { font-size: inherit; }
+
+@media (max-width: 900px) {
+  .practice-filter-row { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .filter-panel .filter-row { grid-template-columns: 1fr 1fr; }
+  .filter-panel .filter-row .search { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .app-header { gap: 9px; padding-bottom: 16px; }
+  .app-header .brand { width: 44px; height: 44px; border-radius: 13px; }
+  .app-header h1 { font-size: 19px; }
+  .app-header p { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .header-tools { gap: 6px !important; }
+  .header-search,
+  .header-settings {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
+  }
+  .header-search b,
+  .header-settings b { display: none !important; }
+  .header-search span,
+  .header-settings span { font-size: 21px; }
+  .aps-study-search-shell {
+    top: 68px !important;
+    left: 12px !important;
+    width: calc(100vw - 24px) !important;
+    max-width: none;
+  }
+  .aps-study-search-panel { max-height: calc(100vh - 150px); }
+  .practice-search-row { display: grid; grid-template-columns: minmax(0,1fr) auto; }
+  .practice-filter-row { grid-template-columns: 1fr 1fr; }
+  .filter-panel .filter-row { grid-template-columns: 1fr; }
+  .filter-panel .filter-row .search { grid-column: auto; }
+  .top-search-button b { display: none; }
+}
+@media (max-width: 620px) {
+  .fullscreen .top {
+    grid-template-columns: 64px minmax(0,1fr) auto !important;
+    gap: 5px;
+  }
+  .fullscreen .top .top-actions {
+    width: auto;
+    min-width: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  .fullscreen .top .top-actions > span { display: none; }
+  .fullscreen .top .top-actions button {
+    width: 38px !important;
+    min-width: 38px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    display: grid !important;
+    place-items: center;
+    border-radius: 11px;
+  }
+  .fullscreen .top .top-actions button:before {
+    font-size: 18px !important;
+    line-height: 1;
+  }
+  .fullscreen .top .top-actions [data-action="global-search"]:before { content: '⌕' !important; }
+  .fullscreen .top .top-actions [data-action="app-settings"]:before,
+  .fullscreen .top .top-actions [data-action="vocab-settings"]:before { content: '⚙' !important; }
+  .fullscreen .top .top-actions [data-action="lesson-quiz"]:before { content: 'Q' !important; font-weight: 900; }
+}
+
+@media (max-width: 480px) {
+  .app-header { grid-template-columns: auto minmax(0,1fr) auto; }
+  .app-header .header-copy p { display: none; }
+  .app-header h1 { font-size: 17px; }
+  .practice-search-row { grid-template-columns: 1fr; }
+  .practice-clear { width: 100%; }
+  .practice-filter-row { grid-template-columns: 1fr; }
+  .top-actions { gap: 4px; }
+  .top-actions button { padding-left: 8px; padding-right: 8px; }
+}
+
+.aps-update-card {
+  margin: 16px 0 8px;
+  padding: 16px;
+  border: 1px solid rgba(117, 169, 255, .35);
+  border-radius: 16px;
+  background: rgba(29, 47, 78, .12);
+  color: inherit;
+}
+
+body > .aps-update-card {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 10030;
+  width: min(420px, calc(100vw - 36px));
+  background: rgba(18, 24, 36, .97);
+  color: #fff;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, .34);
+}
+
+.aps-update-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.aps-update-heading span {
+  font-size: 12px;
+  opacity: .78;
+  overflow-wrap: anywhere;
+}
+
+.aps-update-card p {
+  margin: 8px 0 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: .86;
+}
+
+#apsCheckUpdateButton {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 850;
+}
+
+.aps-update-status {
+  margin-top: 9px;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .82;
+}
+
+.aps-update-status[data-tone="success"] {
+  color: #72d99b;
+  opacity: 1;
+}
+
+.aps-update-status[data-tone="error"] {
+  color: #ff9d9d;
+  opacity: 1;
+}
+
+

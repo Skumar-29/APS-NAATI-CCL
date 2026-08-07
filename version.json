@@ -1,15 +1,14 @@
 {
   "schemaVersion": "1.0",
-  "version": "github-study-ready-2026-08-06-v4",
-  "releasedAt": "2026-08-06T11:03:00+10:00",
+  "version": "github-study-ready-2026-08-07-v6",
+  "releasedAt": "2026-08-07T15:30:00+10:00",
   "critical": false,
   "minimumSupportedVersion": "github-study-ready-2026-08-06-v4",
   "releaseNotes": [
-    "Recorded responses now work locally on GitHub Pages without Firebase",
-    "Browser transcript and local practice comparison are used when available",
-    "Manual playback and sample comparison remain available when browser transcript is unavailable",
-    "Moved the two Skip controls into the source and response cards",
-    "Both controls are labelled only Skip and arranged for desktop and mobile",
-    "Practice search, dialogue playback and Check & update latest version remain included"
+    "Verified and corrected In order and Random order for both vocabulary and phrase playlists",
+    "Random order now uses Fisher-Yates shuffling instead of random Array.sort",
+    "Changing Order while a vocabulary or phrase player is open now applies immediately",
+    "Switching back to In order restores the canonical Hindi-pack sequence while keeping the current card selected",
+    "All v5 search, button layout, local recording, inline Skip and update features are retained"
   ]
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-study-ready-20260806-v4';
+const CACHE_NAME = 'aps-naati-study-ready-20260807-v6';
 const PRECACHE = [
   "./",
   "./index.html",
@@ -13,6 +13,7 @@ const PRECACHE = [
   "./PHRASE_AUDIT_V2.0.5.csv",
   "./PHRASE_LIBRARY_METHOD_V2.0.5.md",
   "./QA_REPORT_GITHUB_STUDY_READY_V4.md",
+  "./QA_REPORT_GITHUB_STUDY_READY_V5.md",
   "./QA_REPORT_V2.0.3.md",
   "./QA_REPORT_V2.0.4.md",
   "./QA_REPORT_V2.0.5.md",
@@ -45,66 +46,26 @@ const PRECACHE = [
   "./manifest.webmanifest",
   "./pilot50-runtime-overlay.js",
   "./scoring.js",
-  "./study-hotfix-v4.css",
-  "./study-hotfix-v4.js",
+  "./study-hotfix-v5.css",
+  "./study-hotfix-v5.js",
   "./styles.css",
   "./version.json"
 ];
 
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll([...new Set(PRECACHE)]))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll([...new Set(PRECACHE)])).then(() => self.skipWaiting()));
 });
-
-self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
-
+self.addEventListener('message', event => { if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting(); });
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
-      ))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('aps-naati-study-ready-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim()));
 });
-
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
-
   if (event.request.mode === 'navigate') {
-    event.respondWith(
-      fetch(event.request, {cache: 'no-store'})
-        .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => cache.put('./index.html', copy));
-          return response;
-        })
-        .catch(() => caches.match('./index.html'))
-    );
+    event.respondWith(fetch(event.request, {cache:'no-store'}).then(response => { const copy=response.clone(); caches.open(CACHE_NAME).then(cache=>cache.put('./index.html',copy)); return response; }).catch(() => caches.match('./index.html')));
     return;
   }
-
-  event.respondWith(
-    caches.match(event.request)
-      .then(cached => cached || fetch(event.request).then(response => {
-        if (response && response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => cache.put(event.request, copy));
-        }
-        return response;
-      }))
-  );
+  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => { if(response && response.ok){ const copy=response.clone(); caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy)); } return response; })));
 });

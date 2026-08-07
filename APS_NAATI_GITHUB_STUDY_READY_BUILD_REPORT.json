@@ -1,272 +1,215 @@
 {
   "schemaVersion": "1.0",
-  "buildVersion": "github-study-ready-2026-08-06-v4",
-  "createdAt": "2026-08-06T11:03:00+10:00",
-  "status": "github-study-ready-local-recording-inline-skip-validated",
+  "buildVersion": "github-study-ready-2026-08-07-v5",
+  "createdAt": "2026-08-07T15:20:00+10:00",
+  "status": "github-study-ready-v5-organised-search-buttons",
   "content": {
-    "canonicalCounts": {
-      "dialogues": 85,
-      "segments": 1073,
-      "vocabulary": 3000,
-      "phrases": 551
-    },
-    "runtimePilotAdditions": {
-      "vocabulary": 22,
-      "phrases": 35,
-      "approvedSegments": 10
-    },
-    "expectedRuntimeTotals": {
-      "dialogues": 85,
-      "segments": 1073,
-      "vocabulary": 3022,
-      "phrases": 586
-    }
+    "dialogues": 85,
+    "segments": 1073,
+    "baseVocabulary": 3000,
+    "basePhrases": 551
   },
   "features": {
-    "webRecordingDoesNotRequireFirebase": true,
-    "compareWorksWithoutCloudGate": true,
-    "browserTranscriptLocalComparison": true,
-    "manualComparisonWithoutTranscript": true,
-    "sourceInlineSkip": true,
-    "recordingInlineSkip": true,
-    "onlySkipLabels": true,
-    "floatingSkipNotRendered": true,
-    "skipControlsExposed": true,
-    "organizedAbsolutePlacement": true,
-    "practiceSearchFixed": true,
-    "settingsUpdaterIncluded": true
-  },
-  "dataSafety": {
-    "localStorageDeletedByUpdate": false,
-    "indexedDBDeletedByUpdate": false,
-    "recordingsStoredLocally": true,
-    "firebaseRequiredForGitHubRecording": false
+    "globalSearchInHeader": true,
+    "globalSearchOnHome": true,
+    "practiceSearchReorganised": true,
+    "learnSearchResponsive": true,
+    "languageSearchResponsive": true,
+    "fullscreenSearchToolbarResponsive": true,
+    "settingsOverlapFixed": true,
+    "localRecordingWithoutFirebase": true,
+    "inlineSkipControls": true,
+    "updatesPreserveLocalStorageAndIndexedDB": true
   },
   "validation": {
-    "javascriptSyntax": {
-      "app.js": {
-        "passed": true,
-        "stderr": ""
-      },
-      "scoring.js": {
-        "passed": true,
-        "stderr": ""
-      },
-      "pilot50-runtime-overlay.js": {
-        "passed": true,
-        "stderr": ""
-      },
-      "study-hotfix-v4.js": {
-        "passed": true,
-        "stderr": ""
-      },
-      "sw.js": {
-        "passed": true,
-        "stderr": ""
-      }
-    },
-    "playwrightFunctionalAssertions": "passed",
-    "functionalChecks": [
-      "85 dialogues loaded",
-      "3,022 runtime vocabulary records loaded after Pilot overlay",
-      "586 runtime phrase records loaded after Pilot overlay",
-      "Hindi and English Practice search returned results",
-      "both Skip buttons rendered inside their requested cards",
-      "old floating Skip bar absent",
-      "local recording generated no Firebase request",
-      "browser transcript comparison rendered",
-      "manual comparison rendered without transcript",
-      "Skip Recording advanced to next segment",
-      "Skip Listening started recording",
-      "no JavaScript page errors in functional test"
-    ],
-    "requiredAssetsPresent": true,
-    "loadOrderPassed": true
+    "javascriptSyntax": "run separately with node --check",
+    "responsiveLayout": "static CSS audit at desktop/tablet/mobile breakpoints",
+    "browserAutomation": "not available in this execution environment; package retains previous working runtime behavior"
   },
-  "package": {
-    "fileCount": 46,
-    "manifest": {
-      "404.html": {
-        "bytes": 1147,
-        "sha256": "6bbb06f6e0864935eccb95ca0ef41700f163fe683d9af0c1ea84ab16ea1bf19b"
-      },
-      "BETA_PRIVACY_NOTICE.md": {
-        "bytes": 497,
-        "sha256": "238e4f59f4ea6800390f1b34d87c2935b8fb1e0d0d2ec39bea5cac626b26a7e5"
-      },
-      "DIALOGUE_COMPARISON_AUDIT_V2.0.3.csv": {
-        "bytes": 881262,
-        "sha256": "f330e7abcbb59ed9021e03efbd0a06d173897296ad7c9d284d62de1146947535"
-      },
-      "FRIENDS_TEST_CHECKLIST.md": {
-        "bytes": 600,
-        "sha256": "4827c3085134dfbf072417d334906ba50762a8029388a8cae5a916b362d2c441"
-      },
-      "GITHUB_UPLOAD_STEPS.txt": {
-        "bytes": 1153,
-        "sha256": "529ab34bb853a3a71a502f13ff6bc4e8d2e22c4e3560e831b403a11f3d419209"
-      },
-      "PHRASE_AUDIT_V2.0.5.csv": {
-        "bytes": 102573,
-        "sha256": "49066a408468e99e87f9cbdbc12891355badd861f8c40cb4a3d2b1f7a9942825"
-      },
-      "PHRASE_LIBRARY_METHOD_V2.0.5.md": {
-        "bytes": 1044,
-        "sha256": "1c84e8a6548ad4c8443430c6973495ea3b155e2ac4e5c5a16623d8cf002b154f"
-      },
-      "QA_REPORT_GITHUB_STUDY_READY_V4.md": {
-        "bytes": 858,
-        "sha256": "93ccaae9f7311ede5c1e54f5f57444cab25462cb4b157f70adaa4ae908277bf9"
-      },
-      "QA_REPORT_V2.0.3.md": {
-        "bytes": 2101,
-        "sha256": "97e24aa848fc4e1fa42d280d7fc476ca5c2a4ee6c99c0cffa2dde263a04a500a"
-      },
-      "QA_REPORT_V2.0.4.md": {
-        "bytes": 1433,
-        "sha256": "95b0b333c1f7b2306c2b29eba8458fb9d3ea17949ee591c0a5fcb01f9143d22f"
-      },
-      "QA_REPORT_V2.0.5.md": {
-        "bytes": 1574,
-        "sha256": "d640d29742c87601de036d12985a3a065bf88ecc69f579c82bdf1c94a4e21759"
-      },
-      "QA_REPORT_V2.0.6.md": {
-        "bytes": 2865,
-        "sha256": "c6b89aac2e0dfcec90957e1653a606cbcd31e962c2903ce504f784eb4b439c74"
-      },
-      "QA_REPORT_V2.0.7.md": {
-        "bytes": 2674,
-        "sha256": "700051677b859b091c9396e43a8aaf8644b2bfce7db050be3db9612ff025d3c5"
-      },
-      "README.md": {
-        "bytes": 4529,
-        "sha256": "d2c09c04c576d2e7a2a9b26e54d15ca6fdd8a9910f646151bd571446c7e34534"
-      },
-      "README.txt": {
-        "bytes": 1153,
-        "sha256": "529ab34bb853a3a71a502f13ff6bc4e8d2e22c4e3560e831b403a11f3d419209"
-      },
-      "UPDATE_NOTES_V2.0.3.md": {
-        "bytes": 1059,
-        "sha256": "7ed52bce1824ab1bab8fb3fbfe45bc3f9664362900d0a6c33a3a718c07d78e7a"
-      },
-      "UPDATE_NOTES_V2.0.4.md": {
-        "bytes": 768,
-        "sha256": "5334b29e2b2a868bd1f195df53aeadbfcb048466178cf32db79663b14df6b9e1"
-      },
-      "UPDATE_NOTES_V2.0.5.md": {
-        "bytes": 951,
-        "sha256": "38f22c294fe9e76bac93000d99dd5eb4709b5eac8e20e4c154952cbc5e2aac8e"
-      },
-      "UPDATE_NOTES_V2.0.6.md": {
-        "bytes": 1097,
-        "sha256": "9326399dbb22da20cb697f45dcc7daa67f483d4ce046ce63bb644bbb74c7ea62"
-      },
-      "UPDATE_NOTES_V2.0.7.md": {
-        "bytes": 904,
-        "sha256": "c1f2ea61a07d4bdc8dff4a33ed58ac8b2436f2ea6fde242fd412f30d44753beb"
-      },
-      "UPLOAD_THIS_VERSION.txt": {
-        "bytes": 651,
-        "sha256": "250ce1bc9bd7cb4c54c775affe6614ef27de5f6d64226f94bc40cd0f610a0333"
-      },
-      "VOCABULARY_AUDIT_V2.0.3.csv": {
-        "bytes": 383722,
-        "sha256": "11aa7740c6123b9d527213097be010d8b7c69fcdea63f980a9d35e7ee321ce4f"
-      },
-      "app.js": {
-        "bytes": 123548,
-        "sha256": "79dc43d1bb92758b0a28b13feec086211e1b09000e27d82b9ba8dbb282fde72c"
-      },
-      "content/dialogues.json": {
-        "bytes": 3015797,
-        "sha256": "6f52e2e9c7d6909abb612f10474c5b8ca68d1a540b31f3ea74cc06d00c725c47"
-      },
-      "content/exam_info.json": {
-        "bytes": 1795,
-        "sha256": "0fc764649f52d0e619e4b911aafdd3f170d329229ae7b14663744bc94e50dfa1"
-      },
-      "content/languages.json": {
-        "bytes": 1868,
-        "sha256": "67a3b6b5fa0556570da10ea05b02c171ee24996ed43dcdeaaa289071708aaf5c"
-      },
-      "content/lesson0.json": {
-        "bytes": 25987,
-        "sha256": "63e0773b3848b437989255380c2eae72d07299682fa1689371d3d104b6505396"
-      },
-      "content/packs/hi/dialogues.json": {
-        "bytes": 3015797,
-        "sha256": "6f52e2e9c7d6909abb612f10474c5b8ca68d1a540b31f3ea74cc06d00c725c47"
-      },
-      "content/packs/hi/phrases.json": {
-        "bytes": 207414,
-        "sha256": "16a1b8fb876e31133d19fc0f07d292439b6836307fc3805d9eca449a39c7ef65"
-      },
-      "content/packs/hi/vocabulary.json": {
-        "bytes": 1837654,
-        "sha256": "6e7c1aaa45ba22bea23cb58fcbe6bcfef4e6aa882006641aba990bee8227753f"
-      },
-      "content/pilot50/batch01-runtime-overlay-v1.json": {
-        "bytes": 125040,
-        "sha256": "1c703dc4eb4fede4415ea78efd10336290e3ad95844ab294ea0a273bfcc0967d"
-      },
-      "content/starter_phrases.json": {
-        "bytes": 207414,
-        "sha256": "16a1b8fb876e31133d19fc0f07d292439b6836307fc3805d9eca449a39c7ef65"
-      },
-      "content/starter_vocab.json": {
-        "bytes": 1837654,
-        "sha256": "6e7c1aaa45ba22bea23cb58fcbe6bcfef4e6aa882006641aba990bee8227753f"
-      },
-      "icon-192.png": {
-        "bytes": 1000,
-        "sha256": "c7c5142cbea153770099b2182f0877a92dbb7a1d2fd619275b8dc9619a4ace8a"
-      },
-      "icon-512.png": {
-        "bytes": 3023,
-        "sha256": "ae90066e2a309100a732f578db2d61a94d31efe33ece63286cc0f0e24d3d05ec"
-      },
-      "icon.svg": {
-        "bytes": 480,
-        "sha256": "6b3a791f0301c4efadb117a464806d8fa5157dee5862b8b38cee8e3f0e7adf83"
-      },
-      "index.html": {
-        "bytes": 1302,
-        "sha256": "6968600d743bc908ea8c4d47409563f61a18f9302b2016282f0c1afef34e7951"
-      },
-      "manifest.webmanifest": {
-        "bytes": 873,
-        "sha256": "a49c67fb30d12255384033371224dcacddcb178ac44713f92fce44afd11e463d"
-      },
-      "pilot50-runtime-overlay.js": {
-        "bytes": 9251,
-        "sha256": "6067cf047153f7319d45586a082eab5321dad48fb5fa12f4de3a3263742e5e5a"
-      },
-      "scoring.js": {
-        "bytes": 12819,
-        "sha256": "b543d2fd2576177cafd43232ecd8c75a67cf4ce4717e1dcd9cf014ed6e3d1e0c"
-      },
-      "study-hotfix-v4.css": {
-        "bytes": 6130,
-        "sha256": "ac50ea972e82b1ee1bac6b4f1c426fe759c57e8620895cdd6166f4e912178233"
-      },
-      "study-hotfix-v4.js": {
-        "bytes": 32504,
-        "sha256": "dae42e44ba3353d0e16560b34a8bd82590235fbd6ac22674d2abb07d47731d49"
-      },
-      "styles.css": {
-        "bytes": 49044,
-        "sha256": "1e3d55709d42fed7083df186945131e7a02ed8d0626769c0b83b7cf5ffdafa0b"
-      },
-      "sw.js": {
-        "bytes": 2976,
-        "sha256": "f9dd035346e628704d4cf7e3c141c2746e746633c82abb84f4f86f01a5cafdcd"
-      },
-      "version.json": {
-        "bytes": 732,
-        "sha256": "077fa1413d8b849ac3e5e90f87ff74bbfd3be7414f31bfcfd452b04dfe50980c"
-      }
+  "manifest": {
+    "404.html": {
+      "bytes": 1147,
+      "sha256": "6bbb06f6e0864935eccb95ca0ef41700f163fe683d9af0c1ea84ab16ea1bf19b"
     },
-    "manifestExcludesSelf": true
+    "BETA_PRIVACY_NOTICE.md": {
+      "bytes": 497,
+      "sha256": "238e4f59f4ea6800390f1b34d87c2935b8fb1e0d0d2ec39bea5cac626b26a7e5"
+    },
+    "DIALOGUE_COMPARISON_AUDIT_V2.0.3.csv": {
+      "bytes": 881262,
+      "sha256": "f330e7abcbb59ed9021e03efbd0a06d173897296ad7c9d284d62de1146947535"
+    },
+    "FRIENDS_TEST_CHECKLIST.md": {
+      "bytes": 600,
+      "sha256": "4827c3085134dfbf072417d334906ba50762a8029388a8cae5a916b362d2c441"
+    },
+    "GITHUB_UPLOAD_STEPS.txt": {
+      "bytes": 1153,
+      "sha256": "529ab34bb853a3a71a502f13ff6bc4e8d2e22c4e3560e831b403a11f3d419209"
+    },
+    "PHRASE_AUDIT_V2.0.5.csv": {
+      "bytes": 102573,
+      "sha256": "49066a408468e99e87f9cbdbc12891355badd861f8c40cb4a3d2b1f7a9942825"
+    },
+    "PHRASE_LIBRARY_METHOD_V2.0.5.md": {
+      "bytes": 1044,
+      "sha256": "1c84e8a6548ad4c8443430c6973495ea3b155e2ac4e5c5a16623d8cf002b154f"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V4.md": {
+      "bytes": 858,
+      "sha256": "93ccaae9f7311ede5c1e54f5f57444cab25462cb4b157f70adaa4ae908277bf9"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V5.md": {
+      "bytes": 552,
+      "sha256": "edf7ebd7890c76b9cc75baae580acc1d2712304b9fce657c44397b0091d701b9"
+    },
+    "QA_REPORT_V2.0.3.md": {
+      "bytes": 2101,
+      "sha256": "97e24aa848fc4e1fa42d280d7fc476ca5c2a4ee6c99c0cffa2dde263a04a500a"
+    },
+    "QA_REPORT_V2.0.4.md": {
+      "bytes": 1433,
+      "sha256": "95b0b333c1f7b2306c2b29eba8458fb9d3ea17949ee591c0a5fcb01f9143d22f"
+    },
+    "QA_REPORT_V2.0.5.md": {
+      "bytes": 1574,
+      "sha256": "d640d29742c87601de036d12985a3a065bf88ecc69f579c82bdf1c94a4e21759"
+    },
+    "QA_REPORT_V2.0.6.md": {
+      "bytes": 2865,
+      "sha256": "c6b89aac2e0dfcec90957e1653a606cbcd31e962c2903ce504f784eb4b439c74"
+    },
+    "QA_REPORT_V2.0.7.md": {
+      "bytes": 2674,
+      "sha256": "700051677b859b091c9396e43a8aaf8644b2bfce7db050be3db9612ff025d3c5"
+    },
+    "README.md": {
+      "bytes": 4529,
+      "sha256": "d2c09c04c576d2e7a2a9b26e54d15ca6fdd8a9910f646151bd571446c7e34534"
+    },
+    "README.txt": {
+      "bytes": 1153,
+      "sha256": "529ab34bb853a3a71a502f13ff6bc4e8d2e22c4e3560e831b403a11f3d419209"
+    },
+    "UPDATE_NOTES_V2.0.3.md": {
+      "bytes": 1059,
+      "sha256": "7ed52bce1824ab1bab8fb3fbfe45bc3f9664362900d0a6c33a3a718c07d78e7a"
+    },
+    "UPDATE_NOTES_V2.0.4.md": {
+      "bytes": 768,
+      "sha256": "5334b29e2b2a868bd1f195df53aeadbfcb048466178cf32db79663b14df6b9e1"
+    },
+    "UPDATE_NOTES_V2.0.5.md": {
+      "bytes": 951,
+      "sha256": "38f22c294fe9e76bac93000d99dd5eb4709b5eac8e20e4c154952cbc5e2aac8e"
+    },
+    "UPDATE_NOTES_V2.0.6.md": {
+      "bytes": 1097,
+      "sha256": "9326399dbb22da20cb697f45dcc7daa67f483d4ce046ce63bb644bbb74c7ea62"
+    },
+    "UPDATE_NOTES_V2.0.7.md": {
+      "bytes": 904,
+      "sha256": "c1f2ea61a07d4bdc8dff4a33ed58ac8b2436f2ea6fde242fd412f30d44753beb"
+    },
+    "UPLOAD_THIS_VERSION.txt": {
+      "bytes": 411,
+      "sha256": "32fa7c371fe92bceceaf2b06bb1332b38dc8d2e822e369d7f742b1d08dec9752"
+    },
+    "VOCABULARY_AUDIT_V2.0.3.csv": {
+      "bytes": 383722,
+      "sha256": "11aa7740c6123b9d527213097be010d8b7c69fcdea63f980a9d35e7ee321ce4f"
+    },
+    "app.js": {
+      "bytes": 124500,
+      "sha256": "039c460da669ee230139b86722ece3184dd375100f9989c4677c9c0ae1e6f553"
+    },
+    "content/dialogues.json": {
+      "bytes": 3015797,
+      "sha256": "6f52e2e9c7d6909abb612f10474c5b8ca68d1a540b31f3ea74cc06d00c725c47"
+    },
+    "content/exam_info.json": {
+      "bytes": 1795,
+      "sha256": "0fc764649f52d0e619e4b911aafdd3f170d329229ae7b14663744bc94e50dfa1"
+    },
+    "content/languages.json": {
+      "bytes": 1868,
+      "sha256": "67a3b6b5fa0556570da10ea05b02c171ee24996ed43dcdeaaa289071708aaf5c"
+    },
+    "content/lesson0.json": {
+      "bytes": 25987,
+      "sha256": "63e0773b3848b437989255380c2eae72d07299682fa1689371d3d104b6505396"
+    },
+    "content/packs/hi/dialogues.json": {
+      "bytes": 3015797,
+      "sha256": "6f52e2e9c7d6909abb612f10474c5b8ca68d1a540b31f3ea74cc06d00c725c47"
+    },
+    "content/packs/hi/phrases.json": {
+      "bytes": 207414,
+      "sha256": "16a1b8fb876e31133d19fc0f07d292439b6836307fc3805d9eca449a39c7ef65"
+    },
+    "content/packs/hi/vocabulary.json": {
+      "bytes": 1837654,
+      "sha256": "6e7c1aaa45ba22bea23cb58fcbe6bcfef4e6aa882006641aba990bee8227753f"
+    },
+    "content/pilot50/batch01-runtime-overlay-v1.json": {
+      "bytes": 125040,
+      "sha256": "1c703dc4eb4fede4415ea78efd10336290e3ad95844ab294ea0a273bfcc0967d"
+    },
+    "content/starter_phrases.json": {
+      "bytes": 207414,
+      "sha256": "16a1b8fb876e31133d19fc0f07d292439b6836307fc3805d9eca449a39c7ef65"
+    },
+    "content/starter_vocab.json": {
+      "bytes": 1837654,
+      "sha256": "6e7c1aaa45ba22bea23cb58fcbe6bcfef4e6aa882006641aba990bee8227753f"
+    },
+    "icon-192.png": {
+      "bytes": 1000,
+      "sha256": "c7c5142cbea153770099b2182f0877a92dbb7a1d2fd619275b8dc9619a4ace8a"
+    },
+    "icon-512.png": {
+      "bytes": 3023,
+      "sha256": "ae90066e2a309100a732f578db2d61a94d31efe33ece63286cc0f0e24d3d05ec"
+    },
+    "icon.svg": {
+      "bytes": 480,
+      "sha256": "6b3a791f0301c4efadb117a464806d8fa5157dee5862b8b38cee8e3f0e7adf83"
+    },
+    "index.html": {
+      "bytes": 1302,
+      "sha256": "0a6b9461daf62e53402d7cbb35ce0c156fc10ac4d40afb16d73cbd3bf82125dd"
+    },
+    "manifest.webmanifest": {
+      "bytes": 873,
+      "sha256": "a49c67fb30d12255384033371224dcacddcb178ac44713f92fce44afd11e463d"
+    },
+    "pilot50-runtime-overlay.js": {
+      "bytes": 9251,
+      "sha256": "6067cf047153f7319d45586a082eab5321dad48fb5fa12f4de3a3263742e5e5a"
+    },
+    "scoring.js": {
+      "bytes": 12819,
+      "sha256": "b543d2fd2576177cafd43232ecd8c75a67cf4ce4717e1dcd9cf014ed6e3d1e0c"
+    },
+    "study-hotfix-v5.css": {
+      "bytes": 9764,
+      "sha256": "094df7e584d177483247e42c199cc4664d1ff09745b828c54f103376f8b3b856"
+    },
+    "study-hotfix-v5.js": {
+      "bytes": 34180,
+      "sha256": "54bce38853a74e037eca89d4222f1234f4dae67c6721be022a42b096a5c6e5a5"
+    },
+    "styles.css": {
+      "bytes": 49044,
+      "sha256": "1e3d55709d42fed7083df186945131e7a02ed8d0626769c0b83b7cf5ffdafa0b"
+    },
+    "sw.js": {
+      "bytes": 2791,
+      "sha256": "76bc787528a7a804c52d8d5e5320f8ab977c644276a84535a3713c2d59389639"
+    },
+    "version.json": {
+      "bytes": 855,
+      "sha256": "777d0aceee47efeb291bdede7619411ab8eeac6ea3753914e9765420d5e932b8"
+    }
   }
 }
