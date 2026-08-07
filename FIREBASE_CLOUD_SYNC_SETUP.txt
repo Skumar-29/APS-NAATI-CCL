@@ -1,66 +1,51 @@
-APS NAATI CCL - ONE-TIME FIREBASE CLOUD SYNC SETUP (NO TERMINAL)
-================================================================
+APS NAATI CCL PRACTICE - FIREBASE CLOUD SYNC v11
+==================================================
 
-WHY
----
-The GitHub Pages app can automatically sync progress between devices after you sign
-in with Google or Email. Recordings stay on each device.
+LEARNERS NEVER CONFIGURE FIREBASE.
+The Firebase Web configuration is embedded in the GitHub build.
+A new learner or a learner on a new device only creates/signs into an account.
 
-STEP 1 - REGISTER/OPEN THE WEB APP
-----------------------------------
-1. Open Firebase Console.
-2. Open project: aps-naati-ccl-practice
-3. Project settings -> General -> Your apps.
-4. Add a Web app if one is not already registered.
-5. Copy the firebaseConfig block.
-6. In APS NAATI app: Settings -> Cloud progress sync -> Setup.
-7. Paste firebaseConfig and choose Save & reload.
-
-STEP 2 - AUTHENTICATION
------------------------
-1. Firebase Console -> Authentication -> Sign-in method.
-2. Enable Google.
-3. Enable Email/Password.
-4. Authentication -> Settings -> Authorized domains.
-5. Add the hostname shown by the APS app setup screen (for GitHub Pages this is
-   usually YOUR-GITHUB-USERNAME.github.io).
-
-STEP 3 - FIRESTORE
-------------------
-1. Firebase Console -> Firestore Database -> Create database.
-2. Use the Australia region that best matches your project when available.
-3. Open Rules and use these rules:
+ONE-TIME PROJECT SETUP FOR THE APP OWNER
+----------------------------------------
+1. Firebase project: aps-naati-ccl-practice
+2. Authentication: Google and Email/Password enabled.
+3. Authentication > Settings > Authorized domains: include the GitHub Pages hostname.
+4. Firestore Database exists.
+5. Recommended Firestore Rules:
 
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
     match /apsUserProgress/{userId} {
       allow read, write: if request.auth != null
-                         && request.auth.uid == userId;
+                         && request.auth.uid == userId
+                         && (request.auth.token.email_verified == true
+                             || request.auth.token.firebase.sign_in_provider != 'password');
     }
   }
 }
 
-4. Publish the rules.
+ACCOUNT EXPERIENCE
+------------------
+Google:
+- Sign in/create account through Google.
+- No additional email-verification screen is required for trusted Google accounts.
+- Cloud sync starts automatically.
 
-HOW IT WORKS
-------------
-- Local progress is saved immediately first.
-- Signed-in progress is then synced to Firestore.
-- When you open the app on another device with the same account, newer progress is
-  downloaded automatically.
-- Settings -> Cloud progress sync -> Refresh manually checks for another device.
-- Sync now manually uploads this device.
-- Existing progress is merged on the first sign-in.
-- Device-specific English/Hindi voice selections remain local to each device.
-- Browser recordings remain local and are not uploaded.
-- Guest mode remains local only.
+Email/Password:
+- Create account with email, password and password confirmation.
+- Firebase sends a verification EMAIL LINK (not a numeric email code).
+- Cloud sync remains locked until the email is verified.
+- Resend verification and I have verified controls are built into the app.
+- Forgot password and Reset password send Firebase password-reset emails.
 
-SUPPORTED WEB SIGN-IN
----------------------
-- Google: supported after Firebase Web setup.
-- Email create/sign-in: supported after Firebase Web setup.
-- Guest: supported, local only.
-- Apple: code path included, but Apple web provider also requires Apple/Firebase
-  provider configuration.
-- Phone: kept for the installed app; use Google or Email on GitHub for cloud sync.
+NEW DEVICE
+----------
+1. Open the same GitHub Pages app.
+2. Sign in with the same Google or verified Email/Password account.
+3. No Firebase config is requested.
+4. Progress downloads automatically.
+5. Settings > Cloud progress sync > Refresh manually checks for newer progress.
+
+Recordings stay local. Learning progress, results, practice history, recall schedules and relevant study settings sync.

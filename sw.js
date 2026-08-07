@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-study-ready-20260807-v9';
+const CACHE_NAME = 'aps-naati-study-ready-20260808-v11';
 const PRECACHE = [
   "./",
   "./index.html",
@@ -19,6 +19,7 @@ const PRECACHE = [
   "./QA_REPORT_GITHUB_STUDY_READY_V7.md",
   "./QA_REPORT_GITHUB_STUDY_READY_V8.md",
   "./QA_REPORT_GITHUB_STUDY_READY_V9.md",
+  "./QA_REPORT_GITHUB_STUDY_READY_V11.md",
   "./QA_REPORT_V2.0.3.md",
   "./QA_REPORT_V2.0.4.md",
   "./QA_REPORT_V2.0.5.md",
@@ -34,8 +35,8 @@ const PRECACHE = [
   "./UPLOAD_THIS_VERSION.txt",
   "./VOCABULARY_AUDIT_V2.0.3.csv",
   "./app.js",
-  "./cloud-sync-v7.css",
-  "./cloud-sync-v7.js",
+  "./cloud-sync-v11.css",
+  "./cloud-sync-v11.js",
   "./content/dialogues.json",
   "./content/exam_info.json",
   "./content/languages.json",

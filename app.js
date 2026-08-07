@@ -997,7 +997,11 @@ function voiceSettingRow(label,id,lang,selected,speaker){const fallback=speaker=
 function render(){
   if(!state.ready||!state.auth.initialized){app.innerHTML='<div class="loading">Loading APS NAATI CCL Practice…</div>';return;}
   if(localStorage.getItem(storageKeys.authChoice)!=='1'&&!state.auth.user){app.innerHTML=authWelcome();return;}
-  if(!state.selectedLanguage){app.innerHTML=languageSelectionScreen();return;}
+  if(state.modal?.type==='verify-email'&&state.auth.user?.email&&state.auth.user?.emailVerified===false){app.innerHTML=authWelcome();return;}
+  if(!state.selectedLanguage){
+    if(['email-auth','forgot-password','password-reset-sent'].includes(state.modal?.type)){app.innerHTML=authWelcome();return;}
+    app.innerHTML=languageSelectionScreen();return;
+  }
   if(localStorage.getItem(storageKeys.onboard)!=='1'){app.innerHTML=onboarding();return;}
   if(state.overlay==='lesson'){app.innerHTML=lessonOverlay();return;}
   if(state.overlay==='vocab-player'){app.innerHTML=vocabPlayerOverlay();return;}

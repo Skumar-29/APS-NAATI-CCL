@@ -1,2 +1,1 @@
-Upload APS_NAATI_CCL_GitHub_Ready_v9_Practice_History_Recall to the GitHub Pages repository root.
-Do not upload the ZIP itself; upload the extracted contents.
+UPLOAD THIS VERSION: APS NAATI CCL Practice v11 - Embedded Firebase cross-device sync. No per-device Firebase configuration paste is required.

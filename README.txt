@@ -41,3 +41,7 @@ V9 PRACTICE HISTORY & RECALL
 - Daily reminder time, sound and browser-notification controls are in Settings.
 - GitHub background reminder limitation: reliable alerts while the app is fully closed require push support.
 - Practice history and recall data can sync across signed-in devices after Firebase cloud setup.
+
+V10 CLOUD SYNC
+---------------
+Firebase Web configuration is bundled. On a new device, simply sign in with the same Google/Email account; do not paste Firebase configuration again.

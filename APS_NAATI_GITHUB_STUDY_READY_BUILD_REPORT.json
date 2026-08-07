@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
-  "buildVersion": "github-study-ready-2026-08-07-v9",
-  "createdAt": "2026-08-07T23:29:00+10:00",
-  "status": "github-study-ready-v9-practice-history-recall-created",
+  "buildVersion": "github-study-ready-2026-08-08-v11",
+  "createdAt": "2026-08-08T01:15:00+10:00",
+  "status": "github-study-ready-v10-embedded-firebase-created",
   "content": {
     "dialogues": 85,
     "segments": 1073,
@@ -65,7 +65,18 @@
     "browserNotificationWhileOpen": true,
     "closedAppScheduledPush": false,
     "practiceHistoryCloudSync": true,
-    "recallCloudSync": true
+    "recallCloudSync": true,
+    "bundledFirebaseWebConfig": true,
+    "perDeviceFirebaseConfigPasteRequired": false,
+    "crossDeviceCloudSync": true,
+    "firebaseConfigRequiredPerLearner": false,
+    "emailVerification": true,
+    "emailVerificationResend": true,
+    "forgotPassword": true,
+    "signedInPasswordReset": true,
+    "unverifiedPasswordCloudSyncBlocked": true,
+    "googleSignIn": true,
+    "emailPasswordSignIn": true
   },
   "validation": {
     "javascriptSyntax": {
@@ -90,7 +101,9 @@
       "recallSettings": "newest settings timestamp wins"
     },
     "browserAutomation": "not executed in this environment because local browser navigation is blocked by administrator policy",
-    "staticPackageValidation": "passed"
+    "staticPackageValidation": "passed",
+    "bundledFirebaseInitialisation": "passed",
+    "accountSystemV11": "static-and-browser-smoke-tested"
   },
   "manifest": {
     "404.html": {
