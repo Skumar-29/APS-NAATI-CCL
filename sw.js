@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-study-ready-20260808-v11';
+const CACHE_NAME = 'aps-naati-study-ready-20260808-v12';
 const PRECACHE = [
   "./",
   "./index.html",
@@ -20,6 +20,7 @@ const PRECACHE = [
   "./QA_REPORT_GITHUB_STUDY_READY_V8.md",
   "./QA_REPORT_GITHUB_STUDY_READY_V9.md",
   "./QA_REPORT_GITHUB_STUDY_READY_V11.md",
+  "./QA_REPORT_GITHUB_STUDY_READY_V12.md",
   "./QA_REPORT_V2.0.3.md",
   "./QA_REPORT_V2.0.4.md",
   "./QA_REPORT_V2.0.5.md",

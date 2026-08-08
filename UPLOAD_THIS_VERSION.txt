@@ -1,1 +1,1 @@
-UPLOAD THIS VERSION: APS NAATI CCL Practice v11 - Embedded Firebase cross-device sync. No per-device Firebase configuration paste is required.
+UPLOAD THIS VERSION: APS NAATI CCL Practice v12 - Fixes dialogue transcript word-by-word wrapping while retaining the complete v11 account and cloud-sync system.

@@ -1,17 +1,14 @@
 {
   "schemaVersion": "1.0",
-  "version": "github-study-ready-2026-08-08-v11",
-  "releasedAt": "2026-08-08T01:15:00+10:00",
+  "version": "github-study-ready-2026-08-08-v12",
+  "releasedAt": "2026-08-08T20:22:00+10:00",
   "critical": false,
   "minimumSupportedVersion": "github-study-ready-2026-08-06-v4",
   "releaseNotes": [
-    "Complete learner account flow: no Firebase configuration is ever requested from new users or new devices",
-    "Email registration now sends a Firebase email-verification link and cloud sync waits until verification is complete",
-    "Email sign-in detects unverified accounts and provides Verify, Resend and I have verified controls",
-    "Forgot password and signed-in Reset password send secure Firebase password-reset emails",
-    "New email accounts require password confirmation and at least 8 characters",
-    "Google sign-in remains available and verified Google accounts can sync immediately",
-    "Guest mode remains local-only; recordings remain local to each device",
-    "All v9 practice history/recall schedules and v8 Hide English/Hide Hindi recall features are retained"
+    "Fixed dialogue source transcript layout so transcript text uses the full card row instead of wrapping word-by-word in the Skip-button column",
+    "Transcript now keeps normal sentence wrapping on Mac/desktop while remaining responsive on iPad and iPhone",
+    "Source transcript and hidden-transcript message are left-aligned with a readable desktop maximum width",
+    "Service-worker cache version updated so the layout fix replaces the previously cached stylesheet",
+    "All v11 account, Firebase sync, verification, password recovery, practice history, recall and learning features are retained"
   ]
 }

@@ -157,3 +157,50 @@ body{padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left)
   .recall-display-toggle{flex:1;min-width:120px}
   .recall-hidden-label{font-size:.38em;padding:7px 11px}
 }
+
+/* GitHub Study Ready v12 — Dialogue transcript layout fix.
+   The inline Skip control added an extra grid child before the source icon.
+   Without an explicit transcript row, CSS Grid auto-placement put the transcript
+   into the narrow first column, causing word-by-word wrapping on desktop. */
+.source-card {
+  grid-template-columns: auto 60px minmax(0, 1fr);
+  align-items: center;
+}
+.source-card > p {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  width: 100%;
+  max-width: 850px;
+  min-width: 0;
+  justify-self: start;
+  margin: 0;
+  display: block;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  text-align: left;
+}
+.source-card.waiting > p {
+  min-height: 0;
+  display: block;
+  align-items: initial;
+  justify-content: initial;
+}
+.source-card > .source-actions {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+@media (max-width: 900px) {
+  .source-card {
+    grid-template-columns: auto 50px minmax(0, 1fr);
+  }
+  .source-card > p {
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .source-card {
+    padding: 18px;
+    gap: 12px;
+  }
+}

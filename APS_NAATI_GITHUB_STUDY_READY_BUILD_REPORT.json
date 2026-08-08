@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
-  "buildVersion": "github-study-ready-2026-08-08-v11",
-  "createdAt": "2026-08-08T01:15:00+10:00",
-  "status": "github-study-ready-v10-embedded-firebase-created",
+  "buildVersion": "github-study-ready-2026-08-08-v12",
+  "createdAt": "2026-08-08T20:22:00+10:00",
+  "status": "github-study-ready-v12-transcript-layout-fixed",
   "content": {
     "dialogues": 85,
     "segments": 1073,
@@ -76,15 +76,17 @@
     "signedInPasswordReset": true,
     "unverifiedPasswordCloudSyncBlocked": true,
     "googleSignIn": true,
-    "emailPasswordSignIn": true
+    "emailPasswordSignIn": true,
+    "dialogueTranscriptFullWidthRow": true,
+    "dialogueTranscriptNormalWrapping": true
   },
   "validation": {
     "javascriptSyntax": {
       "app.js": "passed",
       "study-hotfix-v5.js": "passed",
       "study-progress-v9.js": "passed",
-      "cloud-sync-v7.js": "passed",
-      "sw.js": "passed"
+      "sw.js": "passed",
+      "cloud-sync-v11.js": "passed"
     },
     "contentCounts": {
       "dialogues": 85,
@@ -100,10 +102,12 @@
       "recallProgress": "merge per item by newest updatedAt",
       "recallSettings": "newest settings timestamp wins"
     },
-    "browserAutomation": "not executed in this environment because local browser navigation is blocked by administrator policy",
+    "browserAutomation": "not executed in this environment; Chromium headless could not complete because system DBus is unavailable",
     "staticPackageValidation": "passed",
     "bundledFirebaseInitialisation": "passed",
-    "accountSystemV11": "static-and-browser-smoke-tested"
+    "accountSystemV11": "static-and-browser-smoke-tested",
+    "transcriptLayoutV12": "passed-static-css-grid-placement-validation",
+    "serviceWorkerCacheBumped": "passed"
   },
   "manifest": {
     "404.html": {
@@ -119,8 +123,8 @@
       "sha256": "f330e7abcbb59ed9021e03efbd0a06d173897296ad7c9d284d62de1146947535"
     },
     "FIREBASE_CLOUD_SYNC_SETUP.txt": {
-      "bytes": 2413,
-      "sha256": "332d4d1ea9a290a1932863745e64502f5a13c0d7e4bc8e73af911ce2ca5afa5a"
+      "bytes": 1982,
+      "sha256": "cfc71efa9f06a4e298773205794102943617337ef1fc9bb7cb88a1c85735febb"
     },
     "FRIENDS_TEST_CHECKLIST.md": {
       "bytes": 600,
@@ -137,6 +141,18 @@
     "PHRASE_LIBRARY_METHOD_V2.0.5.md": {
       "bytes": 1044,
       "sha256": "1c84e8a6548ad4c8443430c6973495ea3b155e2ac4e5c5a16623d8cf002b154f"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V10.md": {
+      "bytes": 975,
+      "sha256": "00ed1e2960c95e60f267a0258e94773689ece9b4f368c003118666497854e240"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V11.md": {
+      "bytes": 1117,
+      "sha256": "30f15cc7051a1e10db812064b46eeb33cc51dd4d069d714143462dc326b68384"
+    },
+    "QA_REPORT_GITHUB_STUDY_READY_V12.md": {
+      "bytes": 1672,
+      "sha256": "22c3174f2f8d21c6bd13a705a41118f74419efa71957e5a19ddaabaa2a3aa9a1"
     },
     "QA_REPORT_GITHUB_STUDY_READY_V4.md": {
       "bytes": 858,
@@ -187,8 +203,8 @@
       "sha256": "d2c09c04c576d2e7a2a9b26e54d15ca6fdd8a9910f646151bd571446c7e34534"
     },
     "README.txt": {
-      "bytes": 1834,
-      "sha256": "9a90cb4c594e06641fdd3d4d2ce6b28ddf59fca5146584b8c15ea8193040a48e"
+      "bytes": 2016,
+      "sha256": "5545d215ed16d2eeea82fe20424a32082d4010beb2d3b3d76bbd7fe566b9242b"
     },
     "UPDATE_NOTES_V2.0.3.md": {
       "bytes": 1059,
@@ -211,24 +227,24 @@
       "sha256": "c1f2ea61a07d4bdc8dff4a33ed58ac8b2436f2ea6fde242fd412f30d44753beb"
     },
     "UPLOAD_THIS_VERSION.txt": {
-      "bytes": 159,
-      "sha256": "8c6a75b0cf43501bf84e3545255223689ba8fd7b3e2818f1ec1d9e50718774cb"
+      "bytes": 162,
+      "sha256": "370c3713de2310b97f4f66cc39bba6a8995080db2932add7c8dc3bba0eed767f"
     },
     "VOCABULARY_AUDIT_V2.0.3.csv": {
       "bytes": 383722,
       "sha256": "11aa7740c6123b9d527213097be010d8b7c69fcdea63f980a9d35e7ee321ce4f"
     },
     "app.js": {
-      "bytes": 128637,
-      "sha256": "41c61654dad621031fe3e03f9ae076346b2dc52b6f43743fcd29235890a1c9a3"
+      "bytes": 128915,
+      "sha256": "c6765689bef38377c6a7e1d154da27b99e08390c38032c94abb15e6a4778eed0"
     },
-    "cloud-sync-v7.css": {
-      "bytes": 6295,
-      "sha256": "f0050f95ccf8556874c0d15edbc164d114949d4224f07eece6ee8a9f8ee8c286"
+    "cloud-sync-v11.css": {
+      "bytes": 7482,
+      "sha256": "753ce047a3f8a5829ec561137f55e513550d0629719d8ed57ebeb334a3cee8f4"
     },
-    "cloud-sync-v7.js": {
-      "bytes": 37395,
-      "sha256": "ee32ccd989b39c315b1d46c037683864cddfe92358c4164a69a540f3f44fca77"
+    "cloud-sync-v11.js": {
+      "bytes": 54441,
+      "sha256": "80f627327768efb2eb69723afc12dcbfd28d70a6520f8da95e9e0313fff1e0e9"
     },
     "content/dialogues.json": {
       "bytes": 3015797,
@@ -283,8 +299,8 @@
       "sha256": "6b3a791f0301c4efadb117a464806d8fa5157dee5862b8b38cee8e3f0e7adf83"
     },
     "index.html": {
-      "bytes": 1506,
-      "sha256": "5afb967256e8bb7f39fe25eaa8b852562b63c6c40befbb2ad97e0995865df5f6"
+      "bytes": 1508,
+      "sha256": "46d6f3dab93ef8f7932a23d84bf94b175deec13facf0a8c5091cdec681b35314"
     },
     "manifest.webmanifest": {
       "bytes": 873,
@@ -315,16 +331,16 @@
       "sha256": "9682e1bc74a768d25d317de59b94b8c0fd5d6305824b4fca0000dba7180b07e8"
     },
     "styles.css": {
-      "bytes": 50855,
-      "sha256": "d19f2dad2a9c3eaa8208c7452583861c2972e2077e852c8464bd8e1da79d55e8"
+      "bytes": 51924,
+      "sha256": "acadad020cb87ce2a8e5c5735acb2dca00fc65d34599c12c76b5f388da6d3dcb"
     },
     "sw.js": {
-      "bytes": 3538,
-      "sha256": "9a06b1b499e39f6ff189e14b8bb070023de7495e642107b3ab11a348abdff1dc"
+      "bytes": 3627,
+      "sha256": "6e60f60486da349d89dc829093580ed1f7425767e92147c80b71bc8ef4c5edd7"
     },
     "version.json": {
-      "bytes": 1218,
-      "sha256": "34e55eca884c7b4764a35ab872918dab0360fbc867d0a61d6233d5213218d9d5"
+      "bytes": 842,
+      "sha256": "4a9c73dc899c7e8b528bdf8d130b18a5c6eff45174a4244869ddc3a8047d2b90"
     }
   }
 }
