@@ -1,5 +1,13 @@
-APS NAATI CCL Practice — V14 Natural Hindi Full Rebuild
-Upload the CONTENTS of this folder to the same GitHub Pages repository.
-Firebase login/account configuration is preserved from V13/V12. No Cloudflare setup is required.
+UPLOAD THIS VERSION TO GITHUB
 
-After upload, hard-refresh once or close/reopen the installed web app so the V14 service-worker cache activates.
+APS NAATI CCL Practice
+Version: V15 — Dialogue Learning Hub + Dialogue Vocabulary
+Build: github-dialogue-learning-2026-08-09-v15
+
+Upload the CONTENTS of this ZIP/repository folder to the same GitHub Pages repository, replacing the previous web files.
+
+No Cloudflare setup is required.
+No new Firebase project is required.
+The existing login/account configuration is retained.
+
+After GitHub Pages deploys, hard-refresh once so the V15 service worker replaces the V14 cache.

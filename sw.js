@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-natural-hindi-20260809-v14';
+const CACHE_NAME = 'aps-naati-dialogue-learning-20260809-v15';
 const PRECACHE = [
   "./",
   "./index.html",
@@ -62,8 +62,13 @@ const PRECACHE = [
   "./QA_REPORT_GITHUB_RELIABILITY_V13.md",
   "./CONTENT_RELIABILITY_V13.md",
   "./content/packs/hi/general-vocabulary.json",
-  "./reliability-v14.js",
-  "./reliability-v14.css"
+  "./reliability-v15.js",
+  "./reliability-v15.css",
+  "./content/dialogue-vocabulary.json",
+  "./content/packs/hi/dialogue-vocabulary.json",
+  "./CONTENT_RELIABILITY_V15.md",
+  "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.md",
+  "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.json"
 ];
 
 self.addEventListener('install', event => {

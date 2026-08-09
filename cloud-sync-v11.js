@@ -55,6 +55,7 @@
     storageKeys.lesson,
     storageKeys.mistakes,
     storageKeys.phraseStats,
+    storageKeys.dialogueVocabProgress,
     storageKeys.selectedLanguage,
     storageKeys.practiceDaily,
     storageKeys.recallProgress,
@@ -717,6 +718,7 @@
     if (key === storageKeys.lesson) return mergeLesson(localValue, remoteValue);
     if (key === storageKeys.vocabResume) return mergeResume(localValue, remoteValue);
     if (key === storageKeys.practiceDaily) return mergePracticeDaily(localValue, remoteValue);
+    if (key === storageKeys.dialogueVocabProgress) return mergeRecallProgress(localValue, remoteValue);
     if (key === storageKeys.recallProgress) return mergeRecallProgress(localValue, remoteValue);
     if (key === storageKeys.recallSettings) return mergeRecallSettings(localValue, remoteValue);
     if (key === storageKeys.vocabSettings) {

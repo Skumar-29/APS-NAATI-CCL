@@ -1,42 +1,14 @@
-APS NAATI CCL Practice — V14 Natural Hindi Full Rebuild
-========================================================
+APS NAATI CCL Practice — V15
 
-UPLOAD THIS VERSION TO THE SAME EXISTING GITHUB PAGES REPOSITORY.
-No Cloudflare setup is required.
+This GitHub-ready build preserves the V14 natural-Hindi dialogue library and existing account/login system, and adds:
 
-V14 CONTENT
------------
-- 105 dialogues
-- 1,273 segments
-- 80 old machine-formatted dialogues rebuilt with new natural Hindi content
-- 25 already-clean dialogues revalidated and normalised
-- All packaged dialogues are study-ready in the V14 learner library
-- Hindi doctor term: चिकित्सक
-- Dentist: दंत चिकित्सक
-- Veterinarian: पशु चिकित्सक
-- All source segments are 35 words or fewer
-- Meaning-first answer flexibility is stored for every segment
-- Content Studio can edit/add/delete/reorder segments and export/import edits
-- Only reviewed General Vocabs are shown to students
+- Dialogue Learning Hub before Learning Mode
+- Learn Vocabs / Start Dialogue choices
+- 105 separate dialogue-vocabulary sets
+- 1,649 dialogue-specific English-Hindi vocabulary records
+- partial vocabulary resume and Back to Dialogue navigation
+- Content Studio dialogue search
+- Practice report return-to-dialogue-library fix
+- dialogue-vocabulary backup/restore and cloud-sync support
 
-PRESERVED
----------
-- Existing Firebase login/account flow
-- Existing cloud sync
-- Recording and playback
-- Transcript On/Off
-- Speed and response gap
-- Voice settings
-- Player layout and controls
-- Existing progress/recall systems
-
-UPLOAD
-------
-1. Extract the ZIP.
-2. Open the existing GitHub repository.
-3. Upload EVERYTHING INSIDE the extracted folder to the repository root.
-4. Replace the older files and commit.
-5. Wait for GitHub Pages to publish.
-6. Hard-refresh once, or close/reopen the installed web app.
-
-See CONTENT_RELIABILITY_V14.md and QA_REPORT_GITHUB_NATURAL_HINDI_V14.md.
+The normal Vocabulary and Phrase pages continue to work independently. Back to Dialogue is only displayed when the vocabulary player was opened from a dialogue.
