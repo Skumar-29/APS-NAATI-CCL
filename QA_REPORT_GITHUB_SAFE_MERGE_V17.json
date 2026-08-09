@@ -1,0 +1,394 @@
+{
+  "version": "V17 Safe Merge & Library Cleanup",
+  "generatedAt": "2026-08-09T16:56:01.907950+00:00",
+  "passed": 77,
+  "failed": 0,
+  "total": 77,
+  "checks": [
+    {
+      "name": "exists index.html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "exists content-library-v17.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "exists content-library-v17.css",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "exists sw.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "exists version.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "exists CONTENT_LIBRARY_V17.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "exists QA_REPORT_GITHUB_SAFE_MERGE_V17.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "exists QA_REPORT_GITHUB_SAFE_MERGE_V17.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "index loads V17 JS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "index loads V17 CSS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "index does not load V16 library JS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "empty owner layer omitted from distributable",
+      "passed": true,
+      "detail": "Protects any existing GitHub owner-content-v16.json from upload overwrite."
+    },
+    {
+      "name": "JS syntax app.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JS syntax cloud-sync-v11.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JS syntax content-library-v17.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JS syntax reliability-v15.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JS syntax scoring.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JS syntax study-hotfix-v5.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JS syntax study-progress-v9.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JS syntax sw.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse APS_NAATI_GITHUB_STUDY_READY_BUILD_REPORT.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse QA_REPORT_GITHUB_CONTENT_LIBRARY_V16.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse QA_REPORT_GITHUB_NATURAL_HINDI_V14.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse QA_REPORT_GITHUB_RELIABILITY_V13.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/dialogues.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/exam_info.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/languages.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/lesson0.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/packs/hi/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/packs/hi/dialogues.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/packs/hi/general-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/packs/hi/phrases.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/packs/hi/vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/pilot50/batch01-runtime-overlay-v1.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/starter_phrases.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse content/starter_vocab.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parse version.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "service-worker precache paths exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "service worker V17 cache name",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "preserve app.js",
+      "passed": true,
+      "detail": "931fa70886c1"
+    },
+    {
+      "name": "preserve cloud-sync-v11.js",
+      "passed": true,
+      "detail": "ed01d99c24a6"
+    },
+    {
+      "name": "preserve cloud-sync-v11.css",
+      "passed": true,
+      "detail": "753ce047a3f8"
+    },
+    {
+      "name": "preserve reliability-v15.js",
+      "passed": true,
+      "detail": "53898fbc06a2"
+    },
+    {
+      "name": "preserve reliability-v15.css",
+      "passed": true,
+      "detail": "d441fd90b45f"
+    },
+    {
+      "name": "preserve scoring.js",
+      "passed": true,
+      "detail": "7c07bcfdc675"
+    },
+    {
+      "name": "preserve study-hotfix-v5.js",
+      "passed": true,
+      "detail": "936314af57d1"
+    },
+    {
+      "name": "preserve study-hotfix-v5.css",
+      "passed": true,
+      "detail": "094df7e584d1"
+    },
+    {
+      "name": "preserve study-progress-v9.js",
+      "passed": true,
+      "detail": "9682e1bc74a7"
+    },
+    {
+      "name": "preserve study-progress-v9.css",
+      "passed": true,
+      "detail": "7abe3fa38742"
+    },
+    {
+      "name": "preserve styles.css",
+      "passed": true,
+      "detail": "acadad020cb8"
+    },
+    {
+      "name": "preserve manifest.webmanifest",
+      "passed": true,
+      "detail": "a49c67fb30d1"
+    },
+    {
+      "name": "preserve content/dialogues.json",
+      "passed": true,
+      "detail": "4829a2e906e4"
+    },
+    {
+      "name": "preserve content/packs/hi/dialogues.json",
+      "passed": true,
+      "detail": "4829a2e906e4"
+    },
+    {
+      "name": "preserve content/packs/hi/vocabulary.json",
+      "passed": true,
+      "detail": "6e7c1aaa45ba"
+    },
+    {
+      "name": "preserve content/packs/hi/phrases.json",
+      "passed": true,
+      "detail": "16a1b8fb876e"
+    },
+    {
+      "name": "preserve content/packs/hi/general-vocabulary.json",
+      "passed": true,
+      "detail": "cfd316a4b9b5"
+    },
+    {
+      "name": "preserve content/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": "a1be28bc880f"
+    },
+    {
+      "name": "preserve content/packs/hi/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": "a1be28bc880f"
+    },
+    {
+      "name": "105 dialogues preserved",
+      "passed": true,
+      "detail": "105"
+    },
+    {
+      "name": "3000 core vocab preserved",
+      "passed": true,
+      "detail": "3000"
+    },
+    {
+      "name": "551 phrases preserved",
+      "passed": true,
+      "detail": "551"
+    },
+    {
+      "name": "3009 general vocab preserved",
+      "passed": true,
+      "detail": "3009"
+    },
+    {
+      "name": "dialogue vocab 105 sets preserved",
+      "passed": true,
+      "detail": "105"
+    },
+    {
+      "name": "dialogue vocab 1649 items preserved",
+      "passed": true,
+      "detail": "1649"
+    },
+    {
+      "name": "feature marker Safe Merge…",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker Save & Apply",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker Delete unused draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker mergedInto",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker migrateProgress",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker migrateAllMergeAliases",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker aps-content-library-backup-v17",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker contentVersion:'17.0.0-owner'",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker merges:{vocabulary:{},phrases:{}}",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "feature marker content/owner-content-v16.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime safe-merge progress migration smoke test",
+      "passed": true,
+      "detail": "\",\n      \"stage\": \"1w\",\n      \"dueAt\": \"2026-08-11T00:00:00Z\",\n      \"completedStages\": [\n        \"1d\"\n      ],\n      \"updatedAt\": \"2026-08-09T16:56:01.902Z\"\n    }\n  },\n  \"dp\": {\n    \"dialogue-23\": {\n      \"visitedIds\": [\n        \"v1\"\n      ],\n      \"lastId\": \"v1\",\n      \"updatedAt\": \"2026-08-09T16:56:01.902Z\"\n    }\n  },\n  \"vocab\": [\n    {\n      \"id\": \"v1\",\n      \"topic\": \"health\",\n      \"english\": \"appointment\",\n      \"hindi\": \"अपॉइंटमेंट\",\n      \"acceptedHindi\": [\n        \"मुलाकात का समय\"\n      ],\n      \"exampleEnglish\": \"Book an appointment.\",\n      \"exampleHindi\": \"समय लें।\",\n      \"notes\": \"\",\n      \"qualityStatus\": \"owner-reviewed-v17\",\n      \"status\": \"reviewed\",\n      \"itemType\": \"word\"\n    }\n  ],\n  \"lastToast\": \"Merged safely into “appointment”. Existing progress was migrated.\"\n}\n"
+    }
+  ]
+}

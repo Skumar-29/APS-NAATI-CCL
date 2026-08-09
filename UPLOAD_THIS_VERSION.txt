@@ -1,16 +1,14 @@
-UPLOAD THIS VERSION TO GITHUB
+APS NAATI CCL Practice — V17 Safe Merge & Library Cleanup
 
-APS NAATI CCL Practice
-Version: V16 — Content Library Studio + Recall Example Controls
-Build: github-content-library-2026-08-10-v16
+Upload the contents of this folder to the SAME GitHub repository used for V16.
 
-Upload the CONTENTS of this ZIP/repository folder to the same GitHub Pages repository, replacing the previous web files.
+Important:
+- V17 intentionally does not include an empty content/owner-content-v16.json.
+- If your repository already contains that file from previous Content Studio publishing, KEEP it. V17 will read and extend it.
+- If the file does not exist, the app still works; the Publish to GitHub function can create it later.
+- Hard-refresh the deployed site once after GitHub Pages finishes updating so the V17 service worker becomes active.
 
-No Cloudflare setup is required.
-No new Firebase project is required.
-The existing login/account configuration is retained.
-V15 learner progress and stable content IDs are retained.
-
-After GitHub Pages deploys, hard-refresh once so the V16 service worker replaces the V15 cache.
-
-V16 adds the Owner Content Library Studio (Dialogues / Vocabulary / Phrases / Publish), searchable vocabulary/phrase editing, category/dialogue allocations, examples, Draft/Reviewed/Published states, archive/restore, V16 owner-content backups, optional owner-only GitHub publishing and independent Show Example / Speak Example controls.
+Saving content in V17:
+1. Save Draft (not live) = store unfinished work locally.
+2. Save & Apply = save as reviewed and use the correction on this device.
+3. Publish tab > Publish to GitHub = make reviewed changes available to the deployed app.

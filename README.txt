@@ -18,3 +18,7 @@ V16 adds:
 - network-first service-worker handling for the owner content layer after content-only GitHub updates
 
 The V15 Dialogue Learning Hub and Back to Dialogue vocabulary flow continue unchanged.
+
+V17 SAFE MERGE NOTE
+-------------------
+Content Library Studio now supports safe duplicate merge for vocabulary and phrases. Use Save Draft for unfinished work, Save & Apply for reviewed local changes, and the Publish tab for GitHub publishing. See CONTENT_LIBRARY_V17.md.

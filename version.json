@@ -1,19 +1,18 @@
 {
   "schemaVersion": "1.0",
-  "version": "github-content-library-2026-08-10-v16",
-  "releasedAt": "2026-08-10T01:59:00+10:00",
+  "version": "github-safe-merge-2026-08-10-v17",
+  "releasedAt": "2026-08-10T02:47:00+10:00",
   "critical": false,
-  "minimumSupportedVersion": "github-dialogue-learning-2026-08-09-v15",
+  "minimumSupportedVersion": "github-content-library-2026-08-10-v16",
   "releaseNotes": [
-    "Preserves the V15 Firebase login/account flow, dialogue player, Learning/Practice modes, Dialogue Learning Hub and existing learner progress.",
-    "Adds a unified Owner Content Library Studio with Dialogues, Vocabulary, Phrases and Publish areas.",
-    "Adds searchable vocabulary editing across Core Vocabulary, General Vocabs and dialogue-specific vocabulary.",
-    "Adds searchable phrase editing with dialogue allocation support.",
-    "Supports adding new vocabulary/phrases, correcting meanings, alternate Hindi meanings, English/Hindi examples, notes and topic metadata.",
-    "Uses stable IDs and allocation records so edits do not reset learner progress; content can be allocated to Core, General and one or multiple dialogues.",
-    "Adds duplicate/sense warnings, draft/reviewed/published states, archive/restore and revert-local-change controls.",
-    "Adds V16 owner-content backup export/import and includes V15 dialogue overrides in the same backup.",
-    "Adds optional owner-only GitHub publishing of content/owner-content-v16.json using a session-only fine-grained GitHub token; the token is never stored or exported.",
-    "Adds independent Show/Hide Example and Speak Example controls in vocabulary/phrase recall and player settings."
+    "Preserves the V16 Firebase login/account flow, player, dialogue content, Learning/Practice modes and learner progress.",
+    "Adds Safe Merge for genuine duplicate vocabulary and phrases.",
+    "Safe Merge lets the owner choose which stable record to keep, combines allocations and useful alternatives, and retains the removed ID as a compatibility alias.",
+    "Migrates vocabulary status, resume position, spaced recall and dialogue-vocabulary progress to the surviving ID; phrase merges also combine phrase practice history.",
+    "Adds Archive for existing content and restricts permanent deletion to unused unpublished owner drafts with no progress or merge dependencies.",
+    "Adds searchable merge-candidate selection and warns that synonyms/different senses should remain separate.",
+    "Renames the reviewed save action to Save & Apply and explains the three-stage flow: Save Draft, Save & Apply, then Publish to GitHub.",
+    "Keeps the existing owner-content-v16.json GitHub path for backward compatibility, while publishing schema 1.1 with merge aliases.",
+    "Omits an empty owner-content-v16.json from the ZIP so an existing published owner-content file cannot be accidentally overwritten during a V17 upload."
   ]
 }
