@@ -1,47 +1,42 @@
-APS NAATI CCL Practice — GitHub Study Ready v4
+APS NAATI CCL Practice — V14 Natural Hindi Full Rebuild
+========================================================
 
-THIS ZIP IS READY FOR GITHUB PAGES
-==================================
+UPLOAD THIS VERSION TO THE SAME EXISTING GITHUB PAGES REPOSITORY.
+No Cloudflare setup is required.
 
-Fixed in this version:
-- Recording and playback work in the browser without Firebase.
-- Browser transcript and local comparison are used when available.
-- Compare Answer still works manually when no browser transcript is available.
-- The first Skip button is inside the top-right of the listening card.
-- The second Skip button is inside the top-right of the response card.
-- Both buttons are labelled only “Skip”.
-- The old floating skip controls are removed.
-- Practice search, dialogue playback and Check & update latest version remain included.
-- Existing progress and browser recordings are preserved.
+V14 CONTENT
+-----------
+- 105 dialogues
+- 1,273 segments
+- 80 old machine-formatted dialogues rebuilt with new natural Hindi content
+- 25 already-clean dialogues revalidated and normalised
+- All packaged dialogues are study-ready in the V14 learner library
+- Hindi doctor term: चिकित्सक
+- Dentist: दंत चिकित्सक
+- Veterinarian: पशु चिकित्सक
+- All source segments are 35 words or fewer
+- Meaning-first answer flexibility is stored for every segment
+- Content Studio can edit/add/delete/reorder segments and export/import edits
+- Only reviewed General Vocabs are shown to students
+
+PRESERVED
+---------
+- Existing Firebase login/account flow
+- Existing cloud sync
+- Recording and playback
+- Transcript On/Off
+- Speed and response gap
+- Voice settings
+- Player layout and controls
+- Existing progress/recall systems
 
 UPLOAD
 ------
-1. Extract this ZIP on the laptop.
-2. Open the extracted folder.
-3. In GitHub, open the existing repository.
-4. Select Add file → Upload files.
-5. Upload EVERYTHING INSIDE the extracted folder.
-6. Replace the existing files and commit.
-7. Wait for GitHub Pages to publish.
-8. Open the app and select Settings → Check & update latest version.
+1. Extract the ZIP.
+2. Open the existing GitHub repository.
+3. Upload EVERYTHING INSIDE the extracted folder to the repository root.
+4. Replace the older files and commit.
+5. Wait for GitHub Pages to publish.
+6. Hard-refresh once, or close/reopen the installed web app.
 
-Use current Google Chrome and allow microphone permission.
-
-
-V7 CROSS-DEVICE SYNC
---------------------
-See FIREBASE_CLOUD_SYNC_SETUP.txt for the one-time browser setup. No Terminal is required.
-
-
-V9 PRACTICE HISTORY & RECALL
-----------------------------
-- Progress now shows Today and Last 7 Days practice history.
-- Vocabulary, Phrases and Dialogues have separate 1 Day / 1 Week / 2 Weeks / 4 Weeks recall stages.
-- Choose recall intervals in Settings.
-- Daily reminder time, sound and browser-notification controls are in Settings.
-- GitHub background reminder limitation: reliable alerts while the app is fully closed require push support.
-- Practice history and recall data can sync across signed-in devices after Firebase cloud setup.
-
-V10 CLOUD SYNC
----------------
-Firebase Web configuration is bundled. On a new device, simply sign in with the same Google/Email account; do not paste Firebase configuration again.
+See CONTENT_RELIABILITY_V14.md and QA_REPORT_GITHUB_NATURAL_HINDI_V14.md.

@@ -1,98 +1,53 @@
-# APS NAATI CCL Practice — Friends Beta V2.0.7
+# APS NAATI CCL Practice — V14 Natural Hindi Full Rebuild
 
-This folder is ready for GitHub Pages. Once deployed over HTTPS, friends can install it like an app on Mac, iPhone, Android and Windows. No Terminal is required.
+This folder is ready to replace the current files in the existing GitHub Pages repository.
 
-## Publish with GitHub Pages
+## What V14 changes
 
-1. Create a new GitHub repository, for example `aps-naati-ccl-beta`.
-2. Upload **the contents of this folder** to the repository root.
-3. Open the repository **Settings → Pages**.
-4. Under **Build and deployment**, choose **GitHub Actions**.
-5. Open the **Actions** tab and wait for `Deploy APS NAATI CCL Practice Beta` to finish.
-6. Copy the Pages address shown by GitHub and send it to testers.
+- **105 dialogues / 1,273 segments** remain available with stable dialogue and segment IDs.
+- The **80 old machine-formatted legacy dialogues were rebuilt** with new APS practice wording instead of spelling-patching corrupted Roman-Hindi conversions.
+- The remaining **25 already-clean pilot/original dialogues were revalidated and normalised** to the same V14 terminology and answer-flexibility policy.
+- Student-facing Hindi uses **simple, natural Standard Hindi**. The preferred term for doctor is **चिकित्सक**; dentist is **दंत चिकित्सक** and veterinarian is **पशु चिकित्सक**.
+- Sample answers are examples, not exact sentence keys. Valid synonyms, natural paraphrases, word-order variation, and active/passive changes may be accepted when the same meaning and critical details are preserved.
+- Every segment has meaning units, critical-detail metadata and an explicit answer-flexibility policy.
+- All source segments are **35 words or fewer**.
+- The obsolete Pilot50 runtime overlay was removed so an old pilot segment cannot silently overwrite V14 content.
+- **General Vocabs** remains separate from the core CCL vocabulary. Only reviewed General Vocabs are shown in the learner UI; raw PDF-reference terms remain preserved in the data for future editorial review.
+- Content Studio remains available for owner edits, adding a missing segment, deleting/reordering a segment, and JSON import/export.
 
-## Install on devices
+## What V14 deliberately does not change
 
-### Mac (Safari, macOS Sonoma 14 or later)
-Open the beta link in Safari, then choose **File → Add to Dock**.
+The main `app.js` and `cloud-sync-v11.js` are unchanged from V13. This preserves the existing:
 
-### iPhone
-Open the beta link in Safari, tap **Share → Add to Home Screen**, turn on **Open as Web App** when shown, then tap **Add**.
+- Firebase login/account flow
+- Google / Apple / Email / Guest account behaviour already present in the build
+- cloud progress sync
+- recording and playback
+- transcript toggle
+- speed and response-gap controls
+- voice settings
+- dialogue player behaviour
+- progress history and recall features
 
-### Android
-Open the beta link in Chrome, open the menu, and choose **Install app** or **Add to Home screen**.
+**No Cloudflare setup is required.**
 
-### Windows
-Open the beta link in Edge or Chrome and choose **Install app** from the browser menu/address bar.
+## Upload to the existing GitHub repository
 
-## Important beta notes
+1. Extract the V14 ZIP.
+2. Open your existing APS NAATI GitHub repository.
+3. Upload **everything inside the extracted V14 folder** to the repository root and replace the older files.
+4. Commit the changes.
+5. Wait for GitHub Pages to publish.
+6. Open the app and hard-refresh once, or close and reopen the installed web app, so the V14 service-worker cache replaces the previous version.
 
-- The app stores current learning progress primarily on each device.
-- A user's progress does not automatically move to another device yet.
-- Test microphone, recording, dialogue audio, vocabulary player and offline reopening on every device type.
-- Do not promote imported dialogues as fully human-verified until bilingual review is complete.
+Do not upload the outer ZIP itself as the website contents; upload the files and folders inside it.
 
+## Quality reports
 
-## V2.0.3 progress update
+See:
 
-- Vocabulary section contains only reviewed vocabulary and short terms; dialogue sentence cards were removed.
-- Phrase completion, remaining count and practice count are saved locally.
-- Dialogue completion, remaining count and number of completed practices are shown in Practice and Progress.
-- Existing dialogue attempts from earlier versions are automatically included in the new records.
+- `CONTENT_RELIABILITY_V14.md`
+- `QA_REPORT_GITHUB_NATURAL_HINDI_V14.md`
+- `QA_REPORT_GITHUB_NATURAL_HINDI_V14.json`
 
-
-## V2.0.3 final comparison upgrade
-
-After recording a segment, choose **Check my answer** to view:
-
-- your optional automatic transcript;
-- a sample interpretation;
-- key meaning points;
-- short suggested notes;
-- a note-taking technique for that specific segment; and
-- a button to hear the sample answer.
-
-This is available for all 85 dialogues and 1,073 segments. Mock Test answers remain hidden until the test is complete.
-
-
-## V2.0.4 pagination update
-
-- Vocabulary is displayed in 25 pages of up to 120 cards.
-- Phrases are displayed in 10 pages of up to 120 cards.
-- Previous, Next and direct page selection are available above and below the cards.
-- Search and filter changes automatically return to page 1.
-- **Play all current filters** includes every matching item, not only the visible page.
-
-
-## V2.0.5 curated phrase-library update
-
-- Removed the imported full dialogue segments that previously appeared after phrase 120.
-- Replaced them with **551 reviewed short phrases**.
-- Preserved the original 120 core phrase IDs for progress compatibility.
-- Added topic-based phrases covering all CCL domains used by the 85-dialogue library.
-- Added at least two dialogue-specific phrases for every one of the 85 dialogues.
-- Phrase cards contain no long multi-sentence dialogue segments.
-- Maximum English phrase length is 11 words.
-- Phrase pagination now shows 5 pages at up to 120 cards per page.
-
-
-## V2.0.6 Voice & Audio settings
-
-- Added a **Settings** button to the main app header.
-- English and Hindi learning voices can be selected and previewed.
-- Dialogue Speaker 1 and Speaker 2 can use separate English and Hindi voices.
-- Selected voices are stored in the existing settings record, so vocabulary, phrase, dialogue, Lesson 0, completion and attempt progress remain unchanged during the update.
-- Existing voice choices from older versions are preserved as the learning-voice fallback.
-- Added Refresh voices and Use automatic voices controls.
-- Voice availability depends on the voices exposed by the current device and browser.
-
-
-## V2.0.7 bilingual player timing
-
-- Added a separate delay between a vocabulary word or phrase and its translation.
-- Kept the next-item gap as an independent setting.
-- Added English → Hindi, Hindi → English, English-only and Hindi-only playback modes.
-- Added separate English and Hindi speech speeds.
-- Existing repeat, playlist order, examples and voice selections remain available.
-- Older saved `rate` and `both` settings are migrated automatically without clearing progress.
-- The same controls work for both vocabulary and phrases.
+The automated QA checks structure, duplicate IDs, segment length, JSON/JavaScript validity, known legacy corruption markers, terminology and service-worker assets. Language assessment remains meaning-first; the stored alternatives are not intended to be an exhaustive list of every valid interpretation.

@@ -1,1 +1,5 @@
-UPLOAD THIS VERSION: APS NAATI CCL Practice v12 - Fixes dialogue transcript word-by-word wrapping while retaining the complete v11 account and cloud-sync system.
+APS NAATI CCL Practice — V14 Natural Hindi Full Rebuild
+Upload the CONTENTS of this folder to the same GitHub Pages repository.
+Firebase login/account configuration is preserved from V13/V12. No Cloudflare setup is required.
+
+After upload, hard-refresh once or close/reopen the installed web app so the V14 service-worker cache activates.

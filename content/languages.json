@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "coreVersion": "3.0.0-rc1",
+  "coreVersion": "3.0.0-v13-reliability",
   "languages": [
     {
       "id": "hi",
@@ -10,22 +10,86 @@
       "sourceLocale": "en-AU",
       "targetLocale": "hi-IN",
       "status": "available",
-      "reviewStatus": "content-audit-required",
-      "version": "1.0.0-rc1",
+      "reviewStatus": "mixed-reviewed-and-draft-v13",
+      "version": "1.3.0-reliability",
       "files": {
         "dialogues": "./content/packs/hi/dialogues.json",
         "vocabulary": "./content/packs/hi/vocabulary.json",
-        "phrases": "./content/packs/hi/phrases.json"
+        "phrases": "./content/packs/hi/phrases.json",
+        "generalVocabulary": "./content/packs/hi/general-vocabulary.json"
       }
     },
-    {"id":"pa","name":"Punjabi","nativeName":"ਪੰਜਾਬੀ","pairLabel":"English ↔ Punjabi","targetLocale":"pa-IN","status":"coming-soon"},
-    {"id":"ur","name":"Urdu","nativeName":"اردو","pairLabel":"English ↔ Urdu","targetLocale":"ur-PK","status":"coming-soon"},
-    {"id":"ne","name":"Nepali","nativeName":"नेपाली","pairLabel":"English ↔ Nepali","targetLocale":"ne-NP","status":"coming-soon"},
-    {"id":"gu","name":"Gujarati","nativeName":"ગુજરાતી","pairLabel":"English ↔ Gujarati","targetLocale":"gu-IN","status":"coming-soon"},
-    {"id":"bn","name":"Bengali","nativeName":"বাংলা","pairLabel":"English ↔ Bengali","targetLocale":"bn-BD","status":"coming-soon"},
-    {"id":"ta","name":"Tamil","nativeName":"தமிழ்","pairLabel":"English ↔ Tamil","targetLocale":"ta-IN","status":"coming-soon"},
-    {"id":"te","name":"Telugu","nativeName":"తెలుగు","pairLabel":"English ↔ Telugu","targetLocale":"te-IN","status":"coming-soon"},
-    {"id":"zh","name":"Mandarin","nativeName":"中文","pairLabel":"English ↔ Mandarin","targetLocale":"zh-CN","status":"coming-soon"},
-    {"id":"ar","name":"Arabic","nativeName":"العربية","pairLabel":"English ↔ Arabic","targetLocale":"ar-SA","status":"coming-soon"}
+    {
+      "id": "pa",
+      "name": "Punjabi",
+      "nativeName": "ਪੰਜਾਬੀ",
+      "pairLabel": "English ↔ Punjabi",
+      "targetLocale": "pa-IN",
+      "status": "coming-soon"
+    },
+    {
+      "id": "ur",
+      "name": "Urdu",
+      "nativeName": "اردو",
+      "pairLabel": "English ↔ Urdu",
+      "targetLocale": "ur-PK",
+      "status": "coming-soon"
+    },
+    {
+      "id": "ne",
+      "name": "Nepali",
+      "nativeName": "नेपाली",
+      "pairLabel": "English ↔ Nepali",
+      "targetLocale": "ne-NP",
+      "status": "coming-soon"
+    },
+    {
+      "id": "gu",
+      "name": "Gujarati",
+      "nativeName": "ગુજરાતી",
+      "pairLabel": "English ↔ Gujarati",
+      "targetLocale": "gu-IN",
+      "status": "coming-soon"
+    },
+    {
+      "id": "bn",
+      "name": "Bengali",
+      "nativeName": "বাংলা",
+      "pairLabel": "English ↔ Bengali",
+      "targetLocale": "bn-BD",
+      "status": "coming-soon"
+    },
+    {
+      "id": "ta",
+      "name": "Tamil",
+      "nativeName": "தமிழ்",
+      "pairLabel": "English ↔ Tamil",
+      "targetLocale": "ta-IN",
+      "status": "coming-soon"
+    },
+    {
+      "id": "te",
+      "name": "Telugu",
+      "nativeName": "తెలుగు",
+      "pairLabel": "English ↔ Telugu",
+      "targetLocale": "te-IN",
+      "status": "coming-soon"
+    },
+    {
+      "id": "zh",
+      "name": "Mandarin",
+      "nativeName": "中文",
+      "pairLabel": "English ↔ Mandarin",
+      "targetLocale": "zh-CN",
+      "status": "coming-soon"
+    },
+    {
+      "id": "ar",
+      "name": "Arabic",
+      "nativeName": "العربية",
+      "pairLabel": "English ↔ Arabic",
+      "targetLocale": "ar-SA",
+      "status": "coming-soon"
+    }
   ]
 }

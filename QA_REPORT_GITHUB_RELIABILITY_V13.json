@@ -1,0 +1,23 @@
+{
+  "version": "github-reliability-2026-08-09-v13",
+  "status": "PASS",
+  "checks": {
+    "dialogues": 105,
+    "segments": 1273,
+    "studyReadyDialogues": 25,
+    "legacyDraftDialogues": 80,
+    "newAPSOriginalDialogues": 20,
+    "generalVocabularyTotal": 3009,
+    "generalVocabularyReviewed": 236,
+    "generalVocabularySourceReference": 2773,
+    "uniqueDialogueIds": 105,
+    "uniqueSegmentIds": 1273,
+    "testEligibleOver35WordSegments": 0,
+    "loginCodeModified": false,
+    "cloudSyncCodeModified": false,
+    "dialoguePlayerCoreModified": false,
+    "reliabilityExtensionLoadedAfterCloudSync": true
+  },
+  "issues": [],
+  "runtimeBrowserNote": "Container Chromium is administratively blocked from localhost/file navigation; post-deployment GitHub Pages click-through remains required."
+}

@@ -1,0 +1,39 @@
+{
+  "version": "github-natural-hindi-2026-08-09-v14",
+  "finalQaAt": "2026-08-09T23:15:00+10:00",
+  "passed": true,
+  "issues": [],
+  "dialogues": 105,
+  "segments": 1273,
+  "rebuiltLegacyDialogues": 80,
+  "revalidatedDialogues": 25,
+  "studyReadyDialogues": 105,
+  "maxSourceWords": 35,
+  "segmentsWithStoredAlternativeExamples": 1119,
+  "segmentsWithAnswerFlexibilityPolicy": 1273,
+  "doctorHindiTerm": "चिकित्सक",
+  "legacyCorruptionMarkersRemaining": {},
+  "genderSlashFormsRemaining": 0,
+  "coreVocabularyItems": 3000,
+  "corePhraseItems": 551,
+  "generalVocabularyTotalPreservedFromSources": 3009,
+  "generalVocabularyReviewedShownToStudents": 236,
+  "generalVocabularyRawSourceReferenceHiddenFromStudentView": 2773,
+  "pilotRuntimeOverlayRemoved": true,
+  "appJsIdenticalToV13": true,
+  "cloudSyncIdenticalToV13": true,
+  "serviceWorkerAssetsChecked": 63,
+  "serviceWorkerMissingAssets": [],
+  "zipIntegrity": "PASS",
+  "reviewStatusCounts": {
+    "APS rebuilt — natural Hindi content review": 80,
+    "APS V14 revalidated — natural Hindi": 25
+  },
+  "qualityNotes": [
+    "The 80 legacy machine-formatted dialogues were replaced with new APS practice wording rather than repaired word-by-word.",
+    "The 25 already-clean pilot/original dialogues were revalidated and terminology-normalised.",
+    "Stored alternative answers are examples, not a closed list; every segment carries meaning-first answer-flexibility metadata.",
+    "The offline scorer also normalises common Hindi/English synonyms and is insensitive to ordinary word-order changes; critical details such as numbers, names, negation, conditions and modality remain important.",
+    "Raw vocabulary entries from the large uploaded PDF are preserved for editorial reference but are not exposed as reviewed student vocabulary."
+  ]
+}
