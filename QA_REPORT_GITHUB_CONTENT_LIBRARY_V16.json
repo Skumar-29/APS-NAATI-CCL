@@ -1,0 +1,770 @@
+{
+  "version": "V16",
+  "generatedAt": "2026-08-10T01:59:00+10:00",
+  "summary": {
+    "checks": 149,
+    "passed": 149,
+    "failed": 0
+  },
+  "contentCounts": {
+    "dialogues": 105,
+    "segments": 1273,
+    "coreVocabulary": 3000,
+    "phrases": 551,
+    "generalVocabulary": 3009,
+    "dialogueVocabulary": 1649
+  },
+  "preservation": {
+    "appJsSha256": "931fa70886c154905f8e310c1fc70146802193e625a3a18a00fa1d383ef16b1f",
+    "cloudSyncSha256": "ed01d99c24a694fb2eda5f74ff70fa87a1b7e7c84b81f8a53738f870b3ac4c76",
+    "v15AppJsUnchanged": true,
+    "v15CloudSyncUnchanged": true
+  },
+  "checks": [
+    {
+      "name": "preserve:app.js",
+      "passed": true,
+      "detail": "931fa70886c1"
+    },
+    {
+      "name": "preserve:cloud-sync-v11.js",
+      "passed": true,
+      "detail": "ed01d99c24a6"
+    },
+    {
+      "name": "preserve:reliability-v15.js",
+      "passed": true,
+      "detail": "53898fbc06a2"
+    },
+    {
+      "name": "preserve:reliability-v15.css",
+      "passed": true,
+      "detail": "d441fd90b45f"
+    },
+    {
+      "name": "preserve:content/packs/hi/dialogues.json",
+      "passed": true,
+      "detail": "4829a2e906e4"
+    },
+    {
+      "name": "preserve:content/packs/hi/vocabulary.json",
+      "passed": true,
+      "detail": "6e7c1aaa45ba"
+    },
+    {
+      "name": "preserve:content/packs/hi/phrases.json",
+      "passed": true,
+      "detail": "16a1b8fb876e"
+    },
+    {
+      "name": "preserve:content/packs/hi/general-vocabulary.json",
+      "passed": true,
+      "detail": "cfd316a4b9b5"
+    },
+    {
+      "name": "preserve:content/packs/hi/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": "a1be28bc880f"
+    },
+    {
+      "name": "js-syntax:app.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "js-syntax:reliability-v15.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "js-syntax:cloud-sync-v11.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "js-syntax:study-progress-v9.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "js-syntax:scoring.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "js-syntax:sw.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "js-syntax:content-library-v16.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "js-syntax:study-hotfix-v5.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:QA_REPORT_GITHUB_NATURAL_HINDI_V14.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:QA_REPORT_GITHUB_CONTENT_LIBRARY_V16.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:APS_NAATI_GITHUB_STUDY_READY_BUILD_REPORT.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:QA_REPORT_GITHUB_RELIABILITY_V13.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:version.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/owner-content-v16.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/languages.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/exam_info.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/starter_phrases.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/lesson0.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/dialogues.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/starter_vocab.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/pilot50/batch01-runtime-overlay-v1.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/packs/hi/general-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/packs/hi/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/packs/hi/vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/packs/hi/dialogues.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "json:content/packs/hi/phrases.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "dialogue-count",
+      "passed": true,
+      "detail": 105
+    },
+    {
+      "name": "core-vocab-count",
+      "passed": true,
+      "detail": 3000
+    },
+    {
+      "name": "phrase-count",
+      "passed": true,
+      "detail": 551
+    },
+    {
+      "name": "general-count",
+      "passed": true,
+      "detail": 3009
+    },
+    {
+      "name": "dialogue-vocab-count",
+      "passed": true,
+      "detail": 1649
+    },
+    {
+      "name": "owner-schema-empty",
+      "passed": true,
+      "detail": "{'schemaVersion': '1.0', 'contentVersion': '16.0.0', 'language': 'hi', 'updatedAt': None, 'vocabulary': {}, 'phrases': {}, 'dialogues': {}}"
+    },
+    {
+      "name": "index-ref:content-library-v16.css",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "index-ref:content-library-v16.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "script-order-v16-after-v15",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:Content Library Studio",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:v16VocabSearch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:v16PhraseSearch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:Core Vocabulary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:General Vocabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:Dialogue allocations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:Save Draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:Mark Reviewed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:Archive item",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:Publish to GitHub",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:content/owner-content-v16.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:v16ShowExamples",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:v16SpeakExamples",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:toggle-hide-example",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:stable ID",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:Fine-grained GitHub token",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "marker:X-GitHub-Api-Version",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "github-token-not-saved-config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "github-token-not-exported",
+      "passed": true,
+      "detail": "owner:state.v16Github.owner||'',repo:state.v16Github.repo||'',branch:state.v16Github.branch||'main',path:state.v16Github.path||'content/owner-content-v16.json'"
+    },
+    {
+      "name": "sw-cache-v16",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "sw-owner-network-first",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "precache-exists:./index.html",
+      "passed": true,
+      "detail": "./index.html"
+    },
+    {
+      "name": "precache-exists:./404.html",
+      "passed": true,
+      "detail": "./404.html"
+    },
+    {
+      "name": "precache-exists:./APS_NAATI_GITHUB_STUDY_READY_BUILD_REPORT.json",
+      "passed": true,
+      "detail": "./APS_NAATI_GITHUB_STUDY_READY_BUILD_REPORT.json"
+    },
+    {
+      "name": "precache-exists:./BETA_PRIVACY_NOTICE.md",
+      "passed": true,
+      "detail": "./BETA_PRIVACY_NOTICE.md"
+    },
+    {
+      "name": "precache-exists:./DIALOGUE_COMPARISON_AUDIT_V2.0.3.csv",
+      "passed": true,
+      "detail": "./DIALOGUE_COMPARISON_AUDIT_V2.0.3.csv"
+    },
+    {
+      "name": "precache-exists:./FIREBASE_CLOUD_SYNC_SETUP.txt",
+      "passed": true,
+      "detail": "./FIREBASE_CLOUD_SYNC_SETUP.txt"
+    },
+    {
+      "name": "precache-exists:./FRIENDS_TEST_CHECKLIST.md",
+      "passed": true,
+      "detail": "./FRIENDS_TEST_CHECKLIST.md"
+    },
+    {
+      "name": "precache-exists:./GITHUB_UPLOAD_STEPS.txt",
+      "passed": true,
+      "detail": "./GITHUB_UPLOAD_STEPS.txt"
+    },
+    {
+      "name": "precache-exists:./PHRASE_AUDIT_V2.0.5.csv",
+      "passed": true,
+      "detail": "./PHRASE_AUDIT_V2.0.5.csv"
+    },
+    {
+      "name": "precache-exists:./PHRASE_LIBRARY_METHOD_V2.0.5.md",
+      "passed": true,
+      "detail": "./PHRASE_LIBRARY_METHOD_V2.0.5.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_STUDY_READY_V4.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_STUDY_READY_V4.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_STUDY_READY_V5.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_STUDY_READY_V5.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_STUDY_READY_V6.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_STUDY_READY_V6.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_STUDY_READY_V7.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_STUDY_READY_V7.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_STUDY_READY_V8.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_STUDY_READY_V8.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_STUDY_READY_V9.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_STUDY_READY_V9.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_STUDY_READY_V11.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_STUDY_READY_V11.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_STUDY_READY_V12.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_STUDY_READY_V12.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_V2.0.3.md",
+      "passed": true,
+      "detail": "./QA_REPORT_V2.0.3.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_V2.0.4.md",
+      "passed": true,
+      "detail": "./QA_REPORT_V2.0.4.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_V2.0.5.md",
+      "passed": true,
+      "detail": "./QA_REPORT_V2.0.5.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_V2.0.6.md",
+      "passed": true,
+      "detail": "./QA_REPORT_V2.0.6.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_V2.0.7.md",
+      "passed": true,
+      "detail": "./QA_REPORT_V2.0.7.md"
+    },
+    {
+      "name": "precache-exists:./README.md",
+      "passed": true,
+      "detail": "./README.md"
+    },
+    {
+      "name": "precache-exists:./README.txt",
+      "passed": true,
+      "detail": "./README.txt"
+    },
+    {
+      "name": "precache-exists:./UPDATE_NOTES_V2.0.3.md",
+      "passed": true,
+      "detail": "./UPDATE_NOTES_V2.0.3.md"
+    },
+    {
+      "name": "precache-exists:./UPDATE_NOTES_V2.0.4.md",
+      "passed": true,
+      "detail": "./UPDATE_NOTES_V2.0.4.md"
+    },
+    {
+      "name": "precache-exists:./UPDATE_NOTES_V2.0.5.md",
+      "passed": true,
+      "detail": "./UPDATE_NOTES_V2.0.5.md"
+    },
+    {
+      "name": "precache-exists:./UPDATE_NOTES_V2.0.6.md",
+      "passed": true,
+      "detail": "./UPDATE_NOTES_V2.0.6.md"
+    },
+    {
+      "name": "precache-exists:./UPDATE_NOTES_V2.0.7.md",
+      "passed": true,
+      "detail": "./UPDATE_NOTES_V2.0.7.md"
+    },
+    {
+      "name": "precache-exists:./UPLOAD_THIS_VERSION.txt",
+      "passed": true,
+      "detail": "./UPLOAD_THIS_VERSION.txt"
+    },
+    {
+      "name": "precache-exists:./VOCABULARY_AUDIT_V2.0.3.csv",
+      "passed": true,
+      "detail": "./VOCABULARY_AUDIT_V2.0.3.csv"
+    },
+    {
+      "name": "precache-exists:./app.js",
+      "passed": true,
+      "detail": "./app.js"
+    },
+    {
+      "name": "precache-exists:./cloud-sync-v11.css",
+      "passed": true,
+      "detail": "./cloud-sync-v11.css"
+    },
+    {
+      "name": "precache-exists:./cloud-sync-v11.js",
+      "passed": true,
+      "detail": "./cloud-sync-v11.js"
+    },
+    {
+      "name": "precache-exists:./content/dialogues.json",
+      "passed": true,
+      "detail": "./content/dialogues.json"
+    },
+    {
+      "name": "precache-exists:./content/exam_info.json",
+      "passed": true,
+      "detail": "./content/exam_info.json"
+    },
+    {
+      "name": "precache-exists:./content/languages.json",
+      "passed": true,
+      "detail": "./content/languages.json"
+    },
+    {
+      "name": "precache-exists:./content/lesson0.json",
+      "passed": true,
+      "detail": "./content/lesson0.json"
+    },
+    {
+      "name": "precache-exists:./content/packs/hi/dialogues.json",
+      "passed": true,
+      "detail": "./content/packs/hi/dialogues.json"
+    },
+    {
+      "name": "precache-exists:./content/packs/hi/phrases.json",
+      "passed": true,
+      "detail": "./content/packs/hi/phrases.json"
+    },
+    {
+      "name": "precache-exists:./content/packs/hi/vocabulary.json",
+      "passed": true,
+      "detail": "./content/packs/hi/vocabulary.json"
+    },
+    {
+      "name": "precache-exists:./content/starter_phrases.json",
+      "passed": true,
+      "detail": "./content/starter_phrases.json"
+    },
+    {
+      "name": "precache-exists:./content/starter_vocab.json",
+      "passed": true,
+      "detail": "./content/starter_vocab.json"
+    },
+    {
+      "name": "precache-exists:./icon-192.png",
+      "passed": true,
+      "detail": "./icon-192.png"
+    },
+    {
+      "name": "precache-exists:./icon-512.png",
+      "passed": true,
+      "detail": "./icon-512.png"
+    },
+    {
+      "name": "precache-exists:./icon.svg",
+      "passed": true,
+      "detail": "./icon.svg"
+    },
+    {
+      "name": "precache-exists:./manifest.webmanifest",
+      "passed": true,
+      "detail": "./manifest.webmanifest"
+    },
+    {
+      "name": "precache-exists:./scoring.js",
+      "passed": true,
+      "detail": "./scoring.js"
+    },
+    {
+      "name": "precache-exists:./study-hotfix-v5.css",
+      "passed": true,
+      "detail": "./study-hotfix-v5.css"
+    },
+    {
+      "name": "precache-exists:./study-hotfix-v5.js",
+      "passed": true,
+      "detail": "./study-hotfix-v5.js"
+    },
+    {
+      "name": "precache-exists:./study-progress-v9.css",
+      "passed": true,
+      "detail": "./study-progress-v9.css"
+    },
+    {
+      "name": "precache-exists:./study-progress-v9.js",
+      "passed": true,
+      "detail": "./study-progress-v9.js"
+    },
+    {
+      "name": "precache-exists:./styles.css",
+      "passed": true,
+      "detail": "./styles.css"
+    },
+    {
+      "name": "precache-exists:./version.json",
+      "passed": true,
+      "detail": "./version.json"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_RELIABILITY_V13.json",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_RELIABILITY_V13.json"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_RELIABILITY_V13.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_RELIABILITY_V13.md"
+    },
+    {
+      "name": "precache-exists:./CONTENT_RELIABILITY_V13.md",
+      "passed": true,
+      "detail": "./CONTENT_RELIABILITY_V13.md"
+    },
+    {
+      "name": "precache-exists:./content/packs/hi/general-vocabulary.json",
+      "passed": true,
+      "detail": "./content/packs/hi/general-vocabulary.json"
+    },
+    {
+      "name": "precache-exists:./reliability-v15.js",
+      "passed": true,
+      "detail": "./reliability-v15.js"
+    },
+    {
+      "name": "precache-exists:./reliability-v15.css",
+      "passed": true,
+      "detail": "./reliability-v15.css"
+    },
+    {
+      "name": "precache-exists:./content/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": "./content/dialogue-vocabulary.json"
+    },
+    {
+      "name": "precache-exists:./content/packs/hi/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": "./content/packs/hi/dialogue-vocabulary.json"
+    },
+    {
+      "name": "precache-exists:./CONTENT_RELIABILITY_V15.md",
+      "passed": true,
+      "detail": "./CONTENT_RELIABILITY_V15.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.json",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.json"
+    },
+    {
+      "name": "precache-exists:./content-library-v16.js",
+      "passed": true,
+      "detail": "./content-library-v16.js"
+    },
+    {
+      "name": "precache-exists:./content-library-v16.css",
+      "passed": true,
+      "detail": "./content-library-v16.css"
+    },
+    {
+      "name": "precache-exists:./content/owner-content-v16.json",
+      "passed": true,
+      "detail": "./content/owner-content-v16.json"
+    },
+    {
+      "name": "precache-exists:./CONTENT_LIBRARY_V16.md",
+      "passed": true,
+      "detail": "./CONTENT_LIBRARY_V16.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_CONTENT_LIBRARY_V16.md",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_CONTENT_LIBRARY_V16.md"
+    },
+    {
+      "name": "precache-exists:./QA_REPORT_GITHUB_CONTENT_LIBRARY_V16.json",
+      "passed": true,
+      "detail": "./QA_REPORT_GITHUB_CONTENT_LIBRARY_V16.json"
+    },
+    {
+      "name": "dialogue-ids-unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "segment-ids-unique",
+      "passed": true,
+      "detail": 1273
+    },
+    {
+      "name": "core-vocab-ids-unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "phrase-ids-unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "preserve:content/dialogues.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "preserve:content/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "preserve:content/languages.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "preserve:content/exam_info.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "preserve:content/lesson0.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "version-v16",
+      "passed": true,
+      "detail": "github-content-library-2026-08-10-v16"
+    }
+  ]
+}

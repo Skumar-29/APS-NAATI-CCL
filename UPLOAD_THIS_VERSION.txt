@@ -1,13 +1,16 @@
 UPLOAD THIS VERSION TO GITHUB
 
 APS NAATI CCL Practice
-Version: V15 — Dialogue Learning Hub + Dialogue Vocabulary
-Build: github-dialogue-learning-2026-08-09-v15
+Version: V16 — Content Library Studio + Recall Example Controls
+Build: github-content-library-2026-08-10-v16
 
 Upload the CONTENTS of this ZIP/repository folder to the same GitHub Pages repository, replacing the previous web files.
 
 No Cloudflare setup is required.
 No new Firebase project is required.
 The existing login/account configuration is retained.
+V15 learner progress and stable content IDs are retained.
 
-After GitHub Pages deploys, hard-refresh once so the V15 service worker replaces the V14 cache.
+After GitHub Pages deploys, hard-refresh once so the V16 service worker replaces the V15 cache.
+
+V16 adds the Owner Content Library Studio (Dialogues / Vocabulary / Phrases / Publish), searchable vocabulary/phrase editing, category/dialogue allocations, examples, Draft/Reviewed/Published states, archive/restore, V16 owner-content backups, optional owner-only GitHub publishing and independent Show Example / Speak Example controls.

@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-dialogue-learning-20260809-v15';
+const CACHE_NAME = 'aps-naati-content-library-20260810-v16';
 const PRECACHE = [
   "./",
   "./index.html",
@@ -68,7 +68,13 @@ const PRECACHE = [
   "./content/packs/hi/dialogue-vocabulary.json",
   "./CONTENT_RELIABILITY_V15.md",
   "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.md",
-  "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.json"
+  "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.json",
+  "./content-library-v16.js",
+  "./content-library-v16.css",
+  "./content/owner-content-v16.json",
+  "./CONTENT_LIBRARY_V16.md",
+  "./QA_REPORT_GITHUB_CONTENT_LIBRARY_V16.md",
+  "./QA_REPORT_GITHUB_CONTENT_LIBRARY_V16.json"
 ];
 
 self.addEventListener('install', event => {
@@ -104,6 +110,20 @@ self.addEventListener('fetch', event => {
           return response;
         })
         .catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+  if (url.pathname.endsWith('/content/owner-content-v16.json')) {
+    event.respondWith(
+      fetch(event.request, { cache: 'no-store' })
+        .then(response => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }

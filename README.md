@@ -21,3 +21,13 @@ V15 preserves the existing Firebase login/account flow, V14 natural-Hindi dialog
 Upload the contents of this folder to the same GitHub Pages repository used for V14. No Cloudflare change and no new Firebase project are required. Hard-refresh once after deployment so the V15 service-worker cache replaces V14.
 
 See `CONTENT_RELIABILITY_V15.md` and `QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.md` for the implementation and QA summary.
+
+---
+
+## V16 — Content Library Studio
+
+V16 preserves the V15 learner-facing system and adds an owner content-management layer. Open **Settings → Content reliability & editing → Open Content Library Studio** to manage Dialogues, Vocabulary, Phrases and Publish.
+
+Vocabulary records can be edited or added with stable IDs, alternate Hindi meanings, English/Hindi examples, notes and allocations to Core Vocabulary, General Vocabs and multiple dialogues. Phrases have the same owner workflow for the main Phrase library and dialogue allocations. Draft changes remain owner-only; Reviewed changes can be tested locally; Published changes can be written to `content/owner-content-v16.json`.
+
+The optional GitHub publisher uses a session-only token and never stores or exports that token. Recall/player mode also adds independent **Show/Hide Example** and **Speak Example** controls.

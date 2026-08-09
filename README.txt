@@ -1,14 +1,20 @@
-APS NAATI CCL Practice — V15
+APS NAATI CCL Practice — V16
 
-This GitHub-ready build preserves the V14 natural-Hindi dialogue library and existing account/login system, and adds:
+This GitHub-ready build preserves the V15 learner app, natural-Hindi dialogue library, Firebase account/login system, player, recordings, scoring and existing progress.
 
-- Dialogue Learning Hub before Learning Mode
-- Learn Vocabs / Start Dialogue choices
-- 105 separate dialogue-vocabulary sets
-- 1,649 dialogue-specific English-Hindi vocabulary records
-- partial vocabulary resume and Back to Dialogue navigation
-- Content Studio dialogue search
-- Practice report return-to-dialogue-library fix
-- dialogue-vocabulary backup/restore and cloud-sync support
+V16 adds:
+- Owner Content Library Studio with Dialogues / Vocabulary / Phrases / Publish tabs
+- vocabulary search across Core, General and Dialogue Vocabs
+- phrase search and editing
+- add/edit Hindi meanings, synonyms, English/Hindi examples, notes and topics
+- allocate one stable vocabulary record to Core Vocabulary, General Vocabs and multiple dialogues
+- allocate phrases to the main Phrase library and multiple dialogues
+- duplicate/sense warnings
+- Draft / Reviewed / Published workflow
+- archive / restore and revert-local-change options without deleting learner progress IDs
+- owner content backup export/import
+- optional Publish to GitHub for content/owner-content-v16.json using a session-only fine-grained token
+- independent Show/Hide Example and Speak Example controls in recall/player settings
+- network-first service-worker handling for the owner content layer after content-only GitHub updates
 
-The normal Vocabulary and Phrase pages continue to work independently. Back to Dialogue is only displayed when the vocabulary player was opened from a dialogue.
+The V15 Dialogue Learning Hub and Back to Dialogue vocabulary flow continue unchanged.

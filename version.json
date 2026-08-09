@@ -1,18 +1,19 @@
 {
   "schemaVersion": "1.0",
-  "version": "github-dialogue-learning-2026-08-09-v15",
-  "releasedAt": "2026-08-09T21:47:00+10:00",
+  "version": "github-content-library-2026-08-10-v16",
+  "releasedAt": "2026-08-10T01:59:00+10:00",
   "critical": false,
-  "minimumSupportedVersion": "github-study-ready-2026-08-06-v4",
+  "minimumSupportedVersion": "github-dialogue-learning-2026-08-09-v15",
   "releaseNotes": [
-    "Preserves the existing Firebase login/account flow and does not add a Cloudflare dependency.",
-    "Fixes completed Practice Mode reports so Close report returns to Dialogue Practice instead of Home, while Mock Test reports return to Mock Test.",
-    "Adds a searchable Content Studio that can find dialogues by ID, title, topic, English text or Hindi text.",
-    "Adds a Dialogue Learning Hub before Learning Mode with Learn Vocabs and Start Dialogue choices.",
-    "Adds 105 dialogue-specific key-vocabulary sets containing 1,649 reviewed English-Hindi terms selected from the dialogue title and meaning of all segments.",
-    "Uses the existing vocabulary player for dialogue vocabulary and adds Back to Dialogue only when that player was opened from a dialogue.",
-    "Saves partial dialogue-vocabulary progress and resumes the student near the last practised term.",
-    "Keeps dialogue-vocabulary progress separate from Core Vocabulary and Phrase progress, and includes it in backup/restore and Firebase sync.",
-    "Keeps V14 natural-Hindi dialogue content and the preferred चिकित्सक terminology unchanged."
+    "Preserves the V15 Firebase login/account flow, dialogue player, Learning/Practice modes, Dialogue Learning Hub and existing learner progress.",
+    "Adds a unified Owner Content Library Studio with Dialogues, Vocabulary, Phrases and Publish areas.",
+    "Adds searchable vocabulary editing across Core Vocabulary, General Vocabs and dialogue-specific vocabulary.",
+    "Adds searchable phrase editing with dialogue allocation support.",
+    "Supports adding new vocabulary/phrases, correcting meanings, alternate Hindi meanings, English/Hindi examples, notes and topic metadata.",
+    "Uses stable IDs and allocation records so edits do not reset learner progress; content can be allocated to Core, General and one or multiple dialogues.",
+    "Adds duplicate/sense warnings, draft/reviewed/published states, archive/restore and revert-local-change controls.",
+    "Adds V16 owner-content backup export/import and includes V15 dialogue overrides in the same backup.",
+    "Adds optional owner-only GitHub publishing of content/owner-content-v16.json using a session-only fine-grained GitHub token; the token is never stored or exported.",
+    "Adds independent Show/Hide Example and Speak Example controls in vocabulary/phrase recall and player settings."
   ]
 }
