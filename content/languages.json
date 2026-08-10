@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "coreVersion": "3.0.0-v13-reliability",
+  "coreVersion": "6.0.0-v18-original-source",
   "languages": [
     {
       "id": "hi",
@@ -10,8 +10,8 @@
       "sourceLocale": "en-AU",
       "targetLocale": "hi-IN",
       "status": "available",
-      "reviewStatus": "mixed-reviewed-and-draft-v13",
-      "version": "1.3.0-reliability",
+      "reviewStatus": "verified-105-plus-original-source-85-v18",
+      "version": "1.8.0-original-source",
       "files": {
         "dialogues": "./content/packs/hi/dialogues.json",
         "vocabulary": "./content/packs/hi/vocabulary.json",

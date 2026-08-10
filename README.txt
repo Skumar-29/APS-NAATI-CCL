@@ -22,3 +22,9 @@ The V15 Dialogue Learning Hub and Back to Dialogue vocabulary flow continue unch
 V17 SAFE MERGE NOTE
 -------------------
 Content Library Studio now supports safe duplicate merge for vocabulary and phrases. Use Save Draft for unfinished work, Save & Apply for reviewed local changes, and the Publish tab for GitHub publishing. See CONTENT_LIBRARY_V17.md.
+
+V18 ORIGINAL SOURCE LIBRARY
+---------------------------
+V18 keeps the 105 Verified Practice dialogues unchanged and adds a separate Original Source library containing 85 restored source dialogues (1,073 segments). The Original Source Hindi has been rebuilt in simple, natural Devanagari and its model/sample answers have been corrected while preserving the original scenario, order, names, numbers, dates, amounts and substantive meaning. Original Source uses a separate original-* ID namespace and separate progress counts, and it works with the existing Learning Hub, dialogue-specific vocabulary, Practice Mode, recordings, reports, search and Content Studio. It is deliberately excluded from the current Mock Test pool until separately calibrated.
+
+See ORIGINAL_SOURCE_V18.md and QA_REPORT_GITHUB_ORIGINAL_SOURCE_V18.md.

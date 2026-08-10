@@ -1,14 +1,11 @@
-APS NAATI CCL Practice — V17 Safe Merge & Library Cleanup
+APS NAATI CCL Practice V18 — Original Source Library
 
-Upload the contents of this folder to the SAME GitHub repository used for V16.
+Upload the contents of this folder to the same GitHub repository used for V17.
 
-Important:
-- V17 intentionally does not include an empty content/owner-content-v16.json.
-- If your repository already contains that file from previous Content Studio publishing, KEEP it. V17 will read and extend it.
-- If the file does not exist, the app still works; the Publish to GitHub function can create it later.
-- Hard-refresh the deployed site once after GitHub Pages finishes updating so the V17 service worker becomes active.
+Important: if content/owner-content-v16.json already exists in your GitHub repository, keep it. This ZIP intentionally does not replace that owner-published content file.
 
-Saving content in V17:
-1. Save Draft (not live) = store unfinished work locally.
-2. Save & Apply = save as reviewed and use the correction on this device.
-3. Publish tab > Publish to GitHub = make reviewed changes available to the deployed app.
+After deployment, hard-refresh once so the V18 service worker replaces V17.
+
+Dialogue Practice now has two separate libraries:
+- Verified Practice — 105 existing V17 dialogues (unchanged)
+- Original Source — 85 restored source dialogues

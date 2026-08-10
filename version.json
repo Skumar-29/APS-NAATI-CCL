@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.0",
-  "version": "github-safe-merge-2026-08-10-v17",
-  "releasedAt": "2026-08-10T02:47:00+10:00",
+  "version": "github-original-source-2026-08-10-v18",
+  "releasedAt": "2026-08-10T21:51:00+10:00",
   "critical": false,
-  "minimumSupportedVersion": "github-content-library-2026-08-10-v16",
+  "minimumSupportedVersion": "github-safe-merge-2026-08-10-v17",
   "releaseNotes": [
-    "Preserves the V16 Firebase login/account flow, player, dialogue content, Learning/Practice modes and learner progress.",
-    "Adds Safe Merge for genuine duplicate vocabulary and phrases.",
-    "Safe Merge lets the owner choose which stable record to keep, combines allocations and useful alternatives, and retains the removed ID as a compatibility alias.",
-    "Migrates vocabulary status, resume position, spaced recall and dialogue-vocabulary progress to the surviving ID; phrase merges also combine phrase practice history.",
-    "Adds Archive for existing content and restricts permanent deletion to unused unpublished owner drafts with no progress or merge dependencies.",
-    "Adds searchable merge-candidate selection and warns that synonyms/different senses should remain separate.",
-    "Renames the reviewed save action to Save & Apply and explains the three-stage flow: Save Draft, Save & Apply, then Publish to GitHub.",
-    "Keeps the existing owner-content-v16.json GitHub path for backward compatibility, while publishing schema 1.1 with merge aliases.",
-    "Omits an empty owner-content-v16.json from the ZIP so an existing published owner-content file cannot be accidentally overwritten during a V17 upload."
+    "Keeps all 105 V17 Verified Practice dialogues unchanged.",
+    "Adds a separate Original Source library containing the restored 85 organised dialogues (1,073 segments), for 190 dialogues total.",
+    "Preserves Original Source scenario, sequence, names, numbers and meaning while correcting Hindi spelling/grammar and improving English/Hindi sample answers.",
+    "Uses simple, natural Standard Hindi and the preferred term चिकित्सक for doctor.",
+    "Original Source works with Learning Mode, dialogue-specific vocabulary, Start Dialogue, Practice Mode, recordings, report flow and existing player controls.",
+    "Adds 85 separate Original Source dialogue-vocabulary sets selected from the restored dialogue content and earlier dialogue-linked vocabulary audit.",
+    "Uses original-001 through original-085 IDs so the new library cannot overwrite progress belonging to the existing 105 dialogues.",
+    "Keeps Original Source separate from the current Mock Test pool; testEligible remains false until separately calibrated.",
+    "Preserves V17 Content Library Studio, Safe Merge/Archive, Firebase login/account flow, GitHub publishing and existing learner progress."
   ]
 }

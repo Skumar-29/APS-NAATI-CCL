@@ -31,3 +31,13 @@ V16 preserves the V15 learner-facing system and adds an owner content-management
 Vocabulary records can be edited or added with stable IDs, alternate Hindi meanings, English/Hindi examples, notes and allocations to Core Vocabulary, General Vocabs and multiple dialogues. Phrases have the same owner workflow for the main Phrase library and dialogue allocations. Draft changes remain owner-only; Reviewed changes can be tested locally; Published changes can be written to `content/owner-content-v16.json`.
 
 The optional GitHub publisher uses a session-only token and never stores or exports that token. Recall/player mode also adds independent **Show/Hide Example** and **Speak Example** controls.
+
+---
+
+## V18 — Original Source
+
+V18 keeps all 105 V17 **Verified Practice** dialogues unchanged and adds the earlier 85-dialogue source library as a separate **Original Source** collection. The restored collection contains 1,073 segments, uses the separate `original-*` ID namespace, has its own dialogue-vocabulary sets and separate progress reporting, and uses the same Learning Hub and Practice workflow as Verified Practice. Original Source is excluded from the current Mock Test pool until separately calibrated.
+
+The Original Source language pass preserves the source scenario, conversation order, names, numbers, dates, amounts and substantive meaning while correcting English/Hindi language and model answers. Hindi is presented in simple, natural Devanagari; `चिकित्सक` is the preferred teaching term for doctor.
+
+See `ORIGINAL_SOURCE_V18.md` and `QA_REPORT_GITHUB_ORIGINAL_SOURCE_V18.md`.

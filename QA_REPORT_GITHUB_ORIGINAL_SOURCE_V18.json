@@ -1,0 +1,1398 @@
+{
+  "version": "v18-original-source",
+  "generatedAt": "2026-08-10T21:51:00+10:00",
+  "summary": {
+    "checks": 276,
+    "passed": 276,
+    "failed": 0
+  },
+  "content": {
+    "verifiedDialogues": 105,
+    "originalSourceDialogues": 85,
+    "totalDialogues": 190,
+    "originalSourceSegments": 1073,
+    "originalSourceDialogueVocabularyItems": 1543
+  },
+  "checks": [
+    {
+      "name": "Total dialogue count is 190",
+      "passed": true,
+      "detail": "190"
+    },
+    {
+      "name": "Verified Practice count remains 105",
+      "passed": true,
+      "detail": "105"
+    },
+    {
+      "name": "Original Source count is 85",
+      "passed": true,
+      "detail": "85"
+    },
+    {
+      "name": "Original Source segment count is 1,073",
+      "passed": true,
+      "detail": "1073"
+    },
+    {
+      "name": "Source audit contains 1,073 segments",
+      "passed": true,
+      "detail": "1073"
+    },
+    {
+      "name": "All 1,073 Hindi corrections present",
+      "passed": true,
+      "detail": "1073"
+    },
+    {
+      "name": "Current 105 dialogue objects unchanged from V17 snapshot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Current 105 dialogue-vocab sets unchanged from V17 snapshot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Main and Hindi-pack dialogue mirrors match",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Main and Hindi-pack dialogue-vocabulary mirrors match",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All dialogue IDs unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All segment IDs unique",
+      "passed": true,
+      "detail": "2346"
+    },
+    {
+      "name": "Original Source IDs use separate namespace",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Original Source excluded from current Mock Test pool",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Original Source marked study-ready separately",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Original Source legacy IDs preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-001 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-001 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-002 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-002 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-003 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-003 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-004 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-004 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-005 segment count preserved",
+      "passed": true,
+      "detail": "21 vs 21"
+    },
+    {
+      "name": "original-005 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-006 segment count preserved",
+      "passed": true,
+      "detail": "15 vs 15"
+    },
+    {
+      "name": "original-006 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-007 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-007 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-008 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-008 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-009 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-009 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-010 segment count preserved",
+      "passed": true,
+      "detail": "18 vs 18"
+    },
+    {
+      "name": "original-010 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-011 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-011 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-012 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-012 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-013 segment count preserved",
+      "passed": true,
+      "detail": "9 vs 9"
+    },
+    {
+      "name": "original-013 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-014 segment count preserved",
+      "passed": true,
+      "detail": "17 vs 17"
+    },
+    {
+      "name": "original-014 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-015 segment count preserved",
+      "passed": true,
+      "detail": "9 vs 9"
+    },
+    {
+      "name": "original-015 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-016 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-016 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-017 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-017 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-018 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-018 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-019 segment count preserved",
+      "passed": true,
+      "detail": "10 vs 10"
+    },
+    {
+      "name": "original-019 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-020 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-020 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-021 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-021 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-022 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-022 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-023 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-023 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-024 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-024 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-025 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-025 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-026 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-026 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-027 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-027 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-028 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-028 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-029 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-029 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-030 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-030 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-031 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-031 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-032 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-032 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-033 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-033 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-034 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-034 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-035 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-035 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-036 segment count preserved",
+      "passed": true,
+      "detail": "15 vs 15"
+    },
+    {
+      "name": "original-036 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-037 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-037 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-038 segment count preserved",
+      "passed": true,
+      "detail": "18 vs 18"
+    },
+    {
+      "name": "original-038 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-039 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-039 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-040 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-040 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-041 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-041 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-042 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-042 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-043 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-043 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-044 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-044 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-045 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-045 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-046 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-046 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-047 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-047 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-048 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-048 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-049 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-049 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-050 segment count preserved",
+      "passed": true,
+      "detail": "15 vs 15"
+    },
+    {
+      "name": "original-050 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-051 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-051 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-052 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-052 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-053 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-053 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-054 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-054 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-055 segment count preserved",
+      "passed": true,
+      "detail": "9 vs 9"
+    },
+    {
+      "name": "original-055 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-056 segment count preserved",
+      "passed": true,
+      "detail": "10 vs 10"
+    },
+    {
+      "name": "original-056 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-057 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-057 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-058 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-058 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-059 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-059 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-060 segment count preserved",
+      "passed": true,
+      "detail": "9 vs 9"
+    },
+    {
+      "name": "original-060 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-061 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-061 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-062 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-062 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-063 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-063 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-064 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-064 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-065 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-065 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-066 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-066 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-067 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-067 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-068 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-068 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-069 segment count preserved",
+      "passed": true,
+      "detail": "16 vs 16"
+    },
+    {
+      "name": "original-069 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-070 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-070 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-071 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-071 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-072 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-072 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-073 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-073 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-074 segment count preserved",
+      "passed": true,
+      "detail": "15 vs 15"
+    },
+    {
+      "name": "original-074 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-075 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-075 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-076 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-076 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-077 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-077 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-078 segment count preserved",
+      "passed": true,
+      "detail": "10 vs 10"
+    },
+    {
+      "name": "original-078 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-079 segment count preserved",
+      "passed": true,
+      "detail": "13 vs 13"
+    },
+    {
+      "name": "original-079 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-080 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-080 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-081 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-081 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-082 segment count preserved",
+      "passed": true,
+      "detail": "14 vs 14"
+    },
+    {
+      "name": "original-082 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-083 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-083 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-084 segment count preserved",
+      "passed": true,
+      "detail": "11 vs 11"
+    },
+    {
+      "name": "original-084 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original-085 segment count preserved",
+      "passed": true,
+      "detail": "12 vs 12"
+    },
+    {
+      "name": "original-085 title present and source-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All manual Hindi reviews are used by V18",
+      "passed": true,
+      "detail": "1073"
+    },
+    {
+      "name": "Special Romanised-Hindi direction correction retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No blank Original Source source text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No blank Original Source model/sample answer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Model and sampleAnswer stay aligned",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All Original Source segments have meaning units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All Original Source segments have answer-flexibility policy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No डॉक्टर remains in Original Source Hindi",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No डाक्टर remains in Original Source Hindi",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No misspelled चिकित्सक remains",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Preferred चिकित्सक terminology is present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: अप्ने",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: अप्नि",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: सब्से",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: पिच्ले",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: पेह्लि",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: हुमेइन",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: भुग्ताब",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: मन्ज़ूरि",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: पन्क्ति",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: सन्ख्य",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: समेय",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: औस्त्रलिअ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: नाग्रिक्त",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: कोउर्सेस",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: देकेम्बेर",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: नोवेम्बेर",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: विक्रोअद",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: मोल्यन्कान",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: गुन्वत्त",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: निर्मान",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: अन्ग्रेजी",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: बैथ जये",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: चाहति हूँ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Hindi corruption removed: सकति हूँ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Every Original Source Hindi text contains Devanagari",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "English cleanup: I0 OCR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "English cleanup: I-digit OCR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "English cleanup: digit-I OCR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "English cleanup: half OCR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "English cleanup: tuition spelling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "English cleanup: VicRoads spelling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "English cleanup: discuss about grammar",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Dialogue-vocabulary set count is 190",
+      "passed": true,
+      "detail": "190"
+    },
+    {
+      "name": "Original Source has 85 dialogue-vocabulary sets",
+      "passed": true,
+      "detail": "85"
+    },
+    {
+      "name": "Every Original Source dialogue has 14–22 key vocabs",
+      "passed": true,
+      "detail": "min=14, max=22"
+    },
+    {
+      "name": "Original Source dialogue-vocab IDs unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All Original Source vocab sets reference valid dialogues",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All Original Source vocab sourceSegmentIds are valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No डॉक्टर/डाक्टर in Original Source dialogue vocabulary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Original Source dialogue-vocab total is substantial",
+      "passed": true,
+      "detail": "1543"
+    },
+    {
+      "name": "V18 CSS loaded after V17",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V18 JS loaded after V17",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Practice UI includes exact Original Source name",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Practice UI includes Verified Practice tab",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V18 keeps library-specific progress",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V18 cache name set",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V18 JS precached",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V18 CSS precached",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Version metadata is V18",
+      "passed": true,
+      "detail": "github-original-source-2026-08-10-v18"
+    },
+    {
+      "name": "Owner published content file not bundled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V17 core file unchanged: app.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V17 core file unchanged: cloud-sync-v11.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V17 core file unchanged: reliability-v15.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V17 core file unchanged: content-library-v17.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "V17 core file unchanged: scoring.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: app.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: scoring.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: cloud-sync-v11.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: reliability-v15.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: content-library-v17.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: original-source-v18.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: sw.js",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/starter_phrases.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/languages.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/dialogues.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/lesson0.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/dialogue-vocabulary_v17_105_snapshot.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/starter_vocab.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/dialogues_v17_105_snapshot.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/exam_info.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/pilot50/batch01-runtime-overlay-v1.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/packs/hi/dialogues.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/packs/hi/dialogue-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/packs/hi/vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/packs/hi/phrases.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: content/packs/hi/general-vocabulary.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON parses: version.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All service-worker precache assets exist",
+      "passed": true,
+      "detail": "[]"
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+# APS NAATI CCL Practice V18 — Original Source QA Report
+
+**Result:** PASS — 276/276 checks passed.
+
+## Release counts
+
+- Existing Verified Practice dialogues: **105**
+- Added Original Source dialogues: **85**
+- Total dialogues: **190**
+- Original Source segments: **1,073**
+- Original Source dialogue-vocabulary items: **1,543**
+
+## Preservation and language QA
+
+- The existing 105 V17 dialogue objects are unchanged.
+- The existing 105 V17 dialogue-vocabulary sets are unchanged.
+- Original Source uses a separate `original-*` ID namespace.
+- All 1,073 manually reviewed Hindi strings are present in the built Original Source library.
+- Legacy Hindi corruption markers tested by the QA script are absent.
+- `डॉक्टर`, `डाक्टर` and `चिकितस्क` are absent from Original Source Hindi; the preferred teaching term is `चिकित्सक`.
+- Original Source remains excluded from the current Mock Test pool (`testEligible: false`).
+
+## Functional architecture
+
+- Dialogue Practice provides separate **Verified Practice** and **Original Source** library controls.
+- Original Source uses the existing Learning Hub, dialogue-specific vocabulary player, Start Dialogue, Practice Mode, recordings and report workflow.
+- The Progress page keeps Verified Practice and Original Source counts separate so adding 85 dialogues does not make earlier completion progress appear to go backwards.
+- Content Studio continues to load the combined dialogue pack, so the Original Source records can be searched and edited with the existing owner tools.
+
+## Important editorial note
+
+V18 preserves historical/source facts, names, dates, amounts and scenario meaning rather than silently modernising the Original Source dialogues. Language correction does not certify that every historical procedural statement is current official advice.
+
+## Browser-runtime note
+
+The build environment blocks Chromium access to loopback/local web pages with an organisation policy, so a genuine browser click-through could not be completed here. The report therefore does **not** claim a browser runtime test. The 276 checks below cover content integrity, preservation, IDs, links, JavaScript syntax, JSON parsing, service-worker assets and release wiring. A short live GitHub Pages smoke test is still recommended after deployment.
+
+## Automated checks
+
+- PASS — Total dialogue count is 190 — 190
+- PASS — Verified Practice count remains 105 — 105
+- PASS — Original Source count is 85 — 85
+- PASS — Original Source segment count is 1,073 — 1073
+- PASS — Source audit contains 1,073 segments — 1073
+- PASS — All 1,073 Hindi corrections present — 1073
+- PASS — Current 105 dialogue objects unchanged from V17 snapshot
+- PASS — Current 105 dialogue-vocab sets unchanged from V17 snapshot
+- PASS — Main and Hindi-pack dialogue mirrors match
+- PASS — Main and Hindi-pack dialogue-vocabulary mirrors match
+- PASS — All dialogue IDs unique
+- PASS — All segment IDs unique — 2346
+- PASS — Original Source IDs use separate namespace
+- PASS — Original Source excluded from current Mock Test pool
+- PASS — Original Source marked study-ready separately
+- PASS — Original Source legacy IDs preserved
+- PASS — original-001 segment count preserved — 13 vs 13
+- PASS — original-001 title present and source-linked
+- PASS — original-002 segment count preserved — 12 vs 12
+- PASS — original-002 title present and source-linked
+- PASS — original-003 segment count preserved — 12 vs 12
+- PASS — original-003 title present and source-linked
+- PASS — original-004 segment count preserved — 13 vs 13
+- PASS — original-004 title present and source-linked
+- PASS — original-005 segment count preserved — 21 vs 21
+- PASS — original-005 title present and source-linked
+- PASS — original-006 segment count preserved — 15 vs 15
+- PASS — original-006 title present and source-linked
+- PASS — original-007 segment count preserved — 13 vs 13
+- PASS — original-007 title present and source-linked
+- PASS — original-008 segment count preserved — 12 vs 12
+- PASS — original-008 title present and source-linked
+- PASS — original-009 segment count preserved — 12 vs 12
+- PASS — original-009 title present and source-linked
+- PASS — original-010 segment count preserved — 18 vs 18
+- PASS — original-010 title present and source-linked
+- PASS — original-011 segment count preserved — 12 vs 12
+- PASS — original-011 title present and source-linked
+- PASS — original-012 segment count preserved — 11 vs 11
+- PASS — original-012 title present and source-linked
+- PASS — original-013 segment count preserved — 9 vs 9
+- PASS — original-013 title present and source-linked
+- PASS — original-014 segment count preserved — 17 vs 17
+- PASS — original-014 title present and source-linked
+- PASS — original-015 segment count preserved — 9 vs 9
+- PASS — original-015 title present and source-linked
+- PASS — original-016 segment count preserved — 12 vs 12
+- PASS — original-016 title present and source-linked
+- PASS — original-017 segment count preserved — 13 vs 13
+- PASS — original-017 title present and source-linked
+- PASS — original-018 segment count preserved — 12 vs 12
+- PASS — original-018 title present and source-linked
+- PASS — original-019 segment count preserved — 10 vs 10
+- PASS — original-019 title present and source-linked
+- PASS — original-020 segment count preserved — 13 vs 13
+- PASS — original-020 title present and source-linked
+- PASS — original-021 segment count preserved — 12 vs 12
+- PASS — original-021 title present and source-linked
+- PASS — original-022 segment count preserved — 13 vs 13
+- PASS — original-022 title present and source-linked
+- PASS — original-023 segment count preserved — 11 vs 11
+- PASS — original-023 title present and source-linked
+- PASS — original-024 segment count preserved — 11 vs 11
+- PASS — original-024 title present and source-linked
+- PASS — original-025 segment count preserved — 12 vs 12
+- PASS — original-025 title present and source-linked
+- PASS — original-026 segment count preserved — 13 vs 13
+- PASS — original-026 title present and source-linked
+- PASS — original-027 segment count preserved — 11 vs 11
+- PASS — original-027 title present and source-linked
+- PASS — original-028 segment count preserved — 13 vs 13
+- PASS — original-028 title present and source-linked
+- PASS — original-029 segment count preserved — 14 vs 14
+- PASS — original-029 title present and source-linked
+- PASS — original-030 segment count preserved — 12 vs 12
+- PASS — original-030 title present and source-linked
+- PASS — original-031 segment count preserved — 11 vs 11
+- PASS — original-031 title present and source-linked
+- PASS — original-032 segment count preserved — 12 vs 12
+- PASS — original-032 title present and source-linked
+- PASS — original-033 segment count preserved — 14 vs 14
+- PASS — original-033 title present and source-linked
+- PASS — original-034 segment count preserved — 13 vs 13
+- PASS — original-034 title present and source-linked
+- PASS — original-035 segment count preserved — 14 vs 14
+- PASS — original-035 title present and source-linked
+- PASS — original-036 segment count preserved — 15 vs 15
+- PASS — original-036 title present and source-linked
+- PASS — original-037 segment count preserved — 12 vs 12
+- PASS — original-037 title present and source-linked
+- PASS — original-038 segment count preserved — 18 vs 18
+- PASS — original-038 title present and source-linked
+- PASS — original-039 segment count preserved — 11 vs 11
+- PASS — original-039 title present and source-linked
+- PASS — original-040 segment count preserved — 14 vs 14
+- PASS — original-040 title present and source-linked
+- PASS — original-041 segment count preserved — 13 vs 13
+- PASS — original-041 title present and source-linked
+- PASS — original-042 segment count preserved — 13 vs 13
+- PASS — original-042 title present and source-linked
+- PASS — original-043 segment count preserved — 12 vs 12
+- PASS — original-043 title present and source-linked
+- PASS — original-044 segment count preserved — 12 vs 12
+- PASS — original-044 title present and source-linked
+- PASS — original-045 segment count preserved — 11 vs 11
+- PASS — original-045 title present and source-linked
+- PASS — original-046 segment count preserved — 13 vs 13
+- PASS — original-046 title present and source-linked
+- PASS — original-047 segment count preserved — 13 vs 13
+- PASS — original-047 title present and source-linked
+- PASS — original-048 segment count preserved — 14 vs 14
+- PASS — original-048 title present and source-linked
+- PASS — original-049 segment count preserved — 12 vs 12
+- PASS — original-049 title present and source-linked
+- PASS — original-050 segment count preserved — 15 vs 15
+- PASS — original-050 title present and source-linked
+- PASS — original-051 segment count preserved — 14 vs 14
+- PASS — original-051 title present and source-linked
+- PASS — original-052 segment count preserved — 13 vs 13
+- PASS — original-052 title present and source-linked
+- PASS — original-053 segment count preserved — 12 vs 12
+- PASS — original-053 title present and source-linked
+- PASS — original-054 segment count preserved — 13 vs 13
+- PASS — original-054 title present and source-linked
+- PASS — original-055 segment count preserved — 9 vs 9
+- PASS — original-055 title present and source-linked
+- PASS — original-056 segment count preserved — 10 vs 10
+- PASS — original-056 title present and source-linked
+- PASS — original-057 segment count preserved — 11 vs 11
+- PASS — original-057 title present and source-linked
+- PASS — original-058 segment count preserved — 12 vs 12
+- PASS — original-058 title present and source-linked
+- PASS — original-059 segment count preserved — 11 vs 11
+- PASS — original-059 title present and source-linked
+- PASS — original-060 segment count preserved — 9 vs 9
+- PASS — original-060 title present and source-linked
+- PASS — original-061 segment count preserved — 13 vs 13
+- PASS — original-061 title present and source-linked
+- PASS — original-062 segment count preserved — 13 vs 13
+- PASS — original-062 title present and source-linked
+- PASS — original-063 segment count preserved — 13 vs 13
+- PASS — original-063 title present and source-linked
+- PASS — original-064 segment count preserved — 12 vs 12
+- PASS — original-064 title present and source-linked
+- PASS — original-065 segment count preserved — 11 vs 11
+- PASS — original-065 title present and source-linked
+- PASS — original-066 segment count preserved — 14 vs 14
+- PASS — original-066 title present and source-linked
+- PASS — original-067 segment count preserved — 11 vs 11
+- PASS — original-067 title present and source-linked
+- PASS — original-068 segment count preserved — 12 vs 12
+- PASS — original-068 title present and source-linked
+- PASS — original-069 segment count preserved — 16 vs 16
+- PASS — original-069 title present and source-linked
+- PASS — original-070 segment count preserved — 12 vs 12
+- PASS — original-070 title present and source-linked
+- PASS — original-071 segment count preserved — 12 vs 12
+- PASS — original-071 title present and source-linked
+- PASS — original-072 segment count preserved — 12 vs 12
+- PASS — original-072 title present and source-linked
+- PASS — original-073 segment count preserved — 14 vs 14
+- PASS — original-073 title present and source-linked
+- PASS — original-074 segment count preserved — 15 vs 15
+- PASS — original-074 title present and source-linked
+- PASS — original-075 segment count preserved — 13 vs 13
+- PASS — original-075 title present and source-linked
+- PASS — original-076 segment count preserved — 13 vs 13
+- PASS — original-076 title present and source-linked
+- PASS — original-077 segment count preserved — 12 vs 12
+- PASS — original-077 title present and source-linked
+- PASS — original-078 segment count preserved — 10 vs 10
+- PASS — original-078 title present and source-linked
+- PASS — original-079 segment count preserved — 13 vs 13
+- PASS — original-079 title present and source-linked
+- PASS — original-080 segment count preserved — 14 vs 14
+- PASS — original-080 title present and source-linked
+- PASS — original-081 segment count preserved — 12 vs 12
+- PASS — original-081 title present and source-linked
+- PASS — original-082 segment count preserved — 14 vs 14
+- PASS — original-082 title present and source-linked
+- PASS — original-083 segment count preserved — 12 vs 12
+- PASS — original-083 title present and source-linked
+- PASS — original-084 segment count preserved — 11 vs 11
+- PASS — original-084 title present and source-linked
+- PASS — original-085 segment count preserved — 12 vs 12
+- PASS — original-085 title present and source-linked
+- PASS — All manual Hindi reviews are used by V18 — 1073
+- PASS — Special Romanised-Hindi direction correction retained
+- PASS — No blank Original Source source text
+- PASS — No blank Original Source model/sample answer
+- PASS — Model and sampleAnswer stay aligned
+- PASS — All Original Source segments have meaning units
+- PASS — All Original Source segments have answer-flexibility policy
+- PASS — No डॉक्टर remains in Original Source Hindi
+- PASS — No डाक्टर remains in Original Source Hindi
+- PASS — No misspelled चिकित्सक remains
+- PASS — Preferred चिकित्सक terminology is present
+- PASS — Legacy Hindi corruption removed: अप्ने
+- PASS — Legacy Hindi corruption removed: अप्नि
+- PASS — Legacy Hindi corruption removed: सब्से
+- PASS — Legacy Hindi corruption removed: पिच्ले
+- PASS — Legacy Hindi corruption removed: पेह्लि
+- PASS — Legacy Hindi corruption removed: हुमेइन
+- PASS — Legacy Hindi corruption removed: भुग्ताब
+- PASS — Legacy Hindi corruption removed: मन्ज़ूरि
+- PASS — Legacy Hindi corruption removed: पन्क्ति
+- PASS — Legacy Hindi corruption removed: सन्ख्य
+- PASS — Legacy Hindi corruption removed: समेय
+- PASS — Legacy Hindi corruption removed: औस्त्रलिअ
+- PASS — Legacy Hindi corruption removed: नाग्रिक्त
+- PASS — Legacy Hindi corruption removed: कोउर्सेस
+- PASS — Legacy Hindi corruption removed: देकेम्बेर
+- PASS — Legacy Hindi corruption removed: नोवेम्बेर
+- PASS — Legacy Hindi corruption removed: विक्रोअद
+- PASS — Legacy Hindi corruption removed: मोल्यन्कान
+- PASS — Legacy Hindi corruption removed: गुन्वत्त
+- PASS — Legacy Hindi corruption removed: निर्मान
+- PASS — Legacy Hindi corruption removed: अन्ग्रेजी
+- PASS — Legacy Hindi corruption removed: बैथ जये
+- PASS — Legacy Hindi corruption removed: चाहति हूँ
+- PASS — Legacy Hindi corruption removed: सकति हूँ
+- PASS — Every Original Source Hindi text contains Devanagari
+- PASS — English cleanup: I0 OCR
+- PASS — English cleanup: I-digit OCR
+- PASS — English cleanup: digit-I OCR
+- PASS — English cleanup: half OCR
+- PASS — English cleanup: tuition spelling
+- PASS — English cleanup: VicRoads spelling
+- PASS — English cleanup: discuss about grammar
+- PASS — Dialogue-vocabulary set count is 190 — 190
+- PASS — Original Source has 85 dialogue-vocabulary sets — 85
+- PASS — Every Original Source dialogue has 14–22 key vocabs — min=14, max=22
+- PASS — Original Source dialogue-vocab IDs unique
+- PASS — All Original Source vocab sets reference valid dialogues
+- PASS — All Original Source vocab sourceSegmentIds are valid
+- PASS — No डॉक्टर/डाक्टर in Original Source dialogue vocabulary
+- PASS — Original Source dialogue-vocab total is substantial — 1543
+- PASS — V18 CSS loaded after V17
+- PASS — V18 JS loaded after V17
+- PASS — Practice UI includes exact Original Source name
+- PASS — Practice UI includes Verified Practice tab
+- PASS — V18 keeps library-specific progress
+- PASS — V18 cache name set
+- PASS — V18 JS precached
+- PASS — V18 CSS precached
+- PASS — Version metadata is V18 — github-original-source-2026-08-10-v18
+- PASS — Owner published content file not bundled
+- PASS — V17 core file unchanged: app.js
+- PASS — V17 core file unchanged: cloud-sync-v11.js
+- PASS — V17 core file unchanged: reliability-v15.js
+- PASS — V17 core file unchanged: content-library-v17.js
+- PASS — V17 core file unchanged: scoring.js
+- PASS — JavaScript syntax: app.js
+- PASS — JavaScript syntax: scoring.js
+- PASS — JavaScript syntax: cloud-sync-v11.js
+- PASS — JavaScript syntax: reliability-v15.js
+- PASS — JavaScript syntax: content-library-v17.js
+- PASS — JavaScript syntax: original-source-v18.js
+- PASS — JavaScript syntax: sw.js
+- PASS — JSON parses: content/starter_phrases.json
+- PASS — JSON parses: content/languages.json
+- PASS — JSON parses: content/dialogues.json
+- PASS — JSON parses: content/lesson0.json
+- PASS — JSON parses: content/dialogue-vocabulary_v17_105_snapshot.json
+- PASS — JSON parses: content/starter_vocab.json
+- PASS — JSON parses: content/dialogue-vocabulary.json
+- PASS — JSON parses: content/dialogues_v17_105_snapshot.json
+- PASS — JSON parses: content/exam_info.json
+- PASS — JSON parses: content/pilot50/batch01-runtime-overlay-v1.json
+- PASS — JSON parses: content/packs/hi/dialogues.json
+- PASS — JSON parses: content/packs/hi/dialogue-vocabulary.json
+- PASS — JSON parses: content/packs/hi/vocabulary.json
+- PASS — JSON parses: content/packs/hi/phrases.json
+- PASS — JSON parses: content/packs/hi/general-vocabulary.json
+- PASS — JSON parses: version.json
+- PASS — All service-worker precache assets exist — []

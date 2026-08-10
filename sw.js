@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-safe-merge-20260810-v17';
+const CACHE_NAME = 'aps-naati-original-source-20260810-v18';
 const PRECACHE = [
   "./",
   "./index.html",
@@ -73,7 +73,12 @@ const PRECACHE = [
   "./content-library-v17.css",
   "./CONTENT_LIBRARY_V17.md",
   "./QA_REPORT_GITHUB_SAFE_MERGE_V17.md",
-  "./QA_REPORT_GITHUB_SAFE_MERGE_V17.json"
+  "./QA_REPORT_GITHUB_SAFE_MERGE_V17.json",
+  "./QA_REPORT_GITHUB_ORIGINAL_SOURCE_V18.json",
+  "./QA_REPORT_GITHUB_ORIGINAL_SOURCE_V18.md",
+  "./ORIGINAL_SOURCE_V18.md",
+  "./original-source-v18.css",
+  "./original-source-v18.js"
 ];
 
 self.addEventListener('install', event => {
