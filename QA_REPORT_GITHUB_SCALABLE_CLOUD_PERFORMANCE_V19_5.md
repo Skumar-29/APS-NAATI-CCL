@@ -1,0 +1,81 @@
+# APS NAATI CCL Practice — V19.5 QA Report
+
+**Result: 73/73 checks passed.**
+
+- PASS — JavaScript syntax: app.js
+- PASS — JavaScript syntax: cloud-sync-v11.js
+- PASS — JavaScript syntax: content-library-v17.js
+- PASS — JavaScript syntax: my-vocabs-v19-3.js
+- PASS — JavaScript syntax: my-vocabs-v19-4.js
+- PASS — JavaScript syntax: my-vocabs-v19.js
+- PASS — JavaScript syntax: original-source-v18.js
+- PASS — JavaScript syntax: reliability-v15.js
+- PASS — JavaScript syntax: scoring.js
+- PASS — JavaScript syntax: study-hotfix-v5.js
+- PASS — JavaScript syntax: study-progress-v9.js
+- PASS — JavaScript syntax: sw.js
+- PASS — JSON parse: content/exam_info.json
+- PASS — JSON parse: content/languages.json
+- PASS — JSON parse: content/lesson0.json
+- PASS — JSON parse: content/packs/hi/dialogue-vocabulary.json
+- PASS — JSON parse: content/packs/hi/dialogues.json
+- PASS — JSON parse: content/packs/hi/general-vocabulary.json
+- PASS — JSON parse: content/packs/hi/phrases.json
+- PASS — JSON parse: content/packs/hi/vocabulary.json
+- PASS — JSON parse: version.json
+- PASS — Learning content unchanged: content/packs/hi/dialogues.json — 14a416cd87a930ee
+- PASS — Learning content unchanged: content/packs/hi/vocabulary.json — 6fb4cd36e14ff8cc
+- PASS — Learning content unchanged: content/packs/hi/general-vocabulary.json — 57f4ef06b151c984
+- PASS — Learning content unchanged: content/packs/hi/dialogue-vocabulary.json — a2f1c07531e02ad1
+- PASS — Learning content unchanged: content/packs/hi/phrases.json — 16a1b8fb876e3113
+- PASS — Learning content unchanged: content/exam_info.json — 0fc764649f52d0e6
+- PASS — Learning content unchanged: content/lesson0.json — 63e0773b3848b437
+- PASS — Dialogue count = 190 — 190
+- PASS — Core vocabulary count = 3000 — 3000
+- PASS — General vocabulary preserved = 3009 — 3009
+- PASS — Phrase count = 551 — 551
+- PASS — Dialogue-vocabulary set count = 190 — 190
+- PASS — Dialogue-vocabulary item count = 3283 — 3283
+- PASS — Service-worker precache assets exist
+- PASS — Service-worker shell precache under 1 MiB — 633971 bytes
+- PASS — Large language packs excluded from install precache
+- PASS — Runtime language-pack cache enabled
+- PASS — Old language-pack cache migration present
+- PASS — Cloud schema v2
+- PASS — Separate progress sections
+- PASS — Separate My Vocabs collection
+- PASS — Section chunking
+- PASS — Legacy root migration
+- PASS — Legacy keys pruned only through explicit migration
+- PASS — Incremental dirty-key sync
+- PASS — My Vocabs per-record sync
+- PASS — My Vocabs safe batch writes
+- PASS — My Vocabs external refresh event
+- PASS — Firestore permission guidance
+- PASS — Firestore rules protect root owner
+- PASS — Firestore rules allow sections subcollection
+- PASS — Firestore rules allow section chunks
+- PASS — Firestore rules allow My Vocabs subcollection
+- PASS — Anonymous cloud writes denied
+- PASS — Actions column removed
+- PASS — Five visible columns
+- PASS — Right-click context menu present
+- PASS — Context Play action
+- PASS — Context Translate action
+- PASS — Context Recall actions
+- PASS — Context Delete action
+- PASS — Sticky header preserved
+- PASS — Frozen first 3 columns preserved
+- PASS — My Vocabs coalesced persistence
+- PASS — My Vocabs flush before unload
+- PASS — CSV bulk translation preserved
+- PASS — Enter-to-next-row preserved
+- PASS — Shift+Arrow selection preserved
+- PASS — Version = 19.5 — 19.5
+- PASS — Content version unchanged — 6.0.0-v19-content-unchanged
+- PASS — Setup explains one-time rules update
+- PASS — Setup explains migration
+
+## Browser test note
+
+A full Chromium click-through could not be completed in this build container because the available headless Chromium process did not terminate normally. Static JavaScript/JSON validation, content-hash preservation checks, service-worker asset validation, cloud-schema checks, and package integrity checks are used instead. Real Firebase migration must be verified after the one-time Firestore rule update because this container is not connected to the user’s Firebase account.

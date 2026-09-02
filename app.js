@@ -375,9 +375,9 @@ async function loadLanguagePack(languageId){
   const language=state.languageCatalog.find(x=>x.id===languageId&&x.status==='available');
   if(!language||!language.files)throw new Error('This language pack is not available yet.');
   const [dialogues,vocab,phrases]=await Promise.all([
-    fetch(language.files.dialogues).then(r=>{if(!r.ok)throw new Error('Dialogue pack could not be loaded.');return r.json();}),
-    fetch(language.files.vocabulary).then(r=>{if(!r.ok)throw new Error('Vocabulary pack could not be loaded.');return r.json();}),
-    fetch(language.files.phrases).then(r=>{if(!r.ok)throw new Error('Phrase pack could not be loaded.');return r.json();})
+    fetch(language.files.dialogues,{cache:'default'}).then(r=>{if(!r.ok)throw new Error('Dialogue pack could not be loaded.');return r.json();}),
+    fetch(language.files.vocabulary,{cache:'default'}).then(r=>{if(!r.ok)throw new Error('Vocabulary pack could not be loaded.');return r.json();}),
+    fetch(language.files.phrases,{cache:'default'}).then(r=>{if(!r.ok)throw new Error('Phrase pack could not be loaded.');return r.json();})
   ]);
   Object.assign(state,{dialogues,vocab:vocab.items||[],phrases:phrases.items||[],selectedLanguage:languageId,languagePack:language});
   localStorage.setItem(storageKeys.selectedLanguage,languageId);
@@ -1293,7 +1293,7 @@ function loadQADialogueReport(){const d=state.dialogues[0];const responses=d.seg
 
 // Backup / restore
 function backupProgress(){const data={version:'2.0.9-v19',createdAt:new Date().toISOString(),vocabStatus:getJSON(storageKeys.vocabStatus,{}),vocabSettings:state.vocabSettings,vocabResume:getJSON(storageKeys.vocabResume,{}),phraseStats:getJSON(storageKeys.phraseStats,{}),dialogueVocabProgress:getJSON(storageKeys.dialogueVocabProgress,{}),myVocabs:getJSON(storageKeys.myVocabs,{schemaVersion:1,items:{}}),attempts:getJSON(storageKeys.attempts,[]),lesson:getJSON(storageKeys.lesson,{}),mistakes:getJSON(storageKeys.mistakes,[]),account:{signedIn:Boolean(state.auth.user),provider:authProviderLabel()}};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_NAATI_Progress_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);}
-async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.phraseStats,d.phraseStats||{});setJSON(storageKeys.dialogueVocabProgress,d.dialogueVocabProgress||{});if(d.myVocabs)setJSON(storageKeys.myVocabs,d.myVocabs);setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});normaliseVocabSettings(d.vocabSettings||{});saveVocabSettings();showToast('Progress restored');}catch{showToast('This backup could not be restored');}}
+async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.phraseStats,d.phraseStats||{});setJSON(storageKeys.dialogueVocabProgress,d.dialogueVocabProgress||{});if(d.myVocabs){setJSON(storageKeys.myVocabs,d.myVocabs);window.dispatchEvent(new CustomEvent('aps-my-vocabs-external-update'));}setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});normaliseVocabSettings(d.vocabSettings||{});saveVocabSettings();showToast('Progress restored');}catch{showToast('This backup could not be restored');}}
 
 // Event handling
 app.addEventListener('click',async e=>{

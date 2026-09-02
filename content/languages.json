@@ -17,6 +17,13 @@
         "vocabulary": "./content/packs/hi/vocabulary.json",
         "phrases": "./content/packs/hi/phrases.json",
         "generalVocabulary": "./content/packs/hi/general-vocabulary.json"
+      },
+      "counts": {
+        "dialogues": 190,
+        "vocabulary": 3000,
+        "phrases": 551,
+        "generalVocabularyReviewed": 236,
+        "dialogueVocabularySets": 190
       }
     },
     {

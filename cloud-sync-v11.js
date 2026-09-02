@@ -1,7 +1,7 @@
 'use strict';
 
 (() => {
-  const CLOUD_VERSION = 'aps-naati-cloud-sync-v11';
+  const CLOUD_VERSION = 'aps-naati-cloud-sync-v19-5';
   const FIREBASE_SDK_VERSION = '12.16.0';
   const FIREBASE_PROJECT_ID = 'aps-naati-ccl-practice';
   const BUNDLED_FIREBASE_CONFIG = Object.freeze({
@@ -17,7 +17,12 @@
   const META_KEY = 'apsCloudSyncMetaV1';
   const STATUS_KEY = 'apsCloudSyncStatusV1';
   const COLLECTION = 'apsUserProgress';
-  const SYNC_DEBOUNCE_MS = 15000;
+  const SYNC_DEBOUNCE_MS = 8000;
+  const CLOUD_SCHEMA_VERSION = 2;
+  const PUSHED_META_KEY = 'apsCloudPushedMetaV195';
+  const MY_VOCAB_SYNC_META_KEY = 'apsCloudMyVocabSyncMetaV195';
+  const AUTO_PULL_MIN_MS = 60000;
+  const SECTION_CHUNK_CHARS = 180000;
 
   const syncState = {
     firebaseReady: false,
@@ -35,6 +40,9 @@
     firebasePromise: null,
     lastCardSignature: '',
     initialPullDoneForUid: '',
+    lastAutoPullAtMs: 0,
+    dirtyKeys: new Set(),
+    migrationCheckedForUid: '',
   };
 
   const originalStorageSetItem = Storage.prototype.setItem;
@@ -750,17 +758,20 @@
     return localValue;
   }
 
-  function localSnapshot(meta = loadMeta()) {
-    const keys = {};
-    for (const key of SYNC_KEYS) {
-      const raw = localStorage.getItem(key);
-      if (raw == null) continue;
-      keys[key] = {
-        value: sanitiseValueForCloud(key, raw),
-        updatedAt: Number(meta[key]) || 1,
-      };
-    }
-    return keys;
+  function loadPushedMeta() {
+    return safeParse(localStorage.getItem(PUSHED_META_KEY), {}) || {};
+  }
+
+  function savePushedMeta(meta) {
+    originalStorageSetItem.call(localStorage, PUSHED_META_KEY, JSON.stringify(meta || {}));
+  }
+
+  function loadMyVocabSyncMeta() {
+    return safeParse(localStorage.getItem(MY_VOCAB_SYNC_META_KEY), {}) || {};
+  }
+
+  function saveMyVocabSyncMeta(meta) {
+    originalStorageSetItem.call(localStorage, MY_VOCAB_SYNC_META_KEY, JSON.stringify(meta || {}));
   }
 
   function cloudDocument() {
@@ -769,23 +780,264 @@
     return window.firebase.firestore().collection(COLLECTION).doc(user.uid);
   }
 
-  async function refreshInMemoryState() {
-    try {
-      const storedSettings = getJSON(storageKeys.vocabSettings, {});
-      Object.assign(state.vocabSettings, storedSettings || {});
-      normaliseVocabSettings(storedSettings || {});
-
-      const selected = localStorage.getItem(storageKeys.selectedLanguage);
-      if (selected && selected !== state.selectedLanguage) {
-        await loadLanguagePack(selected);
-      }
-      render();
-    } catch (error) {
-      console.warn(`${CLOUD_VERSION}: could not refresh in-memory state`, error);
-    }
+  function cloudSections() {
+    const root = cloudDocument();
+    return root ? root.collection('sections') : null;
   }
 
-  async function cloudPush({ reason = 'auto' } = {}) {
+  function cloudMyVocabs() {
+    const root = cloudDocument();
+    return root ? root.collection('myVocabs') : null;
+  }
+
+  function sectionId(key) {
+    return encodeURIComponent(String(key)).replace(/\./g, '%2E');
+  }
+
+  function myVocabDocId(id) {
+    return encodeURIComponent(String(id)).replace(/\./g, '%2E');
+  }
+
+  function valueUpdatedAt(item) {
+    return dateValue(item?.updatedAt || item?.deletedAt || item?.createdAt || 0);
+  }
+
+  function myVocabStore(raw = localStorage.getItem(storageKeys.myVocabs)) {
+    const parsed = safeParse(raw, {}) || {};
+    if (Array.isArray(parsed)) {
+      const items = {};
+      for (const item of parsed) if (item?.id) items[item.id] = item;
+      return { schemaVersion: 1, updatedAt: '', items };
+    }
+    return {
+      schemaVersion: Number(parsed.schemaVersion) || 1,
+      updatedAt: parsed.updatedAt || '',
+      items: parsed.items && typeof parsed.items === 'object' ? parsed.items : {},
+    };
+  }
+
+  async function writeSection(key, raw, updatedAtClient) {
+    const collection = cloudSections();
+    if (!collection) return;
+    const ref = collection.doc(sectionId(key));
+    const fieldValue = window.firebase.firestore.FieldValue;
+    const common = {
+      key,
+      updatedAtClient: Number(updatedAtClient) || nowMs(),
+      updatedAt: fieldValue.serverTimestamp(),
+      lastDevice: navigator.userAgent.slice(0, 160),
+    };
+    if (raw == null) {
+      await ref.set({ ...common, deleted: true, chunked: false, chunkCount: 0, value: null }, { merge: true });
+      return;
+    }
+    const text = String(raw);
+    if (text.length <= SECTION_CHUNK_CHARS) {
+      await ref.set({ ...common, deleted: false, chunked: false, chunkCount: 0, value: text }, { merge: true });
+      return;
+    }
+    const chunks = [];
+    for (let i = 0; i < text.length; i += SECTION_CHUNK_CHARS) chunks.push(text.slice(i, i + SECTION_CHUNK_CHARS));
+    // A localStorage progress section is far smaller than Firestore's 500-write
+    // batch ceiling. Commit its chunks and parent metadata together so another
+    // device never observes a parent that points at only a partially-written set.
+    const db = window.firebase.firestore();
+    if (chunks.length <= 380) {
+      const batch = db.batch();
+      chunks.forEach((value, index) => {
+        batch.set(ref.collection('chunks').doc(String(index).padStart(4, '0')), { index, value });
+      });
+      batch.set(ref, { ...common, deleted: false, chunked: true, chunkCount: chunks.length, value: fieldValue.delete() }, { merge: true });
+      await batch.commit();
+      return;
+    }
+    // Defensive fallback for an implausibly large local section: write groups,
+    // then publish the parent only after every chunk succeeds.
+    for (let offset = 0; offset < chunks.length; offset += 380) {
+      const batch = db.batch();
+      chunks.slice(offset, offset + 380).forEach((value, localIndex) => {
+        const index = offset + localIndex;
+        batch.set(ref.collection('chunks').doc(String(index).padStart(4, '0')), { index, value });
+      });
+      await batch.commit();
+    }
+    await ref.set({ ...common, deleted: false, chunked: true, chunkCount: chunks.length, value: fieldValue.delete() }, { merge: true });
+  }
+
+  async function readSectionDoc(doc) {
+    const data = doc.data() || {};
+    if (data.deleted) return { key: data.key, value: null, updatedAt: Number(data.updatedAtClient) || 0 };
+    if (!data.chunked) return { key: data.key, value: data.value ?? null, updatedAt: Number(data.updatedAtClient) || 0 };
+    const count = Math.max(0, Number(data.chunkCount) || 0);
+    const chunks = await doc.ref.collection('chunks').orderBy('index').limit(count || 1).get();
+    const values = [];
+    chunks.forEach(chunk => { const d = chunk.data() || {}; values[Number(d.index) || 0] = String(d.value || ''); });
+    return { key: data.key, value: values.slice(0, count).join(''), updatedAt: Number(data.updatedAtClient) || 0 };
+  }
+
+  function mergeRemoteEntries(remoteEntries, { firstMerge = false } = {}) {
+    const meta = loadMeta();
+    const currentTime = nowMs();
+    let changed = false;
+    let needsPush = false;
+    syncState.applyingRemote = true;
+    try {
+      for (const key of SYNC_KEYS) {
+        if (key === storageKeys.myVocabs) continue;
+        const remoteEntry = remoteEntries[key];
+        const localRaw = localStorage.getItem(key);
+        const localTs = Number(meta[key]) || 0;
+        const remoteTs = Number(remoteEntry?.updatedAt) || 0;
+        const remoteRaw = remoteEntry?.value ?? null;
+
+        if (!remoteEntry && localRaw != null) {
+          if (!localTs) meta[key] = currentTime;
+          syncState.dirtyKeys.add(key);
+          needsPush = true;
+          continue;
+        }
+        if (!remoteEntry) continue;
+
+        const alwaysMerge = key === storageKeys.practiceDaily || key === storageKeys.recallProgress || key === storageKeys.dialogueVocabProgress;
+        if (alwaysMerge && localRaw != null && remoteRaw != null && sanitiseValueForCloud(key, localRaw) !== remoteRaw) {
+          const merged = mergeFirstTimeValue(key, localRaw, remoteRaw);
+          applyCloudValueLocally(key, merged);
+          meta[key] = currentTime;
+          changed = changed || merged !== localRaw;
+          syncState.dirtyKeys.add(key);
+          needsPush = true;
+          continue;
+        }
+
+        if (firstMerge && localTs === 0 && localRaw != null && remoteRaw != null) {
+          const merged = mergeFirstTimeValue(key, localRaw, remoteRaw);
+          applyCloudValueLocally(key, merged);
+          meta[key] = currentTime;
+          changed = changed || merged !== localRaw;
+          syncState.dirtyKeys.add(key);
+          needsPush = true;
+          continue;
+        }
+
+        if (remoteTs > localTs) {
+          applyCloudValueLocally(key, remoteRaw);
+          meta[key] = remoteTs || currentTime;
+          changed = changed || remoteRaw !== sanitiseValueForCloud(key, localRaw);
+        } else if (localTs > remoteTs) {
+          syncState.dirtyKeys.add(key);
+          needsPush = true;
+        } else if (localTs === 0 && localRaw == null && remoteRaw != null) {
+          applyCloudValueLocally(key, remoteRaw);
+          meta[key] = remoteTs || currentTime;
+          changed = true;
+        } else if (sanitiseValueForCloud(key, localRaw) !== remoteRaw) {
+          const merged = mergeFirstTimeValue(key, localRaw, remoteRaw);
+          applyCloudValueLocally(key, merged);
+          meta[key] = currentTime;
+          changed = true;
+          syncState.dirtyKeys.add(key);
+          needsPush = true;
+        }
+      }
+      saveMeta(meta);
+    } finally {
+      syncState.applyingRemote = false;
+    }
+    return { changed, needsPush };
+  }
+
+  async function pushSections({ forceAll = false } = {}) {
+    const meta = loadMeta();
+    const pushed = loadPushedMeta();
+    const keys = forceAll ? SYNC_KEYS.filter(key => key !== storageKeys.myVocabs) : [...syncState.dirtyKeys].filter(key => key !== storageKeys.myVocabs);
+    let count = 0;
+    for (const key of keys) {
+      const updatedAtClient = Number(meta[key]) || nowMs();
+      if (!forceAll && Number(pushed[key]) >= updatedAtClient) { syncState.dirtyKeys.delete(key); continue; }
+      const raw = localStorage.getItem(key);
+      await writeSection(key, raw == null ? null : sanitiseValueForCloud(key, raw), updatedAtClient);
+      pushed[key] = updatedAtClient;
+      syncState.dirtyKeys.delete(key);
+      count++;
+    }
+    savePushedMeta(pushed);
+    return count;
+  }
+
+  async function pushMyVocabs({ forceAll = false } = {}) {
+    window.dispatchEvent(new CustomEvent('aps-my-vocabs-flush-request'));
+    const collection = cloudMyVocabs();
+    if (!collection || !storageKeys.myVocabs) return 0;
+    const local = myVocabStore();
+    const pushed = loadMyVocabSyncMeta();
+    const changed = Object.values(local.items || {}).filter(item => item?.id && (forceAll || Number(pushed[item.id]) < valueUpdatedAt(item)));
+    if (!changed.length) { syncState.dirtyKeys.delete(storageKeys.myVocabs); return 0; }
+    const db = window.firebase.firestore();
+    let committed = 0;
+    for (let offset = 0; offset < changed.length; offset += 380) {
+      const batch = db.batch();
+      const group = changed.slice(offset, offset + 380);
+      group.forEach(item => {
+        const updatedAtClient = valueUpdatedAt(item) || nowMs();
+        batch.set(collection.doc(myVocabDocId(item.id)), {
+          id: item.id,
+          updatedAtClient,
+          updatedAt: window.firebase.firestore.FieldValue.serverTimestamp(),
+          deleted: Boolean(item.deleted),
+          item,
+        }, { merge: true });
+      });
+      await batch.commit();
+      group.forEach(item => { pushed[item.id] = valueUpdatedAt(item) || nowMs(); });
+      saveMyVocabSyncMeta(pushed);
+      committed += group.length;
+    }
+    if (committed) syncState.dirtyKeys.delete(storageKeys.myVocabs);
+    return committed;
+  }
+
+  async function pullMyVocabs() {
+    window.dispatchEvent(new CustomEvent('aps-my-vocabs-flush-request'));
+    const collection = cloudMyVocabs();
+    if (!collection || !storageKeys.myVocabs) return { changed: false, needsPush: false };
+    const snapshot = await collection.get({ source: 'server' }).catch(() => collection.get());
+    const local = myVocabStore();
+    const items = { ...local.items };
+    const syncMeta = loadMyVocabSyncMeta();
+    let changed = false;
+    let needsPush = false;
+    const remoteIds = new Set();
+    snapshot.forEach(doc => {
+      const data = doc.data() || {};
+      const item = data.item && typeof data.item === 'object' ? data.item : null;
+      const id = String(data.id || item?.id || '');
+      if (!id || !item) return;
+      remoteIds.add(id);
+      const remoteTs = Number(data.updatedAtClient) || valueUpdatedAt(item);
+      const localItem = items[id];
+      const localTs = valueUpdatedAt(localItem);
+      if (!localItem || remoteTs > localTs) {
+        items[id] = item;
+        changed = true;
+      } else if (localTs > remoteTs) {
+        needsPush = true;
+      }
+      syncMeta[id] = Math.max(Number(syncMeta[id]) || 0, remoteTs || 0);
+    });
+    for (const item of Object.values(local.items || {})) {
+      if (item?.id && !remoteIds.has(item.id)) needsPush = true;
+    }
+    if (changed) {
+      const merged = { schemaVersion: Math.max(1, Number(local.schemaVersion) || 1), updatedAt: new Date().toISOString(), items };
+      syncState.applyingRemote = true;
+      try { originalStorageSetItem.call(localStorage, storageKeys.myVocabs, JSON.stringify(merged)); window.dispatchEvent(new CustomEvent('aps-my-vocabs-external-update')); }
+      finally { syncState.applyingRemote = false; }
+    }
+    saveMyVocabSyncMeta(syncMeta);
+    return { changed, needsPush };
+  }
+
+  async function cloudPush({ reason = 'auto', forceAll = false, pruneLegacy = false } = {}) {
     if (!cloudUserReady() || syncState.syncing || syncState.applyingRemote) return false;
     const ref = cloudDocument();
     if (!ref) return false;
@@ -793,18 +1045,22 @@
     syncState.lastError = '';
     ensureCloudCard();
     try {
-      const meta = loadMeta();
-      const keys = localSnapshot(meta);
-      await ref.set({
-        schemaVersion: 1,
-        appVersion: 'github-study-ready-2026-08-07-v9',
+      if (/manual|create-cloud|signed-in|migrate/i.test(reason)) forceAll = true;
+      const sectionCount = await pushSections({ forceAll });
+      const vocabCount = await pushMyVocabs({ forceAll });
+      const payload = {
+        schemaVersion: CLOUD_SCHEMA_VERSION,
+        appVersion: 'v19.5-scalable-cloud-performance',
         projectId: FIREBASE_PROJECT_ID,
         updatedAtClient: nowMs(),
         updatedAt: window.firebase.firestore.FieldValue.serverTimestamp(),
         lastDevice: navigator.userAgent.slice(0, 220),
         reason,
-        keys,
-      }, { merge: true });
+        sectionCount,
+        myVocabCount: Object.keys(myVocabStore().items || {}).length,
+      };
+      if (pruneLegacy) payload.keys = window.firebase.firestore.FieldValue.delete();
+      await ref.set(payload, { merge: true });
       syncState.lastPushAt = new Date().toISOString();
       syncState.lastSyncAt = syncState.lastPushAt;
       rememberStatus();
@@ -824,6 +1080,7 @@
     const user = currentUser();
     if (!user || user.isAnonymous) return false;
     if (syncState.syncing && !manual) return false;
+    if (!manual && syncState.lastAutoPullAtMs && nowMs() - syncState.lastAutoPullAtMs < AUTO_PULL_MIN_MS) return false;
     const ref = cloudDocument();
     if (!ref) return false;
 
@@ -832,92 +1089,62 @@
     ensureCloudCard();
     let changed = false;
     let needsPush = false;
+    let migrationNeeded = false;
     try {
-      const snapshot = await ref.get({ source: 'server' }).catch(() => ref.get());
-      const meta = loadMeta();
-      const currentTime = nowMs();
-
-      if (!snapshot.exists) {
-        for (const key of SYNC_KEYS) {
-          if (localStorage.getItem(key) != null && !Number(meta[key])) meta[key] = currentTime;
-        }
-        saveMeta(meta);
-        syncState.lastPullAt = new Date().toISOString();
-        syncState.lastSyncAt = syncState.lastPullAt;
-        syncState.initialPullDoneForUid = user.uid;
-        rememberStatus();
-        syncState.syncing = false;
-        await cloudPush({ reason: 'create-cloud-progress' });
-        return true;
+      const [rootSnapshot, sectionSnapshot] = await Promise.all([
+        ref.get({ source: 'server' }).catch(() => ref.get()),
+        cloudSections().get({ source: 'server' }).catch(() => cloudSections().get()),
+      ]);
+      const rootData = rootSnapshot.exists ? (rootSnapshot.data() || {}) : {};
+      const remoteEntries = {};
+      const sectionDocs = [];
+      sectionSnapshot.forEach(doc => sectionDocs.push(doc));
+      for (const doc of sectionDocs) {
+        const entry = await readSectionDoc(doc);
+        if (entry.key) remoteEntries[entry.key] = entry;
       }
 
-      const remote = snapshot.data() || {};
-      const remoteKeys = remote.keys || {};
-      syncState.applyingRemote = true;
-
-      for (const key of SYNC_KEYS) {
-        const remoteEntry = remoteKeys[key];
-        const localRaw = localStorage.getItem(key);
-        const localTs = Number(meta[key]) || 0;
-        const remoteTs = Number(remoteEntry?.updatedAt) || 0;
-        const remoteRaw = remoteEntry?.value ?? null;
-
-        if (!remoteEntry && localRaw != null) {
-          if (!localTs) meta[key] = currentTime;
-          needsPush = true;
-          continue;
+      const legacyKeys = rootData.keys && typeof rootData.keys === 'object' ? rootData.keys : {};
+      if (Object.keys(legacyKeys).length) {
+        migrationNeeded = true;
+        // Prefer already-migrated section documents, but use legacy values for any
+        // section that has not been written yet.
+        for (const [key, entry] of Object.entries(legacyKeys)) {
+          if (key === storageKeys.myVocabs || remoteEntries[key]) continue;
+          remoteEntries[key] = { value: entry?.value ?? null, updatedAt: Number(entry?.updatedAt) || 0 };
         }
-        if (!remoteEntry) continue;
-
-        const alwaysMerge = key === storageKeys.practiceDaily || key === storageKeys.recallProgress || key === storageKeys.myVocabs;
-        if (alwaysMerge && localRaw != null && remoteRaw != null && sanitiseValueForCloud(key, localRaw) !== remoteRaw) {
-          const merged = mergeFirstTimeValue(key, localRaw, remoteRaw);
-          applyCloudValueLocally(key, merged);
-          meta[key] = currentTime;
-          changed = changed || merged !== localRaw;
-          needsPush = true;
-          continue;
-        }
-
-        if (firstMerge && localTs === 0 && localRaw != null) {
-          const merged = mergeFirstTimeValue(key, localRaw, remoteRaw);
-          applyCloudValueLocally(key, merged);
-          meta[key] = currentTime;
-          changed = changed || merged !== localRaw;
-          needsPush = true;
-          continue;
-        }
-
-        if (remoteTs > localTs) {
-          applyCloudValueLocally(key, remoteRaw);
-          meta[key] = remoteTs;
-          changed = changed || remoteRaw !== sanitiseValueForCloud(key, localRaw);
-        } else if (localTs > remoteTs) {
-          needsPush = true;
-        } else if (localTs === 0 && localRaw == null && remoteRaw != null) {
-          applyCloudValueLocally(key, remoteRaw);
-          meta[key] = remoteTs || currentTime;
-          changed = true;
-        } else if (sanitiseValueForCloud(key, localRaw) !== remoteRaw) {
-          const merged = mergeFirstTimeValue(key, localRaw, remoteRaw);
-          applyCloudValueLocally(key, merged);
-          meta[key] = currentTime;
-          changed = true;
-          needsPush = true;
+        const legacyMy = legacyKeys[storageKeys.myVocabs];
+        if (legacyMy?.value != null) {
+          const localRaw = localStorage.getItem(storageKeys.myVocabs);
+          const merged = mergeMyVocabs(localRaw, legacyMy.value);
+          if (merged !== localRaw) {
+            syncState.applyingRemote = true;
+            try { originalStorageSetItem.call(localStorage, storageKeys.myVocabs, merged); window.dispatchEvent(new CustomEvent('aps-my-vocabs-external-update')); }
+            finally { syncState.applyingRemote = false; }
+            changed = true;
+          }
         }
       }
 
-      saveMeta(meta);
-      syncState.applyingRemote = false;
+      const sectionResult = mergeRemoteEntries(remoteEntries, { firstMerge: firstMerge || migrationNeeded });
+      changed = changed || sectionResult.changed;
+      needsPush = needsPush || sectionResult.needsPush || !rootSnapshot.exists || migrationNeeded;
+
+      const myResult = await pullMyVocabs();
+      changed = changed || myResult.changed;
+      needsPush = needsPush || myResult.needsPush;
+
       syncState.lastPullAt = new Date().toISOString();
       syncState.lastSyncAt = syncState.lastPullAt;
       syncState.initialPullDoneForUid = user.uid;
+      syncState.lastAutoPullAtMs = nowMs();
       rememberStatus();
 
       if (changed) await refreshInMemoryState();
       if (needsPush) {
         syncState.syncing = false;
-        await cloudPush({ reason: `${reason}-merge` });
+        const ok = await cloudPush({ reason: migrationNeeded ? 'migrate-v19-5' : `${reason}-merge`, forceAll: migrationNeeded || !rootSnapshot.exists, pruneLegacy: migrationNeeded });
+        if (!ok) return changed;
       }
       if (manual && typeof showToast === 'function') {
         showToast(changed ? 'Cloud progress refreshed from your other device' : 'Cloud progress is already up to date');
@@ -939,11 +1166,14 @@
     const code = String(error?.code || '');
     const message = String(error?.message || 'Cloud sync could not complete.');
     if (code.includes('permission-denied')) {
-      return 'Cloud sync is connected, but Firestore security rules are not ready. Open Cloud sync Setup in Settings.';
+      return 'Cloud sync V19.5 needs the updated Firestore rules for progress sections and My Vocabs. Use FIREBASE_CLOUD_SYNC_SETUP.txt once in Firebase Console.';
+    }
+    if (code.includes('resource-exhausted') || /maximum allowed size|too large/i.test(message)) {
+      return 'A legacy cloud progress document is still too large. V19.5 will migrate it after the updated Firestore rules are enabled.';
     }
     if (code.includes('unavailable')) return 'Cloud sync is temporarily unavailable. Your progress is still saved on this device.';
     if (code.includes('unauthorized-domain')) return `Add ${location.hostname} to Firebase Authentication → Authorized domains.`;
-    return message.replace(/^Firebase:\s*/i, '').slice(0, 260);
+    return message.replace(/^Firebase:\s*/i, '').slice(0, 300);
   }
 
   function markLocalChange(key) {
@@ -951,6 +1181,7 @@
     const meta = loadMeta();
     meta[key] = nowMs();
     saveMeta(meta);
+    syncState.dirtyKeys.add(key);
     scheduleCloudPush();
     ensureCloudCard();
   }
@@ -969,7 +1200,7 @@
     window.clearTimeout(syncState.pendingTimer);
     if (!cloudUserReady()) return;
     syncState.pendingTimer = window.setTimeout(
-      () => cloudPush({ reason: 'local-change' }),
+      () => cloudPush({ reason: 'local-change', forceAll: false }),
       SYNC_DEBOUNCE_MS
     );
   }
@@ -1015,7 +1246,7 @@
     return {
       label: 'Cloud connected',
       tone: 'success',
-      message: `Last sync: ${formatTime(syncState.lastSyncAt)}`
+      message: `Last sync: ${formatTime(syncState.lastSyncAt)} · Scalable progress sections + My Vocabs sync` 
     };
   }
 
@@ -1071,7 +1302,7 @@
         <button class="aps-cloud-refresh" data-cloud-action="refresh" ${canRefresh ? '' : 'disabled'} title="Download the newest progress from another device">↻ <b>Refresh</b></button>
         <button data-cloud-action="sync-now" ${canRefresh ? '' : 'disabled'}>Sync now</button>
       </div>
-      <p class="aps-cloud-note">Automatic sync runs after progress changes and when you return to the app. The Refresh button manually checks another device. Recordings stay on the device; learning progress and results sync.</p>
+      <p class="aps-cloud-note">Automatic sync saves only changed progress sections. My Vocabs sync separately so large personal sheets do not block your account. Recordings stay on this device.</p>
       ${signedIn && isPasswordUser() ? `<div class="aps-cloud-account-help">${isEmailVerifiedForCloud()?'<span>✓ Email verified</span>':'<button data-cloud-action="verify-email">Verify email</button>'}<button data-cloud-action="reset-password">Reset password</button></div>` : ''}
     `;
   }
@@ -1344,9 +1575,21 @@
     }
   });
 
-  const observer = new MutationObserver(() => ensureCloudCard());
+  let cloudCardRefreshQueued = false;
+  const observer = new MutationObserver(() => {
+    if (cloudCardRefreshQueued) return;
+    cloudCardRefreshQueued = true;
+    requestAnimationFrame(() => {
+      cloudCardRefreshQueued = false;
+      // My Vocabs and dialogue screens can create hundreds of DOM nodes at once.
+      // Only inspect the cloud card when Settings is actually open.
+      if (document.querySelector('.app-settings-modal') || document.querySelector('#apsCloudSyncCard')) ensureCloudCard();
+    });
+  });
   observer.observe(document.documentElement, { childList: true, subtree: true });
-  window.setInterval(ensureCloudCard, 1200);
+  window.setInterval(() => {
+    if (document.querySelector('.app-settings-modal') || document.querySelector('#apsCloudSyncCard')) ensureCloudCard();
+  }, 5000);
 
   restoreStatus();
   window.APSCloudSync = {

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const VERSION='My Vocabs V19.4.2';
+const VERSION='My Vocabs V19.5';
 const VIEW_KEY='apsMyVocabsViewV194:hi';
 const BULK_KEY='apsMyVocabsBulkTranslateV194:hi';
 const ONLINE_CACHE_KEY='apsMyVocabsTranslationV3:hi';
@@ -44,20 +44,33 @@ let bulkRunnerActive=false;
 
 function iso(){return new Date().toISOString();}
 function blankStore(){return {schemaVersion:1,updatedAt:'',items:{}};}
-function store(){
+let myStoreCache=null,myStoreSaveTimer=0,myStoreDirty=false;
+function parseStoredMyVocabs(){
   const raw=getJSON(MY_KEY,null);
   if(!raw)return blankStore();
-  if(Array.isArray(raw)){
-    const s=blankStore();raw.forEach(r=>{if(r?.id)s.items[r.id]=r;});return s;
-  }
+  if(Array.isArray(raw)){const s=blankStore();raw.forEach(r=>{if(r?.id)s.items[r.id]=r;});return s;}
   return {schemaVersion:1,updatedAt:raw.updatedAt||'',items:raw.items&&typeof raw.items==='object'?raw.items:{}};
 }
-function saveStore(s){s.schemaVersion=1;s.updatedAt=iso();setJSON(MY_KEY,s);}
+function store(){if(!myStoreCache)myStoreCache=parseStoredMyVocabs();return myStoreCache;}
+function flushMyStore(){
+  if(!myStoreCache||!myStoreDirty)return;
+  clearTimeout(myStoreSaveTimer);myStoreSaveTimer=0;myStoreDirty=false;
+  setJSON(MY_KEY,myStoreCache);
+}
+function saveStore(s){
+  s.schemaVersion=1;s.updatedAt=iso();myStoreCache=s;myStoreDirty=true;
+  clearTimeout(myStoreSaveTimer);
+  // Bulk online translation used to stringify the full 300+ row sheet after
+  // every translated word. Coalesce those writes; typed/imported English rows
+  // remain in memory immediately and are persisted shortly afterwards.
+  myStoreSaveTimer=setTimeout(flushMyStore,bulkRunnerActive?2500:80);
+}
+function invalidateMyStore({renderIfOpen=false}={}){clearTimeout(myStoreSaveTimer);myStoreSaveTimer=0;myStoreDirty=false;myStoreCache=null;if(renderIfOpen&&state.overlay==='my-vocabs')render();}
 
-function defaultView(){return {widths:{no:64,english:250,hindi:285,synonyms:300,recall:165,actions:220},density:'comfortable'};}
+function defaultView(){return {widths:{no:64,english:270,hindi:310,synonyms:360,recall:170},density:'comfortable'};}
 function viewSettings(){const raw=getJSON(VIEW_KEY,null)||{};const d=defaultView();return {widths:{...d.widths,...(raw.widths||{})},density:raw.density==='compact'?'compact':'comfortable'};}
 function saveViewSettings(v){setJSON(VIEW_KEY,v);}
-function tableStyle(){const v=viewSettings(),w=v.widths;return `--my-col-no:${Number(w.no)||64}px;--my-col-english:${Number(w.english)||250}px;--my-col-hindi:${Number(w.hindi)||285}px;--my-col-synonyms:${Number(w.synonyms)||300}px;--my-col-recall:${Number(w.recall)||165}px;--my-col-actions:${Number(w.actions)||220}px;`;}
+function tableStyle(){const v=viewSettings(),w=v.widths;return `--my-col-no:${Number(w.no)||64}px;--my-col-english:${Number(w.english)||270}px;--my-col-hindi:${Number(w.hindi)||310}px;--my-col-synonyms:${Number(w.synonyms)||360}px;--my-col-recall:${Number(w.recall)||170}px;`;}
 function bulkJob(){const j=getJSON(BULK_KEY,null);return j&&typeof j==='object'?j:null;}
 function saveBulkJob(j){if(!j){localStorage.removeItem(BULK_KEY);return;}setJSON(BULK_KEY,j);}
 function missingHindiRows(){return rows().filter(r=>String(r.english||'').trim()&&!String(r.hindi||'').trim());}
@@ -298,7 +311,6 @@ function rowHtml(r,rowNo){
     <td class="my-freeze-hindi"><input class="my-cell my-hindi" data-my-field="hindi" data-id="${esc(r.id)}" value="${esc(r.hindi||'')}" placeholder="${r.lookupSource==='Translating…'?'Translating…':'Hindi meaning'}"></td>
     <td><input class="my-cell" data-my-field="mySynonyms" data-id="${esc(r.id)}" value="${esc((r.mySynonyms||[]).join(', '))}" placeholder="Type your synonyms"></td>
     <td><select class="my-cell my-status ${esc(r.status)}" data-my-field="status" data-id="${esc(r.id)}" aria-label="Recall status">${statusOptionsFor(r.status)}</select></td>
-    <td class="my-row-actions"><button data-action="my-autofill" data-id="${esc(r.id)}" title="Retry online Hindi translation">↻ Translate</button><button data-action="my-play-one" data-id="${esc(r.id)}" title="Open in word player">▶ Play</button><button class="danger-text" data-action="my-delete" data-id="${esc(r.id)}" title="Delete this personal row">Delete</button></td>
   </tr>`;
 }
 function resizerHtml(col){return `<span class="my-col-resizer" data-resize-col="${col}" title="Drag to resize · double-click to auto fit"></span>`;}
@@ -309,9 +321,10 @@ function workspace(){
   return `<div class="fullscreen my-vocabs-screen ${newWindow?'my-vocabs-focus':''} ${view.density==='compact'?'my-density-compact':''}"><header class="top my-vocabs-top">${newWindow?'':`<button data-action="close-my-vocabs">← Back</button>`}<div class="my-vocab-title"><strong>My Vocabs</strong><span>✓ Autosaved · ${networkBadge()}</span></div><div class="top-actions">${newWindow?'':`<button data-action="open-my-vocabs-window">▣ New window</button>`}<button data-action="my-help" title="How My Vocabs works">? Help</button>${newWindow?'':`<button class="player-settings-button" data-action="app-settings">⚙ <b>Settings</b></button>`}${newWindow?`<button class="my-close-focus" data-action="close-my-vocabs">✕ Close</button>`:''}</div></header>
   <main class="my-vocabs-main"><section class="my-vocab-stats"><button data-action="my-filter-status" data-id="all" class="${state.myVocabWorkspace.status==='all'?'active':''}"><strong>${c.all}</strong><span>All</span></button><button data-action="my-filter-status" data-id="needs-review" class="review ${state.myVocabWorkspace.status==='needs-review'?'active':''}"><strong>${c.review}</strong><span>🔴 Review</span></button><button data-action="my-filter-status" data-id="learning" class="learning ${state.myVocabWorkspace.status==='learning'?'active':''}"><strong>${c.learning}</strong><span>🟡 Learning</span></button><button data-action="my-filter-status" data-id="mastered" class="mastered ${state.myVocabWorkspace.status==='mastered'?'active':''}"><strong>${c.mastered}</strong><span>🟢 Mastered</span></button></section>
   <section class="my-vocab-toolbar my-vocab-toolbar-v194"><label class="search"><span>⌕</span><input id="myVocabSearch" type="search" placeholder="Search English, Hindi or your synonyms" value="${esc(state.myVocabWorkspace.query||'')}"></label><select id="myVocabStatusFilter"><option value="all">All recall statuses</option>${Object.entries(statusMeta).map(([id,m])=>`<option value="${id}" ${state.myVocabWorkspace.status===id?'selected':''}>${m.icon} ${m.label}</option>`).join('')}</select><select id="myVocabSort"><option value="sheet" ${state.myVocabWorkspace.sort==='sheet'?'selected':''}>Sheet order</option><option value="recent" ${state.myVocabWorkspace.sort==='recent'?'selected':''}>Recently changed</option><option value="az" ${state.myVocabWorkspace.sort==='az'?'selected':''}>English A–Z</option><option value="status" ${state.myVocabWorkspace.sort==='status'?'selected':''}>Recall status</option></select><select id="myVocabDensity"><option value="comfortable" ${view.density==='comfortable'?'selected':''}>Comfortable rows</option><option value="compact" ${view.density==='compact'?'selected':''}>Compact rows</option></select></section>
-  <section class="my-vocab-actions"><button class="primary" data-action="my-add-row">+ Add Row</button><button class="secondary" data-action="my-translate-all">↻ Translate All Missing</button><button class="secondary" data-action="my-play-filtered" ${playable?'':'disabled'}>▶ Play Filtered (${playable})</button><button class="secondary" data-action="my-play-selected" hidden>▶ Play Selected</button><button class="secondary" data-action="my-clear-selection" hidden>Clear Selection</button><button class="secondary" data-action="my-auto-fit-all">Auto Fit Columns</button><button class="secondary" data-action="my-reset-widths">Reset Widths</button><button class="secondary" data-action="my-export-csv">Export CSV</button><button class="secondary" data-action="my-import-trigger">Import CSV</button><input id="myImportCsv" type="file" accept=".csv,text/csv" hidden><span id="mySelectedCount"></span><span>${list.length.toLocaleString()} rows</span></section>
+  <section class="my-vocab-actions"><button class="primary" data-action="my-add-row">+ Add Row</button><button class="secondary" data-action="my-translate-all">↻ Translate All Missing</button><button class="secondary" data-action="my-play-filtered" ${playable?'':'disabled'}>▶ Play Filtered (${playable})</button><button class="secondary" data-action="my-auto-fit-all">Auto Fit Columns</button><button class="secondary" data-action="my-reset-widths">Reset Widths</button><button class="secondary" data-action="my-export-csv">Export CSV</button><button class="secondary" data-action="my-import-trigger">Import CSV</button><input id="myImportCsv" type="file" accept=".csv,text/csv" hidden><span id="mySelectedCount"></span><span>${list.length.toLocaleString()} rows</span></section>
   <section id="myBulkTranslationStatus" class="my-bulk-status" hidden><div class="my-bulk-status-line"><strong data-bulk-text></strong><div><button class="secondary" data-action="my-bulk-pause">Ⅱ Pause</button><button class="secondary" data-action="my-bulk-retry" hidden>Retry Failed</button><button class="secondary danger-text" data-action="my-bulk-cancel">Cancel</button></div></div><progress value="0" max="1"></progress></section>
-  <div class="my-sheet-wrap"><table class="my-sheet my-sheet-v194" style="${tableStyle()}"><thead><tr><th class="my-freeze-no">No.</th><th class="my-freeze-english">English${resizerHtml('english')}</th><th class="my-freeze-hindi">Hindi Meaning${resizerHtml('hindi')}</th><th>My Synonyms${resizerHtml('synonyms')}</th><th>Recall${resizerHtml('recall')}</th><th>Actions${resizerHtml('actions')}</th></tr></thead><tbody>${list.map(r=>rowHtml(r,nums.get(r.id))).join('')||`<tr><td colspan="6"><div class="my-empty"><h3>${rows().length?'No rows match these filters':'Your personal vocabulary sheet is empty'}</h3><p>${rows().length?'Change the search or recall filter.':'Type an English word and press Enter. Hindi translation fills automatically while you type the next word.'}</p><button class="primary" data-action="my-add-row">+ Add your first word</button></div></td></tr>`}</tbody></table></div></main>${renderModal()}</div>`;
+  <div class="my-sheet-wrap"><table class="my-sheet my-sheet-v194" style="${tableStyle()}"><thead><tr><th class="my-freeze-no">No.</th><th class="my-freeze-english">English${resizerHtml('english')}</th><th class="my-freeze-hindi">Hindi Meaning${resizerHtml('hindi')}</th><th>My Synonyms${resizerHtml('synonyms')}</th><th>Recall${resizerHtml('recall')}</th></tr></thead><tbody>${list.map(r=>rowHtml(r,nums.get(r.id))).join('')||`<tr><td colspan="5"><div class="my-empty"><h3>${rows().length?'No rows match these filters':'Your personal vocabulary sheet is empty'}</h3><p>${rows().length?'Change the search or recall filter.':'Type an English word and press Enter. Hindi translation fills automatically while you type the next word.'}</p><button class="primary" data-action="my-add-row">+ Add your first word</button></div></td></tr>`}</tbody></table></div>
+  <div id="myRowContextMenu" class="my-row-context-menu" hidden role="menu" aria-label="My Vocabs row actions"></div></main>${renderModal()}</div>`;
 }
 function captureReturnContext(){
   if(state.overlay==='my-vocabs')return;
@@ -505,21 +518,62 @@ render=function v194Render(){if(state.overlay==='my-vocabs'){app.innerHTML=works
 
 
 function autoFitColumn(col){
-  const map={english:1,hindi:2,synonyms:3,recall:4,actions:5},idx=map[col];if(idx==null)return;
+  const map={english:1,hindi:2,synonyms:3,recall:4},idx=map[col];if(idx==null)return;
   const table=document.querySelector('.my-sheet-v194');if(!table)return;
-  let max=col==='actions'?190:col==='recall'?145:160;
+  let max=col==='recall'?145:160;
   const rows=[...table.querySelectorAll('tr')].slice(0,220);
-  rows.forEach(tr=>{const cell=tr.children[idx];if(!cell)return;const text=(cell.querySelector('input,select')?.value||cell.textContent||'').trim();max=Math.max(max,Math.min(col==='synonyms'?520:col==='actions'?260:440,30+text.length*(col==='hindi'?9:8)));});
+  rows.forEach(tr=>{const cell=tr.children[idx];if(!cell)return;const text=(cell.querySelector('input,select')?.value||cell.textContent||'').trim();max=Math.max(max,Math.min(col==='synonyms'?520:440,30+text.length*(col==='hindi'?9:8)));});
   const v=viewSettings();v.widths[col]=Math.round(max);saveViewSettings(v);render();
 }
-function autoFitAllColumns(){['english','hindi','synonyms','recall','actions'].forEach(col=>{const map={english:1,hindi:2,synonyms:3,recall:4,actions:5},idx=map[col],table=document.querySelector('.my-sheet-v194');if(!table)return;let max=col==='actions'?190:col==='recall'?145:160;[...table.querySelectorAll('tr')].slice(0,220).forEach(tr=>{const cell=tr.children[idx];if(!cell)return;const text=(cell.querySelector('input,select')?.value||cell.textContent||'').trim();max=Math.max(max,Math.min(col==='synonyms'?520:col==='actions'?260:440,30+text.length*(col==='hindi'?9:8)));});const v=viewSettings();v.widths[col]=Math.round(max);saveViewSettings(v);});render();}
+function autoFitAllColumns(){['english','hindi','synonyms','recall'].forEach(col=>{const map={english:1,hindi:2,synonyms:3,recall:4},idx=map[col],table=document.querySelector('.my-sheet-v194');if(!table)return;let max=col==='recall'?145:160;[...table.querySelectorAll('tr')].slice(0,220).forEach(tr=>{const cell=tr.children[idx];if(!cell)return;const text=(cell.querySelector('input,select')?.value||cell.textContent||'').trim();max=Math.max(max,Math.min(col==='synonyms'?520:440,30+text.length*(col==='hindi'?9:8)));});const v=viewSettings();v.widths[col]=Math.round(max);saveViewSettings(v);});render();}
 function startColumnResize(event,handle){
   const col=handle.dataset.resizeCol;if(!col)return;event.preventDefault();event.stopPropagation();const startX=event.clientX,v=viewSettings(),start=Number(v.widths[col])||200;
-  const min={english:150,hindi:170,synonyms:170,recall:125,actions:170}[col]||120,max={english:520,hindi:560,synonyms:620,recall:240,actions:320}[col]||700;
+  const min={english:150,hindi:170,synonyms:170,recall:125}[col]||120,max={english:560,hindi:620,synonyms:700,recall:260}[col]||700;
   document.body.classList.add('my-resizing-column');
   const move=e=>{const n=Math.max(min,Math.min(max,start+(e.clientX-startX)));document.querySelector('.my-sheet-v194')?.style.setProperty(`--my-col-${col}`,`${Math.round(n)}px`);};
   const up=e=>{document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);document.body.classList.remove('my-resizing-column');const n=Math.max(min,Math.min(max,start+(e.clientX-startX)));const next=viewSettings();next.widths[col]=Math.round(n);saveViewSettings(next);};
   document.addEventListener('pointermove',move);document.addEventListener('pointerup',up,{once:true});
+}
+
+
+function selectedOrRowIds(rowId){
+  if(rowId&&selectedIds.has(rowId)&&selectedIds.size)return [...selectedIds];
+  return rowId?[rowId]:[...selectedIds];
+}
+function hideRowContextMenu(){const m=document.querySelector('#myRowContextMenu');if(m){m.hidden=true;m.innerHTML='';}}
+function rowContextHtml(ids){
+  const count=ids.length,label=count>1?`${count} selected rows`:(findMy(ids[0])?.english||'This row');
+  return `<div class="my-context-title">${esc(label)}</div>
+    <button data-my-context="play">▶ Play${count>1?' selected':''}</button>
+    <button data-my-context="translate">↻ Translate / refresh Hindi${count>1?' for selected':''}</button>
+    <div class="my-context-sep"></div>
+    <div class="my-context-label">Recall status</div>
+    <button data-my-context="recall" data-status="needs-review">🔴 Needs Review</button>
+    <button data-my-context="recall" data-status="learning">🟡 Learning</button>
+    <button data-my-context="recall" data-status="mastered">🟢 Mastered</button>
+    <div class="my-context-sep"></div>
+    <button class="danger-text" data-my-context="delete">Delete${count>1?' selected':''}</button>
+    ${selectedIds.size?'<button data-my-context="clear">Clear selection</button>':''}`;
+}
+function openRowContextMenu(event,rowId){
+  const menu=document.querySelector('#myRowContextMenu');if(!menu)return;
+  if(!selectedIds.has(rowId)){selectedIds.clear();selectedIds.add(rowId);selectionAnchorId=rowId;updateSelectedDom();}
+  const ids=selectedOrRowIds(rowId);menu.dataset.ids=ids.join(',');menu.innerHTML=rowContextHtml(ids);menu.hidden=false;
+  const pad=8,w=240,h=Math.min(390,menu.scrollHeight||340),vw=window.innerWidth,vh=window.innerHeight;
+  menu.style.left=`${Math.max(pad,Math.min(event.clientX,vw-w-pad))}px`;menu.style.top=`${Math.max(pad,Math.min(event.clientY,vh-h-pad))}px`;
+}
+async function translateContextRows(ids){
+  for(const id of ids){const r=findMy(id);if(!r||r.deleted||!String(r.english||'').trim())continue;await autoFillRecord(id,{replaceAuto:true});}
+  render();
+}
+function setContextRecall(ids,status){
+  const s=store();for(const id of ids){const r=s.items?.[id];if(!r||r.deleted)continue;r.status=status;r.updatedAt=iso();s.items[id]=r;}saveStore(s);render();
+}
+function deleteContextRows(ids){
+  const valid=ids.map(findMy).filter(r=>r&&!r.deleted);if(!valid.length)return;
+  const label=valid.length===1?`“${valid[0].english||'this row'}”`:`${valid.length} selected rows`;
+  if(!confirm(`Delete ${label} from My Vocabs? This only removes personal rows; master APS vocabulary is not affected.`))return;
+  const s=store(),at=iso();for(const r of valid){r.deleted=true;r.deletedAt=at;r.updatedAt=at;s.items[r.id]=r;}saveStore(s);clearSelection();render();
 }
 
 // Capture navigation before the older app handler changes the overlay.
@@ -528,7 +582,23 @@ document.addEventListener('click',event=>{
   if(a==='close-vocab-player'&&state.myVocabWorkspace.player){event.preventDefault();event.stopImmediatePropagation();stopAllSpeech();state.myVocabWorkspace.player=false;state.overlay='my-vocabs';state.tab='learn';render();}
 },true);
 
+app.addEventListener('contextmenu',event=>{
+  const tr=event.target.closest?.('[data-my-row]');if(!tr||state.overlay!=='my-vocabs')return;
+  // Preserve the browser's native text menu only when the user has selected text inside an editor.
+  const editor=event.target.closest?.('input,textarea');if(editor&&String(editor.value||'').slice(Number(editor.selectionStart)||0,Number(editor.selectionEnd)||0))return;
+  event.preventDefault();openRowContextMenu(event,tr.dataset.myRow);
+});
+document.addEventListener('pointerdown',event=>{if(!event.target.closest?.('#myRowContextMenu'))hideRowContextMenu();},true);
 app.addEventListener('click',async event=>{
+  const c=event.target.closest?.('[data-my-context]');
+  if(c){event.preventDefault();event.stopPropagation();const menu=c.closest('#myRowContextMenu'),ids=String(menu?.dataset.ids||'').split(',').filter(Boolean),a=c.dataset.myContext;hideRowContextMenu();
+    if(a==='play')playRows(ids.map(findMy).filter(Boolean),'My Vocabs · Selected rows');
+    else if(a==='translate')await translateContextRows(ids);
+    else if(a==='recall')setContextRecall(ids,c.dataset.status||'needs-review');
+    else if(a==='delete')deleteContextRows(ids);
+    else if(a==='clear')clearSelection();
+    return;
+  }
   const rowSel=event.target.closest?.('[data-row-selector]');if(rowSel){event.preventDefault();selectRow(rowSel.dataset.rowSelector,{toggle:event.ctrlKey||event.metaKey,range:event.shiftKey});return;}
   const el=event.target.closest('[data-action]');if(!el)return;const a=el.dataset.action,id=el.dataset.id;
   if(a==='open-my-vocabs'){event.preventDefault();openWorkspace(false);}
@@ -638,6 +708,19 @@ async function refreshLegacyAutoRowsOnce(){
   for(const r of targets){try{await autoFillRecord(r.id,{replaceAuto:true});}catch{}}
 }
 
+function mergeIncomingStore(raw){
+  const incoming=(()=>{try{const v=JSON.parse(raw||'null');if(!v)return blankStore();if(Array.isArray(v)){const o=blankStore();v.forEach(x=>{if(x?.id)o.items[x.id]=x;});return o;}return {schemaVersion:1,updatedAt:v.updatedAt||'',items:v.items&&typeof v.items==='object'?v.items:{}};}catch{return blankStore();}})();
+  if(!myStoreDirty){myStoreCache=incoming;return;}
+  const local=store(),items={...incoming.items};
+  Object.entries(local.items||{}).forEach(([id,item])=>{const a=Date.parse(item?.updatedAt||item?.deletedAt||item?.createdAt||0)||0,b=Date.parse(items[id]?.updatedAt||items[id]?.deletedAt||items[id]?.createdAt||0)||0;if(!items[id]||a>=b)items[id]=item;});
+  myStoreCache={schemaVersion:1,updatedAt:iso(),items};myStoreDirty=true;clearTimeout(myStoreSaveTimer);myStoreSaveTimer=setTimeout(flushMyStore,120);
+}
+window.addEventListener('storage',event=>{if(event.key===MY_KEY){mergeIncomingStore(event.newValue);if(state.overlay==='my-vocabs')render();}});
+window.addEventListener('aps-my-vocabs-flush-request',flushMyStore);
+window.addEventListener('aps-my-vocabs-external-update',()=>invalidateMyStore({renderIfOpen:true}));
+window.addEventListener('beforeunload',flushMyStore);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushMyStore();});
+
 window.addEventListener('online',()=>{const j=bulkJob();if(j&&j.status==='waiting'){j.status='running';j.updatedAt=iso();saveBulkJob(j);void runBulkTranslation();}if(state.overlay==='my-vocabs')render();});
 window.addEventListener('offline',()=>{if(state.overlay==='my-vocabs')render();});
 
@@ -649,5 +732,5 @@ if(new URL(location.href).searchParams.get('myvocabs')==='1'){
   const timer=setInterval(()=>{if(state.ready&&state.auth?.initialized&&state.selectedLanguage){clearInterval(timer);state.overlay='my-vocabs';document.documentElement.classList.add('my-vocabs-ready');render();void refreshLegacyAutoRowsOnce();}},60);
   setTimeout(()=>{clearInterval(timer);document.documentElement.classList.add('my-vocabs-ready');if(state.ready){state.overlay='my-vocabs';render();}},15000);
 }
-console.info(`${VERSION} loaded · sticky table header · contained sheet scrolling · arrow-key cell navigation · existing frozen/resizable columns and Shift+Arrow selection preserved.`);
+console.info(`${VERSION} loaded · scalable cloud-ready My Vocabs · clean five-column sheet · right-click row actions · sticky/frozen spreadsheet navigation preserved.`);
 })();

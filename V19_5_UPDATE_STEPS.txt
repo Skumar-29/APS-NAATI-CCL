@@ -1,0 +1,36 @@
+APS NAATI CCL PRACTICE — V19.5 UPDATE STEPS
+=============================================
+
+IMPORTANT: V19.5 changes the Firestore progress structure. Update the Firestore rules once before testing cross-device cloud sync.
+
+1. FIREBASE RULES (one time)
+   - Open Firebase Console for project: aps-naati-ccl-practice
+   - Firestore Database -> Rules
+   - Replace the progress rules with the contents of: firestore-v19-5.rules
+   - Click Publish
+
+2. GITHUB APP UPDATE
+   - Extract APS_NAATI_CCL_V19_5_GitHub_Web_Update.zip
+   - Open the extracted APS_NAATI_CCL_V19_5_GitHub_Web_Update folder
+   - Upload its contents to the root of the SAME GitHub repository, preserving the content/languages.json path
+   - Replace matching files
+   - Do NOT delete content/owner-content-v16.json if your repository already has owner Content Studio changes
+   - Commit the update
+
+3. REOPEN
+   - Wait for GitHub Pages deployment
+   - Hard-refresh/reopen APS NAATI once
+
+4. MIGRATE / TEST CLOUD SYNC
+   - Sign in with your normal APS Google or verified Email account
+   - Settings -> Cloud progress sync -> Refresh
+   - Then press Sync now once
+   - V19.5 safely migrates legacy progress into scalable progress sections and separate My Vocabs records
+
+5. SECOND DEVICE CHECK
+   - Open APS on the second device
+   - Sign in with the same account
+   - Settings -> Cloud progress sync -> Refresh
+   - Confirm My Vocabs and learning progress appear
+
+V19.5 does not rewrite the 105 Verified Practice dialogues, 85 Original Source dialogues, Core Vocabulary, General Vocabulary, Phrases, or Dialogue Vocabulary data.

@@ -68,12 +68,14 @@
   function isMergedAway(kind,id){return Boolean(id&&resolveMergedId(kind,id)!==id);}
 
   function captureBase(){
+    // Packaged content is treated as immutable. Keep references instead of
+    // JSON-cloning several megabytes every time the language pack loads.
     state.v16Base={
       captured:true,
-      vocab:clone(state.vocab||[]),
-      general:clone(state.generalVocab||[]),
-      phrases:clone(state.phrases||[]),
-      dialogueVocab:clone(state.dialogueVocabById||{})
+      vocab:state.vocab||[],
+      general:state.generalVocab||[],
+      phrases:state.phrases||[],
+      dialogueVocab:state.dialogueVocabById||{}
     };
   }
 

@@ -1,6 +1,6 @@
 'use strict';
 (() => {
-  const VERSION='reliability-v15';
+  const VERSION='reliability-v19-5';
   const OVERRIDE_PREFIX='apsContentOverridesV15:';
   const LEGACY_OVERRIDE_PREFIXES=['apsContentOverridesV14:','apsContentOverridesV13:'];
   const GENERAL_PATH='./content/packs/hi/general-vocabulary.json';
@@ -43,14 +43,14 @@
   function applyOverrides(){
     if(!state.__v15BaseDialogues.length)return;
     const overrides=getOverrides();
-    const base=deepClone(state.__v15BaseDialogues);
+    const base=state.__v15BaseDialogues;
     state.dialogues=base.map(d=>overrides[d.id]?deepClone(overrides[d.id]):d);
   }
 
-  async function loadGeneralVocabulary(){
-    if(state.selectedLanguage!=='hi'){state.generalVocab=[];return;}
+  async function loadGeneralVocabulary(languageId=state.selectedLanguage){
+    if(languageId!=='hi'){state.generalVocab=[];return;}
     try{
-      const response=await fetch(GENERAL_PATH,{cache:'no-store'});
+      const response=await fetch(GENERAL_PATH,{cache:'default'});
       if(!response.ok)throw new Error(`General vocabulary HTTP ${response.status}`);
       const data=await response.json();
       state.generalVocab=Array.isArray(data.items)?data.items:[];
@@ -62,10 +62,10 @@
   }
 
 
-  async function loadDialogueVocabulary(){
-    if(state.selectedLanguage!=='hi'){state.dialogueVocabById={};state.dialogueVocabMeta={dialogueCount:0,itemCount:0};return;}
+  async function loadDialogueVocabulary(languageId=state.selectedLanguage){
+    if(languageId!=='hi'){state.dialogueVocabById={};state.dialogueVocabMeta={dialogueCount:0,itemCount:0};return;}
     try{
-      const response=await fetch(DIALOGUE_VOCAB_PATH,{cache:'no-store'});
+      const response=await fetch(DIALOGUE_VOCAB_PATH,{cache:'default'});
       if(!response.ok)throw new Error(`Dialogue vocabulary HTTP ${response.status}`);
       const data=await response.json();
       const rows=Array.isArray(data.dialogues)?data.dialogues:[];
@@ -97,15 +97,24 @@
     all[dialogueId]=p;saveDialogueVocabProgress(all);
   }
 
+  let supplementalPromise=null;
+  async function ensureSupplementalVocabulary(){
+    if(state.selectedLanguage!=='hi')return;
+    if(state.generalVocab.length&&Object.keys(state.dialogueVocabById||{}).length)return;
+    if(!supplementalPromise)supplementalPromise=Promise.all([loadGeneralVocabulary(state.selectedLanguage),loadDialogueVocabulary(state.selectedLanguage)]).finally(()=>{supplementalPromise=null;});
+    await supplementalPromise;
+  }
   function captureBaseAndOverrides(){
-    state.__v15BaseDialogues=deepClone(state.dialogues);
+    state.__v15BaseDialogues=state.dialogues;
     applyOverrides();
   }
 
   const originalLoadLanguagePack=loadLanguagePack;
-  loadLanguagePack=async function v15LoadLanguagePack(languageId){
-    await originalLoadLanguagePack(languageId);
-    await Promise.all([loadGeneralVocabulary(),loadDialogueVocabulary()]);
+  loadLanguagePack=async function v195LoadLanguagePack(languageId){
+    // Start the supplemental 5 MB General/Dialogue vocabulary fetches at the
+    // same time as the core pack instead of waiting for one phase to finish.
+    const supplemental=languageId==='hi'?Promise.all([loadGeneralVocabulary(languageId),loadDialogueVocabulary(languageId)]):Promise.resolve();
+    await Promise.all([originalLoadLanguagePack(languageId),supplemental]);
     captureBaseAndOverrides();
   };
 
@@ -179,7 +188,7 @@
       :(state.learn.type==='words'?'<div class="info"><b>Core CCL Vocabulary:</b> words and short multi-word terms used for exam preparation. Full dialogue sentences remain separate.</div>':phraseSummary);
     const qualitySelect='';
     return shell(`${header('Learn',isGeneral?'Core learning plus a separate General Vocabs library':'Core CCL vocabulary and phrases')}
-      <div class="segments reliability-learn-tabs"><button data-action="learn-type" data-id="words" class="${state.learn.type==='words'?'active':''}">Vocabulary <span>${state.vocab.length.toLocaleString()}</span></button><button data-action="learn-type" data-id="phrases" class="${state.learn.type==='phrases'?'active':''}">Phrases <span>${state.phrases.length.toLocaleString()}</span></button><button data-action="learn-type" data-id="general" class="${isGeneral?'active':''}">General Vocabs <span>${(state.generalVocabMeta?.counts?.reviewed||0).toLocaleString()} reviewed</span></button></div>
+      <div class="segments reliability-learn-tabs"><button data-action="learn-type" data-id="words" class="${state.learn.type==='words'?'active':''}">Vocabulary <span>${(state.vocab.length||state.languagePack?.counts?.vocabulary||0).toLocaleString()}</span></button><button data-action="learn-type" data-id="phrases" class="${state.learn.type==='phrases'?'active':''}">Phrases <span>${(state.phrases.length||state.languagePack?.counts?.phrases||0).toLocaleString()}</span></button><button data-action="learn-type" data-id="general" class="${isGeneral?'active':''}">General Vocabs <span>${(state.generalVocabMeta?.counts?.reviewed||0).toLocaleString()} reviewed</span></button></div>
       ${isGeneral?generalSummary:''}${info}
       <section class="status-cards">${Object.entries(statusLabels).map(([id,label])=>`<button data-action="status-playlist" data-id="${id}" class="status-card ${id}"><b>${statusIcons[id]}</b><span><strong>${label}</strong><em>${counts[id]} ${isGeneral?'terms':state.learn.type==='words'?'words':'phrases'}</em></span><i>Play ›</i></button>`).join('')}</section>
       <section class="filter-panel"><div class="filter-row"><label class="search"><span>⌕</span><input id="learnQuery" placeholder="Search English or Hindi" value="${esc(state.learn.query)}"></label><select id="learnTopic">${topicOptions(state.learn.topic)}</select><select id="learnStatus">${statusOptions(state.learn.status)}</select>${completionFilter}${qualitySelect}</div><div class="filter-summary"><span>Showing ${shownFrom.toLocaleString()}–${shownTo.toLocaleString()} of ${allItems.length.toLocaleString()} · Page ${state.learn.page} of ${totalPages}</span>${button('▶ Play all current filters','play-current-filter','primary compact')}</div></section>
@@ -228,7 +237,7 @@
     const ready=studyReadyDialogues().length,drafts=state.dialogues.length-ready,gen=state.generalVocabMeta?.counts||{};
     return shell(`${header('APS NAATI CCL Practice','English ↔ Hindi preparation · Reliability v15')}
       <section class="hero"><div><span>MEANING-FIRST CCL TRAINING</span><h2>Trust the meaning, not one memorised sentence.</h2><p>Quality-gated dialogues, vocabulary and phrases with recording, semantic feedback and a separate General Vocabs library.</p><div class="hero-actions">${button(lessonProgress.completed?'Review Lesson 0':'Start Lesson 0 →','open-lesson')}${button('Start a study-ready dialogue','quick-dialogue','secondary')}</div></div><div class="hero-score"><strong>${last?.report?`${last.report.low}–${last.report.high}`:'—'}</strong><span>${last?.report?'latest dialogue estimate':'complete a dialogue'}</span></div></section>
-      <section class="stats">${[[state.vocab.length.toLocaleString(),'core vocabulary'],[state.phrases.length.toLocaleString(),'phrases'],[Number(gen.reviewed||0).toLocaleString(),'reviewed general vocabs'],[ready,'study-ready dialogues']].map(([v,l])=>`<div><strong>${v}</strong><span>${l}</span></div>`).join('')}</section>
+      <section class="stats">${[[ (state.vocab.length||state.languagePack?.counts?.vocabulary||0).toLocaleString(),'core vocabulary'],[ (state.phrases.length||state.languagePack?.counts?.phrases||0).toLocaleString(),'phrases'],[Number(gen.reviewed||state.languagePack?.counts?.generalVocabularyReviewed||0).toLocaleString(),'reviewed general vocabs'],[ready,'study-ready dialogues']].map(([v,l])=>`<div><strong>${v}</strong><span>${l}</span></div>`).join('')}</section>
       <section class="reliability-banner"><div><small>CONTENT RELIABILITY V15</small><h3>All dialogue content rebuilt or revalidated for natural Hindi</h3><p>${ready} study-ready dialogues are available by default. All packaged dialogues remain rebuilt or revalidated, and every dialogue now has its own reviewed key-vocabulary set for pre-dialogue learning.</p></div><button data-action="tab" data-id="practice" class="secondary">Open dialogue library →</button></section>
       <section class="dashboard-grid"><article class="card"><small>TODAY’S LEARNING PATH</small><h3>Word → Phrase → Segment → Dialogue</h3><div class="path"><button data-action="tab" data-id="learn"><b>1</b><span><strong>Vocabulary & General Vocabs</strong><em>Reviewed lists are the default.</em></span>›</button><button data-action="quick-dialogue"><b>2</b><span><strong>Guided dialogue</strong><em>Record, review and retry mistakes.</em></span>›</button><button data-action="start-mock"><b>3</b><span><strong>Full mock</strong><em>Only study-ready content is selected.</em></span>›</button></div></article><article class="card"><small>HOW RESULTS TEACH YOU</small><h3>Different wording can still be correct</h3><ul class="check-list"><li>Meaning-first comparison, not exact sentence matching</li><li>Synonyms and natural paraphrases can be accepted</li><li>Active/passive variation can be accepted when meaning is unchanged</li><li>Numbers, names, negation, modality and conditions remain critical</li><li>Your recording and source can be replayed for review</li></ul></article></section>
       <div class="warning">Independent preparation app. Estimated feedback is not an official NAATI result.</div>`);
@@ -252,7 +261,8 @@
       <article class="learning-choice dialogue-choice"><div class="learning-choice-icon">▶</div><small>STEP 2 · DIALOGUE</small><h2>Start the dialogue</h2><p>Open the existing Learning Mode player with your normal voices, speed, response gap, transcript and recording controls.</p><ul><li>Vocabulary is recommended, not compulsory.</li><li>Your existing dialogue progress remains unchanged.</li><li>You can return and review the vocabulary later.</li></ul>${button('Start Dialogue →','start-learning-dialogue','primary wide',`data-id="${d.id}"`)}</article></section>
       <section class="learning-hub-note"><b>Vocabulary and dialogue progress are kept separately.</b><span>Dialogue vocabulary uses its own V15 progress record and does not overwrite your Core Vocabulary, Phrases, previous dialogue attempts or account progress.</span></section></main>${renderModal()}</div>`;
   }
-  function startDialogueVocab(dialogueId){
+  async function startDialogueVocab(dialogueId){
+    if(!Object.keys(state.dialogueVocabById||{}).length)await ensureSupplementalVocabulary();
     const d=state.dialogues.find(x=>x.id===dialogueId),set=dialogueVocabSet(dialogueId);if(!d||!(set.items||[]).length){showToast('No dialogue vocabulary is available for this dialogue');return;}
     const queue=set.items.map(x=>x.id),p=dialogueVocabProgress(dialogueId);let index=0;
     if(p.lastId&&queue.includes(p.lastId)&&!p.completed)index=queue.indexOf(p.lastId);
@@ -391,7 +401,7 @@
     }else if(a==='close-learning-hub'){
       event.preventDefault();stopAllSpeech();state.v15DialogueVocabContext=null;state.overlay=null;state.tab='practice';render();
     }else if(a==='start-dialogue-vocab'){
-      event.preventDefault();startDialogueVocab(el.dataset.id);
+      event.preventDefault();await startDialogueVocab(el.dataset.id);
     }else if(a==='start-learning-dialogue'){
       event.preventDefault();state.v15DialogueVocabContext=null;openDialogue(el.dataset.id,'learning');
     }else if(a==='back-to-dialogue-hub'){
@@ -439,11 +449,11 @@
 
   async function initialise(){
     if(!state.ready)return false;
-    await Promise.all([loadGeneralVocabulary(),loadDialogueVocabulary()]);
+    await ensureSupplementalVocabulary();
     if(!state.__v15BaseDialogues.length)captureBaseAndOverrides();
     if(state.practice.review!=='study')state.practice.review='study';
     render();
-    console.info(`${VERSION} loaded: ${studyReadyDialogues().length} study-ready dialogues, ${state.dialogueVocabMeta.itemCount||0} dialogue-vocabulary records, ${state.generalVocab.length} general vocabulary records`);
+    console.info(`${VERSION} loaded: ${studyReadyDialogues().length} study-ready dialogues; supplemental vocabulary reused from browser/runtime cache.`);
     return true;
   }
   const timer=setInterval(async()=>{if(await initialise())clearInterval(timer);},60);

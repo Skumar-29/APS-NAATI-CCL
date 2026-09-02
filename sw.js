@@ -1,6 +1,7 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-v19-4-2-sticky-header-keyboard-navigation';
+const APP_CACHE = 'aps-naati-v19-5-shell';
+const CONTENT_CACHE = 'aps-naati-content-runtime-v1';
 const PRECACHE = [
   './',
   './index.html',
@@ -29,20 +30,11 @@ const PRECACHE = [
   './content/languages.json',
   './content/exam_info.json',
   './content/lesson0.json',
-  './content/packs/hi/dialogues.json',
-  './content/packs/hi/vocabulary.json',
-  './content/packs/hi/phrases.json',
-  './content/packs/hi/general-vocabulary.json',
-  './content/packs/hi/dialogue-vocabulary.json',
   './version.json'
 ];
 
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(PRECACHE))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(caches.open(APP_CACHE).then(cache => cache.addAll(PRECACHE)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('message', event => {
@@ -50,12 +42,43 @@ self.addEventListener('message', event => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    const contentCache = await caches.open(CONTENT_CACHE);
+    // Preserve already-downloaded language packs from older monolithic caches so
+    // upgrading the UI does not force another multi-megabyte download.
+    for (const key of keys) {
+      if (key === APP_CACHE || key === CONTENT_CACHE) continue;
+      try {
+        const old = await caches.open(key);
+        const requests = await old.keys();
+        for (const request of requests) {
+          const url = new URL(request.url);
+          if (!/\/content\/packs\/[^/]+\/.*\.json$/i.test(url.pathname)) continue;
+          const response = await old.match(request);
+          if (response) await contentCache.put(request, response.clone());
+        }
+      } catch {}
+      await caches.delete(key);
+    }
+    await self.clients.claim();
+  })());
 });
+
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(CONTENT_CACHE);
+  const cached = await cache.match(request);
+  const network = fetch(request).then(response => {
+    if (response && response.ok) cache.put(request, response.clone());
+    return response;
+  }).catch(() => null);
+  if (cached) {
+    // Refresh quietly; navigation/content rendering does not wait for the network.
+    network.catch(() => {});
+    return cached;
+  }
+  return (await network) || new Response('', { status: 503, statusText: 'Offline' });
+}
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
@@ -64,40 +87,35 @@ self.addEventListener('fetch', event => {
 
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put('./index.html', copy));
-          return response;
-        })
-        .catch(() => caches.match('./index.html'))
+      fetch(event.request).then(response => {
+        const copy = response.clone();
+        caches.open(APP_CACHE).then(cache => cache.put('./index.html', copy));
+        return response;
+      }).catch(() => caches.match('./index.html'))
     );
     return;
   }
 
-  // Owner edits are deliberately network-first so GitHub-published content changes
-  // are not hidden behind an older application cache.
   if (url.pathname.endsWith('/content/owner-content-v16.json')) {
     event.respondWith(
-      fetch(event.request, { cache: 'no-store' })
-        .then(response => {
-          if (response && response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-          }
-          return response;
-        })
-        .catch(() => caches.match(event.request))
+      fetch(event.request, { cache: 'no-store' }).then(response => {
+        if (response && response.ok) caches.open(CONTENT_CACHE).then(cache => cache.put(event.request, response.clone()));
+        return response;
+      }).catch(() => caches.match(event.request))
     );
+    return;
+  }
+
+  // Large language-pack JSON is cached independently from the app shell. A tiny
+  // UI update no longer forces ~19 MB of dialogue/vocabulary content to recache.
+  if (/\/content\/packs\/[^/]+\/.*\.json$/i.test(url.pathname)) {
+    event.respondWith(staleWhileRevalidate(event.request));
     return;
   }
 
   event.respondWith(
     caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-      if (response && response.ok) {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-      }
+      if (response && response.ok) caches.open(APP_CACHE).then(cache => cache.put(event.request, response.clone()));
       return response;
     }))
   );
@@ -105,11 +123,9 @@ self.addEventListener('fetch', event => {
 
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(windows => {
-      const existing = windows.find(client => 'focus' in client);
-      if (existing) return existing.focus();
-      return clients.openWindow('./');
-    })
-  );
+  event.waitUntil(clients.matchAll({ type: 'window', includeUncontrolled: true }).then(windows => {
+    const existing = windows.find(client => 'focus' in client);
+    if (existing) return existing.focus();
+    return clients.openWindow('./');
+  }));
 });

@@ -1,51 +1,93 @@
-APS NAATI CCL PRACTICE - FIREBASE CLOUD SYNC v11
-==================================================
+APS NAATI CCL PRACTICE - FIREBASE CLOUD SYNC V19.5
+===================================================
 
 LEARNERS NEVER CONFIGURE FIREBASE.
 The Firebase Web configuration is embedded in the GitHub build.
-A new learner or a learner on a new device only creates/signs into an account.
+A learner only creates/signs into the same APS account on each device.
 
-ONE-TIME PROJECT SETUP FOR THE APP OWNER
-----------------------------------------
-1. Firebase project: aps-naati-ccl-practice
-2. Authentication: Google and Email/Password enabled.
-3. Authentication > Settings > Authorized domains: include the GitHub Pages hostname.
-4. Firestore Database exists.
-5. Recommended Firestore Rules:
+WHY V19.5 CHANGES THE FIRESTORE STRUCTURE
+-----------------------------------------
+Older builds stored nearly all progress in one document:
+  apsUserProgress/{userId}
+
+That eventually reaches Firestore's 1 MiB document limit. V19.5 keeps that
+root document small and stores progress in scalable child collections:
+
+  apsUserProgress/{userId}
+    sections/{progressKey}
+    sections/{progressKey}/chunks/{chunkNumber}   (only if a section becomes large)
+    myVocabs/{vocabId}
+
+My Vocabs is therefore no longer able to make the main progress document too
+large. A single My Vocab edit can sync without rewriting the entire sheet.
+
+ONE-TIME FIRESTORE RULE UPDATE FOR THE APP OWNER
+-------------------------------------------------
+Firebase Console -> Firestore Database -> Rules
+Replace/publish the rules with the following (or merge the nested matches into
+your existing equivalent rules):
 
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    function ownsProgress(userId) {
+      return request.auth != null
+             && request.auth.uid == userId
+             && request.auth.token.firebase.sign_in_provider != 'anonymous'
+             && (request.auth.token.email_verified == true
+                 || request.auth.token.firebase.sign_in_provider != 'password');
+    }
+
     match /apsUserProgress/{userId} {
-      allow read, write: if request.auth != null
-                         && request.auth.uid == userId
-                         && (request.auth.token.email_verified == true
-                             || request.auth.token.firebase.sign_in_provider != 'password');
+      allow read, write: if ownsProgress(userId);
+
+      match /sections/{sectionId} {
+        allow read, write: if ownsProgress(userId);
+
+        match /chunks/{chunkId} {
+          allow read, write: if ownsProgress(userId);
+        }
+      }
+
+      match /myVocabs/{vocabId} {
+        allow read, write: if ownsProgress(userId);
+      }
     }
   }
 }
+
+MIGRATION
+---------
+After publishing the rules:
+1. Open V19.5 while signed into the same APS account.
+2. Settings -> Cloud progress sync -> Refresh (or Sync now).
+3. V19.5 reads the older single-document progress if present.
+4. It safely writes progress sections + My Vocabs to the new structure.
+5. Only after the new structure is written successfully, the oversized legacy
+   `keys` field is removed from the root document.
+6. Local progress remains on the device throughout the migration.
+
+If the rules have not yet been updated, V19.5 keeps local progress safe and
+shows a clear "Needs attention" message rather than deleting anything.
 
 ACCOUNT EXPERIENCE
 ------------------
 Google:
 - Sign in/create account through Google.
-- No additional email-verification screen is required for trusted Google accounts.
 - Cloud sync starts automatically.
 
 Email/Password:
-- Create account with email, password and password confirmation.
-- Firebase sends a verification EMAIL LINK (not a numeric email code).
-- Cloud sync remains locked until the email is verified.
-- Resend verification and I have verified controls are built into the app.
-- Forgot password and Reset password send Firebase password-reset emails.
+- Create account with email + password.
+- Verify the email link before cloud sync starts.
 
 NEW DEVICE
 ----------
 1. Open the same GitHub Pages app.
 2. Sign in with the same Google or verified Email/Password account.
-3. No Firebase config is requested.
-4. Progress downloads automatically.
-5. Settings > Cloud progress sync > Refresh manually checks for newer progress.
+3. Progress sections and My Vocabs download automatically.
+4. Settings -> Cloud progress sync -> Refresh manually checks another device.
 
-Recordings stay local. Learning progress, results, practice history, recall schedules and relevant study settings sync.
+Recordings remain local. Learning progress, recall status, results and My
+Vocabs sync through Firestore.

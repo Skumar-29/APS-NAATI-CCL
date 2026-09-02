@@ -1,6 +1,6 @@
 {
-  "version": "19.4.2",
-  "build": "github-my-vocabs-sticky-header-keyboard-navigation-2026-09-02-v19-4-2",
+  "version": "19.5",
+  "build": "github-scalable-cloud-performance-my-vocabs-context-menu-2026-09-03-v19-5",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -18,8 +18,7 @@
     "English",
     "Hindi Meaning",
     "My Synonyms",
-    "Recall",
-    "Actions"
+    "Recall"
   ],
   "myVocabsFrozenColumns": [
     "No.",
@@ -38,5 +37,29 @@
   "myVocabsBulkStatusAutoHide": true,
   "myVocabsStickyTableHeader": true,
   "myVocabsContainedVerticalScroll": true,
-  "myVocabsArrowKeyCellNavigation": true
+  "myVocabsArrowKeyCellNavigation": true,
+  "cloudSyncSchemaVersion": 2,
+  "cloudSyncScalableSections": true,
+  "cloudSyncMyVocabsSeparate": true,
+  "cloudSyncLegacyMigration": true,
+  "cloudSyncIncrementalMyVocabs": true,
+  "performanceShellOnlyPrecache": true,
+  "performanceRuntimeLanguagePackCache": true,
+  "performanceBackgroundSupplementalVocabulary": false,
+  "performanceCoreVocabBackgroundLoad": false,
+  "performanceReducedDialogueDeepCloning": true,
+  "myVocabsActionsColumn": false,
+  "myVocabsRightClickActions": true,
+  "myVocabsContextActions": [
+    "Play",
+    "Translate / refresh Hindi",
+    "Needs Review",
+    "Learning",
+    "Mastered",
+    "Delete",
+    "Clear selection"
+  ],
+  "myVocabsStoreCache": true,
+  "myVocabsCoalescedPersistence": true,
+  "performanceParallelSupplementalVocabularyLoad": true
 }

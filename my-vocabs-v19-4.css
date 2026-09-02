@@ -21,13 +21,12 @@ html.my-vocabs-boot body:before{content:'My Vocabs\A Opening your vocabulary she
 /* APS My Vocabs V19.4 — bulk translation + spreadsheet behavior */
 .my-vocab-toolbar-v194{grid-template-columns:minmax(280px,2fr) repeat(3,minmax(155px,.85fr))}
 .my-bulk-status{margin:0;padding:9px 11px;border-left:1px solid var(--line,#d9e1e7);border-right:1px solid var(--line,#d9e1e7);background:#f5f9fc}.my-bulk-status[data-state="done"]{background:#f2faf5}.my-bulk-status[data-state="waiting"],.my-bulk-status[data-state="paused"]{background:#fff9ea}.my-bulk-status-line{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.84rem}.my-bulk-status-line>div{display:flex;gap:5px;flex-wrap:wrap}.my-bulk-status button{padding:5px 8px;font-size:.75rem}.my-bulk-status progress{display:block;width:100%;height:7px;margin-top:7px}
-.my-sheet.my-sheet-v194{table-layout:fixed;min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall) + var(--my-col-actions));width:max-content}
+.my-sheet.my-sheet-v194{table-layout:fixed;min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall));width:max-content}
 .my-sheet-v194 th:nth-child(1),.my-sheet-v194 td:nth-child(1){width:var(--my-col-no);min-width:var(--my-col-no);max-width:var(--my-col-no)}
 .my-sheet-v194 th:nth-child(2),.my-sheet-v194 td:nth-child(2){width:var(--my-col-english);min-width:var(--my-col-english);max-width:var(--my-col-english)}
 .my-sheet-v194 th:nth-child(3),.my-sheet-v194 td:nth-child(3){width:var(--my-col-hindi);min-width:var(--my-col-hindi);max-width:var(--my-col-hindi)}
 .my-sheet-v194 th:nth-child(4),.my-sheet-v194 td:nth-child(4){width:var(--my-col-synonyms);min-width:var(--my-col-synonyms);max-width:var(--my-col-synonyms)}
 .my-sheet-v194 th:nth-child(5),.my-sheet-v194 td:nth-child(5){width:var(--my-col-recall);min-width:var(--my-col-recall);max-width:var(--my-col-recall)}
-.my-sheet-v194 th:nth-child(6),.my-sheet-v194 td:nth-child(6){width:var(--my-col-actions);min-width:var(--my-col-actions);max-width:var(--my-col-actions)}
 .my-sheet-v194 .my-freeze-no,.my-sheet-v194 .my-no-cell{position:sticky;left:0;z-index:7;background:#eef4f7}.my-sheet-v194 td.my-no-cell{z-index:4;background:#f8fbfd;text-align:center;vertical-align:middle;font-weight:750;color:#506273;cursor:pointer;user-select:none}
 .my-sheet-v194 .my-freeze-english{position:sticky;left:var(--my-col-no);z-index:6;background:#eef4f7}.my-sheet-v194 td.my-freeze-english{z-index:3;background:var(--card,#fff)}
 .my-sheet-v194 .my-freeze-hindi{position:sticky;left:calc(var(--my-col-no) + var(--my-col-english));z-index:6;background:#eef4f7;box-shadow:2px 0 4px rgba(30,60,80,.08)}.my-sheet-v194 td.my-freeze-hindi{z-index:3;background:var(--card,#fff)}
@@ -37,7 +36,7 @@ html.my-vocabs-boot body:before{content:'My Vocabs\A Opening your vocabulary she
 .my-density-compact .my-sheet-v194 .my-cell{min-height:32px;padding:4px 8px;font-size:.86rem}.my-density-compact .my-sheet-v194 .my-row-actions{padding:2px!important}.my-density-compact .my-sheet-v194 .my-row-actions button{padding:4px 6px;margin:1px;font-size:.7rem}.my-density-compact .my-sheet-v194 th{padding-top:6px;padding-bottom:6px}
 #mySelectedCount{font-weight:750;color:#17628d;margin-left:auto}.my-vocab-actions>span+#mySelectedCount{margin-left:auto}.my-vocab-actions #mySelectedCount+span{margin-left:0}
 @media(max-width:900px){.my-vocab-toolbar-v194{grid-template-columns:1fr 1fr}.my-vocab-toolbar-v194 .search{grid-column:1/-1}}
-@media(max-width:560px){.my-vocab-toolbar-v194{grid-template-columns:1fr}.my-sheet.my-sheet-v194{min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall) + var(--my-col-actions))}}
+@media(max-width:560px){.my-vocab-toolbar-v194{grid-template-columns:1fr}.my-sheet.my-sheet-v194{min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall))}}
 
 /* APS My Vocabs V19.4.2 — keep the sheet header visible while entering rows at the bottom. */
 @media(min-width:901px){
@@ -49,3 +48,11 @@ html.my-vocabs-boot body:before{content:'My Vocabs\A Opening your vocabulary she
   .my-vocabs-screen .my-sheet-v194 thead .my-freeze-english,
   .my-vocabs-screen .my-sheet-v194 thead .my-freeze-hindi{z-index:12}
 }
+
+/* APS My Vocabs V19.5 — clean five-column sheet + right-click row actions */
+.my-sheet.my-sheet-v194{min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall))}
+.my-row-context-menu{position:fixed;z-index:5000;width:240px;max-width:calc(100vw - 16px);padding:7px;background:#fff;border:1px solid #cdd9e3;border-radius:12px;box-shadow:0 14px 38px rgba(16,43,62,.22);color:#17263a}
+.my-row-context-menu[hidden]{display:none!important}.my-row-context-menu button{display:block;width:100%;border:0;background:transparent;text-align:left;padding:9px 10px;border-radius:8px;font:inherit;color:inherit;cursor:pointer}.my-row-context-menu button:hover,.my-row-context-menu button:focus{background:#edf6fc;outline:none}.my-row-context-menu .danger-text:hover{background:#fff0f1}.my-context-title{font-weight:800;padding:7px 10px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.my-context-label{padding:7px 10px 3px;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:#657385;font-weight:800}.my-context-sep{height:1px;background:#e3eaf0;margin:5px 2px}
+.my-sheet-v194 tr[data-my-row]{cursor:default}.my-sheet-v194 tr[data-my-row] td:not(.my-no-cell):not(:focus-within){user-select:none}.my-sheet-v194 tr[data-my-row] input,.my-sheet-v194 tr[data-my-row] select{user-select:text}
+.my-density-compact .my-sheet-v194 .my-cell{min-height:32px;padding:4px 8px;font-size:.86rem}
+@media(max-width:560px){.my-sheet.my-sheet-v194{min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall))}.my-row-context-menu{width:min(280px,calc(100vw - 16px))}}
