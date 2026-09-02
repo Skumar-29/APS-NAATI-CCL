@@ -38,3 +38,14 @@ html.my-vocabs-boot body:before{content:'My Vocabs\A Opening your vocabulary she
 #mySelectedCount{font-weight:750;color:#17628d;margin-left:auto}.my-vocab-actions>span+#mySelectedCount{margin-left:auto}.my-vocab-actions #mySelectedCount+span{margin-left:0}
 @media(max-width:900px){.my-vocab-toolbar-v194{grid-template-columns:1fr 1fr}.my-vocab-toolbar-v194 .search{grid-column:1/-1}}
 @media(max-width:560px){.my-vocab-toolbar-v194{grid-template-columns:1fr}.my-sheet.my-sheet-v194{min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall) + var(--my-col-actions))}}
+
+/* APS My Vocabs V19.4.2 — keep the sheet header visible while entering rows at the bottom. */
+@media(min-width:901px){
+  .my-vocabs-screen{height:100dvh;max-height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+  .my-vocabs-screen>.my-vocabs-main{flex:1 1 auto;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+  .my-vocabs-screen .my-sheet-wrap{flex:1 1 auto;min-height:0;max-height:none;overflow:auto;overscroll-behavior:contain;scroll-padding-top:38px}
+  .my-vocabs-screen .my-sheet-v194 thead th{top:0;z-index:9}
+  .my-vocabs-screen .my-sheet-v194 thead .my-freeze-no,
+  .my-vocabs-screen .my-sheet-v194 thead .my-freeze-english,
+  .my-vocabs-screen .my-sheet-v194 thead .my-freeze-hindi{z-index:12}
+}

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const VERSION='My Vocabs V19.4.1';
+const VERSION='My Vocabs V19.4.2';
 const VIEW_KEY='apsMyVocabsViewV194:hi';
 const BULK_KEY='apsMyVocabsBulkTranslateV194:hi';
 const ONLINE_CACHE_KEY='apsMyVocabsTranslationV3:hi';
@@ -331,7 +331,27 @@ function openWorkspace(separate=true){
   }
   captureReturnContext();stopAllSpeech();state.modal=null;state.overlay='my-vocabs';render();void refreshLegacyAutoRowsOnce();
 }
-function focusEnglish(id){requestAnimationFrame(()=>document.querySelector(`[data-my-field="english"][data-id="${CSS.escape(id)}"]`)?.focus());}
+function ensureCellVisibleInSheet(el){
+  if(!el)return;
+  const wrap=el.closest?.('.my-sheet-wrap'),row=el.closest?.('tr');
+  if(!wrap||!row)return;
+  const head=wrap.querySelector('thead');
+  const wr=wrap.getBoundingClientRect(),rr=row.getBoundingClientRect(),hr=head?.getBoundingClientRect();
+  const top=(hr?.bottom||wr.top)+2,bottom=wr.bottom-2;
+  if(rr.top<top)wrap.scrollTop-=top-rr.top;
+  else if(rr.bottom>bottom)wrap.scrollTop+=rr.bottom-bottom;
+  const cell=el.closest('td')||el;
+  const cr=cell.getBoundingClientRect();
+  const frozenRight=wrap.querySelector('thead .my-freeze-hindi')?.getBoundingClientRect().right||wr.left;
+  if(cr.right>wr.right)wrap.scrollLeft+=cr.right-wr.right+4;
+  else if(cr.left<frozenRight&& !cell.classList.contains('my-freeze-english') && !cell.classList.contains('my-freeze-hindi') && !cell.classList.contains('my-no-cell'))wrap.scrollLeft-=frozenRight-cr.left+4;
+}
+function focusSheetCell(el){
+  if(!el)return;
+  try{el.focus({preventScroll:true});}catch{el.focus();}
+  requestAnimationFrame(()=>ensureCellVisibleInSheet(el));
+}
+function focusEnglish(id){requestAnimationFrame(()=>focusSheetCell(document.querySelector(`[data-my-field="english"][data-id="${CSS.escape(id)}"]`)));}
 function addRow(src=null,{focus=true}={}){
   if(focus){state.myVocabWorkspace.query='';state.myVocabWorkspace.status='all';state.myVocabWorkspace.source='all';state.myVocabWorkspace.sort='sheet';}
   let existing=rows().find(r=>!String(r.english||'').trim()&&!r.deleted);
@@ -560,6 +580,28 @@ app.addEventListener('pointerdown',event=>{const h=event.target.closest?.('[data
 app.addEventListener('dblclick',event=>{const h=event.target.closest?.('[data-resize-col]');if(h){event.preventDefault();autoFitColumn(h.dataset.resizeCol);}});
 app.addEventListener('focusin',event=>{const tr=event.target.closest?.('[data-my-row]');if(tr&&!selectedIds.size)selectionAnchorId=tr.dataset.myRow;});
 
+function editableCellsInRow(tr){return [...tr.querySelectorAll('[data-my-field]')];}
+function moveSheetCell(t,key){
+  const tr=t?.closest?.('[data-my-row]');if(!tr)return false;
+  const rowsEls=[...document.querySelectorAll('[data-my-row]')],ri=rowsEls.indexOf(tr),cells=editableCellsInRow(tr),ci=cells.indexOf(t);
+  if(ri<0||ci<0)return false;
+  let nr=ri,nc=ci;
+  if(key==='ArrowUp')nr=Math.max(0,ri-1);
+  else if(key==='ArrowDown')nr=Math.min(rowsEls.length-1,ri+1);
+  else if(key==='ArrowLeft')nc=Math.max(0,ci-1);
+  else if(key==='ArrowRight')nc=Math.min(cells.length-1,ci+1);
+  else return false;
+  const targetRow=rowsEls[nr],targetCells=editableCellsInRow(targetRow),target=targetCells[Math.min(nc,targetCells.length-1)];
+  if(!target||target===t)return false;
+  focusSheetCell(target);return true;
+}
+function shouldNavigateHorizontally(t,key){
+  if(t?.tagName==='SELECT')return true;
+  if(!(t instanceof HTMLInputElement||t instanceof HTMLTextAreaElement))return true;
+  const start=Number(t.selectionStart),end=Number(t.selectionEnd),len=String(t.value||'').length;
+  if(start!==end)return false;
+  return key==='ArrowLeft'?start===0:key==='ArrowRight'?end===len:false;
+}
 app.addEventListener('keydown',async event=>{
   const t=event.target;
   if(t?.id==='myQuickEnglish'&&event.key==='Enter'){event.preventDefault();await fillQuick();document.querySelector('#myQuickSynonyms')?.focus();return;}
@@ -569,7 +611,13 @@ app.addEventListener('keydown',async event=>{
     const trs=[...document.querySelectorAll('[data-my-row]')],i=trs.indexOf(tr),nextIndex=Math.max(0,Math.min(trs.length-1,i+(event.key==='ArrowDown'?1:-1))),next=trs[nextIndex];
     if(!selectionAnchorId)selectionAnchorId=tr.dataset.myRow;
     selectRange(selectionAnchorId,next.dataset.myRow);
-    const field=t?.dataset?.myField;const focus=field?next.querySelector(`[data-my-field="${CSS.escape(field)}"]`):next.querySelector('[data-my-field="english"]');focus?.focus();return;
+    const field=t?.dataset?.myField;const focus=field?next.querySelector(`[data-my-field="${CSS.escape(field)}"]`):next.querySelector('[data-my-field="english"]');focusSheetCell(focus);return;
+  }
+  if(tr&&!event.shiftKey&&['ArrowUp','ArrowDown'].includes(event.key)){
+    event.preventDefault();moveSheetCell(t,event.key);return;
+  }
+  if(tr&&!event.shiftKey&&['ArrowLeft','ArrowRight'].includes(event.key)&&shouldNavigateHorizontally(t,event.key)){
+    if(moveSheetCell(t,event.key)){event.preventDefault();return;}
   }
   if(!t?.matches?.('[data-my-field="english"]'))return;
   if(event.key==='Enter'&&!event.shiftKey){
@@ -578,7 +626,7 @@ app.addEventListener('keydown',async event=>{
     const next=addRow({type:'manual',label:'Manual',addedAt:iso()});
     void autoFillRecord(id);if(next)focusEnglish(next.id);
   }else if(event.key==='Enter'&&event.shiftKey){
-    event.preventDefault();const all=[...document.querySelectorAll('[data-my-field="english"]')],i=all.indexOf(t);if(i>0)all[i-1].focus();
+    event.preventDefault();const all=[...document.querySelectorAll('[data-my-field="english"]')],i=all.indexOf(t);if(i>0)focusSheetCell(all[i-1]);
   }
 });
 
@@ -601,5 +649,5 @@ if(new URL(location.href).searchParams.get('myvocabs')==='1'){
   const timer=setInterval(()=>{if(state.ready&&state.auth?.initialized&&state.selectedLanguage){clearInterval(timer);state.overlay='my-vocabs';document.documentElement.classList.add('my-vocabs-ready');render();void refreshLegacyAutoRowsOnce();}},60);
   setTimeout(()=>{clearInterval(timer);document.documentElement.classList.add('my-vocabs-ready');if(state.ready){state.overlay='my-vocabs';render();}},15000);
 }
-console.info(`${VERSION} loaded · bulk status auto-hides on successful completion · automatic CSV bulk Hindi translation · frozen/resizable columns · Shift+Arrow selection.`);
+console.info(`${VERSION} loaded · sticky table header · contained sheet scrolling · arrow-key cell navigation · existing frozen/resizable columns and Shift+Arrow selection preserved.`);
 })();

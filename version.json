@@ -1,6 +1,6 @@
 {
-  "version": "19.4.1",
-  "build": "github-my-vocabs-bulk-status-auto-hide-2026-09-02-v19-4-1",
+  "version": "19.4.2",
+  "build": "github-my-vocabs-sticky-header-keyboard-navigation-2026-09-02-v19-4-2",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -35,5 +35,8 @@
   "myVocabsExamplesVisible": false,
   "myVocabsSuggestedSynonymsVisible": false,
   "myVocabsSourceVisible": false,
-  "myVocabsBulkStatusAutoHide": true
+  "myVocabsBulkStatusAutoHide": true,
+  "myVocabsStickyTableHeader": true,
+  "myVocabsContainedVerticalScroll": true,
+  "myVocabsArrowKeyCellNavigation": true
 }
