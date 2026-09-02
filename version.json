@@ -1,6 +1,6 @@
 {
-  "version": "19.1.0",
-  "build": "github-my-vocabs-online-compact-2026-09-02-v19-1",
+  "version": "19.2.0",
+  "build": "github-my-vocabs-google-style-autofill-2026-09-02-v19-2",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -9,5 +9,9 @@
   "myVocabs": true,
   "myVocabsOnlineFirst": true,
   "myVocabsCompactWorkspace": true,
-  "myVocabsFastEnter": true
+  "myVocabsFastEnter": true,
+  "myVocabsGoogleStyleTranslation": true,
+  "myVocabsAutoFillOnEnter": true,
+  "myVocabsConservativeSynonyms": true,
+  "myVocabsV191AutoRepair": true
 }
