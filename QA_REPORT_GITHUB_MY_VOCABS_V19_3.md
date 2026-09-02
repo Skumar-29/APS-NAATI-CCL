@@ -1,0 +1,41 @@
+# V19.3 QA — My Vocabs Simple & Reliable
+
+- Passed: 36 / 36
+- Failed: 0
+
+- PASS — V19.3 JS exists
+- PASS — V19.3 CSS exists
+- PASS — Five visible columns
+- PASS — Removed sheet heading <th>Suggested Synonyms</th>
+- PASS — Removed sheet heading <th>English Example</th>
+- PASS — Removed sheet heading <th>Hindi Example</th>
+- PASS — Removed sheet heading <th>Source</th>
+- PASS — No source filter UI
+- PASS — Dialogue modal open sheet button
+- PASS — Quick modal simplified
+- PASS — Queued translation
+- PASS — Enter fast row
+- PASS — CSV simplified
+- PASS — Index references V19.3
+- PASS — SW references V19.3
+- PASS — JS syntax scoring.js
+- PASS — JS syntax my-vocabs-v19.js
+- PASS — JS syntax original-source-v18.js
+- PASS — JS syntax content-library-v17.js
+- PASS — JS syntax sw.js
+- PASS — JS syntax study-hotfix-v5.js
+- PASS — JS syntax study-progress-v9.js
+- PASS — JS syntax my-vocabs-v19-3.js
+- PASS — JS syntax reliability-v15.js
+- PASS — JS syntax app.js
+- PASS — JS syntax cloud-sync-v11.js
+- PASS — JSON parse version.json
+- PASS — JSON parse content/languages.json
+- PASS — JSON parse content/exam_info.json
+- PASS — JSON parse content/lesson0.json
+- PASS — JSON parse content/packs/hi/dialogues.json
+- PASS — JSON parse content/packs/hi/vocabulary.json
+- PASS — JSON parse content/packs/hi/dialogue-vocabulary.json
+- PASS — JSON parse content/packs/hi/phrases.json
+- PASS — JSON parse content/packs/hi/general-vocabulary.json
+- PASS — Service worker precache assets exist
