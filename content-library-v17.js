@@ -567,11 +567,11 @@
     const tab=state.v16Studio.tab||'dialogues';
     const tabs=[['dialogues','Dialogues'],['vocabulary','Vocabulary'],['phrases','Phrases'],['publish','Publish']];
     let body='';
-    if(tab==='dialogues')body=`<div class="v16-dialogue-panel"><div class="v16-dialogue-hero"><small>DIALOGUE CONTENT</small><h3>Edit dialogue lines, sample answers and missing segments</h3><p>The proven V15 dialogue editor is preserved. It includes dialogue search, segment add/delete/reorder, sample alternatives, meaning points and critical details.</p>${button('Open Dialogue Editor →','v16-open-dialogue-editor','primary')}</div><div class="v16-dialogue-links"><div><b>${Object.keys(getDialogueOverrides()).length}</b><span>dialogue overrides saved on this device</span></div><p>Dialogue edits are included automatically in V17 Export Backup and GitHub Publish.</p></div></div>`;
+    if(tab==='dialogues')body=`<div class="v16-dialogue-panel"><div class="v16-dialogue-hero"><small>DIALOGUES</small><h3>Edit dialogue content</h3>${button('Open Dialogue Editor →','v16-open-dialogue-editor','primary')}</div><div class="v16-dialogue-links"><div><b>${Object.keys(getDialogueOverrides()).length}</b><span>dialogue overrides saved on this device</span></div></div></div>`;
     else if(tab==='vocabulary'){ensureSelectedVocab();body=`<div class="v16-library-layout"><aside>${renderVocabList()}</aside>${renderVocabEditor()}</div>`;}
     else if(tab==='phrases'){ensureSelectedPhrase();body=`<div class="v16-library-layout"><aside>${renderPhraseList()}</aside>${renderPhraseEditor()}</div>`;}
     else body=renderPublish();
-    return `<div class="modal-backdrop content-studio-backdrop"><div class="modal content-studio-modal v16-studio-modal"><button class="modal-close" data-action="v16-close-studio">×</button><div class="studio-heading"><div><small>OWNER / EDITOR TOOL · V17</small><h2>Content Library Studio</h2><p>Manage dialogues, vocabulary, phrases, examples, allocations, safe duplicate merges and publishing without changing the learner account system or resetting progress.</p></div><span>Stable IDs + safe merge aliases</span></div><nav class="v16-studio-tabs">${tabs.map(([id,label])=>`<button data-action="v16-studio-tab" data-id="${id}" class="${tab===id?'active':''}">${label}</button>`).join('')}</nav>${body}</div></div>`;
+    return `<div class="modal-backdrop content-studio-backdrop"><div class="modal content-studio-modal v16-studio-modal"><button class="modal-close" data-action="v16-close-studio">×</button><div class="studio-heading"><div><small>OWNER TOOLS</small><h2>Content Library Studio</h2><p>Edit and publish dialogues, vocabulary and phrases.</p></div><span>Safe editing</span></div><nav class="v16-studio-tabs">${tabs.map(([id,label])=>`<button data-action="v16-studio-tab" data-id="${id}" class="${tab===id?'active':''}">${label}</button>`).join('')}</nav>${body}</div></div>`;
   }
 
   function exampleSettingToggles(){
@@ -589,7 +589,7 @@
     if(state.modal?.type==='app-settings'){
       const start=html.indexOf('<div class="voice-settings-section content-studio-settings">');
       const end=html.indexOf('<div class="settings-actions">',start);
-      const insert=`<div class="voice-settings-section content-studio-settings v16-settings-card"><h3>Content reliability & editing</h3><p>Manage dialogues, vocabulary, phrases, examples, dialogue allocations and GitHub publishing from one owner tool.</p><div class="content-studio-setting-actions">${button('Open Content Library Studio','open-content-library-studio','secondary')}${button('Export owner content backup','v16-export-backup','secondary')}</div><small>V17 keeps stable content IDs so spelling/meaning corrections do not reset existing learner progress.</small></div>`;
+      const insert=`<div class="voice-settings-section content-studio-settings v16-settings-card"><h3>Owner tools</h3><div class="content-studio-setting-actions">${button('Open Content Library Studio','open-content-library-studio','secondary')}${button('Export owner content backup','v16-export-backup','secondary')}</div></div>`;
       if(start>=0&&end>start)html=html.slice(0,start)+insert+html.slice(end);
       else html=html.replace('<div class="settings-actions">',`${insert}<div class="settings-actions">`);
     }

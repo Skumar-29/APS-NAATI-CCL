@@ -261,7 +261,7 @@ function nextDialogue(){const records=dialogueStatsMap();return state.dialogues.
 home=function v20Home(){
   const attempts=getJSON(storageKeys.attempts,[]).filter(x=>x.finished),last=attempts.at(-1),next=nextDialogue(),my=myVocabCounts(),mistakes=dueReviewCount();
   const online=navigator.onLine;
-  return shell(`${header('APS NAATI CCL Practice',online?'Online-first learning · cached for speed':'Offline cache · online intelligence will resume automatically')}
+  return shell(`${header('APS NAATI CCL Practice','English ↔ Hindi preparation')}
   <section class="v20-home-hero"><div><small>YOUR NEXT STEP</small><h2>${next?esc(next.title):'Continue your preparation'}</h2><p>${next?esc(next.situation||'Continue dialogue practice and meaning-first review.'):'Your learning records are ready.'}</p><div class="actions">${next?button('Continue dialogue →','open-dialogue','primary',`data-id="${next.id}" data-mode="learning"`):''}${button('Open Practice','tab','secondary','data-id="practice"')}</div></div><div class="v20-online-card ${online?'online':'offline'}"><b>${online?'● Online':'○ Offline'}</b><span>${online?'Cloud sync and online assessment available':'Cached learning remains available'}</span></div></section>
   <section class="v20-today"><article><small>REVIEW</small><strong>${mistakes}</strong><span>weak segments to revisit</span><button data-action="tab" data-id="review">Review now</button></article><article><small>MY VOCABS</small><strong>${my.all}</strong><span>${my.review} need review</span><button data-action="open-my-vocabs">Open sheet</button></article><article><small>LATEST RESULT</small><strong>${last?.report?`${last.report.low}–${last.report.high}`:'—'}</strong><span>${last?.report?'estimated /45':'complete a dialogue'}</span><button data-action="tab" data-id="progress">View progress</button></article></section>
   <section class="v20-main-actions"><button data-action="tab" data-id="learn"><b>Learn</b><span>Vocabulary, phrases, My Vocabs and lessons</span></button><button data-action="tab" data-id="practice"><b>Practice</b><span>Verified Practice, Original Source and Mock Test</span></button><button data-action="tab" data-id="review"><b>Review</b><span>Mistakes, reports and weak segments</span></button><button data-action="tab" data-id="progress"><b>Progress</b><span>Completion, attempts and improvement</span></button></section>
@@ -271,7 +271,7 @@ home=function v20Home(){
 function reviewPage(){
   const mistakes=getJSON(storageKeys.mistakes,[]),active=mistakes.filter(x=>!x.mastered).slice(-30).reverse();
   const attempts=getJSON(storageKeys.attempts,[]).filter(x=>x.finished).slice(-12).reverse();
-  return shell(`${header('Review','Your mistakes, previous reports and personal revision queue')}
+  return shell(`${header('Review','')}
   <section class="v20-review-summary"><div><strong>${active.length}</strong><span>weak segments</span></div><div><strong>${attempts.length}</strong><span>recent reports</span></div><div><strong>${myVocabCounts().review}</strong><span>My Vocabs to review</span></div></section>
   <section class="dashboard-grid"><article class="card"><small>MISTAKE NOTEBOOK</small><h3>Fix the meaning that was missed</h3>${active.length?`<div class="mistake-list">${active.map(m=>`<div><span class="result-dot ${esc(m.status||'review')}"></span><p><b>${esc(m.dialogueTitle)} · Segment ${m.segmentNumber}</b><small>${esc(arr(m.review).slice(0,2).join(' · ')||'Review this segment')}</small></p><button data-action="open-dialogue" data-id="${esc(m.dialogueId)}" data-mode="learning">Practise</button></div>`).join('')}</div>`:'<p class="muted">No weak segments are waiting for review.</p>'}</article>
   <article class="card"><small>RECENT REPORTS</small><h3>Compare your attempts</h3>${attempts.length?`<div class="attempts">${attempts.map(a=>`<button data-action="open-saved-report" data-id="${esc(a.id)}"><strong>${esc(a.title)}</strong><span>${a.report?.low??'—'}–${a.report?.high??'—'} /45</span><small>${new Date(a.finishedAt).toLocaleString()}</small></button>`).join('')}</div>`:'<p class="muted">Complete a dialogue to create a report.</p>'}</article></section>
@@ -281,8 +281,9 @@ function reviewPage(){
 const basePracticeV20=practice;
 practice=function v20Practice(){
   let html=basePracticeV20();
-  const tools=`<section class="v20-practice-modes"><div><small>PRACTICE MODES</small><h3>Choose how you want to practise</h3></div><button class="active"><b>Dialogue Practice</b><span>Learning + recorded practice</span></button><button data-action="v20-open-mock"><b>Mock Test</b><span>Two dialogues · feedback at the end</span></button></section>`;
-  return html.replace('<div class="info">',tools+'<div class="info">');
+  const tools=`<section class="v20-practice-modes v20-2-practice-modes"><button class="active" aria-current="page"><b>▶ Dialogue</b><span>Learn or practise</span></button><button data-action="v20-open-mock"><b>⏱ Mock Test</b><span>Two dialogues</span></button></section>`;
+  if(html.includes('class="v18-library-tabs"')) return html.replace(/(<section class="v18-library-tabs"[\s\S]*?<\/section>)/,'$1'+tools);
+  return html.replace('</header>','</header>'+tools);
 };
 
 const baseRenderV20=render;

@@ -1,6 +1,6 @@
 {
-  "version": "20.1",
-  "build": "github-online-first-compact-practice-workspace-2026-09-03-v20.1",
+  "version": "20.2",
+  "build": "github-online-first-whole-app-ui-cleanup-2026-09-03-v20.2",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -90,5 +90,25 @@
   "practiceIconFirstControls": true,
   "practiceCompactButtons": true,
   "practiceFeedbackDuplicatesRemoved": true,
-  "practiceResponsiveNoOverlapLayout": true
+  "practiceResponsiveNoOverlapLayout": true,
+  "wholeAppUiCleanup": true,
+  "studentVersionBannersRemoved": true,
+  "compactStudentPages": true,
+  "settingsTabbed": true,
+  "settingsTabs": [
+    "Account",
+    "Sync",
+    "Language",
+    "Audio",
+    "Study",
+    "Advanced"
+  ],
+  "settingsProgressiveDisclosure": true,
+  "headerIconControls": true,
+  "dialogueLibraryCompact": true,
+  "learningHubCompact": true,
+  "technicalInstructionsHiddenFromStudentUi": true,
+  "ownerToolsPreserved": true,
+  "contentUnchangedFromV20_1": true,
+  "onlineAssessmentFunctionUnchanged": true
 }

@@ -1,0 +1,13 @@
+APS NAATI CCL Practice — V20.2 UPDATE
+
+Use the small APS_NAATI_CCL_V20_2_GitHub_Web_Update.zip when your live app is already on V20.1.
+
+1. Extract the ZIP on your computer.
+2. Upload the extracted files to the same GitHub repository, preserving folders.
+3. Replace matching files when GitHub asks.
+4. Do not delete content/owner-content-v16.json if it already contains your owner edits. V20.2 does not require replacing that file.
+5. Wait for GitHub Pages deployment.
+6. Hard-refresh/reopen APS once so the V20.2 service worker becomes active.
+7. Check Dialogue Practice, Learn, Settings tabs, My Vocabs, and one online-assessed practice segment.
+
+No Firebase rules change and no assessAttempt redeployment are required for V20.2.
