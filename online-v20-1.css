@@ -1,0 +1,118 @@
+/* APS V20.1 — compact, comparison-first dialogue practice UI */
+
+/* Use desktop width efficiently while retaining responsive safety. */
+.dialogue-screen.v201-dialogue-screen .dialogue-player{max-width:1240px;padding:14px 18px 28px}
+.dialogue-screen.v201-dialogue-screen .segment-head{align-items:center;gap:12px;margin-bottom:2px}
+.dialogue-screen.v201-dialogue-screen .segment-head h2{font-size:clamp(1.35rem,2vw,1.8rem);line-height:1.15;margin:4px 0 0}
+.dialogue-screen.v201-dialogue-screen .language-pill{padding:4px 8px;font-size:10px}
+.dialogue-screen.v201-dialogue-screen .dialogue-controls{align-items:end;gap:7px;flex-wrap:nowrap}
+.dialogue-screen.v201-dialogue-screen .dialogue-controls label{font-size:10px}
+.dialogue-screen.v201-dialogue-screen .dialogue-controls select{min-height:38px;margin-top:2px;padding:6px 28px 6px 9px;border-radius:9px}
+.dialogue-screen.v201-dialogue-screen .transcript-toggle{width:40px!important;min-width:40px!important;height:38px!important;min-height:38px!important;padding:0!important;border-radius:10px;font-size:18px;display:grid;place-items:center}
+
+/* Icon-first top toolbar: compact but still fully labelled by title/aria-label. */
+.dialogue-screen.v201-dialogue-screen .top-actions{gap:6px}
+.dialogue-screen.v201-dialogue-screen .top-actions>span{padding:4px 7px;border-radius:999px;background:#eef4f7;color:#476276;font-size:.78rem}
+.dialogue-screen.v201-dialogue-screen .top-actions .v201-top-icon{width:40px!important;min-width:40px!important;height:40px!important;min-height:40px!important;padding:0!important;display:grid!important;place-items:center!important;border:1px solid #c6dbe8!important;border-radius:11px!important;background:#eaf5fb!important;color:#0d5689!important;font-size:18px!important;box-shadow:none!important}
+.dialogue-screen.v201-dialogue-screen .top-actions [data-action="my-quick-open"].v201-top-icon{background:#eef9f5!important;border-color:#c8e6d8!important;color:#176c51!important;font-size:22px!important}
+.dialogue-screen.v201-dialogue-screen .top-actions .v201-top-icon:hover{filter:brightness(.97);transform:translateY(-1px)}
+
+/* Compact source card: on desktop, controls + source share the first row. */
+.dialogue-screen.v201-dialogue-screen .source-card{grid-template-columns:auto 44px minmax(0,1fr);gap:10px 12px;padding:14px 16px;margin-top:10px;border-radius:18px;align-items:center}
+.dialogue-screen.v201-dialogue-screen .source-icon{width:44px;height:44px;border-radius:13px;font-size:18px}
+.dialogue-screen.v201-dialogue-screen .source-card>p{grid-column:3/-1;grid-row:1;max-width:none;width:auto;font-size:1.12rem;line-height:1.45;margin:0}
+.dialogue-screen.v201-dialogue-screen .source-card>.source-actions{grid-column:3/-1;grid-row:2;justify-content:flex-end;gap:7px}
+.dialogue-screen.v201-dialogue-screen .source-actions button,.dialogue-screen.v201-dialogue-screen .record-actions button,.dialogue-screen.v201-dialogue-screen .segment-footer button{padding:8px 11px;border-radius:10px;font-size:.86rem;min-height:38px}
+.dialogue-screen.v201-dialogue-screen .aps-inline-skip{font-size:.78rem;padding:5px 8px;min-height:30px;border-radius:8px}
+
+/* Response and sample occupy one comparison row rather than separate vertical sections. */
+.dialogue-screen.v201-dialogue-screen .v201-response-panel{display:grid!important;gap:10px;padding:14px 16px;margin-top:10px;border-radius:18px;align-items:stretch}
+.v201-response-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding-left:36px}
+.v201-response-title{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.v201-response-title h3{font-size:1rem;margin:0}
+.v201-response-title .recording-verified{margin:0;padding:5px 8px;font-size:.72rem}
+.v201-record-actions{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.v201-response-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:10px;width:100%}
+.v201-response-grid.single{grid-template-columns:1fr}
+.v201-response-card,.v201-sample-card{min-width:0;border:1px solid #d8e6ef;border-radius:13px;padding:11px 12px;background:#f8fbfd}
+.v201-response-card{border-left:4px solid #1478ad}
+.v201-sample-card{border-left:4px solid #2d8a67;background:#f5fbf8}
+.v201-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.v201-card-head small{font-size:.68rem;font-weight:900;letter-spacing:.07em;color:#0d5d8b}
+.v201-card-head span{font-size:.72rem;color:#6a7d8d}
+.v201-response-card p,.v201-sample-card p{margin:4px 0 7px;font-size:.94rem;line-height:1.45}
+.v201-sample-card em{display:block;color:#687a8c;font-size:.73rem;line-height:1.35}
+.v201-response-card audio{width:100%;height:34px;margin:5px 0 0}
+.v201-icon-button{width:34px;height:32px;border:1px solid #c8dce7;border-radius:9px;background:#eaf5fb;color:#0b5e8b;font-weight:900;display:grid;place-items:center;padding:0}
+.v201-answer-review{width:100%;display:block}
+
+/* The response and sample are now already shown immediately above the feedback. */
+.dialogue-screen.v201-dialogue-screen .v20-feedback .v20-transcript-card,
+.dialogue-screen.v201-dialogue-screen .v20-feedback .v20-sample-toggle,
+.dialogue-screen.v201-dialogue-screen .v20-feedback .v20-sample{display:none!important}
+
+/* Compact assessment hierarchy: information first, decoration second. */
+.dialogue-screen.v201-dialogue-screen .v20-feedback{gap:9px;padding:12px 13px;border-radius:15px;box-shadow:none}
+.dialogue-screen.v201-dialogue-screen .v20-feedback-head{gap:10px;align-items:center}
+.dialogue-screen.v201-dialogue-screen .v20-feedback-head h3{font-size:1.02rem;margin:.15rem 0}
+.dialogue-screen.v201-dialogue-screen .v20-feedback-head small{font-size:.66rem}
+.dialogue-screen.v201-dialogue-screen .v20-score{min-width:125px}
+.dialogue-screen.v201-dialogue-screen .v20-score strong{font-size:1.55rem}
+.dialogue-screen.v201-dialogue-screen .v20-score span{font-size:.68rem}
+.dialogue-screen.v201-dialogue-screen .v20-summary-grid{gap:7px}
+.dialogue-screen.v201-dialogue-screen .v20-summary-grid>div{padding:8px 10px;border-radius:10px}
+.dialogue-screen.v201-dialogue-screen .v20-summary-grid b{font-size:.96rem}
+.dialogue-screen.v201-dialogue-screen .v20-summary-grid span{font-size:.68rem}
+.dialogue-screen.v201-dialogue-screen .v20-feedback-columns{gap:8px}
+.dialogue-screen.v201-dialogue-screen .v20-feedback-columns article{padding:10px 11px;border-radius:11px}
+.dialogue-screen.v201-dialogue-screen .v20-feedback-columns h4,.dialogue-screen.v201-dialogue-screen .v20-language h4{font-size:.88rem;margin-bottom:5px}
+.dialogue-screen.v201-dialogue-screen .v20-feedback-columns ul{padding-left:16px}
+.dialogue-screen.v201-dialogue-screen .v20-feedback-columns li{font-size:.84rem;line-height:1.35;margin:4px 0}
+.dialogue-screen.v201-dialogue-screen .v20-language{padding:10px 11px;border-radius:11px}
+.dialogue-screen.v201-dialogue-screen .v20-language>div{padding:5px 0}
+.dialogue-screen.v201-dialogue-screen .v20-language p{font-size:.84rem}
+.dialogue-screen.v201-dialogue-screen .v20-language span{font-size:.74rem}
+.dialogue-screen.v201-dialogue-screen .v20-meaning-points{padding:10px 11px;border-radius:11px}
+.dialogue-screen.v201-dialogue-screen .v20-meaning-points h4{font-size:.88rem;margin:.1rem 0 .45rem}
+.dialogue-screen.v201-dialogue-screen .v20-meaning-points>div:last-child{gap:5px}
+.dialogue-screen.v201-dialogue-screen .v20-meaning-points span{padding:4px 7px;font-size:.75rem}
+.dialogue-screen.v201-dialogue-screen .v20-notes{padding:9px 11px;border-radius:11px;gap:8px}
+.dialogue-screen.v201-dialogue-screen .v20-notes strong{font-size:.82rem;margin-top:2px}
+.dialogue-screen.v201-dialogue-screen .v20-notes button{padding:6px 8px;font-size:.75rem;border-radius:8px}
+.dialogue-screen.v201-dialogue-screen .v20-note-tip{padding:8px 11px;font-size:.78rem;margin-top:-5px}
+.dialogue-screen.v201-dialogue-screen .v20-service-note{padding:8px 10px;font-size:.78rem}
+
+/* Footer stays compact. */
+.dialogue-screen.v201-dialogue-screen .segment-footer{margin:11px 0 4px;gap:8px}
+.dialogue-screen.v201-dialogue-screen .segment-footer span{font-size:.75rem}
+
+@media (max-width:900px){
+  .dialogue-screen.v201-dialogue-screen .dialogue-player{padding:12px 12px 26px}
+  .dialogue-screen.v201-dialogue-screen .segment-head{align-items:flex-start;flex-direction:column}
+  .dialogue-screen.v201-dialogue-screen .dialogue-controls{width:100%;justify-content:flex-start;flex-wrap:wrap}
+  .v201-response-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .dialogue-screen.v201-dialogue-screen .source-card{grid-template-columns:auto 42px minmax(0,1fr);padding:12px;gap:9px}
+  .dialogue-screen.v201-dialogue-screen .source-card>p{grid-column:1/-1;grid-row:2;font-size:1rem}
+  .dialogue-screen.v201-dialogue-screen .source-card>.source-actions{grid-column:1/-1;grid-row:3}
+  .v201-response-toolbar{padding-left:0}
+  .v201-response-grid{grid-template-columns:1fr}
+  .dialogue-screen.v201-dialogue-screen .v20-feedback-columns{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .dialogue-screen.v201-dialogue-screen .dialogue-player{padding:10px 9px 24px}
+  .dialogue-screen.v201-dialogue-screen .segment-head h2{font-size:1.28rem}
+  .dialogue-screen.v201-dialogue-screen .dialogue-controls{display:flex!important;gap:5px}
+  .dialogue-screen.v201-dialogue-screen .dialogue-controls label{flex:1;min-width:92px}
+  .dialogue-screen.v201-dialogue-screen .dialogue-controls select{width:100%;min-height:36px}
+  .dialogue-screen.v201-dialogue-screen .transcript-toggle{grid-column:auto!important;width:38px!important;min-width:38px!important}
+  .dialogue-screen.v201-dialogue-screen .source-actions{justify-content:stretch}
+  .dialogue-screen.v201-dialogue-screen .source-actions button{flex:1;min-width:0}
+  .v201-response-toolbar{align-items:flex-start}
+  .v201-record-actions{width:100%;margin-left:0}
+  .v201-record-actions button{flex:1}
+  .dialogue-screen.v201-dialogue-screen .v20-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .dialogue-screen.v201-dialogue-screen .v20-summary-grid b{font-size:.84rem}
+  .dialogue-screen.v201-dialogue-screen .v20-summary-grid span{font-size:.6rem}
+}

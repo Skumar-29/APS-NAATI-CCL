@@ -1,6 +1,6 @@
 {
-  "version": "20.0",
-  "build": "github-online-first-learning-platform-2026-09-03-v20",
+  "version": "20.1",
+  "build": "github-online-first-compact-practice-workspace-2026-09-03-v20.1",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -83,5 +83,12 @@
   "shortNotesCompact": true,
   "assessmentCache": true,
   "v19_5CloudSyncPreserved": true,
-  "contentUnchangedFromV19_5": true
+  "contentUnchangedFromV19_5": true,
+  "practiceWorkspaceCompact": true,
+  "practiceResponseSampleSideBySide": true,
+  "practiceSampleNoAutoScroll": true,
+  "practiceIconFirstControls": true,
+  "practiceCompactButtons": true,
+  "practiceFeedbackDuplicatesRemoved": true,
+  "practiceResponsiveNoOverlapLayout": true
 }

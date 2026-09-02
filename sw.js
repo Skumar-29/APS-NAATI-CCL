@@ -1,6 +1,6 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v20-shell';
+const APP_CACHE = 'aps-naati-v20-1-shell';
 const CONTENT_CACHE = 'aps-naati-content-runtime-v20';
 const PRECACHE = [
   './',
@@ -19,6 +19,7 @@ const PRECACHE = [
   './original-source-v18.css',
   './my-vocabs-v19-4.css',
   './online-v20.css',
+  './online-v20-1.css',
   './scoring.js',
   './app.js',
   './study-hotfix-v5.js',
@@ -29,6 +30,7 @@ const PRECACHE = [
   './original-source-v18.js',
   './my-vocabs-v19-4.js',
   './online-v20.js',
+  './online-v20-1.js',
   './content/languages.json',
   './content/exam_info.json',
   './content/lesson0.json',

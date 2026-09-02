@@ -1,0 +1,16 @@
+APS NAATI CCL Practice V20.1 — GitHub Web Update
+
+1. Extract APS_NAATI_CCL_V20_1_GitHub_Web_Update.zip.
+2. Upload the extracted files to the SAME GitHub repository used by V20.
+3. Replace matching files. The two new files are online-v20-1.js and online-v20-1.css.
+4. Do NOT change Firebase Functions or the deployed assessAttempt function. V20.1 is UI-only.
+5. Wait for GitHub Pages to deploy.
+6. Hard-refresh/reopen the app once so the V20.1 service worker takes control.
+7. Test one Learning/Practice segment:
+   - Search / Settings / Add Vocab appear as compact icons.
+   - Source card is shorter.
+   - After recording, tap Review.
+   - Your response and Sample Interpretation appear side-by-side on desktop.
+   - No separate Show Sample Answer button should be needed.
+   - Feedback stays below in compact sections.
+   - On narrow/mobile screens the two cards stack instead of overlapping.

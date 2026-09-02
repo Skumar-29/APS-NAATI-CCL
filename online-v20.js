@@ -296,7 +296,7 @@ render=function v20Render(){
 // Background freshness check: UI never waits for it.
 async function checkFreshness(){
   if(!navigator.onLine)return;
-  try{const r=await fetch('./version.json',{cache:'no-store'});if(!r.ok)return;const v=await r.json();state.v20.contentFresh=String(v.version||'')==='20.0';state.v20.lastCheck=new Date().toISOString();}catch{}
+  try{const r=await fetch('./version.json',{cache:'no-store'});if(!r.ok)return;const v=await r.json();state.v20.contentFresh=String(v.version||'').startsWith('20.');state.v20.lastCheck=new Date().toISOString();}catch{}
 }
 setTimeout(checkFreshness,1000);setInterval(checkFreshness,5*60*1000);
 
