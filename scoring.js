@@ -23,7 +23,10 @@
     ['रद्द','निरस्त','कैंसल'],['राशि','पैसे','धन','भुगतान'],['बीमारी','रोग','समस्या','स्थिति'],['तुरंत','तत्काल','फौरन'],
     ['अस्पताल','हॉस्पिटल'],['प्रयोगशाला','लैब'],['परीक्षण','जाँच','जांच','टेस्ट'],['लक्षण','परेशानी'],['वकील','सॉलिसिटर','अधिवक्ता'],
     ['पुलिस','अधिकारी'],['खाता','अकाउंट'],['बैंक','बैंकिंग'],['नौकरी','काम','रोजगार','रोज़गार'],['घर','मकान','आवास'],
-    ['पहले','पूर्व'],['बाद','पश्चात'],['नहीं','मत','कभीनहीं'],['होसकता','संभव','शायद'],['चाहिए','आवश्यक','जरूरी','ज़रूरी'],['जानकारी','सूचना','विवरण'],['दस्तावेज़','दस्तावेज','कागज़ात','कागज','कागज़'],['आवेदन','अर्जी','एप्लीकेशन'],['प्रक्रिया','कार्यवाही','प्रोसेस'],['विकल्प','चुनाव'],['शुल्क','फीस','खर्च','लागत'],['पंजीकरण','रजिस्ट्रेशन'],['रसीद','बिल','इनवॉइस'],['किराया','भाड़ा'],['दर्द','पीड़ा','तकलीफ','तकलीफ़'],['दवा','औषधि','मेडिसिन'],['टीका','वैक्सीन','टीकाकरण'],['क्लिनिक','चिकित्सालय'],['रिपोर्ट','प्रतिवेदन'],['सलाह','परामर्श'],['मंजूरी','मंज़ूरी','स्वीकृति'],['पात्रता','योग्यता'],['रिकॉर्ड','अभिलेख'],['समझौता','सहमति'],['शिकायत','परिवाद'],['मरम्मत','सुधार'],['insurance','cover','coverage'],['document','documents','paper','papers','record','records'],['information','details','detail'],['application','apply','form'],['process','procedure','steps'],['option','options','choice','choices'],['cost','costs','fee','fees','charge','charges'],['evidence','proof','record','records'],['vaccination','immunisation','vaccine','vaccines']
+    ['पहले','पूर्व'],['बाद','पश्चात'],['नहीं','मत','कभीनहीं'],['होसकता','संभव','शायद'],['चाहिए','आवश्यक','जरूरी','ज़रूरी'],['जानकारी','सूचना','विवरण'],['दस्तावेज़','दस्तावेज','कागज़ात','कागज','कागज़'],['आवेदन','अर्जी','एप्लीकेशन'],['प्रक्रिया','कार्यवाही','प्रोसेस'],['विकल्प','चुनाव'],['शुल्क','फीस','खर्च','लागत'],['पंजीकरण','रजिस्ट्रेशन'],['रसीद','बिल','इनवॉइस'],['किराया','भाड़ा'],['दर्द','पीड़ा','तकलीफ','तकलीफ़'],['दवा','औषधि','मेडिसिन'],['टीका','वैक्सीन','टीकाकरण'],['क्लिनिक','चिकित्सालय'],['रिपोर्ट','प्रतिवेदन'],['सलाह','परामर्श'],['मंजूरी','मंज़ूरी','स्वीकृति'],['पात्रता','योग्यता'],['रिकॉर्ड','अभिलेख'],['समझौता','सहमति'],['शिकायत','परिवाद'],['मरम्मत','सुधार'],['insurance','cover','coverage'],['document','documents','paper','papers','record','records'],['information','details','detail'],['application','apply','form'],['process','procedure','steps'],['option','options','choice','choices'],['cost','costs','fee','fees','charge','charges'],['evidence','proof','record','records'],['vaccination','immunisation','vaccine','vaccines'],
+    ['custom','customs'],['understand','know','learn'],['stop','stopped','hold','held','detain','detained','retain','retained'],
+    ['item','items','object','objects','article','articles'],['baggage','luggage','bag','bags'],['want','wish','wouldlike'],
+    ['provide','give','submit','supply'],['need','required','require','have']
   ];
   const ALIAS=new Map(); GROUPS.forEach(g=>g.forEach(w=>ALIAS.set(w,g[0])));
   const NUMBERS={
@@ -59,6 +62,17 @@
     return precision+recall?2*precision*recall/(precision+recall):0;
   }
   function bestSimilarity(answer,refs){return Math.max(0,...refs.filter(Boolean).map(r=>similarity(answer,r)));}
+  function meaningSimilarity(answer,reference){
+    const a=unique(tokens(answer)), r=unique(tokens(reference));
+    if(!a.length||!r.length)return 0;
+    const as=new Set(a), rs=new Set(r);
+    const recall=r.filter(x=>as.has(x)).length/r.length;
+    const precision=a.filter(x=>rs.has(x)).length/a.length;
+    // Interpretation quality is primarily about transferring the source meaning.
+    // Extra grammar/function words should not destroy an otherwise good meaning score.
+    return Math.max(0,Math.min(1,(recall*.78)+(precision*.22)));
+  }
+  function bestMeaningSimilarity(answer,refs){return Math.max(0,...refs.filter(Boolean).map(r=>meaningSimilarity(answer,r)));}
   function normalizeCompact(text){return tokens(text,{keepStops:true}).join(' ');}
   function containsConcept(answer,concept){
     const a=new Set(tokens(answer,{keepStops:true}));
@@ -94,7 +108,7 @@
   }
   function assessSegment(segment,answer,delivery={}){
     const refs=[segment.model,...(segment.acceptedAlternatives||[])];
-    const coverage=bestSimilarity(answer,refs);
+    let coverage=bestMeaningSimilarity(answer,refs);
     const critical=(segment.criticalDetails||[]).map(d=>({...d,matched:criticalMatch(answer,d,refs)}));
     const missingCritical=critical.filter(d=>!d.matched);
     const unitChunks=splitReference(segment.model,(segment.meaningUnits||[]).length||1);
@@ -104,7 +118,11 @@
       if(!matched&&coverage>=.88)matched=true;
       return {...u,matched};
     });
-    let deduction=coverage>=.86?.05:coverage>=.74?.32:coverage>=.58?.75:coverage>=.40?1.35:2.15;
+    const requiredUnits=units.filter(u=>u.required!==false);
+    const matchedRequired=requiredUnits.filter(u=>u.matched).length;
+    if(requiredUnits.length&&matchedRequired===requiredUnits.length)coverage=Math.max(coverage,.72);
+    else if(requiredUnits.length&&matchedRequired/requiredUnits.length>=.75)coverage=Math.max(coverage,.64);
+    let deduction=coverage>=.90?.05:coverage>=.78?.28:coverage>=.64?.68:coverage>=.48?1.25:2.15;
     missingCritical.forEach(d=>deduction+=d.severity==='major'?.7:.35);
     const startDelay=Number(delivery.startDelay||0);
     if(startDelay>8)deduction+=.35; else if(startDelay>5)deduction+=.15;
@@ -117,7 +135,7 @@
     const strengths=[];
     if(coverage>=.8)strengths.push('Main meaning was preserved');
     if(!missingCritical.length&&critical.length)strengths.push('Critical details were preserved');
-    if(startDelay&&startDelay<=5)strengths.push('Response began promptly');
+
     const advice=[];
     if(coverage<.74)advice.push('Replay the source and rebuild the message in short meaning groups');
     if(missingCritical.length)advice.push('Write critical names, numbers, dates, negatives and conditions immediately');
@@ -143,5 +161,5 @@
     return {low,high,midpoint:Math.round(midpoint*10)/10,counts,strengths,priorities,repeatDeduction,improvement};
   }
   function mockPass(d1,d2){return {totalLow:d1.low+d2.low,totalHigh:d1.high+d2.high,passCertain:d1.low>=29&&d2.low>=29&&(d1.low+d2.low)>=63,passPossible:d1.high>=29&&d2.high>=29&&(d1.high+d2.high)>=63};}
-  return {tokens,similarity,bestSimilarity,assessSegment,aggregateDialogue,mockPass};
+  return {tokens,similarity,meaningSimilarity,bestSimilarity,bestMeaningSimilarity,assessSegment,aggregateDialogue,mockPass};
 });

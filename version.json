@@ -1,6 +1,6 @@
 {
-  "version": "19.5",
-  "build": "github-scalable-cloud-performance-my-vocabs-context-menu-2026-09-03-v19-5",
+  "version": "20.0",
+  "build": "github-online-first-learning-platform-2026-09-03-v20",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -61,5 +61,27 @@
   ],
   "myVocabsStoreCache": true,
   "myVocabsCoalescedPersistence": true,
-  "performanceParallelSupplementalVocabularyLoad": true
+  "performanceParallelSupplementalVocabularyLoad": true,
+  "onlineFirst": true,
+  "cacheFirstUI": true,
+  "onlineSemanticAssessment": true,
+  "onlineAssessmentEndpoint": "assessAttempt",
+  "onlineAssessmentLocalFallback": true,
+  "webCloudTranscriptionEnabledWhenAuthenticated": true,
+  "navigation": [
+    "Home",
+    "Learn",
+    "Practice",
+    "Review",
+    "Progress"
+  ],
+  "mockTestInsidePractice": true,
+  "practiceFeedbackReorganised": true,
+  "meaningLanguageDeliverySeparated": true,
+  "sampleAnswerCollapsible": true,
+  "noteTipCollapsible": true,
+  "shortNotesCompact": true,
+  "assessmentCache": true,
+  "v19_5CloudSyncPreserved": true,
+  "contentUnchangedFromV19_5": true
 }

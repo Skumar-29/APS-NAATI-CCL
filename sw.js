@@ -1,7 +1,7 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v19-5-shell';
-const CONTENT_CACHE = 'aps-naati-content-runtime-v1';
+const APP_CACHE = 'aps-naati-v20-shell';
+const CONTENT_CACHE = 'aps-naati-content-runtime-v20';
 const PRECACHE = [
   './',
   './index.html',
@@ -18,6 +18,7 @@ const PRECACHE = [
   './content-library-v17.css',
   './original-source-v18.css',
   './my-vocabs-v19-4.css',
+  './online-v20.css',
   './scoring.js',
   './app.js',
   './study-hotfix-v5.js',
@@ -27,9 +28,11 @@ const PRECACHE = [
   './content-library-v17.js',
   './original-source-v18.js',
   './my-vocabs-v19-4.js',
+  './online-v20.js',
   './content/languages.json',
   './content/exam_info.json',
   './content/lesson0.json',
+  './content/online-manifest-v20.json',
   './version.json'
 ];
 
@@ -93,6 +96,15 @@ self.addEventListener('fetch', event => {
         return response;
       }).catch(() => caches.match('./index.html'))
     );
+    return;
+  }
+
+
+  if (url.pathname.endsWith('/version.json') || url.pathname.endsWith('/content/online-manifest-v20.json')) {
+    event.respondWith(fetch(event.request, { cache: 'no-store' }).then(response => {
+      if (response && response.ok) caches.open(APP_CACHE).then(cache => cache.put(event.request, response.clone()));
+      return response;
+    }).catch(() => caches.match(event.request)));
     return;
   }
 

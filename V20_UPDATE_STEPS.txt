@@ -1,0 +1,23 @@
+APS NAATI CCL Practice V20 — UPDATE STEPS
+
+A. WEB APP
+1. Extract APS_NAATI_CCL_V20_GitHub_Web_Update.zip.
+2. Upload the extracted files/folders to the same GitHub repository, replacing matching files.
+3. Keep any existing content/owner-content-v16.json that contains your Content Studio edits. The update ZIP does not replace it.
+4. Wait for GitHub Pages deployment and hard-refresh/reopen the app once.
+
+B. FIRESTORE
+V20 keeps the V19.5 scalable Firestore schema. If you already published the V19.5 rules, no new Firestore rules change is required. firestore-v20.rules is included as a reference copy.
+
+C. ONLINE SEMANTIC ASSESSMENT (ONE-TIME BACKEND DEPLOYMENT)
+The web app works without this step, but will show Local estimate. To enable the new online semantic assessment:
+1. Open Terminal in the extracted full V20 backup folder.
+2. RUN: cd firebase-functions-v20
+3. RUN: npm install
+4. RUN: firebase login
+5. RUN: firebase use aps-naati-ccl-practice
+6. RUN: firebase functions:secrets:set OPENAI_API_KEY
+   Paste your OpenAI API key when prompted. Never put it in GitHub Pages files.
+7. RUN: firebase deploy --only functions:assessAttempt
+
+After deployment, authenticated online practice automatically uses semantic assessment and falls back locally if the service is unavailable.
