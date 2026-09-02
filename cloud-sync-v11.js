@@ -60,6 +60,7 @@
     storageKeys.practiceDaily,
     storageKeys.recallProgress,
     storageKeys.recallSettings,
+    storageKeys.myVocabs,
   ].filter(Boolean);
 
   const VOICE_KEYS = new Set([
@@ -708,6 +709,23 @@
       : JSON.stringify(remote);
   }
 
+  function mergeMyVocabs(localValue, remoteValue) {
+    const local = safeParse(localValue, {}) || {};
+    const remote = safeParse(remoteValue, {}) || {};
+    const localItems = local.items && typeof local.items === 'object' ? local.items : {};
+    const remoteItems = remote.items && typeof remote.items === 'object' ? remote.items : {};
+    const items = { ...remoteItems };
+    for (const [id, item] of Object.entries(localItems)) {
+      const current = items[id];
+      if (!current || dateValue(item?.updatedAt) >= dateValue(current?.updatedAt)) items[id] = item;
+    }
+    return JSON.stringify({
+      schemaVersion: Math.max(Number(local.schemaVersion)||1, Number(remote.schemaVersion)||1),
+      updatedAt: dateValue(local.updatedAt) >= dateValue(remote.updatedAt) ? (local.updatedAt||remote.updatedAt||'') : (remote.updatedAt||local.updatedAt||''),
+      items
+    });
+  }
+
   function mergeFirstTimeValue(key, localValue, remoteValue) {
     if (localValue == null) return remoteValue;
     if (remoteValue == null) return sanitiseValueForCloud(key, localValue);
@@ -721,6 +739,7 @@
     if (key === storageKeys.dialogueVocabProgress) return mergeRecallProgress(localValue, remoteValue);
     if (key === storageKeys.recallProgress) return mergeRecallProgress(localValue, remoteValue);
     if (key === storageKeys.recallSettings) return mergeRecallSettings(localValue, remoteValue);
+    if (key === storageKeys.myVocabs) return mergeMyVocabs(localValue, remoteValue);
     if (key === storageKeys.vocabSettings) {
       const local = safeParse(localValue, {}) || {};
       const remote = safeParse(remoteValue, {}) || {};
@@ -850,7 +869,7 @@
         }
         if (!remoteEntry) continue;
 
-        const alwaysMerge = key === storageKeys.practiceDaily || key === storageKeys.recallProgress;
+        const alwaysMerge = key === storageKeys.practiceDaily || key === storageKeys.recallProgress || key === storageKeys.myVocabs;
         if (alwaysMerge && localRaw != null && remoteRaw != null && sanitiseValueForCloud(key, localRaw) !== remoteRaw) {
           const merged = mergeFirstTimeValue(key, localRaw, remoteRaw);
           applyCloudValueLocally(key, merged);

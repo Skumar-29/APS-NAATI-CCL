@@ -959,6 +959,8 @@
       vocabSettings: state.vocabSettings,
       vocabResume: getJSON(storageKeys.vocabResume, {}),
       phraseStats: getJSON(storageKeys.phraseStats, {}),
+      dialogueVocabProgress: getJSON(storageKeys.dialogueVocabProgress, {}),
+      myVocabs: getJSON(storageKeys.myVocabs, { schemaVersion: 1, items: {} }),
       attempts: getJSON(storageKeys.attempts, []),
       lesson: getJSON(storageKeys.lesson, {}),
       mistakes: getJSON(storageKeys.mistakes, []),
@@ -984,6 +986,8 @@
       setJSON(storageKeys.vocabSettings, data.vocabSettings || {});
       setJSON(storageKeys.vocabResume, data.vocabResume || {});
       setJSON(storageKeys.phraseStats, data.phraseStats || {});
+      if (data.dialogueVocabProgress && storageKeys.dialogueVocabProgress) setJSON(storageKeys.dialogueVocabProgress, data.dialogueVocabProgress);
+      if (data.myVocabs && storageKeys.myVocabs) setJSON(storageKeys.myVocabs, data.myVocabs);
       setJSON(storageKeys.attempts, data.attempts || []);
       setJSON(storageKeys.lesson, data.lesson || {});
       setJSON(storageKeys.mistakes, data.mistakes || []);

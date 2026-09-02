@@ -1,84 +1,40 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-original-source-20260810-v18';
+const CACHE_NAME = 'aps-naati-my-vocabs-20260902-v19';
 const PRECACHE = [
-  "./",
-  "./index.html",
-  "./404.html",
-  "./APS_NAATI_GITHUB_STUDY_READY_BUILD_REPORT.json",
-  "./BETA_PRIVACY_NOTICE.md",
-  "./DIALOGUE_COMPARISON_AUDIT_V2.0.3.csv",
-  "./FIREBASE_CLOUD_SYNC_SETUP.txt",
-  "./FRIENDS_TEST_CHECKLIST.md",
-  "./GITHUB_UPLOAD_STEPS.txt",
-  "./PHRASE_AUDIT_V2.0.5.csv",
-  "./PHRASE_LIBRARY_METHOD_V2.0.5.md",
-  "./QA_REPORT_GITHUB_STUDY_READY_V4.md",
-  "./QA_REPORT_GITHUB_STUDY_READY_V5.md",
-  "./QA_REPORT_GITHUB_STUDY_READY_V6.md",
-  "./QA_REPORT_GITHUB_STUDY_READY_V7.md",
-  "./QA_REPORT_GITHUB_STUDY_READY_V8.md",
-  "./QA_REPORT_GITHUB_STUDY_READY_V9.md",
-  "./QA_REPORT_GITHUB_STUDY_READY_V11.md",
-  "./QA_REPORT_GITHUB_STUDY_READY_V12.md",
-  "./QA_REPORT_V2.0.3.md",
-  "./QA_REPORT_V2.0.4.md",
-  "./QA_REPORT_V2.0.5.md",
-  "./QA_REPORT_V2.0.6.md",
-  "./QA_REPORT_V2.0.7.md",
-  "./README.md",
-  "./README.txt",
-  "./UPDATE_NOTES_V2.0.3.md",
-  "./UPDATE_NOTES_V2.0.4.md",
-  "./UPDATE_NOTES_V2.0.5.md",
-  "./UPDATE_NOTES_V2.0.6.md",
-  "./UPDATE_NOTES_V2.0.7.md",
-  "./UPLOAD_THIS_VERSION.txt",
-  "./VOCABULARY_AUDIT_V2.0.3.csv",
-  "./app.js",
-  "./cloud-sync-v11.css",
-  "./cloud-sync-v11.js",
-  "./content/dialogues.json",
-  "./content/exam_info.json",
-  "./content/languages.json",
-  "./content/lesson0.json",
-  "./content/packs/hi/dialogues.json",
-  "./content/packs/hi/phrases.json",
-  "./content/packs/hi/vocabulary.json",
-"./content/starter_phrases.json",
-  "./content/starter_vocab.json",
-  "./icon-192.png",
-  "./icon-512.png",
-  "./icon.svg",
-  "./manifest.webmanifest",
-"./scoring.js",
-  "./study-hotfix-v5.css",
-  "./study-hotfix-v5.js",
-  "./study-progress-v9.css",
-  "./study-progress-v9.js",
-  "./styles.css",
-  "./version.json",
-  "./QA_REPORT_GITHUB_RELIABILITY_V13.json",
-  "./QA_REPORT_GITHUB_RELIABILITY_V13.md",
-  "./CONTENT_RELIABILITY_V13.md",
-  "./content/packs/hi/general-vocabulary.json",
-  "./reliability-v15.js",
-  "./reliability-v15.css",
-  "./content/dialogue-vocabulary.json",
-  "./content/packs/hi/dialogue-vocabulary.json",
-  "./CONTENT_RELIABILITY_V15.md",
-  "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.md",
-  "./QA_REPORT_GITHUB_DIALOGUE_LEARNING_V15.json",
-  "./content-library-v17.js",
-  "./content-library-v17.css",
-  "./CONTENT_LIBRARY_V17.md",
-  "./QA_REPORT_GITHUB_SAFE_MERGE_V17.md",
-  "./QA_REPORT_GITHUB_SAFE_MERGE_V17.json",
-  "./QA_REPORT_GITHUB_ORIGINAL_SOURCE_V18.json",
-  "./QA_REPORT_GITHUB_ORIGINAL_SOURCE_V18.md",
-  "./ORIGINAL_SOURCE_V18.md",
-  "./original-source-v18.css",
-  "./original-source-v18.js"
+  './',
+  './index.html',
+  './404.html',
+  './manifest.webmanifest',
+  './icon.svg',
+  './icon-192.png',
+  './icon-512.png',
+  './styles.css',
+  './study-hotfix-v5.css',
+  './cloud-sync-v11.css',
+  './study-progress-v9.css',
+  './reliability-v15.css',
+  './content-library-v17.css',
+  './original-source-v18.css',
+  './my-vocabs-v19.css',
+  './scoring.js',
+  './app.js',
+  './study-hotfix-v5.js',
+  './study-progress-v9.js',
+  './cloud-sync-v11.js',
+  './reliability-v15.js',
+  './content-library-v17.js',
+  './original-source-v18.js',
+  './my-vocabs-v19.js',
+  './content/languages.json',
+  './content/exam_info.json',
+  './content/lesson0.json',
+  './content/packs/hi/dialogues.json',
+  './content/packs/hi/vocabulary.json',
+  './content/packs/hi/phrases.json',
+  './content/packs/hi/general-vocabulary.json',
+  './content/packs/hi/dialogue-vocabulary.json',
+  './version.json'
 ];
 
 self.addEventListener('install', event => {
@@ -105,6 +61,7 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
+
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request)
@@ -117,6 +74,9 @@ self.addEventListener('fetch', event => {
     );
     return;
   }
+
+  // Owner edits are deliberately network-first so GitHub-published content changes
+  // are not hidden behind an older application cache.
   if (url.pathname.endsWith('/content/owner-content-v16.json')) {
     event.respondWith(
       fetch(event.request, { cache: 'no-store' })
@@ -131,6 +91,7 @@ self.addEventListener('fetch', event => {
     );
     return;
   }
+
   event.respondWith(
     caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
       if (response && response.ok) {
@@ -141,7 +102,6 @@ self.addEventListener('fetch', event => {
     }))
   );
 });
-
 
 self.addEventListener('notificationclick', event => {
   event.notification.close();
