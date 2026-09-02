@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-v19-4-my-vocabs-sheet';
+const CACHE_NAME = 'aps-naati-v19-4-1-bulk-status-auto-hide';
 const PRECACHE = [
   './',
   './index.html',

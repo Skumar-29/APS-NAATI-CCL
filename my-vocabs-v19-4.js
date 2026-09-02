@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const VERSION='My Vocabs V19.4';
+const VERSION='My Vocabs V19.4.1';
 const VIEW_KEY='apsMyVocabsViewV194:hi';
 const BULK_KEY='apsMyVocabsBulkTranslateV194:hi';
 const ONLINE_CACHE_KEY='apsMyVocabsTranslationV3:hi';
@@ -71,11 +71,22 @@ function bulkStatusText(j=bulkJob()){
   return `Translating ${Math.min(done+1,total).toLocaleString()} / ${total.toLocaleString()} · ${pending.toLocaleString()} remaining`;
 }
 function updateBulkDom(){
-  const box=document.querySelector('#myBulkTranslationStatus'),j=bulkJob();if(!box)return;
-  if(!j){box.hidden=true;return;}box.hidden=false;box.dataset.state=j.status||'running';
+  const box=document.querySelector('#myBulkTranslationStatus');if(!box)return;
+  let j=bulkJob();
+  // A completed/cancelled queue must never leave a stale progress strip behind.
+  // Only keep the strip after completion when failed untranslated rows still need Retry Failed.
+  if(j&&j.status==='done'){
+    const failed=(j.failedIds||[]).filter(id=>{const r=findMy(id);return r&&String(r.english||'').trim()&&!String(r.hindi||'').trim();});
+    if(!failed.length){saveBulkJob(null);j=null;}else if(failed.length!==(j.failedIds||[]).length){j.failedIds=failed;saveBulkJob(j);}
+  }
+  if(j&&j.status==='cancelled'){saveBulkJob(null);j=null;}
+  if(!j){box.hidden=true;box.removeAttribute('data-state');return;}
+  box.hidden=false;box.dataset.state=j.status||'running';
   const text=box.querySelector('[data-bulk-text]');if(text)text.textContent=bulkStatusText(j);
   const bar=box.querySelector('progress');if(bar){bar.max=Math.max(1,Number(j.total)||1);bar.value=Math.min(Number(j.total)||1,(Number(j.done)||0)+(j.failedIds||[]).length);}
-  const pause=box.querySelector('[data-action="my-bulk-pause"]');if(pause)pause.textContent=j.status==='paused'?'▶ Resume':'Ⅱ Pause';
+  const terminal=j.status==='done'||j.status==='cancelled';
+  const pause=box.querySelector('[data-action="my-bulk-pause"]');if(pause){pause.hidden=terminal;pause.textContent=j.status==='paused'?'▶ Resume':'Ⅱ Pause';}
+  const cancel=box.querySelector('[data-action="my-bulk-cancel"]');if(cancel)cancel.hidden=terminal;
   const retry=box.querySelector('[data-action="my-bulk-retry"]');if(retry)retry.hidden=!(j.status==='done'&&(j.failedIds||[]).length);
 }
 function activeSheetOrder(){
@@ -365,7 +376,11 @@ async function runBulkTranslation(){
       let job=bulkJob();if(!job||['paused','cancelled','done'].includes(job.status))break;
       if(!navigator.onLine){job.status='waiting';job.updatedAt=iso();saveBulkJob(job);updateBulkDom();break;}
       job.status='running';
-      const id=(job.pendingIds||[])[0];if(!id){job.status='done';job.updatedAt=iso();saveBulkJob(job);updateBulkDom();break;}
+      const id=(job.pendingIds||[])[0];if(!id){
+        const unresolved=(job.failedIds||[]).filter(fid=>{const rr=findMy(fid);return rr&&String(rr.english||'').trim()&&!String(rr.hindi||'').trim();});
+        if(unresolved.length){job.status='done';job.failedIds=unresolved;job.updatedAt=iso();saveBulkJob(job);}else saveBulkJob(null);
+        updateBulkDom();break;
+      }
       const r=findMy(id);
       if(!r||!String(r.english||'').trim()||String(r.hindi||'').trim()){
         job.pendingIds.shift();job.done=(Number(job.done)||0)+1;job.updatedAt=iso();saveBulkJob(job);updateBulkDom();continue;
@@ -381,7 +396,12 @@ async function runBulkTranslation(){
   }finally{bulkRunnerActive=false;}
 }
 function pauseResumeBulk(){const j=bulkJob();if(!j)return;if(j.status==='paused'){j.status=navigator.onLine?'running':'waiting';j.updatedAt=iso();saveBulkJob(j);updateBulkDom();void runBulkTranslation();}else if(['running','waiting'].includes(j.status)){j.status='paused';j.updatedAt=iso();saveBulkJob(j);updateBulkDom();}}
-function cancelBulk(){const j=bulkJob();if(!j)return;j.status='cancelled';j.updatedAt=iso();saveBulkJob(j);updateBulkDom();}
+function cancelBulk(){
+  const j=bulkJob();if(!j)return;
+  const remaining=missingHindiRows().length;
+  saveBulkJob(null);updateBulkDom();
+  showToast(remaining?`Bulk translation stopped · ${remaining.toLocaleString()} words still need Hindi`:'All imported words are translated');
+}
 function retryFailedBulk(){const j=bulkJob();if(!j||(j.failedIds||[]).length)return;const ids=(j.failedIds||[]).filter(id=>{const r=findMy(id);return r&&r.english&&!r.hindi;});if(!ids.length){saveBulkJob(null);updateBulkDom();return;}startBulkTranslation(ids);}
 
 function deleteRow(id){const s=store(),r=s.items[id];if(!r)return;if(!confirm(`Delete “${r.english||'this row'}” from My Vocabs? This only removes your personal row; master APS vocabulary is not affected.`))return;r.deleted=true;r.deletedAt=iso();r.updatedAt=iso();s.items[id]=r;saveStore(s);render();}
@@ -581,5 +601,5 @@ if(new URL(location.href).searchParams.get('myvocabs')==='1'){
   const timer=setInterval(()=>{if(state.ready&&state.auth?.initialized&&state.selectedLanguage){clearInterval(timer);state.overlay='my-vocabs';document.documentElement.classList.add('my-vocabs-ready');render();void refreshLegacyAutoRowsOnce();}},60);
   setTimeout(()=>{clearInterval(timer);document.documentElement.classList.add('my-vocabs-ready');if(state.ready){state.overlay='my-vocabs';render();}},15000);
 }
-console.info(`${VERSION} loaded · automatic CSV bulk Hindi translation · numbered frozen columns · resizable widths · Shift+Arrow row selection.`);
+console.info(`${VERSION} loaded · bulk status auto-hides on successful completion · automatic CSV bulk Hindi translation · frozen/resizable columns · Shift+Arrow selection.`);
 })();
