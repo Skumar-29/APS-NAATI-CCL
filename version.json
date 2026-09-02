@@ -1,6 +1,6 @@
 {
-  "version": "20.2",
-  "build": "github-online-first-whole-app-ui-cleanup-2026-09-03-v20.2",
+  "version": "20.3",
+  "build": "github-online-first-my-vocabs-smart-sheet-2026-09-03-v20.3",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -110,5 +110,19 @@
   "technicalInstructionsHiddenFromStudentUi": true,
   "ownerToolsPreserved": true,
   "contentUnchangedFromV20_1": true,
-  "onlineAssessmentFunctionUnchanged": true
+  "onlineAssessmentFunctionUnchanged": true,
+  "myVocabsViewportStableEdits": true,
+  "myVocabsMinimalAutoScroll": true,
+  "myVocabsHindiToEnglishAutoFill": true,
+  "myVocabsDuplicateDetection": true,
+  "myVocabsDuplicateActions": [
+    "Open existing",
+    "Add separate meaning",
+    "Cancel"
+  ],
+  "myVocabsSpeakMySynonyms": true,
+  "myVocabsMixedLanguageSynonymSpeech": true,
+  "myVocabsSynonymVoiceDetection": "per comma/semicolon/slash-separated item",
+  "contentUnchangedFromV20_2": true,
+  "cloudSyncUnchangedFromV19_5": true
 }
