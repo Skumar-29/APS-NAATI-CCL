@@ -1,10 +1,13 @@
 {
-  "version": "19.0.0",
-  "build": "github-my-vocabs-example-quality-2026-09-02-v19",
-  "contentVersion": "6.0.0-v19-my-vocabs-example-quality",
+  "version": "19.1.0",
+  "build": "github-my-vocabs-online-compact-2026-09-02-v19-1",
+  "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
   "originalSource": 85,
   "dialogueVocabularySets": 190,
-  "myVocabs": true
+  "myVocabs": true,
+  "myVocabsOnlineFirst": true,
+  "myVocabsCompactWorkspace": true,
+  "myVocabsFastEnter": true
 }
