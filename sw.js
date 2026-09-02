@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'aps-naati-my-vocabs-20260902-v19-3';
+const CACHE_NAME = 'aps-naati-v19-4-my-vocabs-sheet';
 const PRECACHE = [
   './',
   './index.html',
@@ -16,7 +16,7 @@ const PRECACHE = [
   './reliability-v15.css',
   './content-library-v17.css',
   './original-source-v18.css',
-  './my-vocabs-v19-3.css',
+  './my-vocabs-v19-4.css',
   './scoring.js',
   './app.js',
   './study-hotfix-v5.js',
@@ -25,7 +25,7 @@ const PRECACHE = [
   './reliability-v15.js',
   './content-library-v17.js',
   './original-source-v18.js',
-  './my-vocabs-v19-3.js',
+  './my-vocabs-v19-4.js',
   './content/languages.json',
   './content/exam_info.json',
   './content/lesson0.json',

@@ -1,6 +1,6 @@
 {
-  "version": "19.3.0",
-  "build": "github-my-vocabs-simple-reliable-2026-09-02-v19-3",
+  "version": "19.4.0",
+  "build": "github-my-vocabs-bulk-translate-resizable-selection-2026-09-02-v19-4",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -8,23 +8,31 @@
   "dialogueVocabularySets": 190,
   "myVocabs": true,
   "myVocabsOnlineFirst": true,
-  "myVocabsCompactWorkspace": true,
-  "myVocabsFastEnter": true,
-  "myVocabsGoogleStyleTranslation": true,
-  "myVocabsAutoFillOnEnter": true,
-  "myVocabsConservativeSynonyms": true,
-  "myVocabsV191AutoRepair": true,
   "myVocabsSimpleSheet": true,
+  "myVocabsAutoFillOnEnter": true,
+  "myVocabsCsvEnglishOnlyImport": true,
+  "myVocabsAutomaticBulkTranslation": true,
+  "myVocabsPersistentBulkQueue": true,
   "myVocabsVisibleColumns": [
+    "No.",
     "English",
     "Hindi Meaning",
     "My Synonyms",
     "Recall",
     "Actions"
   ],
-  "myVocabsQueuedTranslation": true,
-  "myVocabsDialogueOpenSheetButton": true,
-  "myVocabsSuggestedSynonymsColumn": false,
-  "myVocabsExampleColumns": false,
-  "myVocabsSourceColumn": false
+  "myVocabsFrozenColumns": [
+    "No.",
+    "English",
+    "Hindi Meaning"
+  ],
+  "myVocabsResizableColumns": true,
+  "myVocabsAutoFitColumns": true,
+  "myVocabsCompactComfortableRows": true,
+  "myVocabsShiftArrowRowSelection": true,
+  "myVocabsSelectedRowHighlight": true,
+  "myVocabsMySynonymsManualOnly": true,
+  "myVocabsExamplesVisible": false,
+  "myVocabsSuggestedSynonymsVisible": false,
+  "myVocabsSourceVisible": false
 }
