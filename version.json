@@ -1,6 +1,6 @@
 {
-  "version": "20.3.2",
-  "build": "github-online-first-reliability-assessment-controls-practice-timing-2026-09-04-v20.3.2",
+  "version": "20.3.2.1",
+  "build": "github-original-source-review-triggered-assessment-2026-09-04-v20.3.2.1b",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -136,6 +136,11 @@
   "dialogueNavigationBlocksWhileRecording": true,
   "contentUnchangedFromV20_3": true,
   "releaseNotes": [
+    "Practice online semantic assessment now starts only when the learner opens Review for a recorded response; completing a normal practice recording no longer sends an automatic assessment request.",
+    "Review shows a processing spinner while the transcript/online meaning assessment is being prepared and assessed.",
+    "Turning Online assessment on no longer automatically assesses already-recorded responses; the learner chooses when to run it by opening Review.",
+    "Mock Test keeps automatic assessment when Online assessment is enabled because per-segment Review is intentionally hidden during the timed test.",
+    "Original Source now opens with Content set to All content, so all 85 legacy dialogues are visible immediately; Verified Practice continues to default to Recommended.",
     "My Vocabs right-click menu now includes Copy, Cut, Paste and Paste values only for editable cells.",
     "Fixed Check & update latest version build identification, cache matching and button state.",
     "Cloud refresh now merges dialogue attempts by attempt ID so newer cloud metadata cannot erase local completed attempts.",
@@ -151,5 +156,13 @@
   "practiceDialogueTiming": true,
   "mockDialogueTiming": true,
   "mockTotalTiming": true,
-  "contentUnchangedFromV20_3_1": true
+  "contentUnchangedFromV20_3_1": true,
+  "originalSourceDefaultsToAllContent": true,
+  "verifiedPracticeDefaultsToRecommendedContent": true,
+  "contentUnchangedFromV20_3_2": true,
+  "onlineAssessmentTrigger": "review-button",
+  "onlineAssessmentAutomaticAfterRecording": false,
+  "onlineAssessmentReviewTriggered": true,
+  "onlineAssessmentPreparingSpinner": true,
+  "mockOnlineAssessmentPreserved": true
 }

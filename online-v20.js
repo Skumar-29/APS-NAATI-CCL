@@ -21,7 +21,7 @@ renderModal=function v20RenderModal(){
   let html=originalRenderModalOnlineV20.apply(this,arguments);
   if(state.modal?.type!=='app-settings'||typeof html!=='string')return html;
   const enabled=onlineAssessmentEnabled();
-  const card=`<section id="apsOnlineAssessmentSettingsCard" class="voice-settings-section assessment-settings-section"><small>STUDY</small><h3>Online assessment</h3><label class="toggle"><input id="v20OnlineAssessmentEnabled" type="checkbox" ${enabled?'checked':''}><span>Use online semantic assessment</span></label><p class="settings-link-note">${enabled?'Meaning-transfer feedback can use the online assessor when a transcript is available.':'Online semantic assessment is off. Practice continues with available local feedback and no semantic-assessment request is sent.'}</p></section>`;
+  const card=`<section id="apsOnlineAssessmentSettingsCard" class="voice-settings-section assessment-settings-section"><small>STUDY</small><h3>Online assessment</h3><label class="toggle"><input id="v20OnlineAssessmentEnabled" type="checkbox" ${enabled?'checked':''}><span>Use online semantic assessment</span></label><p class="settings-link-note">${enabled?'Online meaning-transfer assessment starts only when you tap Review for a recorded response.':'Online semantic assessment is off. Review still shows available local feedback and no online assessment request is sent.'}</p></section>`;
   return html.replace('<div class="settings-actions">',card+'<div class="settings-actions">');
 };
 
@@ -50,11 +50,14 @@ getFirebaseIdToken=async function v20GetFirebaseIdToken(){
 };
 
 const originalNativeCloudAvailableV20=nativeCloudTranscriptionAvailable;
-nativeCloudTranscriptionAvailable=function v20CloudTranscriptionAvailable(){
+function reviewCloudTranscriptionAvailable(){
   if(!navigator.onLine)return false;
   if(originalNativeCloudAvailableV20())return true;
   try{return Boolean(window.firebase?.auth?.()?.currentUser)}catch{return false}
-};
+}
+// V20.3.2.1: do not start an online transcription/assessment pipeline
+// automatically when recording finishes. Review starts it on demand instead.
+nativeCloudTranscriptionAvailable=function v20321DeferredCloudTranscription(){return false;};
 
 function sourceTranscript(response){return String(response?.cloudTranscript||response?.browserTranscript||response?.transcript||'').trim()}
 function cacheKey(seg,transcript){return hashText(JSON.stringify([seg.id,seg.source,seg.model,seg.acceptedAlternatives||[],transcript]))}
@@ -109,7 +112,7 @@ async function requestOnlineAssessment(seg,response,{force=false}={}){
   if(!navigator.onLine){response.onlineAssessmentStatus='offline';return null;}
   if(Number(state.v20?.disabledUntil||0)>Date.now()&&!force){response.onlineAssessmentStatus='unavailable';return null;}
   const key=cacheKey(seg,transcript);
-  if(!force){const cached=cacheGet(key);if(cached){response.onlineAssessment=normaliseOnline(cached);response.onlineAssessmentStatus='completed';response.assessment=onlineToLegacy(response.onlineAssessment);return response.onlineAssessment;}}
+  if(!force){const cached=cacheGet(key);if(cached){response.onlineAssessment=normaliseOnline(cached);response.onlineAssessmentStatus='completed';response.assessment=onlineToLegacy(response.onlineAssessment);response.practiceComparison=response.assessment;response.practiceComparisonSource='online-semantic-v20-cache';render();return response.onlineAssessment;}}
 
   response.onlineAssessmentStatus='processing';
   response.onlineAssessmentError='';
@@ -143,22 +146,98 @@ async function requestOnlineAssessment(seg,response,{force=false}={}){
 }
 
 const originalFinishRecordingV20=finishRecording;
-finishRecording=async function v20FinishRecording(){
+finishRecording=async function v20321FinishRecordingWithoutAutoAssessment(){
   const index=state.segmentIndex;
   await originalFinishRecordingV20();
-  const response=state.responses[index];const seg=getActiveSegments()[index];
-  if(response&&seg&&sourceTranscript(response)&&onlineAssessmentEnabled()){
-    response.__v20AssessmentPromise=requestOnlineAssessment(seg,response).finally(()=>{response.__v20AssessmentPromise=null;});
-  }else if(response&&!onlineAssessmentEnabled())response.onlineAssessmentStatus='disabled';
+  const response=state.responses[index],seg=getActiveSegments()[index];
+  if(!response)return;
+  if(response.onlineAssessment){
+    response.onlineAssessmentStatus='completed';
+  }else{
+    response.onlineAssessmentStatus=onlineAssessmentEnabled()?'ready':'disabled';
+    response.onlineAssessmentError='';
+  }
+  render();
+  // Mock Test has no per-segment Review control during the timed test, so keep
+  // its existing assessment behaviour when Online assessment is enabled.
+  if(state.dialogueMode==='mock'&&seg&&onlineAssessmentEnabled()&&!response.onlineAssessment){
+    void requestAssessmentForReview(seg,response);
+  }
 };
 
 const originalCloudTranscriptionV20=requestCloudTranscriptionForResponse;
-requestCloudTranscriptionForResponse=async function v20CloudTranscription(blob,seg,response){
-  await originalCloudTranscriptionV20(blob,seg,response);
-  if(response.cloudTranscript&&onlineAssessmentEnabled()){
-    response.__v20AssessmentPromise=requestOnlineAssessment(seg,response,{force:true}).finally(()=>{response.__v20AssessmentPromise=null;});
-  }else if(response.cloudTranscript)response.onlineAssessmentStatus='disabled';
+requestCloudTranscriptionForResponse=function v20321ReviewCloudTranscription(blob,seg,response){
+  const task=(async()=>{
+    await originalCloudTranscriptionV20(blob,seg,response);
+    if(response.cloudTranscript){
+      response.onlineAssessmentStatus=response.onlineAssessment?'completed':(onlineAssessmentEnabled()?'ready':'disabled');
+      response.onlineAssessmentError='';
+    }
+    return response.cloudTranscript||'';
+  })();
+  response.__v20CloudTranscriptionPromise=task;
+  return task.finally(()=>{
+    if(response.__v20CloudTranscriptionPromise===task)response.__v20CloudTranscriptionPromise=null;
+    if(state.responses?.includes?.(response))render();
+  });
 };
+
+async function requestAssessmentForReview(seg,response,{force=false}={}){
+  if(!seg||!response)return null;
+  if(response.onlineAssessment&&!force){
+    response.onlineAssessmentStatus='completed';
+    render();
+    return response.onlineAssessment;
+  }
+  if(!onlineAssessmentEnabled()){
+    response.onlineAssessmentStatus='disabled';
+    response.onlineAssessmentError='';
+    render();
+    return null;
+  }
+  if(response.__v20AssessmentPromise)return response.__v20AssessmentPromise;
+
+  const task=(async()=>{
+    response.onlineAssessmentStatus='preparing';
+    response.onlineAssessmentError='';
+    render();
+
+    // Prefer the cloud transcript for assessment when online transcription is
+    // available, but start that work only because the learner tapped Review.
+    if(!response.cloudTranscript&&reviewCloudTranscriptionAvailable()&&response.recordingId){
+      try{
+        let cloudTask=response.__v20CloudTranscriptionPromise;
+        if(!cloudTask){
+          const blob=await loadBlob(response.recordingId);
+          if(blob)cloudTask=requestCloudTranscriptionForResponse(blob,seg,response);
+        }
+        if(cloudTask)await cloudTask;
+      }catch{}
+    }
+
+    if(!onlineAssessmentEnabled()){
+      response.onlineAssessmentStatus='disabled';
+      response.onlineAssessmentError='';
+      render();
+      return null;
+    }
+
+    if(!sourceTranscript(response)){
+      response.onlineAssessmentStatus='unavailable';
+      response.onlineAssessmentError='A transcript is unavailable for online assessment. Replay your saved recording and use the local comparison.';
+      render();
+      return null;
+    }
+
+    return requestOnlineAssessment(seg,response,{force});
+  })();
+
+  response.__v20AssessmentPromise=task;
+  try{return await task;}finally{
+    if(response.__v20AssessmentPromise===task)response.__v20AssessmentPromise=null;
+    render();
+  }
+}
 
 const originalAssessAndSaveV20=assessAndSaveDialogue;
 assessAndSaveDialogue=async function v20AssessAndSave(){
@@ -222,10 +301,11 @@ function compactNotes(seg){
 
 function criticalSummary(data){const list=arr(data.criticalDetails);if(!list.length)return '—';const ok=list.filter(x=>x.status==='preserved'||x.matched===true).length;return `${ok}/${list.length}`}
 function assessmentLabel(response,data){
+  if(response.onlineAssessmentStatus==='preparing')return '<span class="v20-source-pill processing"><i class="v20-mini-spinner" aria-hidden="true"></i> Preparing assessment…</span>';
   if(response.onlineAssessmentStatus==='processing')return '<span class="v20-source-pill processing"><i class="v20-mini-spinner" aria-hidden="true"></i> Online assessment…</span>';
   if(response.onlineAssessmentStatus==='disabled')return '<span class="v20-source-pill fallback">Online assessment off · local feedback</span>';
   if(data.online)return `<span class="v20-source-pill online">● Online semantic assessment</span>`;
-  if(response.onlineAssessmentStatus==='failed')return '<span class="v20-source-pill fallback">Local fallback · online unavailable</span>';
+  if(response.onlineAssessmentStatus==='failed'||response.onlineAssessmentStatus==='unavailable')return '<span class="v20-source-pill fallback">Local fallback · online unavailable</span>';
   if(!navigator.onLine)return '<span class="v20-source-pill fallback">Offline local estimate</span>';
   return '<span class="v20-source-pill fallback">Local estimate</span>';
 }
@@ -236,8 +316,11 @@ comparisonPanel=function v20ComparisonPanel(seg,response){
   const lang=arr(data.languageImprovements);const points=arr(data.meaningPoints).length?arr(data.meaningPoints):arr(seg.comparisonPoints).slice(0,6).map(x=>({label:x,status:'review'}));
   const statusText=resultStatusLabel(data.status);
   const missing=arr(data.missingOrUnclear);
+  const assessmentBusy=response.onlineAssessmentStatus==='preparing'||response.onlineAssessmentStatus==='processing';
+  const assessmentBusyTitle=response.onlineAssessmentStatus==='preparing'?'Preparing online assessment…':'Assessing your interpretation…';
+  const assessmentBusyDetail=response.onlineAssessmentStatus==='preparing'?'Preparing the transcript and secure assessment request.':'Checking meaning transfer and critical details.';
   return `<section class="comparison-panel v20-feedback">
-    ${response.onlineAssessmentStatus==='processing'?`<div class="v20-assessment-processing" role="status" aria-live="polite"><i class="v20-assessment-spinner" aria-hidden="true"></i><div><b>Assessing your interpretation…</b><span>Checking meaning transfer and critical details.</span></div></div>`:''}
+    ${assessmentBusy?`<div class="v20-assessment-processing" role="status" aria-live="polite"><i class="v20-assessment-spinner" aria-hidden="true"></i><div><b>${assessmentBusyTitle}</b><span>${assessmentBusyDetail}</span></div></div>`:''}
     <div class="v20-feedback-head"><div><small>ASSESSMENT & IMPROVEMENT</small><h3>${esc(statusText)}</h3>${assessmentLabel(response,data)}</div><div class="v20-score"><strong>${data.meaningTransfer||0}%</strong><span>estimated meaning transfer</span></div></div>
     ${response.onlineAssessmentStatus==='failed'&&onlineAssessmentEnabled()?`<div class="v20-service-note">${esc(response.onlineAssessmentError||'Online assessment is unavailable.')} <button data-action="v20-retry-assessment">Retry online</button></div>`:''}
     <div class="v20-summary-grid"><div><b>${criticalSummary(data)}</b><span>critical details</span></div><div><b>${esc(data.delivery?.rating||'—')}</b><span>delivery</span></div><div><b>${data.online?Math.round((data.confidence||0)*100)+'%':'Local'}</b><span>${data.online?'assessment confidence':'fallback check'}</span></div></div>
@@ -322,6 +405,17 @@ setTimeout(checkFreshness,1000);setInterval(checkFreshness,5*60*1000);
 document.addEventListener('click',async event=>{
   const el=event.target.closest('[data-action]');if(!el)return;const a=el.dataset.action;
   if(a==='v20-open-mock'){event.preventDefault();state.tab='mock';render();}
+  else if(a==='toggle-response-transcript'){
+    event.preventDefault();
+    event.stopPropagation();
+    const r=state.responses[state.segmentIndex],seg=getActiveSegments()[state.segmentIndex];
+    if(!r)return showToast('Record an answer before reviewing.');
+    if(r.showTranscript){r.showTranscript=false;render();return;}
+    r.showTranscript=true;
+    if(r.onlineAssessment){r.onlineAssessmentStatus='completed';render();return;}
+    if(!onlineAssessmentEnabled()){r.onlineAssessmentStatus='disabled';render();return;}
+    void requestAssessmentForReview(seg,r);
+  }
   else if(a==='v20-toggle-sample'){event.preventDefault();const r=state.responses[state.segmentIndex];if(r){r.showV20Sample=!r.showV20Sample;render();}}
   else if(a==='v20-toggle-note-tip'){event.preventDefault();const r=state.responses[state.segmentIndex];if(r){r.showV20NoteTip=!r.showV20NoteTip;render();}}
   else if(a==='v20-retry-assessment'){event.preventDefault();if(!onlineAssessmentEnabled())return showToast('Turn on Online assessment in Settings → Study first.');const r=state.responses[state.segmentIndex],seg=getActiveSegments()[state.segmentIndex];if(r&&seg){r.__v20AssessmentPromise=requestOnlineAssessment(seg,r,{force:true}).finally(()=>{r.__v20AssessmentPromise=null;});}}
@@ -330,13 +424,19 @@ document.addEventListener('click',async event=>{
 document.addEventListener('change',event=>{
   if(event.target?.id!=='v20OnlineAssessmentEnabled')return;
   const enabled=Boolean(event.target.checked);setOnlineAssessmentEnabled(enabled);
-  if(!enabled){for(const response of state.responses||[]){if(response&&response.onlineAssessmentStatus==='processing')response.onlineAssessmentStatus='disabled';}showToast('Online assessment turned off');render();return;}
-  showToast('Online assessment turned on');
-  const segs=getActiveSegments?.()||[];
-  (state.responses||[]).forEach((response,index)=>{const seg=segs[index];if(response&&seg&&sourceTranscript(response)&&!response.onlineAssessment){response.__v20AssessmentPromise=requestOnlineAssessment(seg,response).finally(()=>{response.__v20AssessmentPromise=null;});}});
+  if(!enabled){
+    for(const response of state.responses||[]){
+      if(response&&!response.onlineAssessment)response.onlineAssessmentStatus='disabled';
+    }
+    showToast('Online assessment turned off');render();return;
+  }
+  for(const response of state.responses||[]){
+    if(response&&!response.onlineAssessment&&response.onlineAssessmentStatus==='disabled')response.onlineAssessmentStatus='ready';
+  }
+  showToast('Online assessment turned on · tap Review when you want assessment');
   render();
 },true);
 
-window.APSOnlineV20={version:VERSION,requestOnlineAssessment,feedbackData,config:ONLINE_CONFIG,onlineAssessmentEnabled,setOnlineAssessmentEnabled};
-console.info(`${VERSION} loaded · online-first semantic feedback with cache-first fallback · simplified Home/Review/Practice organisation.`);
+window.APSOnlineV20={version:VERSION,requestOnlineAssessment,requestAssessmentForReview,feedbackData,config:ONLINE_CONFIG,onlineAssessmentEnabled,setOnlineAssessmentEnabled};
+console.info(`${VERSION} loaded · Review-triggered online semantic feedback · cache-first fallback · simplified Home/Review/Practice organisation.`);
 })();

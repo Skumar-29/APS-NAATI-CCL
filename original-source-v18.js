@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const VERSION='Original Source V18';
+const VERSION='Original Source V18.1';
 state.practiceLibrary=state.practiceLibrary||'verified';
 const isOriginal=d=>String(d?.id||'').startsWith('original-')||d?.library==='original-source';
 const verifiedList=()=>state.dialogues.filter(d=>!isOriginal(d));
@@ -30,6 +30,6 @@ progress=function(){
  const box=`<section class="v18-progress-libraries"><div><strong>${a.done}/${a.total}</strong><span>Verified Practice</span></div><div><strong>${b.done}/${b.total}</strong><span>Original Source</span></div></section>`;
  return html.replace('<section class="stats progress-stats">',box+'<section class="stats progress-stats">');
 };
-document.addEventListener('click',e=>{const el=e.target.closest('[data-action="v18-library"]');if(!el)return;e.preventDefault();state.practiceLibrary=el.dataset.library==='original'?'original':'verified';state.practice.query='';state.practice.topic='all';state.practice.difficulty='all';state.practice.completion='all';render();},true);
+document.addEventListener('click',e=>{const el=e.target.closest('[data-action="v18-library"]');if(!el)return;e.preventDefault();state.practiceLibrary=el.dataset.library==='original'?'original':'verified';state.practice.query='';state.practice.topic='all';state.practice.difficulty='all';state.practice.review=state.practiceLibrary==='original'?'all':'study';state.practice.completion='all';render();},true);
 console.info(`${VERSION} loaded: ${verifiedList().length} Verified Practice + ${originalList().length} Original Source dialogues.`);
 })();

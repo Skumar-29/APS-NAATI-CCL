@@ -1,7 +1,7 @@
 'use strict';
 /* APS V20.1 — compact practice workspace
    UI-only refinement on top of V20 online semantic assessment.
-   Keeps the V20 assessment/scoring pipeline unchanged. */
+   V20.3.2.1 starts online assessment on demand when Review is opened. */
 (function(){
 const VERSION='APS V20.1';
 if(typeof state==='undefined'||typeof recordingPanel!=='function'||typeof render!=='function')return;
@@ -31,7 +31,7 @@ function completedRecordingPanel(response,seg){
       <div class="record-actions v201-record-actions">${reviewButton}${button('Record again','record-again','secondary')}</div>
     </div>
 
-    ${response.onlineAssessmentStatus==='processing'?`<div class="v20-assessment-processing v201-processing" role="status" aria-live="polite"><i class="v20-assessment-spinner" aria-hidden="true"></i><div><b>Assessing your interpretation…</b><span>Online feedback is loading. You can keep using the page.</span></div></div>`:''}
+    ${(response.onlineAssessmentStatus==='processing'||response.onlineAssessmentStatus==='preparing')&&!response.showTranscript?`<div class="v20-assessment-processing v201-processing" role="status" aria-live="polite"><i class="v20-assessment-spinner" aria-hidden="true"></i><div><b>${response.onlineAssessmentStatus==='preparing'?'Preparing online assessment…':'Assessing your interpretation…'}</b><span>Online feedback is loading. You can keep using the page.</span></div></div>`:''}
 
     <div class="v201-response-grid ${response.showTranscript?'with-sample':'single'}">
       <article class="v201-response-card">
