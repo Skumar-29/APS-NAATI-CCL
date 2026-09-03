@@ -12,7 +12,7 @@ practice=function(){
   state.dialogues=selected;
   let html=basePractice();
   state.dialogues=all;
-  const tabs=`<section class="v18-library-tabs" aria-label="Dialogue library"><button data-action="v18-library" data-library="verified" class="${state.practiceLibrary==='verified'?'active':''}"><b>Verified Practice</b><span>105 dialogues</span></button><button data-action="v18-library" data-library="original" class="${state.practiceLibrary==='original'?'active':''}"><b>Original Source</b><span>85 dialogues</span></button></section>`;
+  const tabs=`<section class="v18-library-tabs" aria-label="Dialogue library"><button data-action="v18-library" data-library="verified" class="${state.practiceLibrary==='verified'?'active':''}"><b>Verified Practice</b><span>${verifiedList().length} dialogues</span></button><button data-action="v18-library" data-library="original" class="${state.practiceLibrary==='original'?'active':''}"><b>Original Source</b><span>${originalList().length} dialogues</span></button></section>`;
   html=html.replace('</header>','</header>'+tabs);
   html=html.replace(/◇ Imported from your library · bilingual review recommended/g,'✓ Original Source · language corrected');
   return html;

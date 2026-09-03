@@ -1,11 +1,25 @@
 {
-  "schemaVersion": 1,
-  "appVersion": "20.0",
-  "contentVersion": "6.0.0-v19-content-unchanged",
-  "updatedAt": "2026-09-03T00:00:00+10:00",
+  "schemaVersion": 2,
+  "appVersion": "21.0.0-pilot",
+  "contentVersion": "21.0.0-multilingual-pilot",
+  "updatedAt": "2026-09-04T00:00:00+10:00",
   "dialogues": 190,
   "verifiedPractice": 105,
   "originalSource": 85,
   "onlineFirst": true,
-  "semanticAssessmentFunction": "assessAttempt"
+  "semanticAssessmentFunction": "assessAttempt",
+  "languagePacks": {
+    "hi": {
+      "dialogues": 190,
+      "verifiedPractice": 105,
+      "originalSource": 85
+    },
+    "pa": {
+      "pilot": true,
+      "dialogues": 5,
+      "verifiedPractice": 3,
+      "originalSource": 2
+    }
+  },
+  "assessmentGuard": "v20.3.2.2-language-aware"
 }

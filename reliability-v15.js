@@ -3,8 +3,8 @@
   const VERSION='reliability-v19-5';
   const OVERRIDE_PREFIX='apsContentOverridesV15:';
   const LEGACY_OVERRIDE_PREFIXES=['apsContentOverridesV14:','apsContentOverridesV13:'];
-  const GENERAL_PATH='./content/packs/hi/general-vocabulary.json';
-  const DIALOGUE_VOCAB_PATH='./content/packs/hi/dialogue-vocabulary.json';
+  const generalPath=id=>state.languageCatalog?.find?.(x=>x.id===id)?.files?.generalVocabulary||`./content/packs/${id||'hi'}/general-vocabulary.json`;
+  const dialogueVocabPath=id=>state.languageCatalog?.find?.(x=>x.id===id)?.files?.dialogueVocabulary||`./content/packs/${id||'hi'}/dialogue-vocabulary.json`;
   const DIALOGUE_VOCAB_PROGRESS_PREFIX='apsDialogueVocabProgressV1:';
 
   state.generalVocab=[];
@@ -47,9 +47,8 @@
   }
 
   async function loadGeneralVocabulary(languageId=state.selectedLanguage){
-    if(languageId!=='hi'){state.generalVocab=[];return;}
     try{
-      const response=await fetch(GENERAL_PATH,{cache:'default'});
+      const response=await fetch(generalPath(languageId),{cache:'default'});
       if(!response.ok)throw new Error(`General vocabulary HTTP ${response.status}`);
       const data=await response.json();
       state.generalVocab=Array.isArray(data.items)?data.items:[];
@@ -62,9 +61,8 @@
 
 
   async function loadDialogueVocabulary(languageId=state.selectedLanguage){
-    if(languageId!=='hi'){state.dialogueVocabById={};state.dialogueVocabMeta={dialogueCount:0,itemCount:0};return;}
     try{
-      const response=await fetch(DIALOGUE_VOCAB_PATH,{cache:'default'});
+      const response=await fetch(dialogueVocabPath(languageId),{cache:'default'});
       if(!response.ok)throw new Error(`Dialogue vocabulary HTTP ${response.status}`);
       const data=await response.json();
       const rows=Array.isArray(data.dialogues)?data.dialogues:[];
@@ -76,7 +74,7 @@
     }
   }
 
-  const dialogueVocabProgressKey=()=>state.selectedLanguage==='hi'&&storageKeys.dialogueVocabProgress?storageKeys.dialogueVocabProgress:`${DIALOGUE_VOCAB_PROGRESS_PREFIX}${state.selectedLanguage||'hi'}`;
+  const dialogueVocabProgressKey=()=>storageKeys.dialogueVocabProgress||`${DIALOGUE_VOCAB_PROGRESS_PREFIX}${state.selectedLanguage||'hi'}`;
   const getDialogueVocabProgress=()=>getJSON(dialogueVocabProgressKey(),{})||{};
   const saveDialogueVocabProgress=value=>setJSON(dialogueVocabProgressKey(),value);
   function dialogueVocabSet(dialogueId){return state.dialogueVocabById?.[dialogueId]||{dialogueId,items:[],itemCount:0};}
@@ -98,7 +96,6 @@
 
   let supplementalPromise=null;
   async function ensureSupplementalVocabulary(){
-    if(state.selectedLanguage!=='hi')return;
     if(state.generalVocab.length&&Object.keys(state.dialogueVocabById||{}).length)return;
     if(!supplementalPromise)supplementalPromise=Promise.all([loadGeneralVocabulary(state.selectedLanguage),loadDialogueVocabulary(state.selectedLanguage)]).finally(()=>{supplementalPromise=null;});
     await supplementalPromise;
@@ -112,7 +109,7 @@
   loadLanguagePack=async function v195LoadLanguagePack(languageId){
     // Start the supplemental 5 MB General/Dialogue vocabulary fetches at the
     // same time as the core pack instead of waiting for one phase to finish.
-    const supplemental=languageId==='hi'?Promise.all([loadGeneralVocabulary(languageId),loadDialogueVocabulary(languageId)]):Promise.resolve();
+    const supplemental=Promise.all([loadGeneralVocabulary(languageId),loadDialogueVocabulary(languageId)]);
     await Promise.all([originalLoadLanguagePack(languageId),supplemental]);
     captureBaseAndOverrides();
   };
@@ -167,7 +164,7 @@
     const reviewed=item.qualityStatus!=='source-reference';
     const qualityText=item.qualityLabel||(reviewed?'Reviewed':'Source reference');
     const synonyms=(item.acceptedHindi||[]).filter(Boolean);
-    return `<article class="learn-card general-vocab-card ${open?'open':''} ${reviewed?'general-reviewed':'general-reference'}"><div class="learn-top"><small>GENERAL VOCAB</small><span class="general-quality-badge ${reviewed?'reviewed':'reference'}">${reviewed?'✓':'⚠'} ${esc(qualityText)}</span></div><button class="card-main" data-action="reveal" data-id="${esc(item.id)}"><h3>${esc(item.english)}</h3><p>${open?esc(item.hindi):'Tap to reveal Hindi'}</p>${open&&synonyms.length?`<div class="general-synonyms"><b>Also acceptable:</b> ${esc(synonyms.join(' · '))}</div>`:''}${open&&item.exampleEnglish?`<div class="example"><b>Example</b>${esc(item.exampleEnglish)}<br><span>${esc(item.exampleHindi||'')}</span></div>`:''}${open&&!reviewed?`<div class="source-reference-warning">Editorial reference only — this PDF entry has not passed APS bilingual review.</div>`:''}</button><div class="card-actions"><button data-action="general-speak-item" data-id="${esc(item.id)}">🔊 Play</button><button data-action="general-single-item-player" data-id="${esc(item.id)}">Open player ›</button></div></article>`;
+    return `<article class="learn-card general-vocab-card ${open?'open':''} ${reviewed?'general-reviewed':'general-reference'}"><div class="learn-top"><small>GENERAL VOCAB</small><span class="general-quality-badge ${reviewed?'reviewed':'reference'}">${reviewed?'✓':'⚠'} ${esc(qualityText)}</span></div><button class="card-main" data-action="reveal" data-id="${esc(item.id)}"><h3>${esc(item.english)}</h3><p>${open?esc(item.hindi):`Tap to reveal ${targetLanguageName()}`}</p>${open&&synonyms.length?`<div class="general-synonyms"><b>Also acceptable:</b> ${esc(synonyms.join(' · '))}</div>`:''}${open&&item.exampleEnglish?`<div class="example"><b>Example</b>${esc(item.exampleEnglish)}<br><span>${esc(item.exampleHindi||'')}</span></div>`:''}${open&&!reviewed?`<div class="source-reference-warning">Editorial reference only — this PDF entry has not passed APS bilingual review.</div>`:''}</button><div class="card-actions"><button data-action="general-speak-item" data-id="${esc(item.id)}">🔊 Play</button><button data-action="general-single-item-player" data-id="${esc(item.id)}">Open player ›</button></div></article>`;
   };
 
   learn=function v15Learn(){
@@ -188,7 +185,7 @@
       <div class="segments reliability-learn-tabs"><button data-action="learn-type" data-id="words" class="${state.learn.type==='words'?'active':''}">Vocabulary <span>${(state.vocab.length||state.languagePack?.counts?.vocabulary||0).toLocaleString()}</span></button><button data-action="learn-type" data-id="phrases" class="${state.learn.type==='phrases'?'active':''}">Phrases <span>${(state.phrases.length||state.languagePack?.counts?.phrases||0).toLocaleString()}</span></button><button data-action="learn-type" data-id="general" class="${isGeneral?'active':''}">General Vocabs <span>${(state.generalVocabMeta?.counts?.reviewed||0).toLocaleString()} reviewed</span></button></div>
       ${isGeneral?generalSummary:''}${info}
       <section class="status-cards">${Object.entries(statusLabels).map(([id,label])=>`<button data-action="status-playlist" data-id="${id}" class="status-card ${id}"><b>${statusIcons[id]}</b><span><strong>${label}</strong><em>${counts[id]} ${isGeneral?'terms':state.learn.type==='words'?'words':'phrases'}</em></span><i>Play ›</i></button>`).join('')}</section>
-      <section class="filter-panel"><div class="filter-row"><label class="search"><span>⌕</span><input id="learnQuery" placeholder="Search English or Hindi" value="${esc(state.learn.query)}"></label><select id="learnTopic">${topicOptions(state.learn.topic)}</select><select id="learnStatus">${statusOptions(state.learn.status)}</select>${completionFilter}${qualitySelect}</div><div class="filter-summary"><span>Showing ${shownFrom.toLocaleString()}–${shownTo.toLocaleString()} of ${allItems.length.toLocaleString()} · Page ${state.learn.page} of ${totalPages}</span>${button('▶ Play all current filters','play-current-filter','primary compact')}</div></section>
+      <section class="filter-panel"><div class="filter-row"><label class="search"><span>⌕</span><input id="learnQuery" placeholder="Search English or ${esc(targetLanguageName())}" value="${esc(state.learn.query)}"></label><select id="learnTopic">${topicOptions(state.learn.topic)}</select><select id="learnStatus">${statusOptions(state.learn.status)}</select>${completionFilter}${qualitySelect}</div><div class="filter-summary"><span>Showing ${shownFrom.toLocaleString()}–${shownTo.toLocaleString()} of ${allItems.length.toLocaleString()} · Page ${state.learn.page} of ${totalPages}</span>${button('▶ Play all current filters','play-current-filter','primary compact')}</div></section>
       ${learnPagination(allItems.length)}<div class="learn-grid">${items.map(item=>learnCard(item)).join('')||`<div class="empty wide-card"><h3>No matching items</h3><p>Change the quality, topic, status or search filters.</p></div>`}</div>${learnPagination(allItems.length)}
 `);
   };
@@ -209,10 +206,11 @@
     const qualityBase=state.dialogues.filter(d=>state.practice.review==='all'||qualityOf(d)===state.practice.review);
     let completed=0,totalPractices=0;qualityBase.forEach(d=>{const n=records[d.id]?.practiceCount||0;if(n)completed++;totalPractices+=n;});
     const remaining=Math.max(0,qualityBase.length-completed);
+    const pilotNotice=state.languagePack?.pilot?`<section class="source-reference-warning"><b>${esc(targetLanguageName())} Pilot</b> — ${esc(state.languagePack.pilotNotice||`${state.dialogues.length} dialogues are available for testing. The full language pack is still being reviewed.`)}</section>`:'';
     return shell(`${header('Dialogue Practice','')}
-
+      ${pilotNotice}
       <section class="completion-summary"><div><strong>${completed}</strong><span>completed in this content tier</span></div><div><strong>${remaining}</strong><span>remaining in this tier</span></div><div><strong>${totalPractices}</strong><span>practices in this tier</span></div></section>
-      <section class="dialogue-filter-panel"><div class="practice-search-row"><label class="search"><span aria-hidden="true">⌕</span><input id="practiceQuery" type="search" inputmode="search" autocomplete="off" aria-label="Search dialogue title, topic, English or Hindi" placeholder="Search title, topic, English or Hindi" value="${esc(state.practice.query)}"></label>${state.practice.query?button('Clear','clear-practice-search','secondary compact practice-clear'):''}</div><div class="practice-filter-row"><label><span>Topic</span><select id="practiceTopic">${topicOptions(state.practice.topic)}</select></label><label><span>Level</span><select id="practiceDifficulty"><option value="all">All levels</option>${['Foundation','Developing','Exam level'].map(x=>`<option value="${x}" ${state.practice.difficulty===x?'selected':''}>${x}</option>`).join('')}</select></label><label><span>Content</span><select id="practiceReview"><option value="study" ${state.practice.review==='study'?'selected':''}>Recommended</option><option value="all" ${state.practice.review==='all'?'selected':''}>All content</option></select></label><label><span>Progress</span><select id="practiceCompletion"><option value="all" ${state.practice.completion==='all'?'selected':''}>All dialogues</option><option value="remaining" ${state.practice.completion==='remaining'?'selected':''}>Remaining</option><option value="completed" ${state.practice.completion==='completed'?'selected':''}>Completed</option></select></label></div></section>
+      <section class="dialogue-filter-panel"><div class="practice-search-row"><label class="search"><span aria-hidden="true">⌕</span><input id="practiceQuery" type="search" inputmode="search" autocomplete="off" aria-label="Search dialogue title, topic, English or ${esc(targetLanguageName())}" placeholder="Search title, topic, English or ${esc(targetLanguageName())}" value="${esc(state.practice.query)}"></label>${state.practice.query?button('Clear','clear-practice-search','secondary compact practice-clear'):''}</div><div class="practice-filter-row"><label><span>Topic</span><select id="practiceTopic">${topicOptions(state.practice.topic)}</select></label><label><span>Level</span><select id="practiceDifficulty"><option value="all">All levels</option>${['Foundation','Developing','Exam level'].map(x=>`<option value="${x}" ${state.practice.difficulty===x?'selected':''}>${x}</option>`).join('')}</select></label><label><span>Content</span><select id="practiceReview"><option value="study" ${state.practice.review==='study'?'selected':''}>Recommended</option><option value="all" ${state.practice.review==='all'?'selected':''}>All content</option></select></label><label><span>Progress</span><select id="practiceCompletion"><option value="all" ${state.practice.completion==='all'?'selected':''}>All dialogues</option><option value="remaining" ${state.practice.completion==='remaining'?'selected':''}>Remaining</option><option value="completed" ${state.practice.completion==='completed'?'selected':''}>Completed</option></select></label></div></section>
       <div class="dialogue-count"><b>${list.length}</b> dialogues match the filters</div>
       <div class="dialogues">${list.map(d=>{const r=records[d.id]||{practiceCount:0};const done=r.practiceCount>0;const [qc,ql]=qualityLabel(d);return `<article class="dialogue-card ${qualityOf(d)==='draft'?'draft-dialogue-card':''}"><div class="tags"><span>${topicLabels[d.topic]||'Community'}</span><em>${d.difficulty}</em></div><div class="dialogue-progress ${done?'done':'remaining'}"><b>${done?'✓ Completed':'○ Remaining'}</b><span>${done?`Practised ${r.practiceCount} ${r.practiceCount===1?'time':'times'}${r.bestLow!==null?` · best ${r.bestLow}–${r.bestHigh}/45`:''}`:'Not practised yet'}</span></div><h3>${esc(d.title)}</h3><p>${esc(d.situation)}</p><div class="content-quality ${qc}">${ql}</div>${qualityOf(d)==='draft'?'<div class="draft-notice">Not used in Mock Test. Open only for comparison or owner review.</div>':''}<div class="meta">${d.estimatedMinutes||8} min · ${d.segments.length} segments · Audio + recording${r.lastPractisedAt?` · last ${new Date(r.lastPractisedAt).toLocaleDateString()}`:''}</div><div class="actions">${button('Learn','open-dialogue-learning-hub','secondary',`data-id="${d.id}"`)}${button(done?'Practice again':'Practice','open-dialogue','primary',`data-id="${d.id}" data-mode="practice"`)}</div></article>`;}).join('')||'<div class="empty wide-card"><h3>No dialogues match</h3><p>Change the topic, level, quality, completion status or search.</p></div>'}</div>`);
   };
@@ -232,7 +230,7 @@
   home=function v15Home(){
     const attempts=getJSON(storageKeys.attempts,[]),lessonProgress=getJSON(storageKeys.lesson,{chapter:0,completed:false}),last=attempts.at(-1);
     const ready=studyReadyDialogues().length,drafts=state.dialogues.length-ready,gen=state.generalVocabMeta?.counts||{};
-    return shell(`${header('APS NAATI CCL Practice','English ↔ Hindi preparation · Reliability v15')}
+    return shell(`${header('APS NAATI CCL Practice',`English ↔ ${targetLanguageName()} preparation`)}
       <section class="hero"><div><span>MEANING-FIRST CCL TRAINING</span><h2>Trust the meaning, not one memorised sentence.</h2><p>Quality-gated dialogues, vocabulary and phrases with recording, semantic feedback and a separate General Vocabs library.</p><div class="hero-actions">${button(lessonProgress.completed?'Review Lesson 0':'Start Lesson 0 →','open-lesson')}${button('Start a study-ready dialogue','quick-dialogue','secondary')}</div></div><div class="hero-score"><strong>${last?.report?`${last.report.low}–${last.report.high}`:'—'}</strong><span>${last?.report?'latest dialogue estimate':'complete a dialogue'}</span></div></section>
       <section class="stats">${[[ (state.vocab.length||state.languagePack?.counts?.vocabulary||0).toLocaleString(),'core vocabulary'],[ (state.phrases.length||state.languagePack?.counts?.phrases||0).toLocaleString(),'phrases'],[Number(gen.reviewed||state.languagePack?.counts?.generalVocabularyReviewed||0).toLocaleString(),'reviewed general vocabs'],[ready,'study-ready dialogues']].map(([v,l])=>`<div><strong>${v}</strong><span>${l}</span></div>`).join('')}</section>
       <section class="dashboard-grid"><article class="card"><small>TODAY’S LEARNING PATH</small><h3>Word → Phrase → Segment → Dialogue</h3><div class="path"><button data-action="tab" data-id="learn"><b>1</b><span><strong>Vocabulary & General Vocabs</strong><em>Reviewed lists are the default.</em></span>›</button><button data-action="quick-dialogue"><b>2</b><span><strong>Guided dialogue</strong><em>Record, review and retry mistakes.</em></span>›</button><button data-action="start-mock"><b>3</b><span><strong>Full mock</strong><em>Only study-ready content is selected.</em></span>›</button></div></article><article class="card"><small>HOW RESULTS TEACH YOU</small><h3>Different wording can still be correct</h3><ul class="check-list"><li>Meaning-first comparison, not exact sentence matching</li><li>Synonyms and natural paraphrases can be accepted</li><li>Active/passive variation can be accepted when meaning is unchanged</li><li>Numbers, names, negation, modality and conditions remain critical</li><li>Your recording and source can be replayed for review</li></ul></article></section>
@@ -252,7 +250,7 @@
     const vocabLabel=p.completed?'Review Vocabs':p.visitedCount?'Resume Vocabs':'Learn Vocabs';
     const progressText=p.completed?`✓ ${count} / ${count} vocabulary terms practised`:p.visitedCount?`${p.visitedCount} / ${count} vocabulary terms practised`:`${count} key vocabulary terms prepared for this dialogue`;
     return `<div class="fullscreen dialogue-learning-hub-screen"><header class="top"><button data-action="close-learning-hub">← Dialogue library</button><div><strong>${esc(d.title)}</strong><span>Learning Mode preparation</span></div><div class="top-actions"><button class="player-settings-button" data-action="app-settings" aria-label="Open settings" title="Settings">⚙ <b>Settings</b></button></div></header>
-      <main class="dialogue-learning-hub"><section class="learning-hub-hero"><div><span class="language-pill en">ENGLISH ↔ हिन्दी</span><h1>${esc(d.title)}</h1><p>${esc(d.situation||'')}</p><div class="learning-hub-meta"><span>${topicLabels[d.topic]||'Community'}</span><span>${d.segments.length} segments</span><span>${count} key vocabs</span></div></div><div class="learning-hub-progress"><strong>${pct}%</strong><span>vocabulary preparation</span><div><i style="width:${pct}%"></i></div></div></section>
+      <main class="dialogue-learning-hub"><section class="learning-hub-hero"><div><span class="language-pill en">ENGLISH ↔ ${esc(languageInfo().nativeName||targetLanguageName())}</span><h1>${esc(d.title)}</h1><p>${esc(d.situation||'')}</p><div class="learning-hub-meta"><span>${topicLabels[d.topic]||'Community'}</span><span>${d.segments.length} segments</span><span>${count} key vocabs</span></div></div><div class="learning-hub-progress"><strong>${pct}%</strong><span>vocabulary preparation</span><div><i style="width:${pct}%"></i></div></div></section>
       <section class="learning-hub-choice-grid"><article class="learning-choice vocab-choice"><div class="learning-choice-icon">Aa</div><small>VOCABULARY</small><h2>Learn key vocabulary</h2><p>Review the important terms before you start.</p><div class="dialogue-vocab-progress-line"><b>${esc(progressText)}</b><div><i style="width:${pct}%"></i></div></div>${button(`${vocabLabel} →`,'start-dialogue-vocab','secondary wide',`data-id="${d.id}" ${count?'':'disabled'}`)}</article>
       <article class="learning-choice dialogue-choice"><div class="learning-choice-icon">▶</div><small>DIALOGUE</small><h2>Start dialogue</h2><p>Begin now, or return to vocabulary whenever you need it.</p>${button('Start Dialogue →','start-learning-dialogue','primary wide',`data-id="${d.id}"`)}</article></section>
       </main>${renderModal()}</div>`;
@@ -304,7 +302,7 @@
   }
   function newOwnerSegment(dialogue,index){
     const previous=dialogue.segments[index-1]||dialogue.segments.at(-1);
-    const lang=previous?.sourceLanguage==='en'?'hi':'en';
+    const lang=previous?.sourceLanguage==='en'?activeLanguageId():'en';
     const token=(crypto?.randomUUID?.()||`${Date.now()}-${Math.random()}`).replace(/[^a-z0-9]/gi,'').slice(0,10).toLowerCase();
     return {id:`${dialogue.id}-owner-${token}`,speaker:index%2===0?'S1':'S2',sourceLanguage:lang,source:'',model:'',sampleAnswer:'',acceptedAlternatives:[],meaningUnits:[],criticalDetails:[],comparisonPoints:[],noteHint:'',contentStatus:'Owner-added local segment — review before publication.',semanticPolicy:{meaningFirst:true,synonymsAllowed:true,naturalParaphraseAllowed:true,wordOrderFlexible:true,activePassiveEquivalentWhenMeaningPreserved:true,directSpeechPreferred:true,criticalDetailsMustMatch:true}};
   }
@@ -319,7 +317,7 @@
     document.querySelectorAll('.studio-segment').forEach(card=>{
       const i=Number(card.dataset.index),s=d.segments[i];if(!s)return;
       const get=name=>card.querySelector(`[data-studio-field="${name}"]`);
-      s.sourceLanguage=get('language')?.value==='hi'?'hi':'en';
+      s.sourceLanguage=get('language')?.value===activeLanguageId()?activeLanguageId():'en';
       s.source=get('source')?.value.trim()||'';
       s.model=get('model')?.value.trim()||'';s.sampleAnswer=s.model;
       s.acceptedAlternatives=String(get('alternatives')?.value||'').split('\n').map(x=>x.trim()).filter(Boolean);
@@ -343,16 +341,18 @@
   }
   function exportOverrides(){
     const payload={schemaVersion:'1.0',type:'aps-naati-content-overrides',contentVersion:'v15',language:state.selectedLanguage||'hi',exportedAt:new Date().toISOString(),dialogues:Object.values(getOverrides())};
-    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`APS_NAATI_Content_Overrides_${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`APS_NAATI_Content_Overrides_${state.selectedLanguage||'hi'}_${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
   }
   async function importOverrides(file){
-    const data=JSON.parse(await file.text());const arr=Array.isArray(data)?data:(Array.isArray(data.dialogues)?data.dialogues:[]);if(!arr.length)throw new Error('No dialogue overrides found');
+    const data=JSON.parse(await file.text());
+    if(!Array.isArray(data)){const backupLanguage=String(data.language||'hi').toLowerCase(),activeLanguage=String(state.selectedLanguage||'hi').toLowerCase();if(backupLanguage!==activeLanguage)throw new Error(`These dialogue edits belong to ${backupLanguage}. Switch languages before importing them.`);}
+    const arr=Array.isArray(data)?data:(Array.isArray(data.dialogues)?data.dialogues:[]);if(!arr.length)throw new Error('No dialogue overrides found');
     const known=new Set(state.__v15BaseDialogues.map(d=>d.id));const overrides=getOverrides();let count=0;
     for(const d of arr){if(d&&d.id&&known.has(d.id)&&Array.isArray(d.segments)){overrides[d.id]=d;count++;}}
     if(!count)throw new Error('No matching dialogue IDs found');saveOverrides(overrides);applyOverrides();loadStudioDialogue(arr.find(d=>d?.id&&known.has(d.id))?.id||state.dialogues[0]?.id);render();showToast(`${count} content override${count===1?'':'s'} imported`);
   }
   function studioSegmentCard(s,i,total){
-    return `<article class="studio-segment" data-index="${i}"><header><div><b>Segment ${i+1}</b><small>${esc(s.id)}</small></div><div class="studio-move"><button type="button" data-action="studio-move" data-index="${i}" data-delta="-1" ${i===0?'disabled':''}>↑</button><button type="button" data-action="studio-move" data-index="${i}" data-delta="1" ${i===total-1?'disabled':''}>↓</button><button type="button" data-action="studio-delete" data-index="${i}" class="danger">Delete</button></div></header><div class="studio-grid"><label>Source language<select data-studio-field="language"><option value="en" ${s.sourceLanguage==='en'?'selected':''}>English</option><option value="hi" ${s.sourceLanguage==='hi'?'selected':''}>Hindi</option></select></label><label class="wide">Source / dialogue line<textarea rows="3" data-studio-field="source">${esc(s.source||'')}</textarea></label><label class="wide">Primary sample answer<textarea rows="3" data-studio-field="model">${esc(s.sampleAnswer||s.model||'')}</textarea></label><label class="wide">Accepted example alternatives <span>one per line; semantic scoring can accept other valid paraphrases too</span><textarea rows="3" data-studio-field="alternatives">${esc((s.acceptedAlternatives||[]).join('\n'))}</textarea></label><label>Meaning points <span>one per line</span><textarea rows="4" data-studio-field="points">${esc((s.comparisonPoints||[]).join('\n'))}</textarea></label><label>Critical details <span>type | value | severity</span><textarea rows="4" data-studio-field="critical">${esc(criticalText(s.criticalDetails))}</textarea></label></div></article>`;
+    return `<article class="studio-segment" data-index="${i}"><header><div><b>Segment ${i+1}</b><small>${esc(s.id)}</small></div><div class="studio-move"><button type="button" data-action="studio-move" data-index="${i}" data-delta="-1" ${i===0?'disabled':''}>↑</button><button type="button" data-action="studio-move" data-index="${i}" data-delta="1" ${i===total-1?'disabled':''}>↓</button><button type="button" data-action="studio-delete" data-index="${i}" class="danger">Delete</button></div></header><div class="studio-grid"><label>Source language<select data-studio-field="language"><option value="en" ${s.sourceLanguage==='en'?'selected':''}>English</option><option value="${activeLanguageId()}" ${s.sourceLanguage===activeLanguageId()?'selected':''}>${esc(targetLanguageName())}</option></select></label><label class="wide">Source / dialogue line<textarea rows="3" data-studio-field="source">${esc(s.source||'')}</textarea></label><label class="wide">Primary sample answer<textarea rows="3" data-studio-field="model">${esc(s.sampleAnswer||s.model||'')}</textarea></label><label class="wide">Accepted example alternatives <span>one per line; semantic scoring can accept other valid paraphrases too</span><textarea rows="3" data-studio-field="alternatives">${esc((s.acceptedAlternatives||[]).join('\n'))}</textarea></label><label>Meaning points <span>one per line</span><textarea rows="4" data-studio-field="points">${esc((s.comparisonPoints||[]).join('\n'))}</textarea></label><label>Critical details <span>type | value | severity</span><textarea rows="4" data-studio-field="critical">${esc(criticalText(s.criticalDetails))}</textarea></label></div></article>`;
   }
   function studioSearchRows(query){
     const q=String(query||'').trim();if(!q)return [];
@@ -360,7 +360,7 @@
   }
   function studioSearchResultsHtml(query){
     const q=String(query||'').trim();
-    if(!q)return '<div class="studio-search-hint">Search by dialogue number, title, topic, English words or Hindi words.</div>';
+    if(!q)return `<div class="studio-search-hint">Search by dialogue number, title, topic, English words or ${esc(targetLanguageName())} words.</div>`;
     const rows=studioSearchRows(q);
     if(!rows.length)return '<div class="studio-search-hint">No dialogue matches this search.</div>';
     return rows.map(d=>`<button type="button" data-action="studio-search-select" data-id="${esc(d.id)}"><b>${esc(d.id.replace('dialogue-','Dialogue '))}</b><span>${esc(d.title)}</span><small>${esc(topicLabels[d.topic]||d.topic||'')}</small></button>`).join('');
@@ -374,7 +374,7 @@
     const d=state.v15Studio.draft,overrides=getOverrides(),count=Object.keys(overrides).length;
     if(!d)return `<div class="modal-backdrop"><div class="modal settings-modal"><h2>No dialogues loaded</h2>${button('Done','close-modal')}</div></div>`;
     const options=state.dialogues.map(x=>{const q=qualityOf(x)==='study'?'Study-ready':'Draft';return `<option value="${esc(x.id)}" ${x.id===d.id?'selected':''}>${esc(x.id.replace('dialogue-',''))} · ${esc(x.title)} · ${q}</option>`;}).join('');
-    return `<div class="modal-backdrop content-studio-backdrop"><div class="modal content-studio-modal"><button class="modal-close" data-action="close-modal">×</button><div class="studio-heading"><div><small>OWNER / EDITOR TOOL</small><h2>Content Studio</h2><p>Edit dialogue lines and sample answers, add missing segments, reorder segments and export your corrections. Changes are local until you export and merge them into GitHub.</p></div><span>${count} locally edited dialogue${count===1?'':'s'}</span></div><section class="studio-search-panel"><label><span>Search dialogue</span><div class="studio-search-input"><b>⌕</b><input id="contentStudioSearch" type="search" autocomplete="off" placeholder="Search number, title, topic, English or Hindi" value="${esc(state.v15Studio.search||'')}"></div></label><div id="studioSearchResults" class="studio-search-results">${studioSearchResultsHtml(state.v15Studio.search)}</div></section><div class="studio-toolbar"><label>Dialogue<select id="contentDialogueSelect">${options}</select></label><div>${button('Import edits','studio-import-trigger','secondary')}${button('Export all edits','studio-export','secondary')}<input id="studioImportFile" type="file" accept="application/json,.json" hidden></div></div><section class="studio-dialogue-meta"><label>Dialogue title<input id="studioTitle" value="${esc(d.title||'')}"></label><label>Content status<input id="studioReviewStatus" value="${esc(d.reviewStatus||'Owner edited — local override')}"></label><label class="wide">Situation<textarea id="studioSituation" rows="2">${esc(d.situation||'')}</textarea></label></section><div class="studio-safety-note"><b>Meaning-first answer policy:</b> the sample answers are examples, not a fixed sentence key. Valid synonyms, natural paraphrases and active/passive changes can be accepted when the same meaning, speaker intent and critical details are preserved.</div><div class="studio-segments">${d.segments.map((s,i)=>studioSegmentCard(s,i,d.segments.length)).join('')}</div><div class="studio-bottom-actions">${button('+ Add missing segment','studio-add-segment','secondary')}${button('Reset this dialogue to packaged version','studio-reset','danger')}${button('Save local edit','studio-save','primary')}${button('Done','close-modal','secondary')}</div></div></div>`;
+    return `<div class="modal-backdrop content-studio-backdrop"><div class="modal content-studio-modal"><button class="modal-close" data-action="close-modal">×</button><div class="studio-heading"><div><small>OWNER / EDITOR TOOL</small><h2>Content Studio</h2><p>Edit dialogue lines and sample answers, add missing segments, reorder segments and export your corrections. Changes are local until you export and merge them into GitHub.</p></div><span>${count} locally edited dialogue${count===1?'':'s'}</span></div><section class="studio-search-panel"><label><span>Search dialogue</span><div class="studio-search-input"><b>⌕</b><input id="contentStudioSearch" type="search" autocomplete="off" placeholder="Search number, title, topic, English or ${esc(targetLanguageName())}" value="${esc(state.v15Studio.search||'')}"></div></label><div id="studioSearchResults" class="studio-search-results">${studioSearchResultsHtml(state.v15Studio.search)}</div></section><div class="studio-toolbar"><label>Dialogue<select id="contentDialogueSelect">${options}</select></label><div>${button('Import edits','studio-import-trigger','secondary')}${button('Export all edits','studio-export','secondary')}<input id="studioImportFile" type="file" accept="application/json,.json" hidden></div></div><section class="studio-dialogue-meta"><label>Dialogue title<input id="studioTitle" value="${esc(d.title||'')}"></label><label>Content status<input id="studioReviewStatus" value="${esc(d.reviewStatus||'Owner edited — local override')}"></label><label class="wide">Situation<textarea id="studioSituation" rows="2">${esc(d.situation||'')}</textarea></label></section><div class="studio-safety-note"><b>Meaning-first answer policy:</b> the sample answers are examples, not a fixed sentence key. Valid synonyms, natural paraphrases and active/passive changes can be accepted when the same meaning, speaker intent and critical details are preserved.</div><div class="studio-segments">${d.segments.map((s,i)=>studioSegmentCard(s,i,d.segments.length)).join('')}</div><div class="studio-bottom-actions">${button('+ Add missing segment','studio-add-segment','secondary')}${button('Reset this dialogue to packaged version','studio-reset','danger')}${button('Save local edit','studio-save','primary')}${button('Done','close-modal','secondary')}</div></div></div>`;
   }
 
   const originalRenderModal=renderModal;

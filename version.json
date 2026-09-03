@@ -1,7 +1,7 @@
 {
-  "version": "20.3.2.2",
-  "build": "github-target-language-assessment-guard-2026-09-04-v20.3.2.2",
-  "contentVersion": "6.0.0-v19-content-unchanged",
+  "version": "21.0.0-pilot",
+  "build": "github-v21-punjabi-multilingual-pilot-2026-09-04",
+  "contentVersion": "21.0.0-multilingual-pilot",
   "dialogues": 190,
   "verifiedPractice": 105,
   "originalSource": 85,
@@ -16,14 +16,14 @@
   "myVocabsVisibleColumns": [
     "No.",
     "English",
-    "Hindi Meaning",
+    "Target Meaning",
     "My Synonyms",
     "Recall"
   ],
   "myVocabsFrozenColumns": [
     "No.",
     "English",
-    "Hindi Meaning"
+    "Target Meaning"
   ],
   "myVocabsResizableColumns": true,
   "myVocabsAutoFitColumns": true,
@@ -56,7 +56,7 @@
     "Paste",
     "Paste values only",
     "Play",
-    "Translate / refresh Hindi",
+    "Translate / refresh meaning",
     "Needs Review",
     "Learning",
     "Mastered",
@@ -117,7 +117,7 @@
   "onlineAssessmentFunctionUnchanged": false,
   "myVocabsViewportStableEdits": true,
   "myVocabsMinimalAutoScroll": true,
-  "myVocabsHindiToEnglishAutoFill": true,
+  "myVocabsHindiToEnglishAutoFill": false,
   "myVocabsDuplicateDetection": true,
   "myVocabsDuplicateActions": [
     "Open existing",
@@ -136,6 +136,14 @@
   "dialogueNavigationBlocksWhileRecording": true,
   "contentUnchangedFromV20_3": true,
   "releaseNotes": [
+    "V21 pilot adds Punjabi as a separate downloadable language pack without replacing the protected Hindi production pack.",
+    "Hindi and Punjabi attempts, completion counts, mistakes, vocabulary progress, My Vocabs and cloud-sync sections are separated by language.",
+    "Existing pre-V21 learner records without a language ID remain assigned to Hindi for backward compatibility.",
+    "Punjabi uses Gurmukhi content and pa-IN speech/transcription locale; mixed My Synonyms speech remains item-by-item language aware.",
+    "The V20.3.2.2 target-language assessment guard is retained for English↔Hindi and extended through the active-pack metadata for English↔Punjabi.",
+    "Punjabi pilot contains 5 dialogues (3 Verified Practice + 2 Original Source), 65 core vocabulary records, 65 general vocabulary records, 40 phrases and 96 dialogue-vocabulary records.",
+    "Pilot dialogues are excluded from production Mock Test eligibility until full Punjabi editorial and end-to-end QA is complete.",
+    "Hindi packaged learning content and the deployed Firebase assessment backend are unchanged in this pilot.",
     "Assessment now validates the required target language separately from semantic meaning transfer.",
     "Limited source-language words, natural borrowed terms, names, numbers and normal code-switching no longer automatically stop semantic assessment; target-language use is reported separately.",
     "Predominantly answering in the source/wrong language now returns Wrong target language / Major correction instead of a misleading excellent result.",
@@ -143,17 +151,7 @@
     "Cloud-transcription locale selection now follows the active target/source language metadata rather than a Hindi-only branch.",
     "Assessment cache V2 includes source and target language so older cached results cannot be reused across language directions.",
     "The assessAttempt Firebase Function requires redeployment for the new language-compliance output and mixed-language policy.",
-    "Practice online semantic assessment now starts only when the learner opens Review for a recorded response; completing a normal practice recording no longer sends an automatic assessment request.",
-    "Review shows a processing spinner while the transcript/online meaning assessment is being prepared and assessed.",
-    "Turning Online assessment on no longer automatically assesses already-recorded responses; the learner chooses when to run it by opening Review.",
-    "Mock Test keeps automatic assessment when Online assessment is enabled because per-segment Review is intentionally hidden during the timed test.",
-    "Original Source now opens with Content set to All content, so all 85 legacy dialogues are visible immediately; Verified Practice continues to default to Recommended.",
-    "My Vocabs right-click menu now includes Copy, Cut, Paste and Paste values only for editable cells.",
-    "Fixed Check & update latest version build identification, cache matching and button state.",
-    "Cloud refresh now merges dialogue attempts by attempt ID so newer cloud metadata cannot erase local completed attempts.",
-    "Online assessment shows a visible processing spinner/status while feedback is loading.",
-    "Settings → Study now includes an Online semantic assessment on/off control; off skips semantic-assessment requests.",
-    "Practice and Mock Test attempts now store dialogue completion time; reports show dialogue time and total mock time."
+    "Practice online semantic assessment now starts only when the learner opens Review for a recorded response; completing a normal practice recording no longer sends an automatic assessment request."
   ],
   "myVocabsClipboardMenu": true,
   "versionCheckReliableV2032": true,
@@ -176,5 +174,47 @@
   "targetLanguageUseSeparatedFromMeaning": true,
   "wrongLanguageMajorResult": true,
   "mixedLanguageMeaningAssessmentContinues": true,
-  "onlineAssessmentSchemaVersion": 2
+  "onlineAssessmentSchemaVersion": 2,
+  "languageNeutralCore": true,
+  "downloadableLanguagePacks": true,
+  "activeLanguagePackIsolation": true,
+  "languagePacks": {
+    "hi": {
+      "status": "production",
+      "dialogues": 190,
+      "verifiedPractice": 105,
+      "originalSource": 85,
+      "vocabulary": 3000,
+      "phrases": 551,
+      "generalVocabulary": 3009,
+      "dialogueVocabularySets": 190,
+      "contentUnchangedFromV20_3_2_2": true
+    },
+    "pa": {
+      "status": "pilot",
+      "dialogues": 5,
+      "verifiedPractice": 3,
+      "originalSource": 2,
+      "vocabulary": 65,
+      "phrases": 40,
+      "generalVocabulary": 65,
+      "dialogueVocabularySets": 5,
+      "dialogueVocabularyItems": 96,
+      "locale": "pa-IN",
+      "script": "Gurmukhi"
+    }
+  },
+  "myVocabsTargetToEnglishAutoFill": true,
+  "languageScopedProgress": true,
+  "languageScopedAttempts": true,
+  "languageScopedMyVocabs": true,
+  "languageScopedCloudSync": true,
+  "crossLanguageRestoreGuard": true,
+  "punjabiTtsLocale": "pa-IN",
+  "punjabiAssessmentDirections": [
+    "en→pa",
+    "pa→en"
+  ],
+  "punjabiPilot": true,
+  "onlineAssessmentFunctionUnchangedFromV20_3_2_2": true
 }

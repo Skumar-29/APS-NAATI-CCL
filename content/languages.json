@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "coreVersion": "3.0.0-v13-reliability",
+  "coreVersion": "21.0.0-multilingual-pilot",
   "languages": [
     {
       "id": "hi",
@@ -16,7 +16,8 @@
         "dialogues": "./content/packs/hi/dialogues.json",
         "vocabulary": "./content/packs/hi/vocabulary.json",
         "phrases": "./content/packs/hi/phrases.json",
-        "generalVocabulary": "./content/packs/hi/general-vocabulary.json"
+        "generalVocabulary": "./content/packs/hi/general-vocabulary.json",
+        "dialogueVocabulary": "./content/packs/hi/dialogue-vocabulary.json"
       },
       "counts": {
         "dialogues": 190,
@@ -32,7 +33,29 @@
       "nativeName": "ਪੰਜਾਬੀ",
       "pairLabel": "English ↔ Punjabi",
       "targetLocale": "pa-IN",
-      "status": "coming-soon"
+      "status": "available",
+      "sourceLocale": "en-AU",
+      "reviewStatus": "v21-pilot-bilingual-review-pass-1",
+      "version": "21.0.0-pilot",
+      "pilot": true,
+      "pilotNotice": "Five-dialogue Punjabi pilot for multilingual-system QA before the full 190-dialogue Punjabi release.",
+      "files": {
+        "dialogues": "./content/packs/pa/dialogues.json",
+        "vocabulary": "./content/packs/pa/vocabulary.json",
+        "phrases": "./content/packs/pa/phrases.json",
+        "generalVocabulary": "./content/packs/pa/general-vocabulary.json",
+        "dialogueVocabulary": "./content/packs/pa/dialogue-vocabulary.json"
+      },
+      "counts": {
+        "dialogues": 5,
+        "verifiedPractice": 3,
+        "originalSource": 2,
+        "vocabulary": 65,
+        "phrases": 40,
+        "generalVocabularyReviewed": 65,
+        "dialogueVocabularySets": 5,
+        "dialogueVocabularyItems": 96
+      }
     },
     {
       "id": "ur",

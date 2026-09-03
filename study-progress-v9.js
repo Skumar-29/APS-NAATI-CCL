@@ -14,13 +14,17 @@
     { id: '4w', label: '4 Weeks', days: 28 },
   ];
 
-  storageKeys.practiceDaily = 'apsPracticeDailyV9';
-  storageKeys.recallProgress = 'apsRecallProgressV9';
-  storageKeys.recallSettings = 'apsRecallSettingsV9';
+  if (typeof setLanguageScopedStorageKeys === 'function') setLanguageScopedStorageKeys(typeof activeLanguageId === 'function' ? activeLanguageId() : 'hi');
+  else {
+    storageKeys.practiceDaily = 'apsPracticeDailyV9';
+    storageKeys.recallProgress = 'apsRecallProgressV9';
+    storageKeys.recallSettings = 'apsRecallSettingsV9';
+  }
 
   const DEVICE_KEY = 'apsPracticeDeviceIdV9';
-  const REMINDER_STATE_KEY = 'apsRecallReminderStateV9';
-  const SEED_KEY = 'apsRecallSeededV9';
+  const scopedTrackerKey = base => { const id = typeof activeLanguageId === 'function' ? activeLanguageId() : 'hi'; return id === 'hi' ? base : `${base}:${id}`; };
+  const REMINDER_STATE_KEY = () => scopedTrackerKey('apsRecallReminderStateV9');
+  const SEED_KEY = () => scopedTrackerKey('apsRecallSeededV9');
 
   const tracker = {
     lastActivityAt: Date.now(),
@@ -355,7 +359,7 @@
   }
 
   function seedExistingTimedPractice() {
-    if (localStorage.getItem(SEED_KEY) === '1') return;
+    if (localStorage.getItem(SEED_KEY()) === '1') return;
     const map = recallMap();
     const first = firstEnabledStage();
     if (first) {
@@ -382,7 +386,7 @@
       }
     }
     writeRecallMap(map);
-    localStorage.setItem(SEED_KEY, '1');
+    localStorage.setItem(SEED_KEY(), '1');
   }
 
   function itemKind(id) {
@@ -777,9 +781,9 @@
     const now = new Date();
     const current = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
     if (!force && current < settings.reminderTime) return;
-    const stateValue = safeParse(localStorage.getItem(REMINDER_STATE_KEY), {}) || {};
+    const stateValue = safeParse(localStorage.getItem(REMINDER_STATE_KEY()), {}) || {};
     if (!force && stateValue.lastNotifiedDate === localDayKey()) return;
-    if (!force) localStorage.setItem(REMINDER_STATE_KEY, JSON.stringify({ lastNotifiedDate: localDayKey(), updatedAt: isoNow() }));
+    if (!force) localStorage.setItem(REMINDER_STATE_KEY(), JSON.stringify({ lastNotifiedDate: localDayKey(), updatedAt: isoNow() }));
     const body = force ? 'Test successful — your recall reminder is ready.' : `${due} recall item${due === 1 ? '' : 's'} are due today.`;
     await playReminderChime();
     await showReminderNotification(body);
@@ -1037,6 +1041,19 @@
       markActivity();
       reminderCheck();
     }
+  });
+
+
+  window.addEventListener('aps-language-changed', () => {
+    flushActiveTime();
+    if (typeof setLanguageScopedStorageKeys === 'function') setLanguageScopedStorageKeys(typeof activeLanguageId === 'function' ? activeLanguageId() : 'hi');
+    tracker.normalSeen.clear();
+    tracker.segmentSeen.clear();
+    tracker.activeRecallSession = null;
+    tracker.activeDialogueRecall = null;
+    tracker.lastProgressSignature = '';
+    tracker.lastSettingsSignature = '';
+    window.setTimeout(() => { seedExistingTimedPractice(); reconcileRecallSchedules(); reminderCheck(); }, 50);
   });
 
   window.addEventListener('pagehide', flushActiveTime);

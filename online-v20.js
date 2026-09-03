@@ -548,7 +548,7 @@ function nextDialogue(){const records=dialogueStatsMap();return state.dialogues.
 home=function v20Home(){
   const attempts=getJSON(storageKeys.attempts,[]).filter(x=>x.finished),last=attempts.at(-1),next=nextDialogue(),my=myVocabCounts(),mistakes=dueReviewCount();
   const online=navigator.onLine;
-  return shell(`${header('APS NAATI CCL Practice','English ↔ Hindi preparation')}
+  return shell(`${header('APS NAATI CCL Practice',`English ↔ ${languageName(activeTargetLanguage())} preparation`)}
   <section class="v20-home-hero"><div><small>YOUR NEXT STEP</small><h2>${next?esc(next.title):'Continue your preparation'}</h2><p>${next?esc(next.situation||'Continue dialogue practice and meaning-first review.'):'Your learning records are ready.'}</p><div class="actions">${next?button('Continue dialogue →','open-dialogue','primary',`data-id="${next.id}" data-mode="learning"`):''}${button('Open Practice','tab','secondary','data-id="practice"')}</div></div><div class="v20-online-card ${online?'online':'offline'}"><b>${online?'● Online':'○ Offline'}</b><span>${online?'Cloud sync and online assessment available':'Cached learning remains available'}</span></div></section>
   <section class="v20-today"><article><small>REVIEW</small><strong>${mistakes}</strong><span>weak segments to revisit</span><button data-action="tab" data-id="review">Review now</button></article><article><small>MY VOCABS</small><strong>${my.all}</strong><span>${my.review} need review</span><button data-action="open-my-vocabs">Open sheet</button></article><article><small>LATEST RESULT</small><strong>${last?.report?`${last.report.low}–${last.report.high}`:'—'}</strong><span>${last?.report?'estimated /45':'complete a dialogue'}</span><button data-action="tab" data-id="progress">View progress</button></article></section>
   <section class="v20-main-actions"><button data-action="tab" data-id="learn"><b>Learn</b><span>Vocabulary, phrases, My Vocabs and lessons</span></button><button data-action="tab" data-id="practice"><b>Practice</b><span>Verified Practice, Original Source and Mock Test</span></button><button data-action="tab" data-id="review"><b>Review</b><span>Mistakes, reports and weak segments</span></button><button data-action="tab" data-id="progress"><b>Progress</b><span>Completion, attempts and improvement</span></button></section>
@@ -584,7 +584,7 @@ render=function v20Render(){
 // Background freshness check: UI never waits for it.
 async function checkFreshness(){
   if(!navigator.onLine)return;
-  try{const r=await fetch('./version.json',{cache:'no-store'});if(!r.ok)return;const v=await r.json();state.v20.contentFresh=String(v.version||'').startsWith('20.');state.v20.lastCheck=new Date().toISOString();}catch{}
+  try{const r=await fetch('./version.json',{cache:'no-store'});if(!r.ok)return;const v=await r.json();state.v20.contentFresh=Boolean(String(v.version||'').trim());state.v20.lastCheck=new Date().toISOString();}catch{}
 }
 setTimeout(checkFreshness,1000);setInterval(checkFreshness,5*60*1000);
 

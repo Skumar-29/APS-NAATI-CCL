@@ -1,7 +1,7 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v20-3-2-2-target-language-guard-shell';
-const CONTENT_CACHE = 'aps-naati-content-runtime-v20';
+const APP_CACHE = 'aps-naati-v21-0-punjabi-pilot-shell';
+const CONTENT_CACHE = 'aps-naati-content-runtime-v21';
 const PRECACHE = [
   './',
   './index.html',
@@ -117,7 +117,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  if (url.pathname.endsWith('/content/owner-content-v16.json')) {
+  if (/\/content\/owner-content-v16(?:-[^/]+)?\.json$/i.test(url.pathname)) {
     event.respondWith(
       fetch(event.request, { cache: 'no-store' }).then(response => {
         if (response && response.ok) caches.open(CONTENT_CACHE).then(cache => cache.put(event.request, response.clone()));

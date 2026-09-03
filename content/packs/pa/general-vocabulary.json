@@ -1,0 +1,989 @@
+{
+  "schemaVersion": "21.0-pilot",
+  "contentVersion": "21.0.0-punjabi-pilot",
+  "name": "Punjabi General Vocabulary Pilot",
+  "defaultQualityFilter": "reviewed",
+  "reviewPolicy": "Pilot subset for multilingual QA before full Punjabi expansion.",
+  "counts": {
+    "total": 65,
+    "reviewed": 65,
+    "reference": 0
+  },
+  "items": [
+    {
+      "id": "pa-general-pilot-001",
+      "topic": "education",
+      "english": "entry requirements",
+      "hindi": "ਦਾਖਲੇ ਦੀਆਂ ਲੋੜਾਂ",
+      "acceptedHindi": [
+        "ਦਾਖਲੇ ਦੀਆਂ ਲੋੜਾਂ"
+      ],
+      "exampleEnglish": "The entry requirements are the conditions, information or documents that must be provided before the request can be assessed.",
+      "exampleHindi": "“entry requirements” ਦਾ ਅਰਥ ਇੱਥੇ “ਦਾਖਲੇ ਦੀਆਂ ਲੋੜਾਂ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-002",
+      "topic": "education",
+      "english": "previous study",
+      "hindi": "ਪਿਛਲੀ ਪੜ੍ਹਾਈ",
+      "acceptedHindi": [
+        "ਪਿਛਲੀ ਪੜ੍ਹਾਈ"
+      ],
+      "exampleEnglish": "Please keep enrolment forms, identity documents and previous study records ready. The exact documents can depend on your circumstances.",
+      "exampleHindi": "“previous study” ਦਾ ਅਰਥ ਇੱਥੇ “ਪਿਛਲੀ ਪੜ੍ਹਾਈ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-003",
+      "topic": "education",
+      "english": "admission",
+      "hindi": "ਦਾਖਲਾ",
+      "acceptedHindi": [
+        "ਦਾਖਲਾ"
+      ],
+      "exampleEnglish": "Admission means being formally accepted into a course, school, program or institution.",
+      "exampleHindi": "“admission” ਦਾ ਅਰਥ ਇੱਥੇ “ਦਾਖਲਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-004",
+      "topic": "education",
+      "english": "course",
+      "hindi": "ਕੋਰਸ",
+      "acceptedHindi": [
+        "ਕੋਰਸ"
+      ],
+      "exampleEnglish": "A course is an organised program of study or training in a particular subject.",
+      "exampleHindi": "“course” ਦਾ ਅਰਥ ਇੱਥੇ “ਕੋਰਸ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-005",
+      "topic": "education",
+      "english": "enrolment",
+      "hindi": "ਦਾਖਲਾ / ਨਾਮ ਦਰਜ ਕਰਨਾ",
+      "acceptedHindi": [
+        "ਦਾਖਲਾ / ਨਾਮ ਦਰਜ ਕਰਨਾ"
+      ],
+      "exampleEnglish": "Please keep enrolment forms, identity documents and previous study records ready. The exact documents can depend on your circumstances.",
+      "exampleHindi": "“enrolment” ਦਾ ਅਰਥ ਇੱਥੇ “ਦਾਖਲਾ / ਨਾਮ ਦਰਜ ਕਰਨਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-006",
+      "topic": "education",
+      "english": "accurate information",
+      "hindi": "ਸਹੀ ਜਾਣਕਾਰੀ",
+      "acceptedHindi": [
+        "ਸਹੀ ਜਾਣਕਾਰੀ"
+      ],
+      "exampleEnglish": "You may need to complete the relevant education or service process. Please use the current form or official instructions and give accurate information.",
+      "exampleHindi": "“accurate information” ਦਾ ਅਰਥ ਇੱਥੇ “ਸਹੀ ਜਾਣਕਾਰੀ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-007",
+      "topic": "education",
+      "english": "official instructions",
+      "hindi": "ਅਧਿਕਾਰਤ ਹਦਾਇਤਾਂ",
+      "acceptedHindi": [
+        "ਅਧਿਕਾਰਤ ਹਦਾਇਤਾਂ"
+      ],
+      "exampleEnglish": "You may need to complete the relevant education or service process. Please use the current form or official instructions and give accurate information.",
+      "exampleHindi": "“official instructions” ਦਾ ਅਰਥ ਇੱਥੇ “ਅਧਿਕਾਰਤ ਹਦਾਇਤਾਂ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-008",
+      "topic": "education",
+      "english": "apply",
+      "hindi": "ਅਰਜ਼ੀ ਦੇਣਾ",
+      "acceptedHindi": [
+        "ਅਰਜ਼ੀ ਦੇਣਾ"
+      ],
+      "exampleEnglish": "Please apply as soon as possible.",
+      "exampleHindi": "“apply” ਦਾ ਅਰਥ ਇੱਥੇ “ਅਰਜ਼ੀ ਦੇਣਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-009",
+      "topic": "education",
+      "english": "circumstances",
+      "hindi": "ਹਾਲਾਤ / ਸਥਿਤੀ",
+      "acceptedHindi": [
+        "ਹਾਲਾਤ / ਸਥਿਤੀ"
+      ],
+      "exampleEnglish": "Please keep enrolment forms, identity documents and previous study records ready. The exact documents can depend on your circumstances.",
+      "exampleHindi": "“circumstances” ਦਾ ਅਰਥ ਇੱਥੇ “ਹਾਲਾਤ / ਸਥਿਤੀ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-010",
+      "topic": "education",
+      "english": "document",
+      "hindi": "ਦਸਤਾਵੇਜ਼",
+      "acceptedHindi": [
+        "ਦਸਤਾਵੇਜ਼"
+      ],
+      "exampleEnglish": "If I upload the invoice today, can I keep the original document in case I need it later?",
+      "exampleHindi": "“document” ਦਾ ਅਰਥ ਇੱਥੇ “ਦਸਤਾਵੇਜ਼” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-011",
+      "topic": "education",
+      "english": "evidence",
+      "hindi": "ਸਬੂਤ",
+      "acceptedHindi": [
+        "ਸਬੂਤ"
+      ],
+      "exampleEnglish": "Keep photographs and repair quotations as evidence.",
+      "exampleHindi": "“evidence” ਦਾ ਅਰਥ ਇੱਥੇ “ਸਬੂਤ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-012",
+      "topic": "education",
+      "english": "fee",
+      "hindi": "ਫੀਸ",
+      "acceptedHindi": [
+        "ਫੀਸ"
+      ],
+      "exampleEnglish": "There is no monthly fee for this account.",
+      "exampleHindi": "“fee” ਦਾ ਅਰਥ ਇੱਥੇ “ਫੀਸ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-013",
+      "topic": "education",
+      "english": "identification",
+      "hindi": "ਪਛਾਣ",
+      "acceptedHindi": [
+        "ਪਛਾਣ"
+      ],
+      "exampleEnglish": "Please provide acceptable identification documents.",
+      "exampleHindi": "“identification” ਦਾ ਅਰਥ ਇੱਥੇ “ਪਛਾਣ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-014",
+      "topic": "education",
+      "english": "identity",
+      "hindi": "ਪਛਾਣ",
+      "acceptedHindi": [
+        "ਪਛਾਣ"
+      ],
+      "exampleEnglish": "Please keep enrolment forms, identity documents and previous study records ready. The exact documents can depend on your circumstances.",
+      "exampleHindi": "“identity” ਦਾ ਅਰਥ ਇੱਥੇ “ਪਛਾਣ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-015",
+      "topic": "education",
+      "english": "options",
+      "hindi": "ਵਿਕਲਪ",
+      "acceptedHindi": [
+        "ਵਿਕਲਪ"
+      ],
+      "exampleEnglish": "The first step is to review your circumstances and the relevant records. After that, we can explain the options that apply to your situation.",
+      "exampleHindi": "“options” ਦਾ ਅਰਥ ਇੱਥੇ “ਵਿਕਲਪ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-016",
+      "topic": "education",
+      "english": "records",
+      "hindi": "ਰਿਕਾਰਡ",
+      "acceptedHindi": [
+        "ਰਿਕਾਰਡ"
+      ],
+      "exampleEnglish": "Please keep enrolment forms, identity documents and previous study records ready. The exact documents can depend on your circumstances.",
+      "exampleHindi": "“records” ਦਾ ਅਰਥ ਇੱਥੇ “ਰਿਕਾਰਡ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-017",
+      "topic": "transport",
+      "english": "heavy vehicle licence",
+      "hindi": "ਭਾਰੀ ਵਾਹਨ ਦਾ ਲਾਇਸੈਂਸ",
+      "acceptedHindi": [
+        "ਭਾਰੀ ਵਾਹਨ ਦਾ ਲਾਇਸੈਂਸ"
+      ],
+      "exampleEnglish": "A heavy vehicle licence is official permission showing that a person or organisation is authorised to perform the relevant regulated activity.",
+      "exampleHindi": "“heavy vehicle licence” ਦਾ ਅਰਥ ਇੱਥੇ “ਭਾਰੀ ਵਾਹਨ ਦਾ ਲਾਇਸੈਂਸ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-018",
+      "topic": "transport",
+      "english": "heavy vehicle",
+      "hindi": "ਭਾਰੀ ਵਾਹਨ",
+      "acceptedHindi": [
+        "ਭਾਰੀ ਵਾਹਨ"
+      ],
+      "exampleEnglish": "The term “heavy vehicle” may be important in this community-service situation.",
+      "exampleHindi": "“heavy vehicle” ਦਾ ਅਰਥ ਇੱਥੇ “ਭਾਰੀ ਵਾਹਨ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-019",
+      "topic": "transport",
+      "english": "vehicle licence",
+      "hindi": "ਵਾਹਨ ਦਾ ਲਾਇਸੈਂਸ",
+      "acceptedHindi": [
+        "ਵਾਹਨ ਦਾ ਲਾਇਸੈਂਸ"
+      ],
+      "exampleEnglish": "A vehicle licence is official permission showing that a person or organisation is authorised to perform the relevant regulated activity.",
+      "exampleHindi": "“vehicle licence” ਦਾ ਅਰਥ ਇੱਥੇ “ਵਾਹਨ ਦਾ ਲਾਇਸੈਂਸ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-020",
+      "topic": "transport",
+      "english": "travel card",
+      "hindi": "ਟ੍ਰੈਵਲ ਕਾਰਡ",
+      "acceptedHindi": [
+        "ਟ੍ਰੈਵਲ ਕਾਰਡ"
+      ],
+      "exampleEnglish": "Please keep licence or travel card details, identification, booking or trip records ready. The exact documents can depend on your circumstances.",
+      "exampleHindi": "“travel card” ਦਾ ਅਰਥ ਇੱਥੇ “ਟ੍ਰੈਵਲ ਕਾਰਡ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-021",
+      "topic": "transport",
+      "english": "booking",
+      "hindi": "ਬੁਕਿੰਗ",
+      "acceptedHindi": [
+        "ਬੁਕਿੰਗ"
+      ],
+      "exampleEnglish": "Please keep passport, booking confirmation, tickets, baggage details and identification ready. The exact documents can depend on your circumstances.",
+      "exampleHindi": "“booking” ਦਾ ਅਰਥ ਇੱਥੇ “ਬੁਕਿੰਗ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-022",
+      "topic": "transport",
+      "english": "fare",
+      "hindi": "ਕਿਰਾਇਆ",
+      "acceptedHindi": [
+        "ਕਿਰਾਇਆ"
+      ],
+      "exampleEnglish": "Thank you for explaining that. I need to check travel, licence, fare and identity details so I can guide you correctly.",
+      "exampleHindi": "“fare” ਦਾ ਅਰਥ ਇੱਥੇ “ਕਿਰਾਇਆ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-023",
+      "topic": "transport",
+      "english": "ticket",
+      "hindi": "ਟਿਕਟ",
+      "acceptedHindi": [
+        "ਟਿਕਟ"
+      ],
+      "exampleEnglish": "You may need to complete the licence, ticket or transport process. Please use the current form or official instructions and give accurate information.",
+      "exampleHindi": "“ticket” ਦਾ ਅਰਥ ਇੱਥੇ “ਟਿਕਟ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-024",
+      "topic": "transport",
+      "english": "trip",
+      "hindi": "ਯਾਤਰਾ",
+      "acceptedHindi": [
+        "ਯਾਤਰਾ"
+      ],
+      "exampleEnglish": "Please keep licence or travel card details, identification, booking or trip records ready. The exact documents can depend on your circumstances.",
+      "exampleHindi": "“trip” ਦਾ ਅਰਥ ਇੱਥੇ “ਯਾਤਰਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-025",
+      "topic": "social",
+      "english": "Carer Payment",
+      "hindi": "Carer Payment / ਦੇਖਭਾਲਕਰਤਾ ਭੁਗਤਾਨ",
+      "acceptedHindi": [
+        "Carer Payment / ਦੇਖਭਾਲਕਰਤਾ ਭੁਗਤਾਨ"
+      ],
+      "exampleEnglish": "The Carer Payment is money paid for the relevant account, service, claim, bill or obligation.",
+      "exampleHindi": "“Carer Payment” ਦਾ ਅਰਥ ਇੱਥੇ “Carer Payment / ਦੇਖਭਾਲਕਰਤਾ ਭੁਗਤਾਨ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-026",
+      "topic": "social",
+      "english": "centrelink",
+      "hindi": "ਸੈਂਟਰਲਿੰਕ",
+      "acceptedHindi": [
+        "ਸੈਂਟਰਲਿੰਕ"
+      ],
+      "exampleEnglish": "Hi. I receive a Centrelink payment and I started a part-time job this Monday. I also changed my mobile number. I want to make sure my details are current.",
+      "exampleHindi": "“centrelink” ਦਾ ਅਰਥ ਇੱਥੇ “ਸੈਂਟਰਲਿੰਕ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-027",
+      "topic": "social",
+      "english": "care needs",
+      "hindi": "ਦੇਖਭਾਲ ਦੀਆਂ ਲੋੜਾਂ",
+      "acceptedHindi": [
+        "ਦੇਖਭਾਲ ਦੀਆਂ ਲੋੜਾਂ"
+      ],
+      "exampleEnglish": "Thank you for explaining that. I need to check your current circumstances, income and care needs so I can guide you correctly.",
+      "exampleHindi": "“care needs” ਦਾ ਅਰਥ ਇੱਥੇ “ਦੇਖਭਾਲ ਦੀਆਂ ਲੋੜਾਂ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-028",
+      "topic": "social",
+      "english": "contact details",
+      "hindi": "ਸੰਪਰਕ ਵੇਰਵੇ",
+      "acceptedHindi": [
+        "ਸੰਪਰਕ ਵੇਰਵੇ"
+      ],
+      "exampleEnglish": "Make sure names, dates, amounts and contact details are correct. Keep copies of anything you submit or receive.",
+      "exampleHindi": "“contact details” ਦਾ ਅਰਥ ਇੱਥੇ “ਸੰਪਰਕ ਵੇਰਵੇ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-029",
+      "topic": "social",
+      "english": "financial support",
+      "hindi": "ਵਿੱਤੀ ਸਹਾਇਤਾ",
+      "acceptedHindi": [
+        "ਵਿੱਤੀ ਸਹਾਇਤਾ"
+      ],
+      "exampleEnglish": "The financial support is help provided to a person or organisation with the relevant need or difficulty.",
+      "exampleHindi": "“financial support” ਦਾ ਅਰਥ ਇੱਥੇ “ਵਿੱਤੀ ਸਹਾਇਤਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-030",
+      "topic": "social",
+      "english": "assessment",
+      "hindi": "ਮੁਲਾਂਕਣ",
+      "acceptedHindi": [
+        "ਮੁਲਾਂਕਣ"
+      ],
+      "exampleEnglish": "Can my daughter be with me during the assessment? She helps me remember my medicines and appointments.",
+      "exampleHindi": "“assessment” ਦਾ ਅਰਥ ਇੱਥੇ “ਮੁਲਾਂਕਣ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-031",
+      "topic": "social",
+      "english": "copies",
+      "hindi": "ਕਾਪੀਆਂ",
+      "acceptedHindi": [
+        "ਕਾਪੀਆਂ"
+      ],
+      "exampleEnglish": "Make sure names, dates, amounts and contact details are correct. Keep copies of anything you submit or receive.",
+      "exampleHindi": "“copies” ਦਾ ਅਰਥ ਇੱਥੇ “ਕਾਪੀਆਂ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-032",
+      "topic": "social",
+      "english": "income",
+      "hindi": "ਆਮਦਨ",
+      "acceptedHindi": [
+        "ਆਮਦਨ"
+      ],
+      "exampleEnglish": "I do not want to accidentally report the same income twice.",
+      "exampleHindi": "“income” ਦਾ ਅਰਥ ਇੱਥੇ “ਆਮਦਨ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-033",
+      "topic": "social",
+      "english": "submit",
+      "hindi": "ਜਮ੍ਹਾਂ ਕਰਨਾ",
+      "acceptedHindi": [
+        "ਜਮ੍ਹਾਂ ਕਰਨਾ"
+      ],
+      "exampleEnglish": "Thank you. I will submit the receipt and my account history with the review request.",
+      "exampleHindi": "“submit” ਦਾ ਅਰਥ ਇੱਥੇ “ਜਮ੍ਹਾਂ ਕਰਨਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-034",
+      "topic": "transport",
+      "english": "applicant",
+      "hindi": "ਅਰਜ਼ੀਦਾਰ",
+      "acceptedHindi": [
+        "ਅਰਜ਼ੀਦਾਰ"
+      ],
+      "exampleEnglish": "Human Resources will contact shortlisted applicants.",
+      "exampleHindi": "“applicant” ਦਾ ਅਰਥ ਇੱਥੇ “ਅਰਜ਼ੀਦਾਰ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-035",
+      "topic": "transport",
+      "english": "licence",
+      "hindi": "ਲਾਇਸੈਂਸ",
+      "acceptedHindi": [
+        "ਲਾਇਸੈਂਸ"
+      ],
+      "exampleEnglish": "Bring your licence and certificates to the interview.",
+      "exampleHindi": "“licence” ਦਾ ਅਰਥ ਇੱਥੇ “ਲਾਇਸੈਂਸ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-036",
+      "topic": "transport",
+      "english": "skill",
+      "hindi": "ਹੁਨਰ",
+      "acceptedHindi": [
+        "ਹੁਨਰ"
+      ],
+      "exampleEnglish": "My skills and experience suit this position.",
+      "exampleHindi": "“skill” ਦਾ ਅਰਥ ਇੱਥੇ “ਹੁਨਰ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-037",
+      "topic": "transport",
+      "english": "vehicle",
+      "hindi": "ਵਾਹਨ",
+      "acceptedHindi": [
+        "ਵਾਹਨ"
+      ],
+      "exampleEnglish": "A car hit my vehicle and left the scene.",
+      "exampleHindi": "“vehicle” ਦਾ ਅਰਥ ਇੱਥੇ “ਵਾਹਨ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-038",
+      "topic": "transport",
+      "english": "bus",
+      "hindi": "ਬੱਸ",
+      "acceptedHindi": [
+        "ਬੱਸ"
+      ],
+      "exampleEnglish": "The term “bus” may be important in this community-service situation.",
+      "exampleHindi": "“bus” ਦਾ ਅਰਥ ਇੱਥੇ “ਬੱਸ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-039",
+      "topic": "transport",
+      "english": "skills assessment",
+      "hindi": "ਹੁਨਰ ਮੁਲਾਂਕਣ",
+      "acceptedHindi": [
+        "ਹੁਨਰ ਮੁਲਾਂਕਣ"
+      ],
+      "exampleEnglish": "The skills assessment is the process of examining the available information against the relevant rules or criteria.",
+      "exampleHindi": "“skills assessment” ਦਾ ਅਰਥ ਇੱਥੇ “ਹੁਨਰ ਮੁਲਾਂਕਣ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-040",
+      "topic": "transport",
+      "english": "assessor",
+      "hindi": "ਮੁਲਾਂਕਣਕਰਤਾ",
+      "acceptedHindi": [
+        "ਮੁਲਾਂਕਣਕਰਤਾ"
+      ],
+      "exampleEnglish": "There is a broken section above the window. Can I arrange an emergency repair before the assessor comes?",
+      "exampleHindi": "“assessor” ਦਾ ਅਰਥ ਇੱਥੇ “ਮੁਲਾਂਕਣਕਰਤਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-041",
+      "topic": "transport",
+      "english": "certificate",
+      "hindi": "ਸਰਟੀਫਿਕੇਟ / ਪ੍ਰਮਾਣ ਪੱਤਰ",
+      "acceptedHindi": [
+        "ਸਰਟੀਫਿਕੇਟ / ਪ੍ਰਮਾਣ ਪੱਤਰ"
+      ],
+      "exampleEnglish": "Bring your licence and certificates to the interview.",
+      "exampleHindi": "“certificate” ਦਾ ਅਰਥ ਇੱਥੇ “ਸਰਟੀਫਿਕੇਟ / ਪ੍ਰਮਾਣ ਪੱਤਰ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-042",
+      "topic": "transport",
+      "english": "community",
+      "hindi": "ਭਾਈਚਾਰਾ",
+      "acceptedHindi": [
+        "ਭਾਈਚਾਰਾ"
+      ],
+      "exampleEnglish": "A community is a group of people who live in the same area or share a common connection or interest.",
+      "exampleHindi": "“community” ਦਾ ਅਰਥ ਇੱਥੇ “ਭਾਈਚਾਰਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-043",
+      "topic": "transport",
+      "english": "driver",
+      "hindi": "ਡਰਾਈਵਰ",
+      "acceptedHindi": [
+        "ਡਰਾਈਵਰ"
+      ],
+      "exampleEnglish": "Please do not speculate about the other driver.",
+      "exampleHindi": "“driver” ਦਾ ਅਰਥ ਇੱਥੇ “ਡਰਾਈਵਰ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-044",
+      "topic": "transport",
+      "english": "rent",
+      "hindi": "ਕਿਰਾਇਆ",
+      "acceptedHindi": [
+        "ਕਿਰਾਇਆ"
+      ],
+      "exampleEnglish": "Rent is the regular amount a tenant pays for the right to live in or use a property.",
+      "exampleHindi": "“rent” ਦਾ ਅਰਥ ਇੱਥੇ “ਕਿਰਾਇਆ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-045",
+      "topic": "transport",
+      "english": "service",
+      "hindi": "ਸੇਵਾ",
+      "acceptedHindi": [
+        "ਸੇਵਾ"
+      ],
+      "exampleEnglish": "Good morning, Housing Information Service. My name is Sofia. How can I help you today?",
+      "exampleHindi": "“service” ਦਾ ਅਰਥ ਇੱਥੇ “ਸੇਵਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-046",
+      "topic": "transport",
+      "english": "experience",
+      "hindi": "ਤਜਰਬਾ",
+      "acceptedHindi": [
+        "ਤਜਰਬਾ"
+      ],
+      "exampleEnglish": "My skills and experience suit this position.",
+      "exampleHindi": "“experience” ਦਾ ਅਰਥ ਇੱਥੇ “ਤਜਰਬਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-047",
+      "topic": "transport",
+      "english": "tax",
+      "hindi": "ਟੈਕਸ",
+      "acceptedHindi": [
+        "ਟੈਕਸ"
+      ],
+      "exampleEnglish": "Thank you for explaining that. I need to check the account, transaction, tax or financial details so I can guide you correctly.",
+      "exampleHindi": "“tax” ਦਾ ਅਰਥ ਇੱਥੇ “ਟੈਕਸ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-048",
+      "topic": "social",
+      "english": "application form",
+      "hindi": "ਅਰਜ਼ੀ ਫਾਰਮ",
+      "acceptedHindi": [
+        "ਅਰਜ਼ੀ ਫਾਰਮ"
+      ],
+      "exampleEnglish": "You must complete an application form.",
+      "exampleHindi": "“application form” ਦਾ ਅਰਥ ਇੱਥੇ “ਅਰਜ਼ੀ ਫਾਰਮ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-049",
+      "topic": "social",
+      "english": "financial assistance",
+      "hindi": "ਵਿੱਤੀ ਸਹਾਇਤਾ",
+      "acceptedHindi": [
+        "ਵਿੱਤੀ ਸਹਾਇਤਾ"
+      ],
+      "exampleEnglish": "The financial assistance is help provided to a person or organisation with the relevant need or difficulty.",
+      "exampleHindi": "“financial assistance” ਦਾ ਅਰਥ ਇੱਥੇ “ਵਿੱਤੀ ਸਹਾਇਤਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-050",
+      "topic": "social",
+      "english": "application",
+      "hindi": "ਅਰਜ਼ੀ",
+      "acceptedHindi": [
+        "ਅਰਜ਼ੀ"
+      ],
+      "exampleEnglish": "Send your application to the email address on this card.",
+      "exampleHindi": "“application” ਦਾ ਅਰਥ ਇੱਥੇ “ਅਰਜ਼ੀ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-051",
+      "topic": "social",
+      "english": "customer",
+      "hindi": "ਗਾਹਕ",
+      "acceptedHindi": [
+        "ਗਾਹਕ"
+      ],
+      "exampleEnglish": "Good morning. My name is Kim, and I am the customer service manager today. How can I help you?",
+      "exampleHindi": "“customer” ਦਾ ਅਰਥ ਇੱਥੇ “ਗਾਹਕ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-052",
+      "topic": "social",
+      "english": "family",
+      "hindi": "ਪਰਿਵਾਰ",
+      "acceptedHindi": [
+        "ਪਰਿਵਾਰ"
+      ],
+      "exampleEnglish": "Good morning. How can I help you and your family today?",
+      "exampleHindi": "“family” ਦਾ ਅਰਥ ਇੱਥੇ “ਪਰਿਵਾਰ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-053",
+      "topic": "social",
+      "english": "husband",
+      "hindi": "ਪਤੀ",
+      "acceptedHindi": [
+        "ਪਤੀ"
+      ],
+      "exampleEnglish": "The term “husband” may be important in this community-service situation.",
+      "exampleHindi": "“husband” ਦਾ ਅਰਥ ਇੱਥੇ “ਪਤੀ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-054",
+      "topic": "social",
+      "english": "statement",
+      "hindi": "ਬਿਆਨ",
+      "acceptedHindi": [
+        "ਬਿਆਨ"
+      ],
+      "exampleEnglish": "We will contact you if we need another statement.",
+      "exampleHindi": "“statement” ਦਾ ਅਰਥ ਇੱਥੇ “ਬਿਆਨ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-055",
+      "topic": "social",
+      "english": "training",
+      "hindi": "ਟ੍ਰੇਨਿੰਗ / ਸਿਖਲਾਈ",
+      "acceptedHindi": [
+        "ਟ੍ਰੇਨਿੰਗ / ਸਿਖਲਾਈ"
+      ],
+      "exampleEnglish": "You will receive workplace safety training.",
+      "exampleHindi": "“training” ਦਾ ਅਰਥ ਇੱਥੇ “ਟ੍ਰੇਨਿੰਗ / ਸਿਖਲਾਈ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-056",
+      "topic": "social",
+      "english": "assets test",
+      "hindi": "ਸੰਪਤੀ ਟੈਸਟ",
+      "acceptedHindi": [
+        "ਸੰਪਤੀ ਟੈਸਟ"
+      ],
+      "exampleEnglish": "A assets test is a check or assessment used to measure, confirm or find out the relevant information or result.",
+      "exampleHindi": "“assets test” ਦਾ ਅਰਥ ਇੱਥੇ “ਸੰਪਤੀ ਟੈਸਟ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-057",
+      "topic": "social",
+      "english": "bank statement",
+      "hindi": "ਬੈਂਕ ਸਟੇਟਮੈਂਟ",
+      "acceptedHindi": [
+        "ਬੈਂਕ ਸਟੇਟਮੈਂਟ"
+      ],
+      "exampleEnglish": "A bank statement is a record from a bank showing transactions, deposits, withdrawals and the balance of an account for a period.",
+      "exampleHindi": "“bank statement” ਦਾ ਅਰਥ ਇੱਥੇ “ਬੈਂਕ ਸਟੇਟਮੈਂਟ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-058",
+      "topic": "social",
+      "english": "carer",
+      "hindi": "ਦੇਖਭਾਲਕਰਤਾ",
+      "acceptedHindi": [
+        "ਦੇਖਭਾਲਕਰਤਾ"
+      ],
+      "exampleEnglish": "The term “carer” may be important in this community-service situation.",
+      "exampleHindi": "“carer” ਦਾ ਅਰਥ ਇੱਥੇ “ਦੇਖਭਾਲਕਰਤਾ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-059",
+      "topic": "social",
+      "english": "financial hardship",
+      "hindi": "ਵਿੱਤੀ ਮੁਸ਼ਕਲ",
+      "acceptedHindi": [
+        "ਵਿੱਤੀ ਮੁਸ਼ਕਲ"
+      ],
+      "exampleEnglish": "The term “financial hardship” may be important in this community-service situation.",
+      "exampleHindi": "“financial hardship” ਦਾ ਅਰਥ ਇੱਥੇ “ਵਿੱਤੀ ਮੁਸ਼ਕਲ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-060",
+      "topic": "social",
+      "english": "medical certificate",
+      "hindi": "ਮੈਡੀਕਲ ਸਰਟੀਫਿਕੇਟ",
+      "acceptedHindi": [
+        "ਮੈਡੀਕਲ ਸਰਟੀਫਿਕੇਟ"
+      ],
+      "exampleEnglish": "A medical certificate is an official document confirming the relevant fact, status, qualification, registration or result.",
+      "exampleHindi": "“medical certificate” ਦਾ ਅਰਥ ਇੱਥੇ “ਮੈਡੀਕਲ ਸਰਟੀਫਿਕੇਟ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-061",
+      "topic": "social",
+      "english": "myGov",
+      "hindi": "ਮਾਈਗਵ",
+      "acceptedHindi": [
+        "ਮਾਈਗਵ"
+      ],
+      "exampleEnglish": "The term “myGov” may be important in this community-service situation.",
+      "exampleHindi": "“myGov” ਦਾ ਅਰਥ ਇੱਥੇ “ਮਾਈਗਵ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-062",
+      "topic": "social",
+      "english": "permanent resident",
+      "hindi": "ਸਥਾਈ ਨਿਵਾਸੀ",
+      "acceptedHindi": [
+        "ਸਥਾਈ ਨਿਵਾਸੀ"
+      ],
+      "exampleEnglish": "The term “permanent resident” may be important in this community-service situation.",
+      "exampleHindi": "“permanent resident” ਦਾ ਅਰਥ ਇੱਥੇ “ਸਥਾਈ ਨਿਵਾਸੀ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-063",
+      "topic": "social",
+      "english": "processing time",
+      "hindi": "ਪ੍ਰੋਸੈਸਿੰਗ ਸਮਾਂ",
+      "acceptedHindi": [
+        "ਪ੍ਰੋਸੈਸਿੰਗ ਸਮਾਂ"
+      ],
+      "exampleEnglish": "The term “processing time” may be important in this community-service situation.",
+      "exampleHindi": "“processing time” ਦਾ ਅਰਥ ਇੱਥੇ “ਪ੍ਰੋਸੈਸਿੰਗ ਸਮਾਂ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-064",
+      "topic": "social",
+      "english": "registration number",
+      "hindi": "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਨੰਬਰ",
+      "acceptedHindi": [
+        "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਨੰਬਰ"
+      ],
+      "exampleEnglish": "Did you see the registration number?",
+      "exampleHindi": "“registration number” ਦਾ ਅਰਥ ਇੱਥੇ “ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਨੰਬਰ” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    },
+    {
+      "id": "pa-general-pilot-065",
+      "topic": "social",
+      "english": "BAS",
+      "hindi": "ਬਿਜ਼ਨਸ ਐਕਟੀਵਿਟੀ ਸਟੇਟਮੈਂਟ (BAS)",
+      "acceptedHindi": [
+        "ਬਿਜ਼ਨਸ ਐਕਟੀਵਿਟੀ ਸਟੇਟਮੈਂਟ (BAS)"
+      ],
+      "exampleEnglish": "The term “BAS” may be important in this community-service situation.",
+      "exampleHindi": "“BAS” ਦਾ ਅਰਥ ਇੱਥੇ “ਬਿਜ਼ਨਸ ਐਕਟੀਵਿਟੀ ਸਟੇਟਮੈਂਟ (BAS)” ਹੈ। ਇਹ ਸ਼ਬਦ NAATI CCL ਦੀ ਭਾਈਚਾਰਕ ਗੱਲਬਾਤ ਵਿੱਚ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+      "notes": "Punjabi V21 pilot reference",
+      "reviewStatus": "reviewed",
+      "qualityStatus": "punjabi-pilot-reviewed-v21",
+      "source": "punjabi-pilot"
+    }
+  ]
+}

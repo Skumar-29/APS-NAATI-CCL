@@ -17,7 +17,7 @@
     const title=text(qs('h1',h)); const sub=qs('.header-copy p',h);
     const map={
       'Dialogue Practice':'', 'Learn':'', 'Review':'', 'Progress':'',
-      'APS NAATI CCL Practice':'English ↔ Hindi preparation'
+      'APS NAATI CCL Practice':`English ↔ ${typeof targetLanguageName==='function'?targetLanguageName():'Hindi'} preparation`
     };
     if(sub && Object.prototype.hasOwnProperty.call(map,title) && sub.textContent!==map[title]) sub.textContent=map[title];
     const search=qs('.header-search',h), settings=qs('.header-settings',h);

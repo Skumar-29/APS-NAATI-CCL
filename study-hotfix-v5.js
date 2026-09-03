@@ -2,7 +2,7 @@
 
 (() => {
   const HOTFIX_VERSION = 'aps-naati-study-hotfix-v5';
-  const BUILD_VERSION = '20.3.2.1';
+  const BUILD_VERSION = '21.0.0-pilot';
   const VERSION_URL = './version.json';
   const CACHE_PREFIX = 'aps-naati-v';
   const SEARCH_LIMIT = 80;
@@ -202,26 +202,26 @@
     shell.className = 'aps-study-search-shell';
     shell.hidden = true;
     shell.innerHTML = `
-      <div id="apsStudySearchPanel" class="aps-study-search-panel" role="dialog" aria-modal="false" aria-label="Search all Hindi material">
+      <div id="apsStudySearchPanel" class="aps-study-search-panel" role="dialog" aria-modal="false" aria-label="Search all ${escapeHtml(typeof targetLanguageName==='function'?targetLanguageName():'Hindi')} material">
         <div class="aps-study-search-heading">
           <div>
-            <strong>Search all Hindi material</strong>
+            <strong>Search all ${escapeHtml(typeof targetLanguageName==='function'?targetLanguageName():'Hindi')} material</strong>
             <small>Dialogues, vocabulary and phrases</small>
           </div>
           <button id="apsStudySearchClose" type="button" aria-label="Close search">×</button>
         </div>
         <label class="aps-study-search-label">
-          <span>Search English, Hindi, title or topic</span>
+          <span>Search English, ${escapeHtml(typeof targetLanguageName==='function'?targetLanguageName():'Hindi')}, title or topic</span>
           <input
             id="apsStudySearchInput"
             type="search"
             inputmode="search"
             autocomplete="off"
-            placeholder="Search Hindi or English…"
+            placeholder="Search ${escapeHtml(typeof targetLanguageName==='function'?targetLanguageName():'Hindi')} or English…"
           >
         </label>
         <div id="apsStudySearchSummary" class="aps-study-search-summary">
-          Start typing to search the complete Hindi pack.
+          Start typing to search the complete ${escapeHtml(typeof targetLanguageName==='function'?targetLanguageName():'Hindi')} pack.
         </div>
         <div id="apsStudySearchResults" class="aps-study-search-results"></div>
       </div>
@@ -268,7 +268,7 @@
 
     summary.textContent = results.length
       ? `${results.length}${results.length === SEARCH_LIMIT ? '+' : ''} matching results`
-      : 'No matching Hindi material found.';
+      : `No matching ${typeof targetLanguageName==='function'?targetLanguageName():'Hindi'} material found.`;
 
     resultsHost.innerHTML = results.map(record => `
       <button
@@ -589,7 +589,8 @@
 
     return new Promise(resolve => {
       const utterance = new SpeechSynthesisUtterance(content);
-      const languageCode = lang === 'hi' ? 'hi-IN' : 'en-AU';
+      const langCode=String(lang||'en').toLowerCase().split(/[-_]/)[0]||'en';
+      const languageCode = langCode === 'en' ? 'en-AU' : (typeof languageInfo==='function'?(languageInfo(langCode).targetLocale||languageInfo(langCode).locale||langCode):langCode);
       utterance.lang = languageCode;
       utterance.rate = Number(rate) || 1;
       utterance.pitch = 1;
@@ -604,7 +605,7 @@
           : null;
         const fallback = speechSynthesis.getVoices().find(voice =>
           safeText(voice.lang).toLowerCase().startsWith(
-            lang === 'hi' ? 'hi' : 'en'
+            String(lang||'en').toLowerCase().split(/[-_]/)[0]||'en'
           )
         );
         utterance.voice = selected || fallback || null;

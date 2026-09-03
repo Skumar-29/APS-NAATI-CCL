@@ -54,22 +54,27 @@
   const originalRenderModal = renderModal;
   const originalAuthWelcome = authWelcome;
 
-  const SYNC_KEYS = [
-    storageKeys.onboard,
-    storageKeys.vocabStatus,
-    storageKeys.vocabSettings,
-    storageKeys.vocabResume,
-    storageKeys.attempts,
-    storageKeys.lesson,
-    storageKeys.mistakes,
-    storageKeys.phraseStats,
-    storageKeys.dialogueVocabProgress,
-    storageKeys.selectedLanguage,
-    storageKeys.practiceDaily,
-    storageKeys.recallProgress,
-    storageKeys.recallSettings,
-    storageKeys.myVocabs,
-  ].filter(Boolean);
+  function currentSyncKeys() {
+    // The active language's progress keys are resolved at sync time. This is
+    // essential because Hindi and Punjabi deliberately reuse dialogue/vocab IDs
+    // but must never share progress sections. selectedLanguage stays device-local
+    // so changing language on one device cannot switch another device.
+    return [
+      storageKeys.onboard,
+      storageKeys.vocabStatus,
+      storageKeys.vocabSettings,
+      storageKeys.vocabResume,
+      storageKeys.attempts,
+      storageKeys.lesson,
+      storageKeys.mistakes,
+      storageKeys.phraseStats,
+      storageKeys.dialogueVocabProgress,
+      storageKeys.practiceDaily,
+      storageKeys.recallProgress,
+      storageKeys.recallSettings,
+      storageKeys.myVocabs,
+    ].filter(Boolean);
+  }
 
   const VOICE_KEYS = new Set([
     'voiceEn', 'voiceHi',
@@ -109,7 +114,7 @@
   }
 
   function isSyncKey(key) {
-    return SYNC_KEYS.includes(String(key));
+    return currentSyncKeys().includes(String(key));
   }
 
   function currentUser() {
@@ -795,7 +800,19 @@
   }
 
   function myVocabDocId(id) {
-    return encodeURIComponent(String(id)).replace(/\./g, '%2E');
+    const lang=typeof activeLanguageId==='function'?activeLanguageId():(state.selectedLanguage||'hi');
+    const scoped=lang==='hi'?String(id):`${lang}::${id}`;
+    return encodeURIComponent(scoped).replace(/\./g, '%2E');
+  }
+
+  function remoteMyVocabLanguage(data,item,docId='') {
+    const explicit=String(data?.languageId||item?.languageId||'').toLowerCase();
+    if(explicit)return explicit;
+    const decoded=(()=>{try{return decodeURIComponent(String(docId||''));}catch{return String(docId||'');}})();
+    const prefix=decoded.match(/^([a-z]{2,3})::/i);
+    if(prefix)return prefix[1].toLowerCase();
+    // Legacy cloud rows predate multilingual support and are therefore Hindi.
+    return 'hi';
   }
 
   function valueUpdatedAt(item) {
@@ -882,7 +899,7 @@
     let needsPush = false;
     syncState.applyingRemote = true;
     try {
-      for (const key of SYNC_KEYS) {
+      for (const key of currentSyncKeys()) {
         if (key === storageKeys.myVocabs) continue;
         const remoteEntry = remoteEntries[key];
         const localRaw = localStorage.getItem(key);
@@ -949,7 +966,8 @@
   async function pushSections({ forceAll = false } = {}) {
     const meta = loadMeta();
     const pushed = loadPushedMeta();
-    const keys = forceAll ? SYNC_KEYS.filter(key => key !== storageKeys.myVocabs) : [...syncState.dirtyKeys].filter(key => key !== storageKeys.myVocabs);
+    const activeKeys=currentSyncKeys();
+    const keys = forceAll ? activeKeys.filter(key => key !== storageKeys.myVocabs) : [...syncState.dirtyKeys].filter(key => activeKeys.includes(key) && key !== storageKeys.myVocabs);
     let count = 0;
     for (const key of keys) {
       const updatedAtClient = Number(meta[key]) || nowMs();
@@ -979,12 +997,14 @@
       const group = changed.slice(offset, offset + 380);
       group.forEach(item => {
         const updatedAtClient = valueUpdatedAt(item) || nowMs();
+        const languageId=typeof activeLanguageId==='function'?activeLanguageId():(state.selectedLanguage||'hi');
         batch.set(collection.doc(myVocabDocId(item.id)), {
           id: item.id,
+          languageId,
           updatedAtClient,
           updatedAt: window.firebase.firestore.FieldValue.serverTimestamp(),
           deleted: Boolean(item.deleted),
-          item,
+          item: { ...item, languageId: item.languageId || languageId },
         }, { merge: true });
       });
       await batch.commit();
@@ -1007,11 +1027,13 @@
     let changed = false;
     let needsPush = false;
     const remoteIds = new Set();
+    const currentLanguage=typeof activeLanguageId==='function'?activeLanguageId():(state.selectedLanguage||'hi');
     snapshot.forEach(doc => {
       const data = doc.data() || {};
       const item = data.item && typeof data.item === 'object' ? data.item : null;
       const id = String(data.id || item?.id || '');
       if (!id || !item) return;
+      if (remoteMyVocabLanguage(data,item,doc.id)!==currentLanguage) return;
       remoteIds.add(id);
       const remoteTs = Number(data.updatedAtClient) || valueUpdatedAt(item);
       const localItem = items[id];
@@ -1052,6 +1074,7 @@
         schemaVersion: CLOUD_SCHEMA_VERSION,
         appVersion: 'v19.5-scalable-cloud-performance',
         projectId: FIREBASE_PROJECT_ID,
+        activeLanguage: typeof activeLanguageId==='function'?activeLanguageId():(state.selectedLanguage||'hi'),
         updatedAtClient: nowMs(),
         updatedAt: window.firebase.firestore.FieldValue.serverTimestamp(),
         lastDevice: navigator.userAgent.slice(0, 220),
@@ -1555,6 +1578,13 @@
       await saveSetupFromDialog();
     }
   }, true);
+
+  window.addEventListener('aps-language-changed', () => {
+    syncState.dirtyKeys.clear();
+    syncState.initialPullDoneForUid='';
+    syncState.lastAutoPullAtMs=0;
+    if (cloudUserReady()) cloudPull({ reason: 'language-change', manual: false, firstMerge: true });
+  });
 
   window.addEventListener('online', () => {
     if (cloudUserReady()) {
