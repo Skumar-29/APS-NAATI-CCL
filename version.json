@@ -1,6 +1,6 @@
 {
-  "version": "20.3",
-  "build": "github-online-first-my-vocabs-smart-sheet-2026-09-03-v20.3",
+  "version": "20.3.1",
+  "build": "github-online-first-dialogue-navigation-hotfix-2026-09-03-v20.3.1",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -124,5 +124,11 @@
   "myVocabsMixedLanguageSynonymSpeech": true,
   "myVocabsSynonymVoiceDetection": "per comma/semicolon/slash-separated item",
   "contentUnchangedFromV20_2": true,
-  "cloudSyncUnchangedFromV19_5": true
+  "cloudSyncUnchangedFromV19_5": true,
+  "dialoguePreviousNextNavigationGuard": true,
+  "dialogueNavigationCancelsStalePlayback": true,
+  "dialogueNavigationPreservesSavedResponseAudio": true,
+  "dialogueNavigationRehydratesSavedAudio": true,
+  "dialogueNavigationBlocksWhileRecording": true,
+  "contentUnchangedFromV20_3": true
 }

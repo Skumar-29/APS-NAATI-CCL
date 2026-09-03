@@ -1289,6 +1289,12 @@ async function finishRecording(){
   state.responses[state.segmentIndex]=response;
   state.completed.add(seg.id);
   state.playerStatus='complete';
+  // The response now owns this object URL. Detach it from the transient
+  // recording state so starting another segment does not revoke the saved
+  // response audio. This keeps Previous/Next review playback reliable.
+  state.recordingUrl='';
+  state.recordingBlob=null;
+  state.recordingId='';
   render();
 
   if(nativeCloudTranscriptionAvailable()){
@@ -1298,6 +1304,48 @@ async function finishRecording(){
       });
   }
 }
+let dialogueNavigationGeneration=0;
+async function navigateDialogueSegment(delta){
+  if(!state.dialogue)return;
+  if(state.recording){
+    showToast('Finish or skip the current recording before changing segments.');
+    return;
+  }
+  const segments=getActiveSegments();
+  const next=clamp(state.segmentIndex+Number(delta||0),0,segments.length-1);
+  if(next===state.segmentIndex)return;
+
+  const generation=++dialogueNavigationGeneration;
+  // Cancel any source speech, countdown, recognition or pre-recording stage.
+  // The study hotfix increments its playback generation too, preventing a
+  // stale async Play operation from starting the microphone on the wrong row.
+  try{window.APSStudyControls?.cancelCurrentStage?.();}catch{}
+  clearInterval(state.timer);state.timer=null;state.countdown=0;
+  try{speechSynthesis.cancel();}catch{}
+
+  state.segmentIndex=next;
+  state.feedback=null;
+  state.playerStatus=state.responses[next]?'complete':'ready';
+  render();
+
+  // Older attempts may have a revoked/missing blob URL because earlier builds
+  // reused transient recording state. Rehydrate the selected segment audio
+  // from IndexedDB without blocking navigation.
+  const response=state.responses[next];
+  if(!response?.recordingId)return;
+  try{
+    const value=await loadBlobRecord(response.recordingId);
+    if(generation!==dialogueNavigationGeneration||state.segmentIndex!==next)return;
+    const blob=value instanceof Blob?value:value?.blob;
+    if(!(blob instanceof Blob))return;
+    if(response.recordingUrl){try{URL.revokeObjectURL(response.recordingUrl);}catch{}}
+    response.recordingUrl=URL.createObjectURL(blob);
+    response.recordingStatus='saved';
+    if(!response.duration&&value?.meta?.duration)response.duration=value.meta.duration;
+    render();
+  }catch{}
+}
+
 function assessAndSaveDialogue(){
   const d=state.dialogue,segments=getActiveSegments();if(state.responses.filter(Boolean).length<segments.length)return showToast('Complete all segments first');
   const previous=getJSON(storageKeys.attempts,[]).filter(a=>a.dialogueId===d.id&&a.finished).at(-1)?.report||null;
@@ -1390,8 +1438,8 @@ app.addEventListener('click',async e=>{
   }
   else if(a==='play-sample-answer'){const seg=getActiveSegments()[state.segmentIndex];if(seg){speechSynthesis.cancel();await speak(seg.sampleAnswer||seg.model,seg.sourceLanguage==='en'?'hi':'en',state.dialogueSettings.rate,null,seg.speaker||'general');}}
   else if(a==='record-again'){state.responses[state.segmentIndex]=null;state.completed.delete(getActiveSegments()[state.segmentIndex].id);playDialogueSegment(false);}
-  else if(a==='dialogue-prev'){state.segmentIndex=clamp(state.segmentIndex-1,0,getActiveSegments().length-1);state.playerStatus=state.responses[state.segmentIndex]?'complete':'ready';render();}
-  else if(a==='dialogue-next'){state.segmentIndex=clamp(state.segmentIndex+1,0,getActiveSegments().length-1);state.playerStatus=state.responses[state.segmentIndex]?'complete':'ready';render();}
+  else if(a==='dialogue-prev')await navigateDialogueSegment(-1);
+  else if(a==='dialogue-next')await navigateDialogueSegment(1);
   else if(a==='finish-dialogue')assessAndSaveDialogue();
   else if(a==='speak-text')speak(decodeURIComponent(el.dataset.text),el.dataset.lang||'en',.9,null,el.dataset.speaker||'general');
   else if(a==='close-report'){const wasMock=state.report?.type==='mock'||state.report?.attempt?.mode==='mock';state.overlay=null;state.report=null;state.mock=null;state.tab=wasMock?'mock':'practice';render();}

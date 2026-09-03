@@ -1086,7 +1086,8 @@
 
   window.APSStudyControls = Object.freeze({
     skipListeningAndRecord,
-    skipRecordingAndContinue
+    skipRecordingAndContinue,
+    cancelCurrentStage: abortCurrentStage
   });
 
   function syncFloatingTools() {

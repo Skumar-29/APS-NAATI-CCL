@@ -1,6 +1,6 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v20-3-shell';
+const APP_CACHE = 'aps-naati-v20-3-1-shell';
 const CONTENT_CACHE = 'aps-naati-content-runtime-v20';
 const PRECACHE = [
   './',
