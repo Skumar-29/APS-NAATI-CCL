@@ -52,7 +52,7 @@
     if(el.classList.contains('account-settings-card'))return 'account';
     if(el.id==='apsCloudSyncCard')return 'sync';
     if(el.classList.contains('language-settings-section'))return 'language';
-    if(el.id==='apsRecallSettingsCard')return 'study';
+    if(el.id==='apsRecallSettingsCard'||el.id==='apsOnlineAssessmentSettingsCard')return 'study';
     if(el.classList.contains('content-studio-settings')||el.id==='apsUpdateCard'||el.classList.contains('voice-settings-help'))return 'advanced';
     if(el.classList.contains('voice-settings-section')){
       const t=text(qs('h3',el));
@@ -82,7 +82,7 @@
       if(!(el instanceof HTMLElement)||el.classList.contains('settings-heading')||el.classList.contains('settings-actions')||el.classList.contains('modal-close')||el.classList.contains('v20-2-settings-tabs'))return;
       const cat=categoryForSettings(el); if(cat)el.dataset.v202Panel=cat;
     });
-    qsa('#apsCloudSyncCard,#apsRecallSettingsCard,#apsUpdateCard,.content-studio-settings,.voice-settings-help',modal).forEach(el=>{const cat=categoryForSettings(el);if(cat)el.dataset.v202Panel=cat;});
+    qsa('#apsCloudSyncCard,#apsRecallSettingsCard,#apsOnlineAssessmentSettingsCard,#apsUpdateCard,.content-studio-settings,.voice-settings-help',modal).forEach(el=>{const cat=categoryForSettings(el);if(cat)el.dataset.v202Panel=cat;});
 
     // Shorten student-facing labels without removing controls.
     const account=qs('.account-settings-card',modal); if(account){const p=qs('p',account);if(p){const v=p.textContent.split('·')[0].trim();if(p.textContent!==v)p.textContent=v;}}

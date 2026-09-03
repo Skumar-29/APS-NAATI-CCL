@@ -898,7 +898,7 @@
         }
         if (!remoteEntry) continue;
 
-        const alwaysMerge = key === storageKeys.practiceDaily || key === storageKeys.recallProgress || key === storageKeys.dialogueVocabProgress;
+        const alwaysMerge = key === storageKeys.attempts || key === storageKeys.practiceDaily || key === storageKeys.recallProgress || key === storageKeys.dialogueVocabProgress;
         if (alwaysMerge && localRaw != null && remoteRaw != null && sanitiseValueForCloud(key, localRaw) !== remoteRaw) {
           const merged = mergeFirstTimeValue(key, localRaw, remoteRaw);
           applyCloudValueLocally(key, merged);

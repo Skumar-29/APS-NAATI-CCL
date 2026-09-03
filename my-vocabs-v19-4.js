@@ -584,9 +584,15 @@ function selectedOrRowIds(rowId){
   return rowId?[rowId]:[...selectedIds];
 }
 function hideRowContextMenu(){const m=document.querySelector('#myRowContextMenu');if(m){m.hidden=true;m.innerHTML='';}}
-function rowContextHtml(ids){
+function rowContextHtml(ids,hasCell=false){
   const count=ids.length,label=count>1?`${count} selected rows`:(findMy(ids[0])?.english||'This row');
   return `<div class="my-context-title">${esc(label)}</div>
+    ${hasCell?`<div class="my-context-label">Clipboard</div>
+    <button data-my-context="copy">Copy</button>
+    <button data-my-context="cut">Cut</button>
+    <button data-my-context="paste">Paste</button>
+    <button data-my-context="paste-values">Paste values only</button>
+    <div class="my-context-sep"></div>`:''}
     <button data-my-context="play">▶ Play${count>1?' selected':''}</button>
     <button data-my-context="translate">↻ Translate / refresh Hindi${count>1?' for selected':''}</button>
     <div class="my-context-sep"></div>
@@ -598,12 +604,45 @@ function rowContextHtml(ids){
     <button class="danger-text" data-my-context="delete">Delete${count>1?' selected':''}</button>
     ${selectedIds.size?'<button data-my-context="clear">Clear selection</button>':''}`;
 }
-function openRowContextMenu(event,rowId){
+function openRowContextMenu(event,rowId,cell=null){
   const menu=document.querySelector('#myRowContextMenu');if(!menu)return;
   if(!selectedIds.has(rowId)){selectedIds.clear();selectedIds.add(rowId);selectionAnchorId=rowId;updateSelectedDom();}
-  const ids=selectedOrRowIds(rowId);menu.dataset.ids=ids.join(',');menu.innerHTML=rowContextHtml(ids);menu.hidden=false;
-  const pad=8,w=240,h=Math.min(390,menu.scrollHeight||340),vw=window.innerWidth,vh=window.innerHeight;
+  const ids=selectedOrRowIds(rowId);menu.dataset.ids=ids.join(',');menu.dataset.cellId=cell?.dataset?.id||'';menu.dataset.cellField=cell?.dataset?.myField||'';menu.innerHTML=rowContextHtml(ids,Boolean(cell));menu.hidden=false;
+  const pad=8,w=240,h=Math.min(520,menu.scrollHeight||430),vw=window.innerWidth,vh=window.innerHeight;
   menu.style.left=`${Math.max(pad,Math.min(event.clientX,vw-w-pad))}px`;menu.style.top=`${Math.max(pad,Math.min(event.clientY,vh-h-pad))}px`;
+}
+async function writeClipboardText(value){
+  const text=String(value??'');
+  if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return;}
+  const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand?.('copy');ta.remove();if(!ok)throw new Error('Clipboard write is unavailable');
+}
+async function readClipboardText(){
+  if(navigator.clipboard?.readText)return navigator.clipboard.readText();
+  throw new Error('Clipboard read is unavailable');
+}
+function contextCell(cellId,field){return cellId&&field?document.querySelector(`[data-my-field="${CSS.escape(field)}"][data-id="${CSS.escape(cellId)}"]`):null;}
+function singleLineClipboardValue(value){return String(value??'').replace(/\r?\n/g,' ').replace(/\t/g,' ').replace(/\s+/g,' ').trim();}
+async function commitClipboardCell(el,value,{lookup=true}={}){
+  if(!el)return;
+  const oldValue=String(el.value||'');el.value=value;
+  const result=await updateField(el,{lookup});
+  if(result?.duplicate&&el.dataset.myField==='english'){
+    const current=findMy(el.dataset.id),stored=current?.english||oldValue;
+    showDuplicatePrompt({duplicate:result.duplicate,pendingEnglish:result.pendingValue,onOpen:()=>{el.value=stored;selectedIds.clear();selectedIds.add(result.duplicate.id);selectionAnchorId=result.duplicate.id;updateSelectedDom();focusSheetCell(document.querySelector(`[data-my-field="english"][data-id="${CSS.escape(result.duplicate.id)}"]`));},onSeparate:async()=>{el.value=result.pendingValue;await updateField(el,{lookup:true,allowDuplicate:true});focusSheetCell(el);},onCancel:()=>{el.value=stored;focusSheetCell(el);}});
+    return;
+  }
+  focusSheetCell(el);
+}
+async function runClipboardAction(action,cellId,field){
+  const el=contextCell(cellId,field);if(!el)return showToast('Right-click an editable vocabulary cell first.');
+  try{
+    if(action==='copy'){await writeClipboardText(el.value);showToast('Copied');return;}
+    if(action==='cut'){await writeClipboardText(el.value);await commitClipboardCell(el,'',{lookup:false});showToast('Cut');return;}
+    const raw=await readClipboardText();
+    if(action==='paste-values'){await commitClipboardCell(el,singleLineClipboardValue(raw),{lookup:true});showToast('Values pasted');return;}
+    const start=Number.isInteger(el.selectionStart)?el.selectionStart:String(el.value||'').length,end=Number.isInteger(el.selectionEnd)?el.selectionEnd:start,current=String(el.value||''),insert=singleLineClipboardValue(raw),next=current.slice(0,start)+insert+current.slice(end);
+    await commitClipboardCell(el,next,{lookup:true});showToast('Pasted');
+  }catch(error){showToast('Clipboard access was blocked. Use Ctrl/Cmd+C or Ctrl/Cmd+V, or allow clipboard permission.');}
 }
 async function translateContextRows(ids){
   for(const id of ids){const r=findMy(id);if(!r||r.deleted||!String(r.english||'').trim())continue;await autoFillRecord(id,{replaceAuto:true});}
@@ -627,15 +666,15 @@ document.addEventListener('click',event=>{
 
 app.addEventListener('contextmenu',event=>{
   const tr=event.target.closest?.('[data-my-row]');if(!tr||state.overlay!=='my-vocabs')return;
-  // Preserve the browser's native text menu only when the user has selected text inside an editor.
-  const editor=event.target.closest?.('input,textarea');if(editor&&String(editor.value||'').slice(Number(editor.selectionStart)||0,Number(editor.selectionEnd)||0))return;
-  event.preventDefault();openRowContextMenu(event,tr.dataset.myRow);
+  const editor=event.target.closest?.('input[data-my-field],textarea[data-my-field]');
+  event.preventDefault();openRowContextMenu(event,tr.dataset.myRow,editor);
 });
 document.addEventListener('pointerdown',event=>{if(!event.target.closest?.('#myRowContextMenu'))hideRowContextMenu();},true);
 app.addEventListener('click',async event=>{
   const c=event.target.closest?.('[data-my-context]');
-  if(c){event.preventDefault();event.stopPropagation();const menu=c.closest('#myRowContextMenu'),ids=String(menu?.dataset.ids||'').split(',').filter(Boolean),a=c.dataset.myContext;hideRowContextMenu();
-    if(a==='play')playRows(ids.map(findMy).filter(Boolean),'My Vocabs · Selected rows');
+  if(c){event.preventDefault();event.stopPropagation();const menu=c.closest('#myRowContextMenu'),ids=String(menu?.dataset.ids||'').split(',').filter(Boolean),a=c.dataset.myContext,cellId=menu?.dataset.cellId||'',cellField=menu?.dataset.cellField||'';hideRowContextMenu();
+    if(['copy','cut','paste','paste-values'].includes(a))await runClipboardAction(a,cellId,cellField);
+    else if(a==='play')playRows(ids.map(findMy).filter(Boolean),'My Vocabs · Selected rows');
     else if(a==='translate')await translateContextRows(ids);
     else if(a==='recall')setContextRecall(ids,c.dataset.status||'needs-review');
     else if(a==='delete')deleteContextRows(ids);

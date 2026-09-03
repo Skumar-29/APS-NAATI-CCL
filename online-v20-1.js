@@ -31,6 +31,8 @@ function completedRecordingPanel(response,seg){
       <div class="record-actions v201-record-actions">${reviewButton}${button('Record again','record-again','secondary')}</div>
     </div>
 
+    ${response.onlineAssessmentStatus==='processing'?`<div class="v20-assessment-processing v201-processing" role="status" aria-live="polite"><i class="v20-assessment-spinner" aria-hidden="true"></i><div><b>Assessing your interpretation…</b><span>Online feedback is loading. You can keep using the page.</span></div></div>`:''}
+
     <div class="v201-response-grid ${response.showTranscript?'with-sample':'single'}">
       <article class="v201-response-card">
         <div class="v201-card-head"><small>${transcriptLabel}</small><span>Check against your audio</span></div>

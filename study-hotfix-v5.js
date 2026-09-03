@@ -2,9 +2,9 @@
 
 (() => {
   const HOTFIX_VERSION = 'aps-naati-study-hotfix-v5';
-  const BUILD_VERSION = 'github-study-ready-2026-08-07-v9';
+  const BUILD_VERSION = '20.3.2';
   const VERSION_URL = './version.json';
-  const CACHE_PREFIX = 'aps-naati-study-ready-';
+  const CACHE_PREFIX = 'aps-naati-v';
   const SEARCH_LIMIT = 80;
   let playbackGeneration = 0;
   let searchIndex = [];
@@ -947,6 +947,7 @@
           `You already have the latest version (${BUILD_VERSION}).`,
           'success'
         );
+        if (button) button.disabled = false;
         return;
       }
 
@@ -959,7 +960,6 @@
         (notes ? ` — ${notes}` : '')
       );
 
-      await clearOnlyAppCaches();
       await activateLatestServiceWorker();
 
       sessionStorage.setItem(

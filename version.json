@@ -1,6 +1,6 @@
 {
-  "version": "20.3.1",
-  "build": "github-online-first-dialogue-navigation-hotfix-2026-09-03-v20.3.1",
+  "version": "20.3.2",
+  "build": "github-online-first-reliability-assessment-controls-practice-timing-2026-09-04-v20.3.2",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -51,6 +51,10 @@
   "myVocabsActionsColumn": false,
   "myVocabsRightClickActions": true,
   "myVocabsContextActions": [
+    "Copy",
+    "Cut",
+    "Paste",
+    "Paste values only",
     "Play",
     "Translate / refresh Hindi",
     "Needs Review",
@@ -130,5 +134,22 @@
   "dialogueNavigationPreservesSavedResponseAudio": true,
   "dialogueNavigationRehydratesSavedAudio": true,
   "dialogueNavigationBlocksWhileRecording": true,
-  "contentUnchangedFromV20_3": true
+  "contentUnchangedFromV20_3": true,
+  "releaseNotes": [
+    "My Vocabs right-click menu now includes Copy, Cut, Paste and Paste values only for editable cells.",
+    "Fixed Check & update latest version build identification, cache matching and button state.",
+    "Cloud refresh now merges dialogue attempts by attempt ID so newer cloud metadata cannot erase local completed attempts.",
+    "Online assessment shows a visible processing spinner/status while feedback is loading.",
+    "Settings → Study now includes an Online semantic assessment on/off control; off skips semantic-assessment requests.",
+    "Practice and Mock Test attempts now store dialogue completion time; reports show dialogue time and total mock time."
+  ],
+  "myVocabsClipboardMenu": true,
+  "versionCheckReliableV2032": true,
+  "cloudAttemptMergeAlways": true,
+  "onlineAssessmentLoadingSpinner": true,
+  "onlineAssessmentUserToggle": true,
+  "practiceDialogueTiming": true,
+  "mockDialogueTiming": true,
+  "mockTotalTiming": true,
+  "contentUnchangedFromV20_3_1": true
 }
