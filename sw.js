@@ -1,6 +1,6 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v21-0-punjabi-pilot-shell';
+const APP_CACHE = 'aps-naati-v21-0-1-voice-manager-shell';
 const CONTENT_CACHE = 'aps-naati-content-runtime-v21';
 const PRECACHE = [
   './',
@@ -21,6 +21,7 @@ const PRECACHE = [
   './online-v20.css',
   './online-v20-1.css',
   './ui-v20-2.css',
+  './voice-manager-v21.css',
   './scoring.js',
   './app.js',
   './study-hotfix-v5.js',
@@ -33,6 +34,7 @@ const PRECACHE = [
   './online-v20.js',
   './online-v20-1.js',
   './ui-v20-2.js',
+  './voice-manager-v21.js',
   './content/languages.json',
   './content/exam_info.json',
   './content/lesson0.json',

@@ -25,6 +25,20 @@
         "phrases": 551,
         "generalVocabularyReviewed": 236,
         "dialogueVocabularySets": 190
+      },
+      "voiceProfile": {
+        "preferredLocalNames": [
+          "Google हिन्दी",
+          "Google Hindi"
+        ],
+        "cloudFallback": {
+          "enabled": true,
+          "provider": "google-cloud-tts",
+          "endpoint": "https://australia-southeast1-aps-naati-ccl-practice.cloudfunctions.net/synthesizeSpeech",
+          "languageCode": "hi-IN",
+          "voiceName": "hi-IN-Standard-A",
+          "label": "Google Hindi Female (Online)"
+        }
       }
     },
     {
@@ -55,6 +69,20 @@
         "generalVocabularyReviewed": 65,
         "dialogueVocabularySets": 5,
         "dialogueVocabularyItems": 96
+      },
+      "voiceProfile": {
+        "preferredLocalNames": [
+          "Google ਪੰਜਾਬੀ",
+          "Google Punjabi"
+        ],
+        "cloudFallback": {
+          "enabled": true,
+          "provider": "google-cloud-tts",
+          "endpoint": "https://australia-southeast1-aps-naati-ccl-practice.cloudfunctions.net/synthesizeSpeech",
+          "languageCode": "pa-IN",
+          "voiceName": "pa-IN-Standard-A",
+          "label": "Google Punjabi Female (Online)"
+        }
       }
     },
     {

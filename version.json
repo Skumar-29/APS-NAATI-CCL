@@ -1,6 +1,6 @@
 {
-  "version": "21.0.0-pilot",
-  "build": "github-v21-punjabi-multilingual-pilot-2026-09-04",
+  "version": "21.0.1-pilot",
+  "build": "github-v21-0-1-voice-manager-my-vocabs-audit-2026-09-04",
   "contentVersion": "21.0.0-multilingual-pilot",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -136,6 +136,13 @@
   "dialogueNavigationBlocksWhileRecording": true,
   "contentUnchangedFromV20_3": true,
   "releaseNotes": [
+    "V21.0.1 adds a multilingual Voice Manager that prefers browser/device voices first, including Google UK English Female and Google हिन्दी when Chrome exposes them.",
+    "V21.0.1 isolates the new synthesizeSpeech backend in a separate Node.js 22 Firebase function package, so deploying online voices cannot overwrite the working V20 assessment codebase.",
+    "Voice diagnostics now reports the browser/device voices actually available for English and the active language, with Set up voice and Check again actions.",
+    "If the active language has no matching browser/device voice, the Voice Manager can use a protected Google Cloud Text-to-Speech fallback and cache generated MP3 audio for reuse.",
+    "Punjabi pilot online fallback uses pa-IN-Standard-A; Hindi can fall back to hi-IN-Standard-A only when a matching browser/device voice is unavailable or the learner explicitly selects online voice.",
+    "My Vocabs was regression-audited against the approved smart-sheet design. The right-click clipboard section is restored reliably even when the pointer lands on cell padding rather than directly on the input.",
+    "No Hindi or Punjabi packaged learning content was changed in this update; the 5-dialogue Punjabi pilot remains a pilot gate before the full 190-dialogue expansion.",
     "V21 pilot adds Punjabi as a separate downloadable language pack without replacing the protected Hindi production pack.",
     "Hindi and Punjabi attempts, completion counts, mistakes, vocabulary progress, My Vocabs and cloud-sync sections are separated by language.",
     "Existing pre-V21 learner records without a language ID remain assigned to Hindi for backward compatibility.",
@@ -216,5 +223,29 @@
     "pa→en"
   ],
   "punjabiPilot": true,
-  "onlineAssessmentFunctionUnchangedFromV20_3_2_2": true
+  "onlineAssessmentFunctionUnchangedFromV20_3_2_2": true,
+  "voiceManagerV21": true,
+  "voiceDiagnostics": true,
+  "voiceSetupWorkflow": true,
+  "voiceCheckAgain": true,
+  "preferredChromeEnglishVoice": "Google UK English Female",
+  "preferredChromeHindiVoice": "Google हिन्दी",
+  "localVoiceFirst": true,
+  "cloudTtsFallback": true,
+  "cloudTtsProvider": "Google Cloud Text-to-Speech",
+  "cloudTtsClientCache": true,
+  "cloudTtsServerCache": true,
+  "cloudTtsNormalSpeedSynthesis": true,
+  "cloudTtsPlaybackRateLocal": true,
+  "punjabiCloudVoice": "pa-IN-Standard-A",
+  "hindiCloudVoice": "hi-IN-Standard-A",
+  "myVocabsRegressionAuditV2101": true,
+  "myVocabsContextClipboardResolvedFromCell": true,
+  "cloudTtsFirebaseCodebase": "firebase-functions-v21-tts",
+  "cloudTtsRuntime": "nodejs22",
+  "cloudTtsAssessmentCodebaseIsolated": true,
+  "cloudTtsAllowedVoices": [
+    "hi-IN-Standard-A",
+    "pa-IN-Standard-A"
+  ]
 }
