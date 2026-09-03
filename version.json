@@ -1,6 +1,6 @@
 {
-  "version": "20.3.2.1",
-  "build": "github-original-source-review-triggered-assessment-2026-09-04-v20.3.2.1b",
+  "version": "20.3.2.2",
+  "build": "github-target-language-assessment-guard-2026-09-04-v20.3.2.2",
   "contentVersion": "6.0.0-v19-content-unchanged",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -85,7 +85,7 @@
   "sampleAnswerCollapsible": true,
   "noteTipCollapsible": true,
   "shortNotesCompact": true,
-  "assessmentCache": true,
+  "assessmentCache": "v2-language-aware",
   "v19_5CloudSyncPreserved": true,
   "contentUnchangedFromV19_5": true,
   "practiceWorkspaceCompact": true,
@@ -114,7 +114,7 @@
   "technicalInstructionsHiddenFromStudentUi": true,
   "ownerToolsPreserved": true,
   "contentUnchangedFromV20_1": true,
-  "onlineAssessmentFunctionUnchanged": true,
+  "onlineAssessmentFunctionUnchanged": false,
   "myVocabsViewportStableEdits": true,
   "myVocabsMinimalAutoScroll": true,
   "myVocabsHindiToEnglishAutoFill": true,
@@ -136,6 +136,13 @@
   "dialogueNavigationBlocksWhileRecording": true,
   "contentUnchangedFromV20_3": true,
   "releaseNotes": [
+    "Assessment now validates the required target language separately from semantic meaning transfer.",
+    "Limited source-language words, natural borrowed terms, names, numbers and normal code-switching no longer automatically stop semantic assessment; target-language use is reported separately.",
+    "Predominantly answering in the source/wrong language now returns Wrong target language / Major correction instead of a misleading excellent result.",
+    "Assessment requests now derive the target language from the active language pack rather than hard-coding Hindi, so the same guard supports Punjabi and future language packs.",
+    "Cloud-transcription locale selection now follows the active target/source language metadata rather than a Hindi-only branch.",
+    "Assessment cache V2 includes source and target language so older cached results cannot be reused across language directions.",
+    "The assessAttempt Firebase Function requires redeployment for the new language-compliance output and mixed-language policy.",
     "Practice online semantic assessment now starts only when the learner opens Review for a recorded response; completing a normal practice recording no longer sends an automatic assessment request.",
     "Review shows a processing spinner while the transcript/online meaning assessment is being prepared and assessed.",
     "Turning Online assessment on no longer automatically assesses already-recorded responses; the learner chooses when to run it by opening Review.",
@@ -164,5 +171,10 @@
   "onlineAssessmentAutomaticAfterRecording": false,
   "onlineAssessmentReviewTriggered": true,
   "onlineAssessmentPreparingSpinner": true,
-  "mockOnlineAssessmentPreserved": true
+  "mockOnlineAssessmentPreserved": true,
+  "targetLanguageAssessmentGuard": true,
+  "targetLanguageUseSeparatedFromMeaning": true,
+  "wrongLanguageMajorResult": true,
+  "mixedLanguageMeaningAssessmentContinues": true,
+  "onlineAssessmentSchemaVersion": 2
 }

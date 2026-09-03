@@ -12,3 +12,8 @@
 @keyframes v2032-spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.v20-assessment-spinner,.v20-mini-spinner{animation-duration:1.8s}}
 
+
+/* V20.3.2.2 — target-language assessment guard */
+.v20-score.wrong-language{max-width:240px;text-align:right}.v20-score.wrong-language strong{font-size:1.18rem;color:#8a3f23}.v20-score.wrong-language span{color:#7a5a4d}.v20-language-alert{display:grid;gap:4px;padding:12px 14px;border:1px solid #efc5af;border-left:4px solid #c75f2d;border-radius:13px;background:#fff6f1;color:#6d351f}.v20-language-alert b{font-size:.92rem}.v20-language-alert span{font-size:.82rem;line-height:1.45}.v20-summary-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:820px){.v20-score.wrong-language{text-align:left}.v20-summary-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.v20-summary-grid{grid-template-columns:1fr}}

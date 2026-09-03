@@ -251,12 +251,12 @@ async function requestCloudTranscriptionForResponse(blob,seg,response){
   response.cloudTranscriptionStatus='processing';
 
   try{
-    const language=targetLanguage(seg)==='hi'?'hi-IN':'en-AU';
+    const language=languageLocale(targetLanguage(seg));
 
     const result=await transcribeRecordingWithBackend(blob,{
       attemptId:response.recordingId,
       language,
-      sourceLanguage:seg.sourceLanguage==='hi'?'hi-IN':'en-AU',
+      sourceLanguage:languageLocale(seg.sourceLanguage),
       dialogueId:state.dialogue?.id||'',
       segmentId:seg.id
     });
@@ -1160,10 +1160,23 @@ async function ensureMicrophone(){
   try{state.stream?.getTracks().forEach(t=>t.stop());state.stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});state.micStatus='ready';state.micError='';return true;}
   catch(e){state.micStatus='denied';state.micError=e?.name==='NotAllowedError'?'Microphone permission is blocked. Click the padlock beside the address, allow Microphone and try again.':'The microphone could not be opened. Check whether another app is using it.';render();return false;}
 }
-function targetLanguage(seg){return seg.sourceLanguage==='en'?'hi':'en';}
+function baseLanguageCode(code=''){return String(code||'').trim().toLowerCase().split(/[-_]/)[0]||'';}
+function languageLocale(code){
+  const id=baseLanguageCode(code);
+  if(id==='en')return 'en-AU';
+  const catalog=state.languageCatalog?.find?.(x=>baseLanguageCode(x.id)===id);
+  return catalog?.targetLocale||catalog?.sourceLocale||({hi:'hi-IN',pa:'pa-IN',ur:'ur-PK',ne:'ne-NP',gu:'gu-IN',bn:'bn-BD',ta:'ta-IN',te:'te-IN',zh:'zh-CN',ar:'ar-SA'}[id]||id||'en-AU');
+}
+function targetLanguage(seg){
+  const explicit=baseLanguageCode(seg?.targetLanguage||seg?.targetLang||'');
+  if(explicit)return explicit;
+  const source=baseLanguageCode(seg?.sourceLanguage);
+  const selected=baseLanguageCode(state.selectedLanguage||state.languagePack?.id||'hi')||'hi';
+  return source==='en'?selected:'en';
+}
 function startSpeechRecognition(lang){
   const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R){state.transcriptStatus='unsupported';return;}
-  try{const r=new R();state.speechRecognition=r;r.lang=lang==='hi'?'hi-IN':'en-AU';r.continuous=true;r.interimResults=true;r.maxAlternatives=1;let final='';
+  try{const r=new R();state.speechRecognition=r;r.lang=languageLocale(lang);r.continuous=true;r.interimResults=true;r.maxAlternatives=1;let final='';
     r.onspeechstart=()=>{if(!state.speechStartedAt)state.speechStartedAt=Date.now();};
     r.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript.trim();if(e.results[i].isFinal)final+=(final?' ':'')+t;else interim+=(interim?' ':'')+t;}state.transcript=final.trim();state.transcriptInterim=interim.trim();};
     r.onerror=e=>{if(!['no-speech','aborted'].includes(e.error))state.transcriptStatus='error';};r.onend=()=>{if(state.transcript.trim())state.transcriptStatus='complete';else if(state.transcriptStatus==='listening')state.transcriptStatus='empty';};r.start();state.transcriptStatus='listening';
