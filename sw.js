@@ -1,7 +1,7 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v21-0-1-voice-manager-shell';
-const CONTENT_CACHE = 'aps-naati-content-runtime-v21';
+const APP_CACHE = 'aps-naati-v21-1-hindi-clarity-shell';
+const CONTENT_CACHE = 'aps-naati-content-runtime-v21-1-hindi-clarity';
 const PRECACHE = [
   './',
   './index.html',
@@ -69,6 +69,9 @@ self.addEventListener('activate', event => {
         for (const request of requests) {
           const url = new URL(request.url);
           if (!/\/content\/packs\/[^/]+\/.*\.json$/i.test(url.pathname)) continue;
+          // V21.1 Hindi clarity repair: do not migrate the old Hindi dialogues file.
+          // It must be fetched fresh so broken legacy Hindi cannot survive an update.
+          if (/\/content\/packs\/hi\/dialogues\.json$/i.test(url.pathname)) continue;
           const response = await old.match(request);
           if (response) await contentCache.put(request, response.clone());
         }

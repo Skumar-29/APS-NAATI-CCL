@@ -2,7 +2,7 @@
 
 (() => {
   const HOTFIX_VERSION = 'aps-naati-study-hotfix-v5';
-  const BUILD_VERSION = '21.0.0-pilot';
+  const BUILD_VERSION = '21.1.0-hindi-clarity';
   const VERSION_URL = './version.json';
   const CACHE_PREFIX = 'aps-naati-v';
   const SEARCH_LIMIT = 80;

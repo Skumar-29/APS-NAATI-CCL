@@ -1,0 +1,17 @@
+APS NAATI CCL Practice — V21.1 Hindi Clarity Web Update
+
+Use the small GitHub Web Update ZIP for the website update.
+
+1. Extract the ZIP on your computer.
+2. Upload the included files/folders to the same paths in your GitHub repository.
+3. Replace the existing files when GitHub asks.
+4. Commit the changes.
+5. Wait for GitHub Pages/Firebase Hosting (whichever you currently use for the web build) to publish.
+6. Open the app and use Settings → Check & update latest version, or reload the app.
+7. CHECK: version should be 21.1.0-hindi-clarity.
+8. CHECK: open Original Source → CCTV in School and play segments 06–08. The Hindi should be clear.
+9. CHECK: open Original Source → Document Translation and verify segments 03 and 05 are complete.
+
+No Firebase Functions deployment is required for this Hindi content update.
+
+If the browser still shows old dialogue text after the site is published, close all app tabs and reopen the site once. The new service worker deliberately does not migrate the old cached Hindi dialogues file.

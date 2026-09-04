@@ -1,7 +1,7 @@
 {
-  "version": "21.0.1-pilot",
-  "build": "github-v21-0-1-voice-manager-my-vocabs-audit-2026-09-04",
-  "contentVersion": "21.0.0-multilingual-pilot",
+  "version": "21.1.0-hindi-clarity",
+  "build": "github-v21-1-hindi-clarity-2026-09-05",
+  "contentVersion": "21.1.0-hindi-clarity",
   "dialogues": 190,
   "verifiedPractice": 105,
   "originalSource": 85,
@@ -136,6 +136,13 @@
   "dialogueNavigationBlocksWhileRecording": true,
   "contentUnchangedFromV20_3": true,
   "releaseNotes": [
+    "V21.1 Hindi Clarity Repair reviews all 1,073 segments in the 85 Original Source dialogues and replaces broken/machine-formatted Hindi with clear natural Standard Hindi suitable for listening practice.",
+    "Hindi source segments and Hindi sample/model interpretations were repaired while preserving dialogue IDs, segment IDs, scenario order and critical-detail metadata.",
+    "Original Source 82 Document Translation had two truncated legacy English source segments; they were restored from the V18 study-book source and given complete Hindi interpretations.",
+    "Original Source 63 segment 07 was corrected from a wrongly labelled romanised-Hindi English segment to Hindi→English.",
+    "A small set of obvious English OCR artifacts found during the Hindi audit was corrected (for example 20I7→2017, I.5%→1.5%, and stray OCR characters) without changing meaning.",
+    "Service-worker content cache is versioned so the repaired Hindi dialogues are fetched instead of an older cached dialogues.json.",
+    "Verified Practice 105-dialogue content, Hindi vocabulary/phrases, Punjabi pilot content, learner progress, My Vocabs, cloud sync and Firebase backends are unchanged.",
     "V21.0.1 adds a multilingual Voice Manager that prefers browser/device voices first, including Google UK English Female and Google हिन्दी when Chrome exposes them.",
     "V21.0.1 isolates the new synthesizeSpeech backend in a separate Node.js 22 Firebase function package, so deploying online voices cannot overwrite the working V20 assessment codebase.",
     "Voice diagnostics now reports the browser/device voices actually available for English and the active language, with Set up voice and Check again actions.",
@@ -195,7 +202,8 @@
       "phrases": 551,
       "generalVocabulary": 3009,
       "dialogueVocabularySets": 190,
-      "contentUnchangedFromV20_3_2_2": true
+      "contentUnchangedFromV20_3_2_2": false,
+      "clarityRepair": "v21.1.0-hindi-clarity"
     },
     "pa": {
       "status": "pilot",
@@ -247,5 +255,12 @@
   "cloudTtsAllowedVoices": [
     "hi-IN-Standard-A",
     "pa-IN-Standard-A"
-  ]
+  ],
+  "hindiClarityRepairV211": true,
+  "hindiOriginalSourceSegmentsReviewed": 1073,
+  "hindiOriginalSourceDialoguesReviewed": 85,
+  "hindiVerifiedPracticeChanged": false,
+  "hindiBrokenDevanagariRepair": true,
+  "hindiSourceDirectionRepairCount": 1,
+  "hindiTruncatedLegacySegmentRepairCount": 2
 }
