@@ -1,0 +1,33 @@
+APS NAATI CCL Practice — V21.2 Instant Word Lookup
+
+Use the SMALL GitHub Web Update ZIP for the website update.
+Do not upload the full backup ZIP through GitHub's web uploader.
+
+1. Download and unzip:
+   APS_NAATI_CCL_V21_2_WORD_LOOKUP_GITHUB_WEB_UPDATE.zip
+
+2. Open your APS-NAATI-CCL GitHub repository.
+
+3. Use Add file -> Upload files.
+
+4. Drag the CONTENTS of the extracted small update folder into GitHub.
+   Keep the existing folder structure, especially:
+   content/online-manifest-v20.json
+
+5. Commit the changes.
+   Suggested commit message:
+   V21.2 instant word lookup and My Vocabs capture
+
+6. Wait for the site deployment to finish.
+
+7. Hard refresh Chrome once (Ctrl+Shift+R on Windows / Cmd+Shift+R on Mac).
+
+8. Live test:
+   - Open a Hindi dialogue in Learning or Practice.
+   - Turn Transcript On.
+   - Click/tap a visible English or Hindi word.
+   - Confirm the meaning popup appears.
+   - Add one word to My Vocabs and verify the new row.
+   - Open Mock Test and confirm lookup is unavailable there.
+
+No Firebase Functions deployment is required.

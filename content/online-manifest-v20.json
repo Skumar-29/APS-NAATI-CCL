@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "appVersion": "21.1.0-hindi-clarity",
+  "appVersion": "21.2.0-word-lookup",
   "contentVersion": "21.1.0-hindi-clarity",
-  "updatedAt": "2026-09-05T07:30:00+10:00",
+  "updatedAt": "2026-09-05T08:45:00+10:00",
   "dialogues": 190,
   "verifiedPractice": 105,
   "originalSource": 85,
@@ -23,5 +23,10 @@
   },
   "assessmentGuard": "v20.3.2.2-language-aware",
   "hindiClarityRepair": true,
-  "hindiOriginalSourceSegmentsReviewed": 1073
+  "hindiOriginalSourceSegmentsReviewed": 1073,
+  "instantWordLookup": true,
+  "instantWordLookupLocalFirst": true,
+  "instantWordLookupAddToMyVocabs": true,
+  "instantWordLookupMockTestDisabled": true,
+  "backendChangeRequired": false
 }

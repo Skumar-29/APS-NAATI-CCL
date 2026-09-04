@@ -1,6 +1,6 @@
 {
-  "version": "21.1.0-hindi-clarity",
-  "build": "github-v21-1-hindi-clarity-2026-09-05",
+  "version": "21.2.0-word-lookup",
+  "build": "github-v21-2-word-lookup-2026-09-05",
   "contentVersion": "21.1.0-hindi-clarity",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -136,6 +136,14 @@
   "dialogueNavigationBlocksWhileRecording": true,
   "contentUnchangedFromV20_3": true,
   "releaseNotes": [
+    "V21.2 adds Instant Word Lookup to visible dialogue source transcripts and sample interpretations in Learning/Practice/Review. Click or tap a word to see its English ↔ active-language meaning without leaving the dialogue.",
+    "Lookup is local-first: current dialogue vocabulary, Core vocabulary, reviewed General Vocabs and reviewed short phrases are checked before online translation fallback.",
+    "Unreviewed General vocabulary rows marked source-reference/review-required are deliberately excluded from trusted instant lookup so malformed legacy PDF text is not surfaced as a learner meaning.",
+    "Context-aware phrase resolution can promote a clicked word to a matching reviewed multi-word term (up to five words), such as rental bond or entry requirements, when that phrase appears in the current sentence.",
+    "The lookup popup can add the resolved English ↔ active-language pair directly to the existing language-scoped My Vocabs store. Existing duplicate protection and Open existing / Add separate meaning / Cancel behaviour are reused.",
+    "Instant Word Lookup is disabled in Mock Test Mode so full exam simulation remains dictionary-free.",
+    "V21.2 safely interrupts source listening when a learner opens lookup: pending chime/microphone auto-start is suppressed, and lookup is blocked during an active recording.",
+    "No Firebase Functions, assessment logic, dialogue IDs, progress schemas or V21.1 Hindi clarity content are changed by V21.2.",
     "V21.1 Hindi Clarity Repair reviews all 1,073 segments in the 85 Original Source dialogues and replaces broken/machine-formatted Hindi with clear natural Standard Hindi suitable for listening practice.",
     "Hindi source segments and Hindi sample/model interpretations were repaired while preserving dialogue IDs, segment IDs, scenario order and critical-detail metadata.",
     "Original Source 82 Document Translation had two truncated legacy English source segments; they were restored from the V18 study-book source and given complete Hindi interpretations.",
@@ -262,5 +270,32 @@
   "hindiVerifiedPracticeChanged": false,
   "hindiBrokenDevanagariRepair": true,
   "hindiSourceDirectionRepairCount": 1,
-  "hindiTruncatedLegacySegmentRepairCount": 2
+  "hindiTruncatedLegacySegmentRepairCount": 2,
+  "instantWordLookup": true,
+  "instantWordLookupVersion": "21.2",
+  "instantWordLookupVisibleTextOnly": true,
+  "instantWordLookupModes": [
+    "Learning",
+    "Practice",
+    "Review"
+  ],
+  "instantWordLookupMockTestDisabled": true,
+  "instantWordLookupLocalFirst": true,
+  "instantWordLookupPriority": [
+    "Current dialogue vocabulary",
+    "Core vocabulary",
+    "Reviewed General Vocabs",
+    "Reviewed Phrase Library",
+    "Online translation fallback"
+  ],
+  "instantWordLookupBlocksSourceReferenceGeneral": true,
+  "instantWordLookupContextPhraseResolution": true,
+  "instantWordLookupAddToMyVocabs": true,
+  "instantWordLookupReusesDuplicateProtection": true,
+  "instantWordLookupReusesLanguageScopedMyVocabs": true,
+  "instantWordLookupPausesSpeechOnOpen": true,
+  "instantWordLookupBackendChangeRequired": false,
+  "contentUnchangedFromV21_1HindiClarity": true,
+  "instantWordLookupPreventsAutoRecordAfterInterrupt": true,
+  "instantWordLookupBlockedDuringRecording": true
 }

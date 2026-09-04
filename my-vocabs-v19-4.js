@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const VERSION='My Vocabs V20.3';
+const VERSION='My Vocabs V21.2';
 const languageId=()=>typeof activeLanguageId==='function'?activeLanguageId():(state.selectedLanguage||'hi');
 const languageName=()=>typeof targetLanguageName==='function'?targetLanguageName():languageId().toUpperCase();
 const VIEW_KEY=()=>`apsMyVocabsViewV194:${languageId()}`;
@@ -800,6 +800,100 @@ function mergeIncomingStore(raw){
   Object.entries(local.items||{}).forEach(([id,item])=>{const a=Date.parse(item?.updatedAt||item?.deletedAt||item?.createdAt||0)||0,b=Date.parse(items[id]?.updatedAt||items[id]?.deletedAt||items[id]?.createdAt||0)||0;if(!items[id]||a>=b)items[id]=item;});
   myStoreCache={schemaVersion:1,updatedAt:iso(),items};myStoreDirty=true;clearTimeout(myStoreSaveTimer);myStoreSaveTimer=setTimeout(flushMyStore,120);
 }
+
+
+// V21.2 public bridge for Instant Word Lookup. It deliberately reuses the
+// existing language-scoped My Vocabs store, duplicate rules and translation
+// queue instead of creating a second personal-vocabulary system.
+function instantTrustedEntry(item){
+  const q=`${item?.qualityStatus||''} ${item?.qualityLabel||''} ${item?.reliabilityNotice||''}`.toLowerCase();
+  return !/source-reference|review required|needs bilingual review/.test(q);
+}
+function instantMeaningParts(value){
+  const raw=String(value||'').trim();if(!raw)return [];
+  const parts=[raw,...raw.split(/[\/|;·]+/g),...raw.split(/\s*,\s*/g)];
+  return cleanList(parts);
+}
+function instantMeaningMatches(a,b){
+  const A=new Set(instantMeaningParts(a).map(normaliseSearchText).filter(Boolean));
+  return instantMeaningParts(b).some(x=>A.has(normaliseSearchText(x)));
+}
+function instantSources(dialogueId=''){
+  const out=[];
+  const dv=state.dialogueVocabById?.[dialogueId]?.items||[];
+  dv.filter(instantTrustedEntry).forEach(item=>out.push({item,lookupSource:'Dialogue Vocabulary',rank:0}));
+  (state.vocab||[]).filter(instantTrustedEntry).forEach(item=>out.push({item,lookupSource:'Core Vocabulary',rank:1}));
+  (state.generalVocab||[]).filter(instantTrustedEntry).forEach(item=>out.push({item,lookupSource:'Reviewed General Vocabs',rank:2}));
+  (state.phrases||[]).filter(instantTrustedEntry).forEach(item=>out.push({item,lookupSource:'Reviewed Phrase Library',rank:3}));
+  return out;
+}
+function instantLocalEnglish(term,dialogueId=''){
+  const key=normaliseSearchText(term);if(!key)return null;
+  for(const row of instantSources(dialogueId)){
+    if(normaliseSearchText(row.item?.english)===key)return {...row.item,lookupSource:row.lookupSource,online:false};
+  }
+  return null;
+}
+function instantLocalTarget(term,dialogueId=''){
+  const key=normaliseSearchText(term);if(!key)return null;
+  for(const row of instantSources(dialogueId)){
+    const values=[row.item?.hindi,...(Array.isArray(row.item?.acceptedHindi)?row.item.acceptedHindi:[])];
+    if(values.flatMap(instantMeaningParts).some(v=>normaliseSearchText(v)===key))return {...row.item,lookupSource:row.lookupSource,online:false};
+  }
+  return null;
+}
+async function instantLookup(term,{sourceLanguage='en',dialogueId=''}={}){
+  const q=String(term||'').trim();if(!q)return {term:q,english:'',hindi:'',meaning:'',lookupSource:'',online:false,found:false};
+  const sourceCode=String(sourceLanguage||'en').toLowerCase().split(/[-_]/)[0];
+  const targetCode=languageId();
+  if(sourceCode==='en'){
+    const local=instantLocalEnglish(q,dialogueId);
+    if(local)return {term:q,english:String(local.english||q).trim(),hindi:String(local.hindi||'').trim(),meaning:String(local.hindi||'').trim(),exampleEnglish:local.exampleEnglish||'',exampleHindi:local.exampleHindi||'',lookupSource:local.lookupSource||'APS vocabulary',online:false,found:Boolean(local.hindi),entryId:local.id||''};
+    const translated=await translateOnline(q,targetCode,'en');
+    return {term:q,english:q,hindi:String(translated||'').trim(),meaning:String(translated||'').trim(),lookupSource:translated?'Online translation':'Meaning unavailable',online:Boolean(translated),found:Boolean(translated),entryId:''};
+  }
+  const local=instantLocalTarget(q,dialogueId);
+  if(local)return {term:q,english:String(local.english||'').trim(),hindi:String(local.hindi||q).trim(),meaning:String(local.english||'').trim(),exampleEnglish:local.exampleEnglish||'',exampleHindi:local.exampleHindi||'',lookupSource:local.lookupSource||'APS vocabulary',online:false,found:Boolean(local.english),entryId:local.id||''};
+  const translated=await translateOnline(q,'en',targetCode);
+  return {term:q,english:String(translated||'').trim(),hindi:q,meaning:String(translated||'').trim(),lookupSource:translated?'Online translation':'Meaning unavailable',online:Boolean(translated),found:Boolean(translated),entryId:''};
+}
+function instantExactSaved(english,hindi=''){
+  const dup=duplicateEnglish(english,'');if(!dup)return null;
+  if(!String(hindi||'').trim())return dup;
+  if(!String(dup.hindi||'').trim())return null;
+  return instantMeaningMatches(dup.hindi,hindi)?dup:null;
+}
+async function instantAddToMyVocabs(data={}){
+  const english=String(data.english||'').trim(),hindi=String(data.hindi||'').trim();
+  if(!english)return {status:'error',message:'English meaning is unavailable'};
+  const src=data.source||currentDialogueSource();
+  const existing=duplicateEnglish(english,'');
+  if(existing){
+    if(!String(existing.hindi||'').trim()&&hindi){existing.hindi=hindi;existing.manualFields=existing.manualFields||{};existing.manualFields.hindi=false;addSource(existing,src);upsert(existing);return {status:'existing-updated',record:existing};}
+    if(!hindi||instantMeaningMatches(existing.hindi,hindi)){addSource(existing,src);upsert(existing);return {status:'existing',record:existing};}
+    return await new Promise(resolve=>showDuplicatePrompt({
+      duplicate:existing,pendingEnglish:english,
+      onOpen:()=>{resolve({status:'existing',record:existing,openExisting:true});},
+      onSeparate:()=>{const r=newRecord(src);r.english=english;r.hindi=hindi;r.topic=data.topic||state.dialogue?.topic||'community';r.lookupSource=data.lookupSource||'Instant Word Lookup';r.manualFields={english:false,hindi:false};upsert(r);resolve({status:'added-separate',record:r});},
+      onCancel:()=>resolve({status:'cancelled'})
+    }));
+  }
+  const r=newRecord(src);r.english=english;r.hindi=hindi;r.topic=data.topic||state.dialogue?.topic||'community';r.lookupSource=data.lookupSource||'Instant Word Lookup';r.manualFields={english:false,hindi:false};upsert(r);return {status:'added',record:r};
+}
+function instantOpenExisting(id){
+  const r=findMy(id);if(!r)return false;
+  openWorkspace(false);setTimeout(()=>{selectedIds.clear();selectedIds.add(r.id);selectionAnchorId=r.id;updateSelectedDom();focusSheetCell(document.querySelector(`[data-my-field="english"][data-id="${CSS.escape(r.id)}"]`));},120);return true;
+}
+window.APSMyVocabsAPI={
+  version:'21.2',languageId,languageName,
+  lookup:instantLookup,
+  add:instantAddToMyVocabs,
+  findExact:instantExactSaved,
+  openExisting:instantOpenExisting,
+  source:currentDialogueSource,
+  trustedEntries:(dialogueId='')=>instantSources(dialogueId).map(x=>({...x.item,lookupSource:x.lookupSource}))
+};
+
 window.addEventListener('storage',event=>{if(event.key===MY_KEY()){mergeIncomingStore(event.newValue);if(state.overlay==='my-vocabs')render();}});
 window.addEventListener('aps-language-changed',()=>{myStoreCache=null;myStoreLoaded=false;myStoreDirty=false;clearTimeout(myStoreSaveTimer);selectedIds.clear();selectionAnchorId='';if(state.overlay==='my-vocabs')render();});
 window.addEventListener('aps-my-vocabs-flush-request',flushMyStore);

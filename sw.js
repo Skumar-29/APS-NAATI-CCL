@@ -1,7 +1,7 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v21-1-hindi-clarity-shell';
-const CONTENT_CACHE = 'aps-naati-content-runtime-v21-1-hindi-clarity';
+const APP_CACHE = 'aps-naati-v21-2-word-lookup-shell';
+const CONTENT_CACHE = 'aps-naati-content-runtime-v21-2-word-lookup';
 const PRECACHE = [
   './',
   './index.html',
@@ -22,6 +22,7 @@ const PRECACHE = [
   './online-v20-1.css',
   './ui-v20-2.css',
   './voice-manager-v21.css',
+  './instant-word-lookup-v21-2.css',
   './scoring.js',
   './app.js',
   './study-hotfix-v5.js',
@@ -35,6 +36,7 @@ const PRECACHE = [
   './online-v20-1.js',
   './ui-v20-2.js',
   './voice-manager-v21.js',
+  './instant-word-lookup-v21-2.js',
   './content/languages.json',
   './content/exam_info.json',
   './content/lesson0.json',
