@@ -1,18 +1,20 @@
 {
   "schemaVersion": 2,
-  "appVersion": "21.2.1-practice-controls",
-  "contentVersion": "21.1.0-hindi-clarity",
-  "updatedAt": "2026-09-05T12:22:00+10:00",
-  "dialogues": 190,
-  "verifiedPractice": 105,
-  "originalSource": 85,
+  "appVersion": "21.3.0-hindi-dialogue-rebuild",
+  "contentVersion": "21.3.0-hindi-dialogue-rebuild",
+  "updatedAt": "2026-09-05T14:48:00+10:00",
+  "dialogues": 194,
+  "verifiedPractice": 107,
+  "originalSource": 87,
   "onlineFirst": true,
   "semanticAssessmentFunction": "assessAttempt",
   "languagePacks": {
     "hi": {
-      "dialogues": 190,
-      "verifiedPractice": 105,
-      "originalSource": 85
+      "dialogues": 194,
+      "verifiedPractice": 107,
+      "originalSource": 87,
+      "dialogueVocabularySets": 194,
+      "dialogueVocabularyItems": 1891
     },
     "pa": {
       "pilot": true,
@@ -28,8 +30,38 @@
   "instantWordLookupLocalFirst": true,
   "instantWordLookupAddToMyVocabs": true,
   "instantWordLookupMockTestDisabled": true,
-  "backendChangeRequired": false,
+  "backendChangeRequired": true,
   "practiceOnlineAssessmentTopToggle": true,
   "practiceTranscriptTopToggleLabelled": true,
-  "practiceOnlineAssessmentRetry": true
+  "practiceOnlineAssessmentRetry": true,
+  "hindiVerifiedPracticeRebuilt": 85,
+  "hindiOriginalSourceReferenceVerified": 85,
+  "hindiCandidateReportedOriginalsAdded": 2,
+  "hindiCandidateReportedPracticeVariantsAdded": 2,
+  "dialogueVocabularySets": 194,
+  "dialogueVocabularyItems": 1891,
+  "studentRecentReporting": true,
+  "studentRecentReportingFunctions": [
+    "reportRecentDialogue",
+    "getRecentDialogueStats"
+  ],
+  "recentFilterDateRanges": [
+    "This week",
+    "Last 30 days",
+    "Month",
+    "Custom dates"
+  ],
+  "recentMockPair": [
+    "original-086",
+    "original-087"
+  ],
+  "myVocabsAddedDate": true,
+  "myVocabsAddedDateFilters": [
+    "Today",
+    "Yesterday",
+    "Last 7 days",
+    "Last 30 days",
+    "Custom dates"
+  ],
+  "studentRecentAggregation": "monthly per dialogue with per-day counts"
 }

@@ -10,8 +10,8 @@
       "sourceLocale": "en-AU",
       "targetLocale": "hi-IN",
       "status": "available",
-      "reviewStatus": "mixed-reviewed-and-draft-v13",
-      "version": "1.3.0-reliability",
+      "reviewStatus": "v21.3-hindi-dialogue-rebuild-reviewed",
+      "version": "21.3.0-hindi-dialogue-rebuild",
       "files": {
         "dialogues": "./content/packs/hi/dialogues.json",
         "vocabulary": "./content/packs/hi/vocabulary.json",
@@ -20,11 +20,14 @@
         "dialogueVocabulary": "./content/packs/hi/dialogue-vocabulary.json"
       },
       "counts": {
-        "dialogues": 190,
+        "dialogues": 194,
         "vocabulary": 3000,
         "phrases": 551,
         "generalVocabularyReviewed": 236,
-        "dialogueVocabularySets": 190
+        "dialogueVocabularySets": 194,
+        "verifiedPractice": 107,
+        "originalSource": 87,
+        "dialogueVocabularyItems": 1891
       },
       "voiceProfile": {
         "preferredLocalNames": [

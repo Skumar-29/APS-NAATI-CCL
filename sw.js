@@ -1,7 +1,7 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v21-2-1-practice-controls-shell';
-const CONTENT_CACHE = 'aps-naati-content-runtime-v21-2-1-practice-controls';
+const APP_CACHE = 'aps-naati-v21-3-hindi-dialogue-rebuild-shell';
+const CONTENT_CACHE = 'aps-naati-content-runtime-v21-3-hindi-dialogue-rebuild';
 const PRECACHE = [
   './',
   './index.html',
@@ -24,6 +24,7 @@ const PRECACHE = [
   './voice-manager-v21.css',
   './instant-word-lookup-v21-2.css',
   './practice-controls-v21-2-1.css',
+  './recent-dialogues-v21-3.css',
   './scoring.js',
   './app.js',
   './study-hotfix-v5.js',
@@ -39,6 +40,7 @@ const PRECACHE = [
   './voice-manager-v21.js',
   './instant-word-lookup-v21-2.js',
   './practice-controls-v21-2-1.js',
+  './recent-dialogues-v21-3.js',
   './content/languages.json',
   './content/exam_info.json',
   './content/lesson0.json',
@@ -73,9 +75,9 @@ self.addEventListener('activate', event => {
         for (const request of requests) {
           const url = new URL(request.url);
           if (!/\/content\/packs\/[^/]+\/.*\.json$/i.test(url.pathname)) continue;
-          // V21.1 Hindi clarity repair: do not migrate the old Hindi dialogues file.
-          // It must be fetched fresh so broken legacy Hindi cannot survive an update.
-          if (/\/content\/packs\/hi\/dialogues\.json$/i.test(url.pathname)) continue;
+          // V21.3 Hindi rebuild: do not migrate the old Hindi dialogue or dialogue-vocabulary files.
+          // Both changed materially and must be fetched fresh after this update.
+          if (/\/content\/packs\/hi\/(?:dialogues|dialogue-vocabulary)\.json$/i.test(url.pathname)) continue;
           const response = await old.match(request);
           if (response) await contentCache.put(request, response.clone());
         }

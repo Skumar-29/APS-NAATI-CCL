@@ -1,0 +1,23 @@
+APS NAATI CCL Practice — V21.3 Recently Appeared Firebase setup
+
+A backend deployment IS required for student-shared Recent counts.
+The backend uses privacy-preserving monthly aggregate documents with per-day counts to keep Recent-filter reads efficient at scale.
+The web app itself can be uploaded first, but student report counts will not work until these two functions are deployed.
+
+RUN — open Terminal in the extracted full V21.3 backup folder, then:
+
+cd firebase-functions-v20
+npm install
+firebase deploy --only functions:reportRecentDialogue,functions:getRecentDialogueStats --project aps-naati-ccl-practice
+
+CHECK / VERIFY
+Firebase should report successful deployment of exactly:
+- reportRecentDialogue
+- getRecentDialogueStats
+
+Do NOT redeploy for this update:
+- assessAttempt
+- transcribeAttempt
+- synthesizeSpeech
+
+After deployment, open the live app in Chrome, sign in, open Practice, mark one dialogue as “Appeared in my test”, choose a date, then open the Recent filter and press Refresh. The card should show 1 student report for the selected date range. Click the reported button again to remove your own report; the count should drop again.

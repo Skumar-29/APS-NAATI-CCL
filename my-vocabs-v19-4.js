@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-const VERSION='My Vocabs V21.2';
+const VERSION='My Vocabs V21.3';
 const languageId=()=>typeof activeLanguageId==='function'?activeLanguageId():(state.selectedLanguage||'hi');
 const languageName=()=>typeof targetLanguageName==='function'?targetLanguageName():languageId().toUpperCase();
 const VIEW_KEY=()=>`apsMyVocabsViewV194:${languageId()}`;
@@ -38,8 +38,11 @@ const synonymGroups=[
 const groupIndex=new Map();
 synonymGroups.forEach(group=>group.forEach(x=>groupIndex.set(normaliseSearchText(x),group)));
 
-state.myVocabWorkspace=state.myVocabWorkspace||{query:'',status:'all',source:'all',sort:'sheet',player:false};
+state.myVocabWorkspace=state.myVocabWorkspace||{query:'',status:'all',source:'all',sort:'sheet',player:false,datePreset:'all',dateFrom:'',dateTo:''};
 if(!state.myVocabWorkspace.sort||state.myVocabWorkspace.sort==='recent')state.myVocabWorkspace.sort='sheet';
+if(!state.myVocabWorkspace.datePreset)state.myVocabWorkspace.datePreset='all';
+if(state.myVocabWorkspace.dateFrom==null)state.myVocabWorkspace.dateFrom='';
+if(state.myVocabWorkspace.dateTo==null)state.myVocabWorkspace.dateTo='';
 const selectedIds=new Set();
 let selectionAnchorId=null;
 let bulkRunnerActive=false;
@@ -69,10 +72,10 @@ function saveStore(s){
 }
 function invalidateMyStore({renderIfOpen=false}={}){clearTimeout(myStoreSaveTimer);myStoreSaveTimer=0;myStoreDirty=false;myStoreCache=null;if(renderIfOpen&&state.overlay==='my-vocabs')render();}
 
-function defaultView(){return {widths:{no:64,english:270,hindi:310,synonyms:360,recall:170},density:'comfortable'};}
+function defaultView(){return {widths:{no:64,english:270,hindi:310,synonyms:360,recall:170,added:145},density:'comfortable'};}
 function viewSettings(){const raw=getJSON(VIEW_KEY(),null)||{};const d=defaultView();return {widths:{...d.widths,...(raw.widths||{})},density:raw.density==='compact'?'compact':'comfortable'};}
 function saveViewSettings(v){setJSON(VIEW_KEY(),v);}
-function tableStyle(){const v=viewSettings(),w=v.widths;return `--my-col-no:${Number(w.no)||64}px;--my-col-english:${Number(w.english)||270}px;--my-col-hindi:${Number(w.hindi)||310}px;--my-col-synonyms:${Number(w.synonyms)||360}px;--my-col-recall:${Number(w.recall)||170}px;`;}
+function tableStyle(){const v=viewSettings(),w=v.widths;return `--my-col-no:${Number(w.no)||64}px;--my-col-english:${Number(w.english)||270}px;--my-col-hindi:${Number(w.hindi)||310}px;--my-col-synonyms:${Number(w.synonyms)||360}px;--my-col-recall:${Number(w.recall)||170}px;--my-col-added:${Number(w.added)||145}px;`;}
 function bulkJob(){const j=getJSON(BULK_KEY(),null);return j&&typeof j==='object'?j:null;}
 function saveBulkJob(j){if(!j){localStorage.removeItem(BULK_KEY());return;}setJSON(BULK_KEY(),j);}
 function missingHindiRows(){return rows().filter(r=>String(r.english||'').trim()&&!String(r.hindi||'').trim());}
@@ -305,9 +308,27 @@ speakVocabItem=async function v191SpeakVocabItem(options={}){
   return baseSpeakVocabItem(options);
 };
 
+function localDateKey(value){const d=value instanceof Date?value:new Date(value);if(!Number.isFinite(d.getTime()))return '';return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function shiftLocalDate(days){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+days);return localDateKey(d);}
+function addedDateRange(w=state.myVocabWorkspace||{}){
+  const preset=w.datePreset||'all',today=shiftLocalDate(0);
+  if(preset==='today')return [today,today];
+  if(preset==='yesterday'){const d=shiftLocalDate(-1);return [d,d];}
+  if(preset==='7d')return [shiftLocalDate(-6),today];
+  if(preset==='30d')return [shiftLocalDate(-29),today];
+  if(preset==='custom')return [String(w.dateFrom||''),String(w.dateTo||'')];
+  return ['',''];
+}
+function addedDateMatches(r,w=state.myVocabWorkspace||{}){
+  const preset=w.datePreset||'all';if(preset==='all')return true;
+  const key=localDateKey(r.createdAt);if(!key)return false;
+  const [from,to]=addedDateRange(w);if(from&&key<from)return false;if(to&&key>to)return false;return true;
+}
+function displayAddedDate(value){const d=new Date(value);if(!Number.isFinite(d.getTime()))return 'Older';return d.toLocaleDateString(undefined,{day:'2-digit',month:'short',year:'numeric'});}
 function filteredRows(){
   const w=state.myVocabWorkspace||{},q=String(w.query||'').trim();let list=rows();
   if(w.status&&w.status!=='all')list=list.filter(r=>r.status===w.status);
+  list=list.filter(r=>addedDateMatches(r,w));
   if(q)list=list.filter(r=>searchMatches(`${r.english} ${r.hindi} ${(r.mySynonyms||[]).join(' ')}`,q));
   const sort=w.sort||'recent';
   list.sort((a,b)=>sort==='az'?String(a.english||'').localeCompare(String(b.english||'')):sort==='status'?(statusMeta[a.status]?.rank??0)-(statusMeta[b.status]?.rank??0)||String(a.english||'').localeCompare(String(b.english||'')):sort==='recent'?Date.parse(b.updatedAt||b.createdAt||0)-Date.parse(a.updatedAt||a.createdAt||0):Date.parse(a.createdAt||0)-Date.parse(b.createdAt||0)||String(a.id).localeCompare(String(b.id)));
@@ -323,6 +344,7 @@ function rowHtml(r,rowNo){
     <td class="my-freeze-hindi"><input class="my-cell my-hindi" data-my-field="hindi" data-id="${esc(r.id)}" value="${esc(r.hindi||'')}" placeholder="${r.lookupSource==='Translating…'?'Translating…':`${languageName()} meaning`}"></td>
     <td><input class="my-cell" data-my-field="mySynonyms" data-id="${esc(r.id)}" value="${esc((r.mySynonyms||[]).join(', '))}" placeholder="Type your synonyms"></td>
     <td><select class="my-cell my-status ${esc(r.status)}" data-my-field="status" data-id="${esc(r.id)}" aria-label="Recall status">${statusOptionsFor(r.status)}</select></td>
+    <td class="my-added-cell" title="${esc(r.createdAt||'Added date not available for this older row')}">${esc(displayAddedDate(r.createdAt))}</td>
   </tr>`;
 }
 function resizerHtml(col){return `<span class="my-col-resizer" data-resize-col="${col}" title="Drag to resize · double-click to auto fit"></span>`;}
@@ -332,10 +354,10 @@ function workspace(){
   const playable=list.filter(r=>r.english&&r.hindi).length;
   return `<div class="fullscreen my-vocabs-screen ${newWindow?'my-vocabs-focus':''} ${view.density==='compact'?'my-density-compact':''}"><header class="top my-vocabs-top">${newWindow?'':`<button data-action="close-my-vocabs">← Back</button>`}<div class="my-vocab-title"><strong>My Vocabs</strong><span>✓ Autosaved · ${networkBadge()}</span></div><div class="top-actions">${newWindow?'':`<button data-action="open-my-vocabs-window">▣ New window</button>`}<button data-action="my-help" title="How My Vocabs works">? Help</button>${newWindow?'':`<button class="player-settings-button" data-action="app-settings">⚙ <b>Settings</b></button>`}${newWindow?`<button class="my-close-focus" data-action="close-my-vocabs">✕ Close</button>`:''}</div></header>
   <main class="my-vocabs-main"><section class="my-vocab-stats"><button data-action="my-filter-status" data-id="all" class="${state.myVocabWorkspace.status==='all'?'active':''}"><strong>${c.all}</strong><span>All</span></button><button data-action="my-filter-status" data-id="needs-review" class="review ${state.myVocabWorkspace.status==='needs-review'?'active':''}"><strong>${c.review}</strong><span>🔴 Review</span></button><button data-action="my-filter-status" data-id="learning" class="learning ${state.myVocabWorkspace.status==='learning'?'active':''}"><strong>${c.learning}</strong><span>🟡 Learning</span></button><button data-action="my-filter-status" data-id="mastered" class="mastered ${state.myVocabWorkspace.status==='mastered'?'active':''}"><strong>${c.mastered}</strong><span>🟢 Mastered</span></button></section>
-  <section class="my-vocab-toolbar my-vocab-toolbar-v194"><label class="search"><span>⌕</span><input id="myVocabSearch" type="search" placeholder="Search English, ${esc(languageName())} or your synonyms" value="${esc(state.myVocabWorkspace.query||'')}"></label><select id="myVocabStatusFilter"><option value="all">All recall statuses</option>${Object.entries(statusMeta).map(([id,m])=>`<option value="${id}" ${state.myVocabWorkspace.status===id?'selected':''}>${m.icon} ${m.label}</option>`).join('')}</select><select id="myVocabSort"><option value="sheet" ${state.myVocabWorkspace.sort==='sheet'?'selected':''}>Sheet order</option><option value="recent" ${state.myVocabWorkspace.sort==='recent'?'selected':''}>Recently changed</option><option value="az" ${state.myVocabWorkspace.sort==='az'?'selected':''}>English A–Z</option><option value="status" ${state.myVocabWorkspace.sort==='status'?'selected':''}>Recall status</option></select><select id="myVocabDensity"><option value="comfortable" ${view.density==='comfortable'?'selected':''}>Comfortable rows</option><option value="compact" ${view.density==='compact'?'selected':''}>Compact rows</option></select></section>
+  <section class="my-vocab-toolbar my-vocab-toolbar-v194"><label class="search"><span>⌕</span><input id="myVocabSearch" type="search" placeholder="Search English, ${esc(languageName())} or your synonyms" value="${esc(state.myVocabWorkspace.query||'')}"></label><select id="myVocabStatusFilter"><option value="all">All recall statuses</option>${Object.entries(statusMeta).map(([id,m])=>`<option value="${id}" ${state.myVocabWorkspace.status===id?'selected':''}>${m.icon} ${m.label}</option>`).join('')}</select><label class="my-added-filter"><span>Added</span><select id="myVocabDateFilter"><option value="all" ${state.myVocabWorkspace.datePreset==='all'?'selected':''}>All dates</option><option value="today" ${state.myVocabWorkspace.datePreset==='today'?'selected':''}>Today</option><option value="yesterday" ${state.myVocabWorkspace.datePreset==='yesterday'?'selected':''}>Yesterday</option><option value="7d" ${state.myVocabWorkspace.datePreset==='7d'?'selected':''}>Last 7 days</option><option value="30d" ${state.myVocabWorkspace.datePreset==='30d'?'selected':''}>Last 30 days</option><option value="custom" ${state.myVocabWorkspace.datePreset==='custom'?'selected':''}>Custom dates</option></select></label>${state.myVocabWorkspace.datePreset==='custom'?`<label class="my-date-input"><span>From</span><input id="myVocabDateFrom" type="date" value="${esc(state.myVocabWorkspace.dateFrom||'')}"></label><label class="my-date-input"><span>To</span><input id="myVocabDateTo" type="date" value="${esc(state.myVocabWorkspace.dateTo||'')}"></label>`:''}<select id="myVocabSort"><option value="sheet" ${state.myVocabWorkspace.sort==='sheet'?'selected':''}>Sheet order</option><option value="recent" ${state.myVocabWorkspace.sort==='recent'?'selected':''}>Recently changed</option><option value="az" ${state.myVocabWorkspace.sort==='az'?'selected':''}>English A–Z</option><option value="status" ${state.myVocabWorkspace.sort==='status'?'selected':''}>Recall status</option></select><select id="myVocabDensity"><option value="comfortable" ${view.density==='comfortable'?'selected':''}>Comfortable rows</option><option value="compact" ${view.density==='compact'?'selected':''}>Compact rows</option></select></section>
   <section class="my-vocab-actions"><button class="primary" data-action="my-add-row">+ Add Row</button><button class="secondary" data-action="my-translate-all">↻ Translate All Missing</button><button class="secondary" data-action="my-play-filtered" ${playable?'':'disabled'}>▶ Play Filtered (${playable})</button><button class="secondary" data-action="my-auto-fit-all">Auto Fit Columns</button><button class="secondary" data-action="my-reset-widths">Reset Widths</button><button class="secondary" data-action="my-export-csv">Export CSV</button><button class="secondary" data-action="my-import-trigger">Import CSV</button><input id="myImportCsv" type="file" accept=".csv,text/csv" hidden><span id="mySelectedCount"></span><span>${list.length.toLocaleString()} rows</span></section>
   <section id="myBulkTranslationStatus" class="my-bulk-status" hidden><div class="my-bulk-status-line"><strong data-bulk-text></strong><div><button class="secondary" data-action="my-bulk-pause">Ⅱ Pause</button><button class="secondary" data-action="my-bulk-retry" hidden>Retry Failed</button><button class="secondary danger-text" data-action="my-bulk-cancel">Cancel</button></div></div><progress value="0" max="1"></progress></section>
-  <div class="my-sheet-wrap"><table class="my-sheet my-sheet-v194" style="${tableStyle()}"><thead><tr><th class="my-freeze-no">No.</th><th class="my-freeze-english">English${resizerHtml('english')}</th><th class="my-freeze-hindi">${esc(languageName())} Meaning${resizerHtml('hindi')}</th><th>My Synonyms${resizerHtml('synonyms')}</th><th>Recall${resizerHtml('recall')}</th></tr></thead><tbody>${list.map(r=>rowHtml(r,nums.get(r.id))).join('')||`<tr><td colspan="5"><div class="my-empty"><h3>${rows().length?'No rows match these filters':'Your personal vocabulary sheet is empty'}</h3><p>${rows().length?'Change the search or recall filter.':`Type an English word and press Enter. ${languageName()} translation fills automatically while you type the next word.`}</p><button class="primary" data-action="my-add-row">+ Add your first word</button></div></td></tr>`}</tbody></table></div>
+  <div class="my-sheet-wrap"><table class="my-sheet my-sheet-v194" style="${tableStyle()}"><thead><tr><th class="my-freeze-no">No.</th><th class="my-freeze-english">English${resizerHtml('english')}</th><th class="my-freeze-hindi">${esc(languageName())} Meaning${resizerHtml('hindi')}</th><th>My Synonyms${resizerHtml('synonyms')}</th><th>Recall${resizerHtml('recall')}</th><th>Added${resizerHtml('added')}</th></tr></thead><tbody>${list.map(r=>rowHtml(r,nums.get(r.id))).join('')||`<tr><td colspan="6"><div class="my-empty"><h3>${rows().length?'No rows match these filters':'Your personal vocabulary sheet is empty'}</h3><p>${rows().length?'Change the search or recall filter.':`Type an English word and press Enter. ${languageName()} translation fills automatically while you type the next word.`}</p><button class="primary" data-action="my-add-row">+ Add your first word</button></div></td></tr>`}</tbody></table></div>
   <div id="myRowContextMenu" class="my-row-context-menu" hidden role="menu" aria-label="My Vocabs row actions"></div></main>${renderModal()}</div>`;
 }
 function captureReturnContext(){
@@ -504,8 +526,8 @@ function saveQuick({openSheet=false,allowDuplicate=false}={}){
 }
 function csvEscape(v){const s=String(v??'');return /[",\n]/.test(s)?`"${s.replace(/"/g,'""')}"`:s;}
 function exportCsv(){
-  const nums=rowNumberMap(),headers=['No.','English',`${languageName()} Meaning`,'My Synonyms','Recall Status'];
-  const lines=[headers,...activeSheetOrder().map(r=>[nums.get(r.id),r.english,r.hindi,(r.mySynonyms||[]).join('; '),r.status])].map(row=>row.map(csvEscape).join(','));
+  const nums=rowNumberMap(),headers=['No.','English',`${languageName()} Meaning`,'My Synonyms','Recall Status','Added At'];
+  const lines=[headers,...activeSheetOrder().map(r=>[nums.get(r.id),r.english,r.hindi,(r.mySynonyms||[]).join('; '),r.status,r.createdAt||''])].map(row=>row.map(csvEscape).join(','));
   const blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_My_Vocabs_${new Date().toISOString().slice(0,10)}.csv`;a.click();URL.revokeObjectURL(a.href);
 }
 function parseCsv(text){
@@ -521,15 +543,17 @@ async function importCsv(file){
   const hindiIndex=hasHeader?idx(`${languageName()} Meaning`,languageName(),'Hindi Meaning','Hindi'): -1;
   const synIndex=hasHeader?idx('My Synonyms','Synonyms'): -1;
   const statusIndex=hasHeader?idx('Recall Status','Recall'): -1;
+  const addedIndex=hasHeader?idx('Added At','Added Date','Added'): -1;
   const s=store();let added=0,updated=0;const translateIds=[];
   for(const cells of dataRows){
     const en=String(cells[englishIndex]||'').trim();if(!en)continue;
     let r=Object.values(s.items).find(x=>!x.deleted&&normaliseSearchText(x.english)===normaliseSearchText(en));
-    if(!r){r=newRecord({type:'import',label:'CSV import',addedAt:iso()});added++;}else updated++;
+    const wasNew=!r;if(!r){r=newRecord({type:'import',label:'CSV import',addedAt:iso()});added++;}else updated++;
     r.english=en;
     if(hindiIndex>=0){const hi=String(cells[hindiIndex]||'').trim();if(hi)r.hindi=hi;}
     if(synIndex>=0){const my=String(cells[synIndex]||'').trim();if(my)r.mySynonyms=cleanList([...(r.mySynonyms||[]),...cleanList(my)]);}
     if(statusIndex>=0){const st=String(cells[statusIndex]||'').trim();if(statusMeta[st])r.status=st;}
+    if(addedIndex>=0){const rawAdded=String(cells[addedIndex]||'').trim(),parsedAdded=Date.parse(rawAdded);if(Number.isFinite(parsedAdded)&&(wasNew||!r.createdAt))r.createdAt=new Date(parsedAdded).toISOString();}
     r.updatedAt=iso();s.items[r.id]=r;if(!String(r.hindi||'').trim())translateIds.push(r.id);
   }
   saveStore(s);state.myVocabWorkspace.sort='sheet';render();showToast(`CSV imported: ${added} added, ${updated} already existed · ${translateIds.length} need ${languageName()} translation`);
@@ -563,17 +587,17 @@ render=function v203Render(){if(state.overlay==='my-vocabs'){const snap=captureS
 
 
 function autoFitColumn(col){
-  const map={english:1,hindi:2,synonyms:3,recall:4},idx=map[col];if(idx==null)return;
+  const map={english:1,hindi:2,synonyms:3,recall:4,added:5},idx=map[col];if(idx==null)return;
   const table=document.querySelector('.my-sheet-v194');if(!table)return;
-  let max=col==='recall'?145:160;
+  let max=col==='recall'?145:(col==='added'?135:160);
   const rows=[...table.querySelectorAll('tr')].slice(0,220);
-  rows.forEach(tr=>{const cell=tr.children[idx];if(!cell)return;const text=(cell.querySelector('input,select')?.value||cell.textContent||'').trim();max=Math.max(max,Math.min(col==='synonyms'?520:440,30+text.length*(col==='hindi'?9:8)));});
+  rows.forEach(tr=>{const cell=tr.children[idx];if(!cell)return;const text=(cell.querySelector('input,select')?.value||cell.textContent||'').trim();max=Math.max(max,Math.min(col==='synonyms'?520:(col==='added'?220:440),30+text.length*(col==='hindi'?9:8)));});
   const v=viewSettings();v.widths[col]=Math.round(max);saveViewSettings(v);render();
 }
-function autoFitAllColumns(){['english','hindi','synonyms','recall'].forEach(col=>{const map={english:1,hindi:2,synonyms:3,recall:4},idx=map[col],table=document.querySelector('.my-sheet-v194');if(!table)return;let max=col==='recall'?145:160;[...table.querySelectorAll('tr')].slice(0,220).forEach(tr=>{const cell=tr.children[idx];if(!cell)return;const text=(cell.querySelector('input,select')?.value||cell.textContent||'').trim();max=Math.max(max,Math.min(col==='synonyms'?520:440,30+text.length*(col==='hindi'?9:8)));});const v=viewSettings();v.widths[col]=Math.round(max);saveViewSettings(v);});render();}
+function autoFitAllColumns(){['english','hindi','synonyms','recall','added'].forEach(col=>{const map={english:1,hindi:2,synonyms:3,recall:4,added:5},idx=map[col],table=document.querySelector('.my-sheet-v194');if(!table)return;let max=col==='recall'?145:(col==='added'?135:160);[...table.querySelectorAll('tr')].slice(0,220).forEach(tr=>{const cell=tr.children[idx];if(!cell)return;const text=(cell.querySelector('input,select')?.value||cell.textContent||'').trim();max=Math.max(max,Math.min(col==='synonyms'?520:(col==='added'?220:440),30+text.length*(col==='hindi'?9:8)));});const v=viewSettings();v.widths[col]=Math.round(max);saveViewSettings(v);});render();}
 function startColumnResize(event,handle){
   const col=handle.dataset.resizeCol;if(!col)return;event.preventDefault();event.stopPropagation();const startX=event.clientX,v=viewSettings(),start=Number(v.widths[col])||200;
-  const min={english:150,hindi:170,synonyms:170,recall:125}[col]||120,max={english:560,hindi:620,synonyms:700,recall:260}[col]||700;
+  const min={english:150,hindi:170,synonyms:170,recall:125,added:110}[col]||120,max={english:560,hindi:620,synonyms:700,recall:260,added:240}[col]||700;
   document.body.classList.add('my-resizing-column');
   const move=e=>{const n=Math.max(min,Math.min(max,start+(e.clientX-startX)));document.querySelector('.my-sheet-v194')?.style.setProperty(`--my-col-${col}`,`${Math.round(n)}px`);};
   const up=e=>{document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);document.body.classList.remove('my-resizing-column');const n=Math.max(min,Math.min(max,start+(e.clientX-startX)));const next=viewSettings();next.widths[col]=Math.round(n);saveViewSettings(next);};
@@ -722,6 +746,9 @@ app.addEventListener('change',async event=>{
   const t=event.target;
   if(t.dataset?.myField){const result=await updateField(t);if(result?.duplicate&&t.dataset.myField==='english'){const r=findMy(t.dataset.id),oldValue=r?.english||'';showDuplicatePrompt({duplicate:result.duplicate,pendingEnglish:result.pendingValue,onOpen:()=>{t.value=oldValue;selectedIds.clear();selectedIds.add(result.duplicate.id);selectionAnchorId=result.duplicate.id;updateSelectedDom();focusSheetCell(document.querySelector(`[data-my-field="english"][data-id="${CSS.escape(result.duplicate.id)}"]`));},onSeparate:async()=>{t.value=result.pendingValue;await updateField(t,{lookup:true,allowDuplicate:true});},onCancel:()=>{t.value=oldValue;focusSheetCell(t);}});}}
   else if(t.id==='myVocabStatusFilter'){state.myVocabWorkspace.status=t.value;render();}
+  else if(t.id==='myVocabDateFilter'){state.myVocabWorkspace.datePreset=t.value;if(t.value!=='custom'){state.myVocabWorkspace.dateFrom='';state.myVocabWorkspace.dateTo='';}render();}
+  else if(t.id==='myVocabDateFrom'){state.myVocabWorkspace.dateFrom=t.value;render();}
+  else if(t.id==='myVocabDateTo'){state.myVocabWorkspace.dateTo=t.value;render();}
   else if(t.id==='myVocabSort'){state.myVocabWorkspace.sort=t.value;render();}
   else if(t.id==='myVocabDensity'){const v=viewSettings();v.density=t.value==='compact'?'compact':'comfortable';saveViewSettings(v);render();}
   else if(t.id==='myImportCsv'&&t.files?.[0]){await importCsv(t.files[0]);t.value='';}

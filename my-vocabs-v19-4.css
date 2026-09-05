@@ -76,3 +76,12 @@ html.my-vocabs-boot body:before{content:'My Vocabs\A Opening your vocabulary she
 .player-my-synonyms b{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#0d5b88}
 .player-my-synonyms span{font-size:1rem;color:#314b60}
 @media(max-width:640px){.my-duplicate-actions{display:grid}.my-duplicate-actions button{width:100%}.my-duplicate-dialog{padding:18px}.player-my-synonyms{justify-content:flex-start}}
+
+/* APS V21.3 — Added-date recall filters */
+.my-sheet-v194 th:nth-child(6),.my-sheet-v194 td:nth-child(6){width:var(--my-col-added);min-width:var(--my-col-added);max-width:var(--my-col-added)}
+.my-added-cell{font-size:.82rem;color:#53687a;white-space:nowrap;padding:0 10px;vertical-align:middle;font-weight:650}
+.my-added-filter,.my-date-input{display:flex;align-items:center;gap:7px;min-width:0}.my-added-filter>span,.my-date-input>span{font-size:.72rem;font-weight:800;color:#607487;white-space:nowrap}.my-added-filter select,.my-date-input input{min-height:38px;border:1px solid #cbd9e2;border-radius:9px;background:#fff;padding:6px 9px;min-width:0}
+.my-date-input input{width:142px}
+.my-sheet.my-sheet-v194{min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall) + var(--my-col-added))}
+@media(max-width:900px){.my-added-filter,.my-date-input{justify-content:space-between}.my-date-input input{width:100%}}
+@media(max-width:560px){.my-sheet.my-sheet-v194{min-width:calc(var(--my-col-no) + var(--my-col-english) + var(--my-col-hindi) + var(--my-col-synonyms) + var(--my-col-recall) + var(--my-col-added))}}

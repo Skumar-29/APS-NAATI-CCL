@@ -1,0 +1,40 @@
+APS NAATI CCL Practice — V21.3 Hindi Dialogue Rebuild
+
+PART A — WEB / GITHUB UPDATE
+1. Use the SMALL ZIP: APS_NAATI_CCL_V21_3_HINDI_DIALOGUE_REBUILD_GITHUB_WEB_UPDATE.zip
+2. Extract it.
+3. Upload the contained files/folders to the root of your existing GitHub repository, preserving folder paths.
+4. Commit the update.
+5. Wait for the site/deployment to finish, then hard-refresh Chrome once.
+
+PART B — FIREBASE RECENT-REPORT FUNCTIONS (REQUIRED)
+Use the firebase-functions-v20 folder included in either the small update or full backup.
+
+RUN
+cd firebase-functions-v20
+npm install
+firebase deploy --only functions:reportRecentDialogue,functions:getRecentDialogueStats --project aps-naati-ccl-practice
+
+CHECK / VERIFY
+Firebase must report deployment of exactly:
+- reportRecentDialogue
+- getRecentDialogueStats
+
+Do NOT redeploy for this update:
+- assessAttempt
+- transcribeAttempt
+- synthesizeSpeech
+
+PART C — LIVE TEST
+1. Sign in.
+2. Open Practice and verify the library shows the rebuilt Hindi dialogues.
+3. Open Drink Driving Matter and confirm the dialogue is topic-specific throughout.
+4. Mark one dialogue “Appeared in my test”, choose today, and open the Recent filter.
+5. Verify it shows 1 student report; remove your report and verify the count drops.
+6. Test This week / Last 30 days / Month / Custom dates.
+7. Open Mock Test and select the Recent pair; confirm the two new Original Source topics are selected.
+8. Open My Vocabs, add a new word and confirm the Added date appears.
+9. Filter My Vocabs by Today and Recall status together.
+10. Confirm Online Assessment, Retry online, Transcript toggle, Instant Word Lookup, Hindi voice and My Vocabs still behave normally.
+
+No Firestore rules deployment is required for Recent reports because clients do not directly read/write the Recent collections; the two protected Functions use the Admin SDK.

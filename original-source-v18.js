@@ -1,18 +1,19 @@
 (function(){
 'use strict';
-const VERSION='Original Source V18.1';
+const VERSION='Original Source V21.3';
 state.practiceLibrary=state.practiceLibrary||'verified';
 const isOriginal=d=>String(d?.id||'').startsWith('original-')||d?.library==='original-source';
 const verifiedList=()=>state.dialogues.filter(d=>!isOriginal(d));
 const originalList=()=>state.dialogues.filter(isOriginal);
+const recentList=()=>state.dialogues.filter(d=>{try{return Boolean(window.APSRecentDialogues?.isRecent?.(d));}catch{return Boolean(d?.recentSourceReported);}});
 const basePractice=practice;
 practice=function(){
   const all=state.dialogues;
-  const selected=state.practiceLibrary==='original'?originalList():verifiedList();
+  const selected=state.practiceLibrary==='original'?originalList():(state.practiceLibrary==='recent'?recentList():verifiedList());
   state.dialogues=selected;
   let html=basePractice();
   state.dialogues=all;
-  const tabs=`<section class="v18-library-tabs" aria-label="Dialogue library"><button data-action="v18-library" data-library="verified" class="${state.practiceLibrary==='verified'?'active':''}"><b>Verified Practice</b><span>${verifiedList().length} dialogues</span></button><button data-action="v18-library" data-library="original" class="${state.practiceLibrary==='original'?'active':''}"><b>Original Source</b><span>${originalList().length} dialogues</span></button></section>`;
+  const tabs=`<section class="v18-library-tabs" aria-label="Dialogue library"><button data-action="v18-library" data-library="verified" class="${state.practiceLibrary==='verified'?'active':''}"><b>Verified Practice</b><span>${verifiedList().length} dialogues</span></button><button data-action="v18-library" data-library="original" class="${state.practiceLibrary==='original'?'active':''}"><b>Original Source</b><span>${originalList().length} dialogues</span></button><button data-action="v18-library" data-library="recent" class="${state.practiceLibrary==='recent'?'active':''}"><b>🔥 Recent</b><span>${recentList().length} reported topics</span></button></section>`;
   html=html.replace('</header>','</header>'+tabs);
   html=html.replace(/◇ Imported from your library · bilingual review recommended/g,'✓ Original Source · language corrected');
   return html;
@@ -30,6 +31,6 @@ progress=function(){
  const box=`<section class="v18-progress-libraries"><div><strong>${a.done}/${a.total}</strong><span>Verified Practice</span></div><div><strong>${b.done}/${b.total}</strong><span>Original Source</span></div></section>`;
  return html.replace('<section class="stats progress-stats">',box+'<section class="stats progress-stats">');
 };
-document.addEventListener('click',e=>{const el=e.target.closest('[data-action="v18-library"]');if(!el)return;e.preventDefault();state.practiceLibrary=el.dataset.library==='original'?'original':'verified';state.practice.query='';state.practice.topic='all';state.practice.difficulty='all';state.practice.review=state.practiceLibrary==='original'?'all':'study';state.practice.completion='all';render();},true);
+document.addEventListener('click',e=>{const el=e.target.closest('[data-action="v18-library"]');if(!el)return;e.preventDefault();const lib=el.dataset.library;state.practiceLibrary=lib==='original'?'original':(lib==='recent'?'recent':'verified');state.practice.query='';state.practice.topic='all';state.practice.difficulty='all';state.practice.review=state.practiceLibrary==='verified'?'study':'all';state.practice.completion='all';render();},true);
 console.info(`${VERSION} loaded: ${verifiedList().length} Verified Practice + ${originalList().length} Original Source dialogues.`);
 })();
