@@ -5,7 +5,15 @@ const topicLabels={all:'All topics',health:'Health',housing:'Housing & tenancy',
 const statusLabels={new:'New / Unknown',learning:'Learning',again:'Listen Again',known:'Known'};
 const statusIcons={new:'✦',learning:'↗',again:'↻',known:'✓'};
 const modeLabels={learning:'Learning Mode',practice:'Practice Mode',mock:'Mock Test'};
+// V21.3.2: calibrated locked mock pace. NAATI does not publish a numeric WPM; 0.90 avoids browser/voice default 1.0 sounding faster than retired-test style human delivery.
+const MOCK_EXAM_SPEECH_RATE=0.90;
 const storageKeys={onboard:'apsFinalOnboarded',vocabStatus:'apsFinalVocabStatus',vocabSettings:'apsFinalVocabSettings',vocabResume:'apsFinalVocabResume',attempts:'apsFinalAttempts',lesson:'apsFinalLesson',mistakes:'apsFinalMistakes',phraseStats:'apsFinalPhraseStats',dialogueVocabProgress:'apsDialogueVocabProgressV1:hi',authChoice:'apsAuthChoiceMade',authProfile:'apsAuthProfile',selectedLanguage:'apsSelectedLanguage',downloadedLanguages:'apsDownloadedLanguages',myVocabs:'apsMyVocabsV1:hi'};
+const GLOBAL_ENGLISH_VOICE_KEY='apsEnglishVoicePrefsV21';
+const ENGLISH_VOICE_FIELDS=['voiceEn','dialogueVoiceEnS1','dialogueVoiceEnS2'];
+function loadGlobalEnglishVoicePrefs(){return getJSON(GLOBAL_ENGLISH_VOICE_KEY,{});}
+function applyGlobalEnglishVoicePrefs(){const saved=loadGlobalEnglishVoicePrefs();for(const key of ENGLISH_VOICE_FIELDS){if(Object.prototype.hasOwnProperty.call(saved,key))state.vocabSettings[key]=saved[key]||'';}}
+function saveGlobalEnglishVoicePrefs(){const out={};for(const key of ENGLISH_VOICE_FIELDS)out[key]=state.vocabSettings[key]||'';setJSON(GLOBAL_ENGLISH_VOICE_KEY,out);}
+
 const HINDI_LEGACY_PROGRESS_KEYS=Object.freeze({
   vocabStatus:'apsFinalVocabStatus',vocabSettings:'apsFinalVocabSettings',vocabResume:'apsFinalVocabResume',attempts:'apsFinalAttempts',lesson:'apsFinalLesson',mistakes:'apsFinalMistakes',phraseStats:'apsFinalPhraseStats',dialogueVocabProgress:'apsDialogueVocabProgressV1:hi',myVocabs:'apsMyVocabsV1:hi',practiceDaily:'apsPracticeDailyV9',recallProgress:'apsRecallProgressV9',recallSettings:'apsRecallSettingsV9'
 });
@@ -442,6 +450,7 @@ async function loadLanguagePack(languageId){
   }
   Object.assign(state.vocabSettings,JSON.parse(JSON.stringify(DEFAULT_VOCAB_SETTINGS)),getJSON(storageKeys.vocabSettings,{}));
   normaliseVocabSettings(getJSON(storageKeys.vocabSettings,{}));
+  applyGlobalEnglishVoicePrefs();
   localStorage.setItem(storageKeys.selectedLanguage,languageId);
   const downloaded=new Set(getJSON(storageKeys.downloadedLanguages,[]));downloaded.add(languageId);setJSON(storageKeys.downloadedLanguages,[...downloaded]);
   if(previousLanguage&&previousLanguage!==languageId)window.dispatchEvent(new CustomEvent('aps-language-changed',{detail:{from:previousLanguage,to:languageId}}));
@@ -456,7 +465,7 @@ async function loadData(){
     if(!selected&&localStorage.getItem(storageKeys.onboard)==='1')selected='hi';
     if(selected)await loadLanguagePack(selected);
     state.ready=true;
-    const storedVocabSettings=getJSON(storageKeys.vocabSettings,{});Object.assign(state.vocabSettings,storedVocabSettings);normaliseVocabSettings(storedVocabSettings);
+    const storedVocabSettings=getJSON(storageKeys.vocabSettings,{});Object.assign(state.vocabSettings,storedVocabSettings);normaliseVocabSettings(storedVocabSettings);applyGlobalEnglishVoicePrefs();
     await initAuth();applyQAState();render();
   }catch(e){app.innerHTML=`<div class="fatal"><h1>App could not load</h1><p>${esc(e.message)}</p><p>Keep the Terminal server open and refresh this page.</p></div>`;}
 }
@@ -634,7 +643,7 @@ function currentMockPair(){
 function mock(){
   const pair=currentMockPair();
   return shell(`${header('Mock Test','Two-dialogue realistic practice')}
-  <section class="mock"><div class="lock">🔒</div><small>LOCKED TEST-STYLE SETTINGS</small><h2>Complete two dialogues before feedback</h2><p>Normal speed, hidden source transcripts, one penalty-free repeat per dialogue and separate estimates out of 45.</p><div class="mock-pair">${pair.map((d,i)=>`<div><b>Dialogue ${i+1}</b><span>${esc(d?.title||'')}</span><small>${topicLabels[d?.topic]||''}</small></div>`).join('')}</div><ul><li>Estimated result applies 63/90 overall</li><li>Each dialogue must also reach 29/45</li><li>No feedback appears until both dialogues finish</li></ul><div class="actions centered">${button('Choose another pair','shuffle-mock','secondary')}${button('Start full mock →','start-mock','primary')}</div></section>
+  <section class="mock"><div class="lock">🔒</div><small>LOCKED TEST-STYLE SETTINGS</small><h2>Complete two dialogues before feedback</h2><p>Exam-style speaking pace, hidden source transcripts, one penalty-free repeat per dialogue and separate estimates out of 45.</p><div class="mock-pair">${pair.map((d,i)=>`<div><b>Dialogue ${i+1}</b><span>${esc(d?.title||'')}</span><small>${topicLabels[d?.topic]||''}</small></div>`).join('')}</div><ul><li>Estimated result applies 63/90 overall</li><li>Each dialogue must also reach 29/45</li><li>No feedback appears until both dialogues finish</li></ul><div class="actions centered">${button('Choose another pair','shuffle-mock','secondary')}${button('Start full mock →','start-mock','primary')}</div></section>
   <div class="warning">Scores are NAATI-aligned practice estimates, not official examiner marks.</div>`);
 }
 
@@ -1216,14 +1225,14 @@ function moveVocab(delta,rerender=true){
   const vp=state.vocabPlayer;if(!vp.queue.length)return;let i=vp.index+delta;if(i>=vp.queue.length)i=0;if(i<0)i=vp.queue.length-1;vp.index=i;vp.revealCurrent=false;const id=vp.queue[i];setJSON(storageKeys.vocabResume,{title:vp.title,id,updatedAt:new Date().toISOString()});if(rerender)render();
 }
 async function stepVocab(delta){const was=state.vocabPlayer.playing;state.vocabPlayer.token++;speechSynthesis.cancel();moveVocab(delta);await speakVocabItem({autoplay:was});if(was&&state.vocabPlayer.playing===false){state.vocabPlayer.playing=true;speakVocabItem({autoplay:true});}}
-function saveVocabSettings(){setJSON(storageKeys.vocabSettings,state.vocabSettings);}
+function saveVocabSettings(){setJSON(storageKeys.vocabSettings,state.vocabSettings);saveGlobalEnglishVoicePrefs();}
 
 // Dialogue recording and assessment
 function getActiveSegments(){return state.retryIds?state.dialogue.segments.filter(s=>state.retryIds.includes(s.id)):state.dialogue.segments;}
 function openDialogue(id,mode='learning',rerender=true){
   stopAllSpeech();const d=state.dialogues.find(x=>x.id===id);if(!d)return;
   Object.assign(state,{dialogue:d,dialogueMode:mode,segmentIndex:0,responses:[],completed:new Set(),repeats:0,dialogueStartedAt:Date.now(),dialogueCompletedAt:0,playerStatus:'ready',feedback:null,retryIds:null,report:null});
-  state.dialogueSettings={rate:mode==='mock'?1:.9,gap:mode==='mock'?'manual':20,showSourceTranscript:false};state.overlay='dialogue';if(rerender)render();
+  state.dialogueSettings={rate:mode==='mock'?MOCK_EXAM_SPEECH_RATE:.9,gap:mode==='mock'?'manual':20,showSourceTranscript:false};state.overlay='dialogue';if(rerender)render();
 }
 function clearResponseMedia(){if(state.recordingUrl){URL.revokeObjectURL(state.recordingUrl);state.recordingUrl='';}state.recordingBlob=null;state.recordingId='';state.recordingError='';state.recordingDuration=0;state.recordingMime='';state.transcript='';state.transcriptInterim='';state.transcriptStatus='idle';state.feedback=null;}
 async function ensureMicrophone(){
@@ -1451,7 +1460,7 @@ function loadQADialogueReport(){const d=state.dialogues[0];const responses=d.seg
 
 // Backup / restore
 function backupProgress(){const data={version:'2.1.0-v21',languageId:activeLanguageId(),languageName:targetLanguageName(),createdAt:new Date().toISOString(),vocabStatus:getJSON(storageKeys.vocabStatus,{}),vocabSettings:state.vocabSettings,vocabResume:getJSON(storageKeys.vocabResume,{}),phraseStats:getJSON(storageKeys.phraseStats,{}),dialogueVocabProgress:getJSON(storageKeys.dialogueVocabProgress,{}),myVocabs:getJSON(storageKeys.myVocabs,{schemaVersion:1,items:{}}),attempts:getJSON(storageKeys.attempts,[]),lesson:getJSON(storageKeys.lesson,{}),mistakes:getJSON(storageKeys.mistakes,[]),account:{signedIn:Boolean(state.auth.user),provider:authProviderLabel()}};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`APS_NAATI_Progress_${activeLanguageId()}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);}
-async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');const backupLang=String(d.languageId||'hi').toLowerCase();if(backupLang!==activeLanguageId())throw new Error(`This backup belongs to ${targetLanguageName(backupLang)}. Switch to that language before restoring it.`);setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.phraseStats,d.phraseStats||{});setJSON(storageKeys.dialogueVocabProgress,d.dialogueVocabProgress||{});if(d.myVocabs){setJSON(storageKeys.myVocabs,d.myVocabs);window.dispatchEvent(new CustomEvent('aps-my-vocabs-external-update'));}setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});normaliseVocabSettings(d.vocabSettings||{});saveVocabSettings();showToast('Progress restored');}catch(error){showToast(error?.message||'This backup could not be restored');}}
+async function restoreProgress(file){try{const d=JSON.parse(await file.text());if(!d.version)throw new Error('Invalid backup');const backupLang=String(d.languageId||'hi').toLowerCase();if(backupLang!==activeLanguageId())throw new Error(`This backup belongs to ${targetLanguageName(backupLang)}. Switch to that language before restoring it.`);setJSON(storageKeys.vocabStatus,d.vocabStatus||{});setJSON(storageKeys.vocabSettings,d.vocabSettings||{});setJSON(storageKeys.vocabResume,d.vocabResume||{});setJSON(storageKeys.phraseStats,d.phraseStats||{});setJSON(storageKeys.dialogueVocabProgress,d.dialogueVocabProgress||{});if(d.myVocabs){setJSON(storageKeys.myVocabs,d.myVocabs);window.dispatchEvent(new CustomEvent('aps-my-vocabs-external-update'));}setJSON(storageKeys.attempts,d.attempts||[]);setJSON(storageKeys.lesson,d.lesson||{});setJSON(storageKeys.mistakes,d.mistakes||[]);Object.assign(state.vocabSettings,d.vocabSettings||{});normaliseVocabSettings(d.vocabSettings||{});applyGlobalEnglishVoicePrefs();saveVocabSettings();showToast('Progress restored');}catch(error){showToast(error?.message||'This backup could not be restored');}}
 
 // Event handling
 app.addEventListener('click',async e=>{

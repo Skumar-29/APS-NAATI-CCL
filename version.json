@@ -1,6 +1,6 @@
 {
-  "version": "21.3.1-mock-test-navigation",
-  "build": "github-v21-3-1-mock-test-navigation-compact-cards-2026-09-06",
+  "version": "21.3.2-exam-pace",
+  "build": "github-v21-3-2-exam-pace-2026-09-06",
   "contentVersion": "21.3.0-hindi-dialogue-rebuild",
   "dialogues": 194,
   "verifiedPractice": 107,
@@ -333,5 +333,8 @@
   "mockTestBackendChangeRequired": false,
   "dialogueLibraryCompactCardsV2131": true,
   "dialogueLibraryDesktopColumns": 3,
-  "dialogueLibraryCompactKeepsRecentReporting": true
+  "dialogueLibraryCompactKeepsRecentReporting": true,
+  "mockExamSpeechRate": 0.9,
+  "mockExamSpeechRateLocked": true,
+  "mockExamSpeechRateBasis": "calibrated relative browser/cloud TTS rate; NAATI does not publish numeric WPM"
 }
