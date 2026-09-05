@@ -1,6 +1,6 @@
 {
-  "version": "21.2.0-word-lookup",
-  "build": "github-v21-2-word-lookup-2026-09-05",
+  "version": "21.2.1-practice-controls",
+  "build": "github-v21-2-1-practice-controls-2026-09-05",
   "contentVersion": "21.1.0-hindi-clarity",
   "dialogues": 190,
   "verifiedPractice": 105,
@@ -136,6 +136,11 @@
   "dialogueNavigationBlocksWhileRecording": true,
   "contentUnchangedFromV20_3": true,
   "releaseNotes": [
+    "V21.2.1 moves Online Assessment from Settings to the dialogue player beside Speed and Response gap. The compact switch is green/right when ON and red/left when OFF.",
+    "The source Transcript control is now clearly labelled Transcript with an ON/OFF switch instead of an unlabeled icon.",
+    "When review falls back to local feedback because online assessment is failed or temporarily unavailable, a Retry online action is shown. Manual retry clears the temporary client cooldown and retries transcript preparation plus semantic assessment for the current segment.",
+    "Turning Assessment ON while an existing response Review is already open immediately attempts online assessment for that current response; otherwise assessment still begins only when Review is opened.",
+    "Mock Test behaviour, scoring logic, Firebase Functions, content, progress, My Vocabs, Hindi clarity repairs and V21.2 Instant Word Lookup are unchanged.",
     "V21.2 adds Instant Word Lookup to visible dialogue source transcripts and sample interpretations in Learning/Practice/Review. Click or tap a word to see its English ↔ active-language meaning without leaving the dialogue.",
     "Lookup is local-first: current dialogue vocabulary, Core vocabulary, reviewed General Vocabs and reviewed short phrases are checked before online translation fallback.",
     "Unreviewed General vocabulary rows marked source-reference/review-required are deliberately excluded from trusted instant lookup so malformed legacy PDF text is not surfaced as a learner meaning.",
@@ -297,5 +302,18 @@
   "instantWordLookupBackendChangeRequired": false,
   "contentUnchangedFromV21_1HindiClarity": true,
   "instantWordLookupPreventsAutoRecordAfterInterrupt": true,
-  "instantWordLookupBlockedDuringRecording": true
+  "instantWordLookupBlockedDuringRecording": true,
+  "practiceOnlineAssessmentTopToggle": true,
+  "practiceOnlineAssessmentToggleStyle": "compact sliding switch; green ON/right, red OFF/left",
+  "practiceTranscriptTopToggleLabelled": true,
+  "practiceOnlineAssessmentRemovedFromSettings": true,
+  "practiceOnlineAssessmentRetry": true,
+  "practiceOnlineAssessmentRetryStatuses": [
+    "failed",
+    "unavailable",
+    "offline"
+  ],
+  "practiceOnlineAssessmentRetryBypassesCooldown": true,
+  "practiceOnlineAssessmentBackendChanged": false,
+  "mockTestPracticeControlsUnchanged": true
 }

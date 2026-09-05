@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "appVersion": "21.2.0-word-lookup",
+  "appVersion": "21.2.1-practice-controls",
   "contentVersion": "21.1.0-hindi-clarity",
-  "updatedAt": "2026-09-05T08:45:00+10:00",
+  "updatedAt": "2026-09-05T12:22:00+10:00",
   "dialogues": 190,
   "verifiedPractice": 105,
   "originalSource": 85,
@@ -28,5 +28,8 @@
   "instantWordLookupLocalFirst": true,
   "instantWordLookupAddToMyVocabs": true,
   "instantWordLookupMockTestDisabled": true,
-  "backendChangeRequired": false
+  "backendChangeRequired": false,
+  "practiceOnlineAssessmentTopToggle": true,
+  "practiceTranscriptTopToggleLabelled": true,
+  "practiceOnlineAssessmentRetry": true
 }

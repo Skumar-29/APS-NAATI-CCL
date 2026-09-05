@@ -1,0 +1,52 @@
+/* APS V21.2.1 — compact dialogue study controls */
+.dialogue-screen .dialogue-controls .v2121-control{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:2px;flex:0 0 auto;
+}
+.dialogue-screen .dialogue-controls .v2121-control-label{
+  font-size:10px;line-height:1;font-weight:800;color:#5f7083;white-space:nowrap;
+}
+.dialogue-screen .dialogue-controls .v2121-switch,
+.dialogue-screen .dialogue-controls .transcript-toggle.v2121-switch{
+  position:relative!important;width:62px!important;min-width:62px!important;height:38px!important;min-height:38px!important;
+  padding:0!important;border:1px solid transparent!important;border-radius:10px!important;background:transparent!important;
+  box-shadow:none!important;display:block!important;overflow:hidden;color:#fff!important;
+}
+.dialogue-screen .v2121-switch-track{
+  position:absolute;inset:0;border-radius:9px;display:flex;align-items:center;font-size:10px;font-weight:900;letter-spacing:.02em;
+  transition:background .16s ease,border-color .16s ease;
+}
+.dialogue-screen .v2121-switch-track i{
+  position:absolute;top:4px;width:28px;height:28px;border-radius:8px;background:#fff;box-shadow:0 1px 5px rgba(25,45,62,.24);
+  transition:left .16s ease;
+}
+.dialogue-screen .v2121-switch-track b{position:absolute;line-height:1;color:#fff;font-size:10px;pointer-events:none}
+.dialogue-screen .v2121-switch.is-on .v2121-switch-track{background:#278265;border:1px solid #1f7057}
+.dialogue-screen .v2121-switch.is-on .v2121-switch-track i{left:30px}
+.dialogue-screen .v2121-switch.is-on .v2121-switch-track b{left:8px}
+.dialogue-screen .v2121-switch.is-off .v2121-switch-track{background:#c54d4d;border:1px solid #ad4141}
+.dialogue-screen .v2121-switch.is-off .v2121-switch-track i{left:4px}
+.dialogue-screen .v2121-switch.is-off .v2121-switch-track b{right:6px}
+.dialogue-screen .v2121-switch:focus-visible{outline:3px solid rgba(13,86,137,.25);outline-offset:2px}
+.dialogue-screen .v2121-retry-button{
+  margin-left:6px;border:1px solid #d4a650;background:#fff8e8;color:#805512;border-radius:999px;padding:5px 9px;
+  font-size:.76rem;font-weight:900;vertical-align:middle;white-space:nowrap;
+}
+.dialogue-screen .v2121-retry-button:disabled{opacity:.65;cursor:not-allowed}
+.dialogue-screen .v20-service-note [data-action="v2121-retry-online-assessment"]{
+  border:0;background:transparent;color:#075d91;font-weight:900;padding:0 2px;
+}
+
+@media(max-width:900px){
+  .dialogue-screen.v201-dialogue-screen .dialogue-controls{flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .dialogue-screen.v201-dialogue-screen .dialogue-controls{display:flex!important;align-items:flex-end!important;gap:6px!important}
+  .dialogue-screen.v201-dialogue-screen .dialogue-controls>label{flex:1 1 105px;min-width:92px}
+  .dialogue-screen .dialogue-controls .v2121-control{flex:0 0 auto}
+  .dialogue-screen .dialogue-controls .v2121-switch,
+  .dialogue-screen .dialogue-controls .transcript-toggle.v2121-switch{width:58px!important;min-width:58px!important;height:36px!important;min-height:36px!important}
+  .dialogue-screen .v2121-switch-track i{width:26px;height:26px;top:4px}
+  .dialogue-screen .v2121-switch.is-on .v2121-switch-track i{left:28px}
+}
+/* Online assessment moved out of Settings in V21.2.1. */
+#apsOnlineAssessmentSettingsCard{display:none!important}

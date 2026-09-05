@@ -1,0 +1,30 @@
+APS NAATI CCL Practice — V21.2.1 Practice Controls
+
+Use the SMALL GitHub Web Update ZIP for the GitHub website uploader.
+Do not upload the full backup ZIP through GitHub's web upload page.
+
+1. Download and unzip:
+   APS_NAATI_CCL_V21_2_1_PRACTICE_CONTROLS_GITHUB_WEB_UPDATE.zip
+
+2. Open your APS-NAATI-CCL GitHub repository.
+
+3. Choose Add file -> Upload files.
+
+4. Drag the CONTENTS of the extracted small update folder into GitHub.
+   Preserve the content/online-manifest-v20.json folder path.
+
+5. Commit message suggestion:
+   V21.2.1 practice controls and online assessment retry
+
+6. Wait for GitHub Pages / hosting to update.
+
+7. In Chrome, refresh the app. If the old shell is still visible, close/reopen the tab or hard-refresh once so the new service worker activates.
+
+8. Test one Practice dialogue:
+   - Assessment toggle should be at the top beside Speed and Gap.
+   - ON = green/right; OFF = red/left.
+   - Transcript is clearly labelled and toggles ON/OFF.
+   - Open Review and confirm online assessment works.
+   - If local fallback appears, use Retry online.
+
+No Firebase Functions deployment is required.
