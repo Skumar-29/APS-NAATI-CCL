@@ -1,3 +1,45 @@
 /* V21.3 Recently Appeared dialogue reporting */
 .recent-library-panel{margin:12px 0;display:grid;gap:9px}.recent-library-tabs{display:flex;gap:7px;flex-wrap:wrap}.recent-library-tabs button{min-height:36px;padding:7px 13px;border:1px solid #cbd9e2;border-radius:999px;background:#fff;color:#264559;font-weight:800;cursor:pointer}.recent-library-tabs button.active{background:#0d4f7c;color:#fff;border-color:#0d4f7c}.recent-date-tools{display:flex;gap:8px;align-items:end;flex-wrap:wrap;padding:9px 10px;border:1px solid #dae4ea;background:#f8fbfd;border-radius:12px}.recent-date-tools label{display:grid;gap:3px}.recent-date-tools label span{font-size:.7rem;font-weight:800;color:#637887}.recent-date-tools select,.recent-date-tools input{min-height:36px;border:1px solid #c6d5df;border-radius:9px;background:#fff;padding:6px 9px}.recent-error{padding:8px 10px;border-radius:9px;background:#fff2f1;color:#a32d28;font-size:.82rem;font-weight:700}.recent-loading{font-size:.8rem;color:#557082}.dialogue-card.has-recent{border-color:#f2c26c}.recent-badge{display:inline-flex;width:max-content;max-width:100%;align-items:center;padding:5px 9px;border-radius:999px;background:#fff5d9;color:#8a5800;font-size:.74rem;font-weight:850;margin:4px 0 3px}.library-tag{background:#eef4f8!important;color:#486273!important}.recent-report-button{width:100%;min-height:36px;margin-top:8px;border:1px dashed #d8aa48;border-radius:9px;background:#fffaf0;color:#815500;font-weight:800;cursor:pointer}.recent-report-button.reported{border-style:solid;background:#eef9f1;border-color:#93c7a0;color:#236739}.recent-report-editor{margin-top:8px;padding:9px;border:1px solid #d8e3e9;border-radius:10px;background:#f8fbfd;display:grid;gap:7px}.recent-report-editor label{display:flex;gap:8px;align-items:center;justify-content:space-between;font-size:.78rem;font-weight:800;color:#415d70}.recent-report-editor input{min-height:36px;border:1px solid #c8d7e0;border-radius:8px;padding:6px 8px}.recent-report-editor>div{display:flex;gap:7px}.recent-report-editor small{font-size:.7rem;color:#647986}.recent-mock-callout{display:flex;justify-content:space-between;gap:14px;align-items:center;margin:0 0 12px;padding:14px 16px;border:1px solid #efd189;border-radius:14px;background:#fff9e9}.recent-mock-callout small{font-weight:900;color:#8a5b00}.recent-mock-callout h3{margin:3px 0 4px}.recent-mock-callout p{margin:0;color:#536879;font-size:.85rem;max-width:760px}
 @media(max-width:760px){.recent-date-tools>*{flex:1 1 145px}.recent-date-tools button{flex:0 0 auto}.recent-report-editor label{align-items:flex-start;flex-direction:column}.recent-report-editor input{width:100%}.recent-mock-callout{align-items:stretch;flex-direction:column}.recent-mock-callout button{width:100%}}
+
+/* V21.3.1 — compact dialogue library cards.
+   Keep all learner information and actions, but reduce vertical whitespace so
+   more dialogues are visible at once on desktop without harming mobile taps. */
+.dialogue-card{
+  padding:13px 14px;
+  border-radius:16px;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.dialogue-card .tags{gap:5px;flex-wrap:wrap}
+.dialogue-card .tags span,.dialogue-card .tags em{padding:4px 7px;font-size:.66rem}
+.dialogue-card .dialogue-progress{padding:5px 7px;margin:6px 0;font-size:.70rem;min-height:28px}
+.dialogue-card .dialogue-progress span{font-size:.68rem}
+.dialogue-card h3{font-size:1.06rem;line-height:1.25;margin:7px 0 4px}
+.dialogue-card>p{font-size:.88rem;line-height:1.35;margin:0 0 4px;min-height:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dialogue-card .content-quality{margin:4px 0;padding:4px 7px;border-radius:999px;font-size:.67rem}
+.dialogue-card .meta{font-size:.68rem;line-height:1.3;padding-top:6px;margin:4px 0 5px}
+.dialogue-card .recent-badge{padding:4px 7px;margin:3px 0 1px;font-size:.68rem}
+.dialogue-card .recent-report-button{min-height:32px;margin-top:5px;padding:5px 8px;font-size:.78rem;border-radius:8px}
+.dialogue-card .actions{gap:6px;margin-top:6px;flex-wrap:nowrap}
+.dialogue-card .actions button{min-height:36px;padding:7px 9px;border-radius:10px;font-size:.82rem;line-height:1.15}
+
+/* Three compact cards on roomy desktop screens; retain two/one-column layouts
+   as space narrows. */
+@media(min-width:1100px){
+  .dialogues{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+}
+@media(min-width:901px) and (max-width:1099px){
+  .dialogues{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+}
+@media(max-width:900px){
+  .dialogue-card{padding:12px 13px}
+  .dialogue-card .actions{display:grid;grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .dialogue-card h3{font-size:1rem}
+  .dialogue-card>p{-webkit-line-clamp:3}
+  .dialogue-card .recent-report-button{min-height:36px}
+  .dialogue-card .actions button{min-height:40px}
+}

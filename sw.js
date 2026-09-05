@@ -1,7 +1,7 @@
 'use strict';
 
-const APP_CACHE = 'aps-naati-v21-3-hindi-dialogue-rebuild-shell';
-const CONTENT_CACHE = 'aps-naati-content-runtime-v21-3-hindi-dialogue-rebuild';
+const APP_CACHE = 'aps-naati-v21-3-1-mock-test-navigation-compact-cards-shell';
+const CONTENT_CACHE = 'aps-naati-content-runtime-v21-3-1-mock-test-navigation-compact-cards';
 const PRECACHE = [
   './',
   './index.html',

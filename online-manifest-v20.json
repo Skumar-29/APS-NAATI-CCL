@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 2,
+  "appVersion": "21.3.1-mock-test-navigation",
+  "contentVersion": "21.3.0-hindi-dialogue-rebuild",
+  "updatedAt": "2026-09-06T04:57:00+10:00",
+  "dialogues": 194,
+  "verifiedPractice": 107,
+  "originalSource": 87,
+  "onlineFirst": true,
+  "semanticAssessmentFunction": "assessAttempt",
+  "languagePacks": {
+    "hi": {
+      "dialogues": 194,
+      "verifiedPractice": 107,
+      "originalSource": 87,
+      "dialogueVocabularySets": 194,
+      "dialogueVocabularyItems": 1891
+    },
+    "pa": {
+      "pilot": true,
+      "dialogues": 5,
+      "verifiedPractice": 3,
+      "originalSource": 2
+    }
+  },
+  "assessmentGuard": "v20.3.2.2-language-aware",
+  "hindiClarityRepair": true,
+  "hindiOriginalSourceSegmentsReviewed": 1073,
+  "instantWordLookup": true,
+  "instantWordLookupLocalFirst": true,
+  "instantWordLookupAddToMyVocabs": true,
+  "instantWordLookupMockTestDisabled": true,
+  "backendChangeRequired": true,
+  "practiceOnlineAssessmentTopToggle": true,
+  "practiceTranscriptTopToggleLabelled": true,
+  "practiceOnlineAssessmentRetry": true,
+  "hindiVerifiedPracticeRebuilt": 85,
+  "hindiOriginalSourceReferenceVerified": 85,
+  "hindiCandidateReportedOriginalsAdded": 2,
+  "hindiCandidateReportedPracticeVariantsAdded": 2,
+  "dialogueVocabularySets": 194,
+  "dialogueVocabularyItems": 1891,
+  "studentRecentReporting": true,
+  "studentRecentReportingFunctions": [
+    "reportRecentDialogue",
+    "getRecentDialogueStats"
+  ],
+  "recentFilterDateRanges": [
+    "This week",
+    "Last 30 days",
+    "Month",
+    "Custom dates"
+  ],
+  "recentMockPair": [
+    "original-086",
+    "original-087"
+  ],
+  "myVocabsAddedDate": true,
+  "myVocabsAddedDateFilters": [
+    "Today",
+    "Yesterday",
+    "Last 7 days",
+    "Last 30 days",
+    "Custom dates"
+  ],
+  "studentRecentAggregation": "monthly per dialogue with per-day counts",
+  "mockTestNavigationRestored": true,
+  "mockTestVisibleInsidePractice": true,
+  "mockTestRecentPairPreserved": true,
+  "dialogueLibraryCompactCardsV2131": true,
+  "dialogueLibraryDesktopColumns": 3
+}

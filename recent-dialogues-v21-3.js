@@ -137,7 +137,9 @@ practice=function v213Practice(){
   const list=filteredDialogues(),records=dialogueStatsMap(),totals=dialogueTotals();
   // Keep a default 30-day aggregate ready even in All/Verified/Original, so badges do not appear stale.
   if(!state.recentDialogues.loading&&!state.recentDialogues.loadedKey&&navigator.onLine)queueMicrotask(()=>loadRecentDialogueStats());
+  const practiceModes=`<section class="v20-practice-modes v20-2-practice-modes"><button class="active" aria-current="page"><b>▶ Dialogue</b><span>Learn or practise</span></button><button data-action="v20-open-mock"><b>⏱ Mock Test</b><span>Two dialogues</span></button></section>`;
   return shell(`${header('Dialogue Practice','All supplied dialogues with learning, practice and review modes')}
+  ${practiceModes}
   <div class="info">The source transcript is <b>off by default</b>. Your completed-dialogue history and practice counts are saved automatically on this device.</div>
   <section class="completion-summary"><div><strong>${totals.completed}</strong><span>completed dialogues</span></div><div><strong>${totals.remaining}</strong><span>remaining dialogues</span></div><div><strong>${totals.totalPractices}</strong><span>total dialogue practices</span></div></section>
   ${recentFilterControls()}
@@ -159,7 +161,9 @@ currentMockPair=function v213CurrentMockPair(){
 function isRecentMockPair(){return Array.isArray(state.mockPair)&&state.mockPair.length===2&&RECENT_MOCK_PAIR.every((id,i)=>state.mockPair[i]===id);}
 mock=function v213Mock(){
   const pair=currentMockPair();
+  const practiceModes=`<section class="v20-practice-modes v20-2-practice-modes"><button data-action="tab" data-id="practice"><b>▶ Dialogue</b><span>Learn or practise</span></button><button class="active" aria-current="page"><b>⏱ Mock Test</b><span>Two dialogues</span></button></section>`;
   return shell(`${header('Mock Test','Two-dialogue realistic practice')}
+  ${practiceModes}
   <section class="recent-mock-callout"><div><small>RECENTLY REPORTED MOCK PAIR</small><h3>Senior Position + New GP Registration</h3><p>These two supplied candidate-reported topics can be practised together as a dedicated two-dialogue mock. Exact real-test wording may differ.</p></div><button type="button" class="${isRecentMockPair()?'primary':'secondary'}" data-action="use-recent-mock">${isRecentMockPair()?'✓ Recent pair selected':'Use recent pair'}</button></section>
   <section class="mock"><div class="lock">🔒</div><small>LOCKED TEST-STYLE SETTINGS</small><h2>Complete two dialogues before feedback</h2><p>Normal speed, hidden source transcripts, one penalty-free repeat per dialogue and separate estimates out of 45.</p><div class="mock-pair">${pair.map((d,i)=>`<div><b>Dialogue ${i+1}</b><span>${esc(d?.title||'')}</span><small>${topicLabels[d?.topic]||''}${RECENT_MOCK_PAIR.includes(d?.id)?' · recent reported topic':''}</small></div>`).join('')}</div><ul><li>Estimated result applies 63/90 overall</li><li>Each dialogue must also reach 29/45</li><li>No feedback appears until both dialogues finish</li></ul><div class="actions centered">${button('Choose another pair','shuffle-mock','secondary')}${button('Start full mock →','start-mock','primary')}</div></section>
   <div class="warning">Scores are NAATI-aligned practice estimates, not official examiner marks. Recent labels are candidate/student reports, not official NAATI topic predictions.</div>`);
